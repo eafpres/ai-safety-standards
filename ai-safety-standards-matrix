@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>AI Safety Standards & Publications Matrix</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --surface: #ffffff;
+      --surface-2: #eef2f7;
+      --text: #172033;
+      --muted: #5d687a;
+      --line: #d9e0e9;
+      --accent: #075e73;
+      --accent-2: #0b8099;
+      --accent-soft: #dff3f7;
+      --success: #147a56;
+      --success-soft: #e4f5ed;
+      --warn: #9b5b05;
+      --warn-soft: #fff1d6;
+      --draft: #7654b4;
+      --draft-soft: #eee7fb;
+      --danger: #b33b42;
+      --danger-soft: #fde8e9;
+      --shadow: 0 14px 40px rgba(21, 35, 55, .08);
+      --radius: 14px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #101620;
+        --surface: #18212e;
+        --surface-2: #202c3a;
+        --text: #edf3fa;
+        --muted: #aab7c6;
+        --line: #344252;
+        --accent: #73d6e8;
+        --accent-2: #8ee3ef;
+        --accent-soft: #163d49;
+        --success: #78d8b1;
+        --success-soft: #163d31;
+        --warn: #f2c572;
+        --warn-soft: #49391d;
+        --draft: #c4a9f1;
+        --draft-soft: #362b4d;
+        --danger: #f09aa0;
+        --danger-soft: #4a2529;
+        --shadow: 0 18px 48px rgba(0, 0, 0, .28);
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.45;
+    }
+    a { color: var(--accent); text-underline-offset: 2px; }
+    a:hover { color: var(--accent-2); }
+    button, input, select { font: inherit; color: inherit; }
+    button, select, input { min-height: 42px; }
+    .wrap { max-width: 1760px; margin: 0 auto; padding: 28px 22px 52px; }
+    header {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #073f4f, #0a6c7f 62%, #1895a6);
+      color: #fff;
+      border-radius: 20px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      width: 330px;
+      height: 330px;
+      right: -90px;
+      top: -180px;
+      border: 70px solid rgba(255,255,255,.08);
+      border-radius: 50%;
+    }
+    .eyebrow { margin: 0 0 7px; font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; opacity: .82; }
+    h1 { max-width: 900px; margin: 0; font-size: clamp(2rem, 4vw, 3.55rem); line-height: 1.03; letter-spacing: -.035em; }
+    .lede { max-width: 1020px; margin: 16px 0 0; font-size: 1.05rem; color: rgba(255,255,255,.9); }
+    .header-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+    .header-pill { padding: 7px 11px; border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.1); border-radius: 999px; font-size: .84rem; }
+    .stats { display: grid; grid-template-columns: repeat(4, minmax(150px, 1fr)); gap: 12px; margin: 18px 0; }
+    .stat { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; box-shadow: 0 8px 24px rgba(21,35,55,.04); }
+    .stat strong { display: block; font-size: 1.75rem; line-height: 1; letter-spacing: -.03em; }
+    .stat span { display: block; color: var(--muted); margin-top: 7px; font-size: .84rem; }
+    .panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 8px 24px rgba(21,35,55,.04); }
+    .filters { padding: 17px; margin-bottom: 14px; }
+    .filter-grid { display: grid; grid-template-columns: minmax(260px, 2fr) repeat(5, minmax(150px, 1fr)); gap: 11px; }
+    label { display: flex; flex-direction: column; gap: 6px; color: var(--muted); font-size: .76rem; font-weight: 700; letter-spacing: .03em; }
+    input, select {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      padding: 9px 11px;
+      outline: none;
+    }
+    input:focus, select:focus, button:focus-visible { border-color: var(--accent); outline: 3px solid color-mix(in srgb, var(--accent) 22%, transparent); }
+    .actions { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 13px; }
+    .actions-left, .actions-right { display: flex; align-items: center; flex-wrap: wrap; gap: 9px; }
+    button {
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      padding: 8px 12px;
+      background: var(--surface-2);
+      cursor: pointer;
+      font-weight: 700;
+    }
+    button:hover { border-color: var(--accent); }
+    .primary { background: var(--accent); color: var(--surface); border-color: var(--accent); }
+    .result-count { font-weight: 800; }
+    .result-count span { color: var(--muted); font-weight: 500; }
+    .legend { display: flex; gap: 13px; align-items: center; flex-wrap: wrap; color: var(--muted); font-size: .82rem; }
+    .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 5px; }
+    .dot.high { background: var(--danger); }
+    .dot.medium { background: var(--warn); }
+    .dot.low { background: var(--success); }
+    .table-shell { overflow: hidden; }
+    .table-scroll { overflow-x: auto; }
+    table { width: 100%; min-width: 1680px; border-collapse: separate; border-spacing: 0; font-size: .88rem; }
+    th, td { border-bottom: 1px solid var(--line); padding: 12px 12px; vertical-align: top; text-align: left; }
+    thead th { position: sticky; top: 0; z-index: 3; background: var(--surface-2); color: var(--muted); font-size: .74rem; letter-spacing: .04em; text-transform: uppercase; }
+    thead th:first-child, tbody td:first-child { position: sticky; left: 0; z-index: 2; background: var(--surface); box-shadow: 1px 0 var(--line); }
+    thead th:first-child { z-index: 4; background: var(--surface-2); }
+    tbody tr:hover td { background: color-mix(in srgb, var(--accent-soft) 36%, var(--surface)); }
+    tbody tr:hover td:first-child { background: color-mix(in srgb, var(--accent-soft) 36%, var(--surface)); }
+    .sort-btn { display: flex; min-height: auto; width: 100%; align-items: center; gap: 6px; padding: 0; border: 0; background: transparent; color: inherit; text-align: left; text-transform: inherit; letter-spacing: inherit; }
+    .sort-btn:hover { color: var(--text); }
+    .sort-mark { font-size: .9rem; opacity: .7; }
+    .pub-link { display: inline-block; font-weight: 800; line-height: 1.25; }
+    .org { display: block; margin-top: 5px; color: var(--muted); font-size: .77rem; }
+    .title { min-width: 290px; font-weight: 700; }
+    .summary { display: block; margin-top: 5px; color: var(--muted); font-size: .8rem; font-weight: 400; }
+    .badge { display: inline-flex; align-items: center; white-space: nowrap; padding: 4px 8px; border-radius: 999px; font-size: .73rem; font-weight: 800; }
+    .published, .active, .final-guidance { color: var(--success); background: var(--success-soft); }
+    .in-force, .mandatory { color: var(--accent); background: var(--accent-soft); }
+    .open-for-signature { color: var(--warn); background: var(--warn-soft); }
+    .under-development, .draft, .proposed { color: var(--draft); background: var(--draft-soft); }
+    .withdrawn, .superseded { color: var(--danger); background: var(--danger-soft); }
+    .physical { font-weight: 800; white-space: nowrap; }
+    .note-cell { min-width: 245px; color: var(--muted); }
+    .access { min-width: 180px; }
+    .date { min-width: 98px; white-space: nowrap; }
+    .pager { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 14px 16px; }
+    .pager-controls { display: flex; align-items: center; gap: 8px; }
+    .pager button:disabled { opacity: .45; cursor: not-allowed; }
+    .empty { padding: 44px 20px; text-align: center; color: var(--muted); }
+    .method { display: grid; grid-template-columns: 1.3fr 1fr; gap: 14px; margin-top: 14px; }
+    .method section { padding: 18px; }
+    .method h2 { margin: 0 0 9px; font-size: 1.02rem; }
+    .method p, .method ul { margin: 0; color: var(--muted); font-size: .87rem; }
+    .method ul { padding-left: 19px; }
+    .method li + li { margin-top: 5px; }
+    footer { margin-top: 18px; color: var(--muted); font-size: .79rem; }
+    @media (max-width: 1120px) {
+      .filter-grid { grid-template-columns: repeat(3, minmax(150px, 1fr)); }
+      .filter-grid label:first-child { grid-column: span 3; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 720px) {
+      .wrap { padding: 12px 10px 34px; }
+      header { padding: 24px 20px; border-radius: 15px; }
+      .stats { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .filter-grid { grid-template-columns: 1fr; }
+      .filter-grid label:first-child { grid-column: auto; }
+      .method { grid-template-columns: 1fr; }
+      .actions { align-items: stretch; }
+      .actions-left, .actions-right { width: 100%; }
+      .actions-right button { flex: 1; }
+    }
+    @media print {
+      body { background: #fff; color: #000; }
+      .wrap { max-width: none; padding: 0; }
+      header { box-shadow: none; }
+      .filters, .pager, .method, footer { display: none; }
+      .table-shell { border: 0; box-shadow: none; }
+      .table-scroll { overflow: visible; }
+      table { min-width: 0; font-size: 7pt; }
+      th, td { padding: 5px; }
+      thead th, thead th:first-child, tbody td:first-child { position: static; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <p class="eyebrow">Standards landscape • curated reference</p>
+      <h1>AI Safety Standards &amp; Publications Matrix</h1>
+      <p class="lede">A cross-sector map of governance, risk, lifecycle, testing, functional safety, cybersecurity, product assurance, and regulatory material relevant to AI—especially safety-critical and physical-AI systems.</p>
+      <div class="header-meta">
+        <span class="header-pill">Status checked: 12 August 2026</span>
+        <span class="header-pill">Official source links</span>
+        <span class="header-pill">Sortable • filterable • offline</span>
+      </div>
+    </header>
+
+    <section class="stats" aria-label="Matrix summary">
+      <div class="stat"><strong id="statTotal">0</strong><span>publications and work items</span></div>
+      <div class="stat"><strong id="statBodies">0</strong><span>issuer groups</span></div>
+      <div class="stat"><strong id="statCurrent">0</strong><span>published, active, final, or in force</span></div>
+      <div class="stat"><strong id="statPhysical">0</strong><span>high physical-AI relevance</span></div>
+    </section>
+
+    <section class="panel filters" aria-label="Matrix filters">
+      <div class="filter-grid">
+        <label>Search
+          <input id="search" type="search" placeholder="Try: fail-safe, medical, robustness, certification…">
+        </label>
+        <label>Issuer group
+          <select id="issuer"><option value="">All issuers</option></select>
+        </label>
+        <label>Status
+          <select id="status"><option value="">All statuses</option></select>
+        </label>
+        <label>Category
+          <select id="category"><option value="">All categories</option></select>
+        </label>
+        <label>Domain
+          <select id="domain"><option value="">All domains</option></select>
+        </label>
+        <label>Physical-AI relevance
+          <select id="physical"><option value="">All levels</option><option>High</option><option>Medium</option><option>Low</option></select>
+        </label>
+      </div>
+      <div class="actions">
+        <div class="actions-left">
+          <div class="result-count"><strong id="visibleCount">0</strong> results <span id="filterNote"></span></div>
+          <div class="legend" aria-label="Physical AI relevance legend">
+            <span><i class="dot high"></i>High: directly controls or assures physical systems</span>
+            <span><i class="dot medium"></i>Medium: materially supports cyber-physical safety</span>
+            <span><i class="dot low"></i>Low: primarily organizational or informational</span>
+          </div>
+        </div>
+        <div class="actions-right">
+          <button id="reset" type="button">Reset filters</button>
+          <button id="export" class="primary" type="button">Export filtered CSV</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel table-shell" aria-label="AI safety standards matrix">
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:190px"><button class="sort-btn" data-sort="publication">Publication <span class="sort-mark">↕</span></button></th>
+              <th style="width:330px"><button class="sort-btn" data-sort="title">Scope / why it matters <span class="sort-mark">↕</span></button></th>
+              <th><button class="sort-btn" data-sort="date">Date <span class="sort-mark">↕</span></button></th>
+              <th><button class="sort-btn" data-sort="status">Status <span class="sort-mark">↕</span></button></th>
+              <th><button class="sort-btn" data-sort="category">Category <span class="sort-mark">↕</span></button></th>
+              <th><button class="sort-btn" data-sort="domain">Domain <span class="sort-mark">↕</span></button></th>
+              <th><button class="sort-btn" data-sort="physical">Physical AI <span class="sort-mark">↕</span></button></th>
+              <th style="width:280px">Certification / conformity note</th>
+              <th style="width:210px">Access</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+        <div id="empty" class="empty" hidden>No publications match these filters.</div>
+      </div>
+      <div class="pager">
+        <label style="flex-direction:row;align-items:center">Rows per page
+          <select id="pageSize" style="width:auto"><option>25</option><option selected>50</option><option>100</option></select>
+        </label>
+        <span id="pageInfo" class="result-count"></span>
+        <div class="pager-controls">
+          <button id="prev" type="button" aria-label="Previous page">← Previous</button>
+          <button id="next" type="button" aria-label="Next page">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="method">
+      <section class="panel">
+        <h2>How to read this matrix</h2>
+        <ul>
+          <li><strong>Standards are not interchangeable.</strong> Management-system, product-safety, functional-safety, security, and regulatory publications solve different parts of the assurance problem.</li>
+          <li><strong>“Published” does not mean “certifiable.”</strong> The conformity column identifies management-system certification, product certification, type approval, regulatory review, or supporting-only use.</li>
+          <li><strong>EU presumption of conformity is specific.</strong> It normally arises only when a harmonised standard is cited in the Official Journal for the relevant legislation.</li>
+          <li><strong>Physical-AI relevance is an editorial classification</strong>, not a designation made by the issuing body.</li>
+        </ul>
+      </section>
+      <section class="panel">
+        <h2>Coverage and access</h2>
+        <p>This is a curated decision-support map, not an exhaustive catalogue or legal opinion. “Free full text” means the official issuer provides the complete document without payment. “Abstract free; full text paid” links to the authoritative catalogue record. Drafts and work items can change; re-check the linked source before using a status in a compliance plan.</p>
+      </section>
+    </div>
+
+    <footer>Prepared as a standalone reference. Data and classifications are embedded in this file; filtering and CSV export do not send information anywhere.</footer>
+  </main>
+
+  <script>
+  const data = [
+    {issuer:"ISO/IEC",publication:"ISO/IEC 42001:2023",title:"Artificial intelligence management system",date:"2023-12",status:"Published",category:"Governance & management",domain:"Cross-sector",physical:"Medium",summary:"Requirements for establishing, operating, auditing, and continually improving an AI management system (AIMS).",conformity:"Certifiable management-system standard. Certification bodies use ISO/IEC 42006; certification is organizational, not a safety approval for each AI product.",access:"Official overview and preview free; full text paid",url:"https://www.iso.org/standard/42001.html"},
+    {issuer:"ISO/IEC",publication:"ISO/IEC 23894:2023",title:"Guidance on AI risk management",date:"2023-02",status:"Published",category:"Risk & impact",domain:"Cross-sector",physical:"Medium",summary:"AI-specific risk identification, analysis, evaluation, treatment, monitoring, and communication guidance.",conformity:"Guidance only; not independently certifiable. Commonly paired with ISO/IEC 42001 and ISO 31000.",access:"Official abstract free; full text paid",url:"https://www.iso.org/standard/77304.html"},
+    {issuer:"ISO/IEC",publication:"ISO/IEC 5338:2023",title:"AI system life-cycle processes",date:"2023-12",status:"Published",category:"Lifecycle & process",domain:"Cross-sector",physical:"Medium",summary:"Defines AI system life-cycle processes aligned with ISO/IEC/IEEE 15288 and 12207.",conformity:"Supporting process standard; can supply auditable lifecycle evidence but is not a standalone certification scheme.",access:"Official abstract and sample free; full text paid",url:"https://www.iso.org/standard/81118.html"},
+    {issuer:"ISO/IEC",publication:"ISO/IEC TR 5469:2024",title:"Functional safety and AI systems",date:"2024-01",status:"Published",category:"Functional & product safety",domain:"Industrial / physical AI",physical:"High",summary:"Addresses AI inside safety functions, non-AI safeguards around AI, and AI used in safety engineering.",conformity:"Technical Report—informative, not certifiable. A key bridge to IEC 61508-family safety cases.",access:"Official abstract free; full text paid",url:"https://www.iso.org/standard/81283.html"},
+    {issuer:"ISO/IEC",publication:"ISO/IEC 42005:2025",title:"AI system impact assessment",date:"2025-05",status:"Published",category:"Risk & impact",domain:"Cross-sector",physical:"Medium",summary:"Structured process for assessing potential impacts of an AI system on individuals, groups, and society.",conformity:"Requirements/guidance can support due diligence and regulatory evidence; no standalone ISO certification scheme specified.",access:"Official abstract free; full text paid",url:"https://www.iso.org/standard/42005.html"},
+    {issuer:"ISO/IEC",publication:"ISO/IEC 42006:2025",title:"Requirements for AIMS audit and certification bodies",date:"2025-07",status:"Published",category:"Conformity assessment",domain:"Cross-sector",physical:"Low",summary:"Competence, consistency, and impartiality requirements for bodies auditing and certifying ISO/IEC 42001 systems.",conformity:"Certification infrastructure for ISO/IEC 42001; applies to certification bodies, not AI products.",access:"Official abstract free; full text paid",url:"https://www.iso.org/standard/42006.html"},
+    {issuer:"ISO/IEC",publication:"ISO/IEC 5259-1…5",title:"Data quality for analytics and machine learning",date:"2024–2025",status:"Published",category:"Data quality & bias",domain:"Cross-sector",physical:"Medium",summary:"Series covering terminology, measures, management requirements, process framework, and data-quality governance.",conformity:"Supporting standards; Part 3 contains requirements, but the series does not itself create a general AI product-certification scheme.",access:"Official catalogue entries; full text paid",url:"https://www.iso.org/committee/6794475/x/catalogue/"},
+    {issuer:"ISO/IEC",publication:"ISO/IEC 25059:2023",title:"Quality model for AI systems",date:"2023-06",status:"Published",category:"Testing & assurance",domain:"Cross-sector",physical:"Medium",summary:"SQuaRE extension defining quality characteristics for specifying and evaluating AI systems.",conformity:"Supports requirements and evaluation evidence; currently marked by ISO as to be revised.",access:"Official abstract and preview free; full text paid",url:"https://www.iso.org/standard/80655.html"},
+    {issuer:"ISO/IEC",publication:"ISO/IEC TR 24027:2021",title:"Bias in AI systems and AI-aided decision making",date:"2021",status:"Published",category:"Data quality & bias",domain:"Cross-sector",physical:"Low",summary:"Overview of bias sources, measurement, and mitigation across the AI lifecycle.",conformity:"Informative Technical Report; not certifiable.",access:"Official catalogue entry; full text paid",url:"https://www.iso.org/committee/6794475/x/catalogue/"},
+    {issuer:"ISO/IEC",publication:"ISO/IEC TR 24028:2020",title:"Overview of trustworthiness in AI",date:"2020",status:"Published",category:"Trustworthiness",domain:"Cross-sector",physical:"Medium",summary:"Foundational vocabulary and risk discussion for reliability, safety, security, privacy, resilience, and related attributes.",conformity:"Informative Technical Report; useful for scoping assurance claims, not certification.",access:"Official catalogue entry; full text paid",url:"https://www.iso.org/committee/6794475/x/catalogue/"},
+    {issuer:"ISO/IEC",publication:"ISO/IEC TR 24029-1:2021",title:"Robustness of neural networks — overview",date:"2021",status:"Published",category:"Testing & assurance",domain:"Cross-sector",physical:"Medium",summary:"Concepts and approaches for assessing neural-network robustness.",conformity:"Informative overview; use with domain-specific acceptance criteria.",access:"Official catalogue entry; full text paid",url:"https://www.iso.org/committee/6794475/x/catalogue/"},
+    {issuer:"ISO/IEC",publication:"ISO/IEC 24029-2:2023",title:"Robustness of neural networks — formal methods",date:"2023",status:"Published",category:"Testing & assurance",domain:"Cross-sector",physical:"High",summary:"Methodology for applying formal methods to neural-network robustness assessment.",conformity:"Can contribute objective V&V evidence; not a product certificate by itself.",access:"Official catalogue entry; full text paid",url:"https://www.iso.org/committee/6794475/x/catalogue/"},
+    {issuer:"ISO/IEC",publication:"ISO/IEC TS 8200:2024",title:"Controllability of automated AI systems",date:"2024-04",status:"Published",category:"Human oversight & control",domain:"Industrial / physical AI",physical:"High",summary:"Framework for observability, state transition, control transfer, uncertainty, and V&V of controllability.",conformity:"Technical Specification; supports human-oversight and safe-control evidence, without a standalone scheme.",access:"Official abstract and preview free; full text paid",url:"https://www.iso.org/standard/83012.html"},
+    {issuer:"ISO/IEC",publication:"ISO/IEC TS 12791:2024",title:"Treatment of unwanted bias in ML classification and regression",date:"2024-10",status:"Published",category:"Data quality & bias",domain:"Cross-sector",physical:"Low",summary:"Lifecycle mitigation techniques for unwanted bias in classification and regression systems.",conformity:"Technical Specification; supports documented bias controls, not standalone certification.",access:"Official abstract free; full text paid",url:"https://www.iso.org/standard/84110.html"},
+    {issuer:"ISO/IEC",publication:"ISO/IEC 12792:2025",title:"Transparency taxonomy of AI systems",date:"2025",status:"Published",category:"Transparency",domain:"Cross-sector",physical:"Medium",summary:"Taxonomy for describing transparency aspects of AI systems and their stakeholders.",conformity:"Common vocabulary for requirements and assessments; no standalone certification scheme.",access:"Official catalogue entry; full text paid",url:"https://www.iso.org/committee/6794475/x/catalogue/"},
+    {issuer:"ISO/IEC",publication:"ISO/IEC TS 6254:2025",title:"Objectives and approaches for explainability and interpretability",date:"2025",status:"Published",category:"Transparency",domain:"Cross-sector",physical:"Medium",summary:"Guidance for defining and addressing explainability and interpretability objectives.",conformity:"Supports evidence and documentation; does not define a universal pass/fail certificate.",access:"Official catalogue entry; full text paid",url:"https://www.iso.org/committee/6794475/x/catalogue/"},
+    {issuer:"ISO/IEC",publication:"ISO/IEC TS 42119-2:2025",title:"Testing of AI — overview",date:"2025-11",status:"Published",category:"Testing & assurance",domain:"Cross-sector",physical:"Medium",summary:"Overview and shared structure for testing AI systems; later parts cover specialized methods.",conformity:"Testing guidance; Parts 3 and 7 remained under development at the status date.",access:"Official abstract free; full text paid",url:"https://www.iso.org/standard/84127.html"},
+    {issuer:"ISO/IEC",publication:"ISO/IEC TS 22440-1…3",title:"Functional safety and AI systems — requirements, guidance, examples",date:"In development",status:"Under development",category:"Functional & product safety",domain:"Industrial / physical AI",physical:"High",summary:"Planned normative follow-on to TR 5469 for requirements, implementation guidance, and examples.",conformity:"Committee drafts; not usable as published standards or certification criteria yet.",access:"Project status free; drafts may require committee access/purchase",url:"https://www.iso.org/committee/6794475/x/catalogue/"},
+    {issuer:"ISO/IEC",publication:"ISO/IEC 42105",title:"Guidance for human oversight of AI systems",date:"FDIS in 2026",status:"Under development",category:"Human oversight & control",domain:"Cross-sector",physical:"High",summary:"Guidance for designing and operating meaningful human oversight across the AI lifecycle.",conformity:"Final Draft International Standard at the status date; not yet a published International Standard.",access:"Project status free; draft paid/restricted",url:"https://www.iso.org/committee/6794475/x/catalogue/"},
+
+    {issuer:"IEEE",publication:"IEEE 7000-2021",title:"Ethical concerns during system design",date:"2021-09",status:"Active",category:"Governance & management",domain:"Cross-sector",physical:"Medium",summary:"Traceable process for eliciting stakeholder values and translating ethical concerns into system requirements.",conformity:"Consensus process standard. Can support audits and assurance cases; not a regulatory approval by itself.",access:"Official overview free; full text via IEEE GET/subscription",url:"https://standards.ieee.org/ieee/7000/6781/"},
+    {issuer:"IEEE",publication:"IEEE 7001-2021",title:"Transparency of autonomous systems",date:"2022-03",status:"Active",category:"Transparency",domain:"Industrial / physical AI",physical:"High",summary:"Measurable, testable transparency levels for users, validators, investigators, and the public.",conformity:"Defines assessable compliance levels; does not itself confer market authorization.",access:"Official overview free; full text via IEEE GET/subscription",url:"https://standards.ieee.org/ieee/7001/6929/"},
+    {issuer:"IEEE",publication:"IEEE 7002-2022",title:"Data privacy process",date:"2022-04",status:"Active",category:"Privacy & data governance",domain:"Cross-sector",physical:"Low",summary:"Systems/software engineering privacy process with PIAs, controls, and conformity-assessment checklists.",conformity:"Supports conformity assessment of privacy practices; not a general AI safety certificate.",access:"Official overview free; full text via IEEE GET/subscription",url:"https://standards.ieee.org/ieee/1584/6898/"},
+    {issuer:"IEEE",publication:"IEEE 7003-2024",title:"Algorithmic bias considerations",date:"2025-01",status:"Active",category:"Data quality & bias",domain:"Cross-sector",physical:"Low",summary:"Processes for dataset selection, validation boundaries, communication, and bias mitigation.",conformity:"Assessable process standard; available in the IEEE GET ethics series.",access:"Official overview free; full text via IEEE GET/subscription",url:"https://standards.ieee.org/ieee/7003/11357/"},
+    {issuer:"IEEE",publication:"IEEE 7007-2021",title:"Ontology for ethically driven robotics and automation",date:"2021-11",status:"Active",category:"Terminology & architecture",domain:"Robotics",physical:"High",summary:"Formal ontologies linking robotics, automation, and ethics concepts.",conformity:"Supports consistent specifications and traceability; not a product-certification standard.",access:"Official overview free; full text via IEEE GET/subscription",url:"https://standards.ieee.org/ieee/7007/7070/"},
+    {issuer:"IEEE",publication:"IEEE 7009-2024",title:"Fail-safe design of autonomous and semi-autonomous systems",date:"2024-07",status:"Active",category:"Functional & product safety",domain:"Industrial / physical AI",physical:"High",summary:"Technical baseline, methods, and tools for effective fail-safe mechanisms.",conformity:"Published active standard; ANSI approved in 2025. Can anchor safety-case evidence and assessments.",access:"Official overview free; full text via IEEE GET/subscription",url:"https://standards.ieee.org/ieee/7009/7096/"},
+    {issuer:"IEEE",publication:"IEEE P7009.1",title:"Safety management interventions for anomalous autonomous behavior",date:"Project approved 2024",status:"Under development",category:"Operational safety",domain:"Industrial / physical AI",physical:"High",summary:"Defines operational capabilities for intervening when autonomous systems exhibit anomalous behavior.",conformity:"Active project/draft—not a published standard.",access:"Project page free; draft paid",url:"https://standards.ieee.org/ieee/7009.1/11850/"},
+    {issuer:"IEEE",publication:"IEEE 7010-2020",title:"Assessing impacts of autonomous and intelligent systems on human well-being",date:"2020-05",status:"Active",category:"Risk & impact",domain:"Cross-sector",physical:"Medium",summary:"Stakeholder-based impact assessment using established well-being indicators.",conformity:"Recommended practice; useful for impact evidence, not product certification.",access:"Official overview free; full text via IEEE GET/subscription",url:"https://standards.ieee.org/ieee/7010/7718/"},
+    {issuer:"IEEE",publication:"IEEE 2846-2022 + 2846a-2025",title:"Assumptions in safety-related models for automated driving",date:"2022 / 2025",status:"Active",category:"Functional & product safety",domain:"Automotive",physical:"High",summary:"Minimum reasonable assumptions and foreseeable scenarios for ADS safety-related models, with 2025 amendment.",conformity:"Supports ADS safety cases and model reviews; no universal vehicle approval on its own.",access:"Official overview free; full text paid/subscription",url:"https://standards.ieee.org/ieee/2846/10831/"},
+    {issuer:"IEEE",publication:"IEEE 3321-2024",title:"Applying foreseeable road-user behavior assumptions",date:"2024",status:"Active",category:"Testing & assurance",domain:"Automotive",physical:"High",summary:"Recommended practice for applying and validating IEEE 2846 assumptions in ADS models.",conformity:"Supporting safety-model evidence; not standalone type approval.",access:"Official overview via IEEE 2846 page; full text paid",url:"https://standards.ieee.org/ieee/2846/10831/"},
+    {issuer:"IEEE",publication:"IEEE 3119-2025",title:"Procurement of AI and automated decision systems",date:"2025-05",status:"Active",category:"Procurement & supply chain",domain:"Cross-sector",physical:"Medium",summary:"Risk-focused process for problem definition, solicitation, vendor evaluation, contracting, and monitoring.",conformity:"Procurement process standard; contract evidence rather than product certification.",access:"Official overview free; full text paid/subscription",url:"https://standards.ieee.org/ieee/3119/10729/"},
+    {issuer:"IEEE",publication:"IEEE 3129-2023",title:"Robustness testing of AI image-recognition services",date:"2023-06",status:"Active",category:"Testing & assurance",domain:"Computer vision",physical:"High",summary:"Test indicators for common corruptions and adversarial attacks against image recognition services.",conformity:"Provides a repeatable test method; pass/fail thresholds remain application- and scheme-specific.",access:"Official overview free; full text paid/subscription",url:"https://standards.ieee.org/ieee/3129/10747/"},
+    {issuer:"IEEE",publication:"IEEE 3168-2024",title:"Robustness evaluation of ML-based NLP services",date:"2024-08",status:"Active",category:"Testing & assurance",domain:"NLP / generative AI",physical:"Low",summary:"Quantitative evaluation method for robustness to corruptions and adversarial NLP inputs.",conformity:"Test-method standard; not a certification scheme.",access:"Official overview and errata free; full text paid",url:"https://standards.ieee.org/ieee/3168/10923/"},
+    {issuer:"IEEE",publication:"IEEE 2801-2022",title:"Dataset quality management for medical AI",date:"2022-07",status:"Active",category:"Data quality & bias",domain:"Medical / health",physical:"Medium",summary:"Lifecycle quality-management practices for datasets used by AI medical devices.",conformity:"Supports medical-device QMS and submission evidence; does not replace regulatory review.",access:"Official overview free; full text paid/subscription",url:"https://standards.ieee.org/ieee/2801/7459/"},
+    {issuer:"IEEE",publication:"IEEE 2802-2022",title:"Performance and safety evaluation terminology for AI medical devices",date:"2023-05",status:"Active",category:"Terminology & architecture",domain:"Medical / health",physical:"Medium",summary:"Common terminology and basic equations for AIMD performance and safety evaluation.",conformity:"Foundational evaluation vocabulary; not a regulatory approval or certificate.",access:"Official overview free; full text paid/subscription",url:"https://standards.ieee.org/ieee/2802/7460/"},
+    {issuer:"IEEE",publication:"IEEE P2817",title:"Guide for verification of autonomous systems",date:"Project approved 2024",status:"Under development",category:"Testing & assurance",domain:"Industrial / physical AI",physical:"High",summary:"Customizable component- and system-level verification process for complex autonomous systems.",conformity:"Active project/draft; not yet a published guide.",access:"Project page free; draft paid",url:"https://standards.ieee.org/ieee/2817/11726/"},
+
+    {issuer:"IEC",publication:"IEC 61508:2010 series",title:"Functional safety of E/E/PE safety-related systems",date:"2010",status:"Published",category:"Functional & product safety",domain:"Industrial / physical AI",physical:"High",summary:"Generic functional-safety lifecycle, SIL framework, hardware/software systematic capability, and V&V baseline.",conformity:"Widely used for third-party functional-safety certification; AI elements require additional justification because the standard is not AI-specific.",access:"Official overview/preview free; full text paid",url:"https://webstore.iec.ch/en/publication/22273"},
+    {issuer:"IEC",publication:"IEC 61511:2026 series",title:"Functional safety for process-industry safety-instrumented systems",date:"Series pack 2026-07",status:"Published",category:"Functional & product safety",domain:"Industrial / process",physical:"High",summary:"Process-sector implementation of IEC 61508 for safety-instrumented systems.",conformity:"Can support SIS functional-safety assessment/certification; not AI-specific.",access:"Official overview free; full text paid",url:"https://webstore.iec.ch/en/publication/5527"},
+    {issuer:"IEC",publication:"IEC 62061:2021",title:"Machinery functional safety of safety-related control systems",date:"2021-03",status:"Published",category:"Functional & product safety",domain:"Machinery / robotics",physical:"High",summary:"Design, integration, and validation requirements for machinery safety-related control systems.",conformity:"Used in machinery conformity assessments and safety-system certification; AI functionality still needs AI-specific evidence.",access:"Official abstract free; full text paid",url:"https://webstore.iec.ch/en/publication/59927"},
+    {issuer:"IEC",publication:"IEC 62443-4-1:2018",title:"Secure product-development lifecycle for industrial automation",date:"2018-01",status:"Published",category:"Security & resilience",domain:"Industrial / process",physical:"High",summary:"Secure lifecycle requirements for industrial automation and control products.",conformity:"Common basis for IEC 62443 certification programs; certification scope must be checked carefully.",access:"Official abstract free; full text paid",url:"https://webstore.iec.ch/en/publication/33615"},
+    {issuer:"IEC",publication:"IEC 62304:2006 + A1:2015",title:"Medical-device software lifecycle processes",date:"2006 / 2015",status:"Published",category:"Lifecycle & process",domain:"Medical / health",physical:"High",summary:"Lifecycle requirements for software that is a medical device or part of one.",conformity:"Commonly used in regulatory submissions and QMS audits; conformity does not itself authorize a device.",access:"Official abstract free; full text paid",url:"https://webstore.iec.ch/en/publication/6792"},
+    {issuer:"IEC",publication:"IEC 60601-1:2005 + A1/A2",title:"Medical electrical equipment — basic safety and essential performance",date:"2005 / 2020",status:"Published",category:"Functional & product safety",domain:"Medical / health",physical:"High",summary:"General electrical and performance-safety baseline for medical electrical equipment.",conformity:"Product testing/certification and regulatory evidence are common; particular standards may also apply.",access:"Official abstract free; full text paid",url:"https://webstore.iec.ch/en/publication/2606"},
+    {issuer:"IEC",publication:"IEC 62366-1:2015 + A1:2020",title:"Usability engineering for medical devices",date:"2015 / 2020",status:"Published",category:"Human factors",domain:"Medical / health",physical:"High",summary:"Safety-focused process for analyzing, developing, and evaluating medical-device user interfaces.",conformity:"Supports regulatory human-factors/usability evidence; not a standalone market authorization.",access:"Official abstract free; full text paid",url:"https://webstore.iec.ch/en/publication/21863"},
+    {issuer:"IEC",publication:"IEC 81001-5-1:2021",title:"Security activities in the health-software product lifecycle",date:"2021-12",status:"Published",category:"Security & resilience",domain:"Medical / health",physical:"Medium",summary:"Health-software cybersecurity lifecycle requirements aligned with IEC 62443-4-1.",conformity:"Supports cybersecurity conformity and medical-device submissions; safety, effectiveness, and security must be balanced.",access:"Official abstract free; full text paid",url:"https://webstore.iec.ch/en/publication/63293"},
+
+    {issuer:"UL Standards & Engagement",publication:"ANSI/UL 4600 Ed. 3",title:"Evaluation of autonomous products",date:"2023-03",status:"Active",category:"Functional & product safety",domain:"Autonomous vehicles / robotics",physical:"High",summary:"Safety-case-centered lifecycle standard for autonomous products operating without human supervision.",conformity:"Can be used for third-party product/safety-case evaluation. Exact certification program and scope are product-specific.",access:"Official scope free; full text paid",url:"https://www.shopulstandards.com/ProductDetail.aspx?productId=UL4600_3_S_20230317"},
+    {issuer:"UL Standards & Engagement",publication:"ANSI/UL 1740 Ed. 4",title:"Robots and robotic equipment",date:"2018; rev. 2025",status:"Active",category:"Functional & product safety",domain:"Machinery / robotics",physical:"High",summary:"Electrical and system-safety requirements for industrial robots and robotic equipment.",conformity:"Used in North American product certification/listing; AI-specific behavior may require supplementary evaluation.",access:"Official scope free; full text paid",url:"https://www.shopulstandards.com/ProductDetail.aspx?UniqueKey=33901"},
+    {issuer:"UL Standards & Engagement",publication:"ANSI/CAN/UL 3100 Ed. 1",title:"Automated mobile platforms",date:"2021; rev. 2026",status:"Active",category:"Functional & product safety",domain:"Machinery / robotics",physical:"High",summary:"Safety requirements for battery-operated automated mobile platforms in commercial/industrial environments.",conformity:"Used for product certification/listing in the U.S. and Canada; excludes person transport and forklifts.",access:"Official scope free; full text paid",url:"https://www.shopulstandards.com/ProductDetail.aspx?UniqueKey=39063"},
+    {issuer:"UL Standards & Engagement",publication:"ANSI/CAN/UL 3300 Ed. 1",title:"Service, communication, information, education, and entertainment robots",date:"2024; rev. 2025",status:"Active",category:"Functional & product safety",domain:"Service robotics",physical:"High",summary:"Product-safety requirements for mobile/manipulating service robots, including obstacle-recognition testing for AI-enabled robots.",conformity:"Used for product certification/listing; combines robot hazards with applicable end-product standards.",access:"Official scope free; full text paid",url:"https://www.shopulstandards.com/ProductDetail.aspx?productId=UL3300_1_S_20240514"},
+    {issuer:"UL Standards & Engagement",publication:"ANSI/CAN/UL 2900-1 Ed. 2",title:"Software cybersecurity for network-connectable products",date:"2026-06",status:"Active",category:"Security & resilience",domain:"Connected products",physical:"Medium",summary:"Developer risk management, vulnerability/malware testing, and architectural security-control requirements.",conformity:"Can support UL cybersecurity evaluation/certification; explicitly does not verify product functionality.",access:"Official scope free; full text paid",url:"https://www.shopulstandards.com/ProductDetail.aspx?productId=UL2900-1_2_X_20260629"},
+
+    {issuer:"NIST",publication:"NIST AI RMF 1.0",title:"Artificial Intelligence Risk Management Framework",date:"2023-01",status:"Published",category:"Risk & impact",domain:"Cross-sector",physical:"Medium",summary:"Voluntary Govern–Map–Measure–Manage framework for trustworthy and responsible AI.",conformity:"Voluntary framework; no NIST certification. Revision was underway as of the status date.",access:"Free full text and playbook",url:"https://www.nist.gov/itl/ai-risk-management-framework"},
+    {issuer:"NIST",publication:"NIST AI 600-1",title:"Generative AI Profile for the AI RMF",date:"2024-07",status:"Published",category:"Risk & impact",domain:"Generative AI",physical:"Low",summary:"Thirteen generative-AI risk areas and more than 400 suggested risk-management actions.",conformity:"Voluntary profile; no NIST certification.",access:"Free full text",url:"https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence"},
+    {issuer:"NIST",publication:"NIST SP 1270",title:"Identifying and managing bias in AI",date:"2022-03",status:"Published",category:"Data quality & bias",domain:"Cross-sector",physical:"Low",summary:"Socio-technical framing and initial guidance for identifying and managing harmful AI bias.",conformity:"Voluntary guidance; supports risk documentation rather than certification.",access:"Free full text",url:"https://www.nist.gov/itl/ai-risk-management-framework/ai-risk-management-framework-resources"},
+    {issuer:"NIST",publication:"NIST AI 100-2e2025",title:"Adversarial machine learning taxonomy and mitigations",date:"2025-03",status:"Published",category:"Security & resilience",domain:"Cross-sector",physical:"Medium",summary:"Taxonomy of evasion, poisoning, privacy, misuse, and other attacks with mitigation limits.",conformity:"Voluntary technical reference; no certification.",access:"Free full text and official record",url:"https://csrc.nist.gov/pubs/ai/100/2/e2025/final"},
+    {issuer:"NIST",publication:"NIST SP 800-218A",title:"Secure software development practices for generative AI and dual-use foundation models",date:"2024-07",status:"Published",category:"Security & resilience",domain:"Generative AI",physical:"Medium",summary:"AI-specific augmentation of the Secure Software Development Framework across the model lifecycle.",conformity:"Voluntary practices; may support supplier assurance and contracting, but no NIST certificate.",access:"Free full text",url:"https://csrc.nist.gov/pubs/sp/800/218/a/final"},
+    {issuer:"NIST",publication:"NIST AI 700-2",title:"Assessing Risks and Impacts of AI (ARIA) pilot evaluation",date:"2025-11",status:"Published",category:"Testing & assurance",domain:"Generative AI",physical:"Low",summary:"Pilot combining model tests, red teaming, field testing, expert annotation, and human testing.",conformity:"Research evaluation method; not a conformity-assessment scheme.",access:"Free full text",url:"https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.700-2.pdf"},
+    {issuer:"NIST",publication:"AI RMF Critical Infrastructure Profile",title:"Trustworthy AI in critical infrastructure",date:"Concept note 2026-04",status:"Under development",category:"Risk & impact",domain:"Critical infrastructure",physical:"High",summary:"Planned profile tailoring AI RMF practices for critical-infrastructure operators.",conformity:"Concept-stage voluntary profile; not final or certifiable.",access:"Free concept material",url:"https://www.nist.gov/itl/ai-risk-management-framework"},
+
+    {issuer:"EU / CEN-CENELEC",publication:"Regulation (EU) 2024/1689",title:"Artificial Intelligence Act",date:"2024-07",status:"In force",category:"Regulation & policy",domain:"EU / cross-sector",physical:"High",summary:"Risk-based legal framework with requirements for high-risk systems, GPAI, transparency, oversight, quality, robustness, and post-market monitoring.",conformity:"Mandatory where applicable. High-risk systems may require internal control or notified-body assessment; harmonised standards can create presumption of conformity once cited in the OJEU.",access:"Free official legal text",url:"https://eur-lex.europa.eu/eli/reg/2024/1689/oj?locale=en"},
+    {issuer:"EU / CEN-CENELEC",publication:"CEN-CLC/JTC 21 AI work programme",title:"Harmonised standards supporting the EU AI Act",date:"Target Q4 2026",status:"Under development",category:"Conformity assessment",domain:"EU / cross-sector",physical:"High",summary:"European work on trustworthiness, risk, quality management, conformity assessment, datasets, bias, robustness, logging, oversight, and cybersecurity.",conformity:"No presumption of conformity until a standard is adopted and its reference is cited in the OJEU for the AI Act.",access:"Free programme overview; draft standards restricted/paid",url:"https://www.cencenelec.eu/areas-of-work/cen-cenelec-topics/artificial-intelligence/"},
+    {issuer:"EU / CEN-CENELEC",publication:"Regulation (EU) 2023/1230",title:"Machinery Regulation",date:"2023-06",status:"In force",category:"Regulation & policy",domain:"Machinery / robotics",physical:"High",summary:"EU product-safety rules for machinery, including safety components with fully or partially self-evolving behavior using ML.",conformity:"Mandatory from its application date; CE marking and applicable conformity-assessment route. Harmonised standards may provide presumption.",access:"Free official legal text",url:"https://eur-lex.europa.eu/eli/reg/2023/1230/oj"},
+    {issuer:"EU / CEN-CENELEC",publication:"Regulation (EU) 2024/2847",title:"Cyber Resilience Act",date:"2024-11",status:"In force",category:"Security & resilience",domain:"Connected products",physical:"Medium",summary:"Horizontal cybersecurity requirements and vulnerability handling for products with digital elements, including many AI-enabled products.",conformity:"Mandatory phased EU product regime; CE marking and risk-based conformity route. Interaction with sector law must be assessed.",access:"Free official legal text",url:"https://eur-lex.europa.eu/eli/reg/2024/2847/oj"},
+    {issuer:"EU / CEN-CENELEC",publication:"Directive (EU) 2024/2853",title:"Revised Product Liability Directive",date:"2024-11",status:"In force",category:"Regulation & policy",domain:"EU / products",physical:"High",summary:"Modernizes strict product liability for software, AI, updates, cybersecurity, and digital manufacturing files.",conformity:"Liability law, not a certification scheme; standards compliance can be relevant evidence but is not a complete defense.",access:"Free official legal text",url:"https://eur-lex.europa.eu/eli/dir/2024/2853/oj"},
+    {issuer:"EU / CEN-CENELEC",publication:"Regulation (EU) 2023/988",title:"General Product Safety Regulation",date:"2023-05",status:"In force",category:"Regulation & policy",domain:"Consumer products",physical:"High",summary:"General safety net for consumer products, including risks from evolving, learning, and predictive functions where sector rules do not fully cover them.",conformity:"Mandatory market-access and post-market obligations; not an AI certificate.",access:"Free official legal text",url:"https://eur-lex.europa.eu/eli/reg/2023/988/oj"},
+
+    {issuer:"ETSI",publication:"ETSI EN 304 223 V2.1.1",title:"Baseline cybersecurity requirements for AI models and systems",date:"2025-12",status:"Published",category:"Security & resilience",domain:"Cross-sector",physical:"Medium",summary:"European Standard with lifecycle baseline requirements for developers, vendors, integrators, and operators.",conformity:"An EN can support assessments, but it is not automatically an EU AI Act harmonised standard or presumption route unless formally cited.",access:"Free full text",url:"https://www.etsi.org/deliver/etsi_en/304200_304299/304223/02.01.01_60/en_304223v020101p.pdf"},
+    {issuer:"ETSI",publication:"ETSI TS 104 033 V1.1.1",title:"Security requirements for an AI computing platform",date:"2026-05",status:"Published",category:"Security & resilience",domain:"AI infrastructure",physical:"Medium",summary:"Security baseline for hardware, basic software, and application-enabling layers hosting AI training and inference.",conformity:"Technical Specification; supports procurement and testing but does not itself create a legal certificate.",access:"Free full text",url:"https://www.etsi.org/deliver/etsi_ts/104000_104099/104033/01.01.01_60/ts_104033v010101p.pdf"},
+    {issuer:"ETSI",publication:"ETSI TS 104 158-1/-2",title:"AI Common Incident Expression (AICIE)",date:"2026-03",status:"Published",category:"Incident reporting",domain:"Cross-sector",physical:"Medium",summary:"Global framework and common container for structured AI incident reporting and exchange.",conformity:"Reporting/interoperability specifications; not a product-safety certificate.",access:"Free full text from ETSI",url:"https://www.etsi.org/technical-groups/sai/"},
+    {issuer:"ETSI",publication:"ETSI TR 104 159 V1.1.1",title:"Understanding and preventing harm from generative AI",date:"2026-01",status:"Published",category:"Risk & impact",domain:"Generative AI",physical:"Low",summary:"Technical Report on generative-AI harm mechanisms and preventative considerations.",conformity:"Informative report; not certifiable.",access:"Free full text from ETSI",url:"https://www.etsi.org/technical-groups/sai/"},
+    {issuer:"ETSI",publication:"ETSI TR 104 128 V1.1.1",title:"Guide to cybersecurity for AI models and systems",date:"2025-05",status:"Published",category:"Security & resilience",domain:"Cross-sector",physical:"Medium",summary:"Implementation-oriented examples and controls for AI cybersecurity and human oversight.",conformity:"Informative Technical Report; useful implementation companion, not certification.",access:"Free full text",url:"https://www.etsi.org/deliver/etsi_tr/104100_104199/104128/01.01.01_60/tr_104128v010101p.pdf"},
+    {issuer:"ETSI",publication:"ETSI TR 104 065 V1.1.1",title:"EU AI Act mapping and gap analysis",date:"2025-05",status:"Published",category:"Regulation & policy",domain:"EU / cross-sector",physical:"Medium",summary:"Maps AI Act requirements and gaps to the ETSI Securing AI work programme.",conformity:"Informative mapping only; it does not confer legal presumption of conformity.",access:"Free full text",url:"https://www.etsi.org/deliver/etsi_tr/104000_104099/104065/01.01.01_60/tr_104065v010101p.pdf"},
+    {issuer:"ETSI",publication:"ETSI GR SAI 004",title:"Problem statement for securing AI",date:"2020-12",status:"Published",category:"Security & resilience",domain:"Cross-sector",physical:"Medium",summary:"Foundational threat and lifecycle problem statement for securing ML-based systems.",conformity:"Informative Group Report; not certifiable.",access:"Free full text",url:"https://www.etsi.org/deliver/etsi_gr/SAI/001_099/004/01.01.01_60/gr_SAI004v010101p.pdf"},
+
+    {issuer:"Automotive",publication:"ISO/PAS 8800:2024",title:"Road vehicles — safety and artificial intelligence",date:"2024-12",status:"Published",category:"Functional & product safety",domain:"Automotive",physical:"High",summary:"AI-specific safety lifecycle and assurance for AI elements in series-production road vehicles.",conformity:"Publicly Available Specification; a major safety-case input, but vehicle approval still depends on applicable regulation and scheme.",access:"Official abstract free; full text paid",url:"https://www.iso.org/standard/83303.html"},
+    {issuer:"Automotive",publication:"ISO 26262:2018 series",title:"Road vehicles — functional safety",date:"2018",status:"Published",category:"Functional & product safety",domain:"Automotive",physical:"High",summary:"ASIL-based lifecycle for hazards caused by malfunctioning E/E systems in series-production vehicles.",conformity:"Widely used for supplier/OEM functional-safety assessments and certificates; does not fully address performance limitations of AI.",access:"Official series entries; full text paid",url:"https://www.iso.org/standard/68383.html"},
+    {issuer:"Automotive",publication:"ISO 21448:2022",title:"Safety of the intended functionality (SOTIF)",date:"2022-06",status:"Published",category:"Functional & product safety",domain:"Automotive",physical:"High",summary:"Addresses unreasonable risk from functional insufficiencies and foreseeable misuse, especially sensing and perception.",conformity:"Supports automotive safety cases; ISO marks the edition as to be revised.",access:"Official abstract and preview free; full text paid",url:"https://www.iso.org/standard/77490.html"},
+    {issuer:"Automotive",publication:"ISO/TS 5083:2025",title:"ADS safety — design, verification, and validation",date:"2025-04",status:"Published",category:"Testing & assurance",domain:"Automotive",physical:"High",summary:"Safety-by-design, V&V, post-deployment, and cybersecurity guidance for Level 3/4 automated driving systems.",conformity:"Technical Specification supporting safety cases; it replaced withdrawn ISO/TR 4804 and is itself under revision.",access:"Official abstract and preview free; full text paid",url:"https://www.iso.org/standard/81920.html"},
+    {issuer:"Automotive",publication:"ISO 34502:2022",title:"Scenario-based ADS safety evaluation framework",date:"2022-11",status:"Published",category:"Testing & assurance",domain:"Automotive",physical:"High",summary:"Scenario-based development and safety-evaluation framework for automated driving systems.",conformity:"Test framework supporting evidence; not standalone type approval.",access:"Official abstract and preview free; full text paid",url:"https://www.iso.org/standard/78951.html"},
+    {issuer:"Automotive",publication:"ISO 34503:2023",title:"Operational design domain specification for ADS",date:"2023-08",status:"Published",category:"Testing & assurance",domain:"Automotive",physical:"High",summary:"Hierarchical taxonomy and format for defining Level 3/4 automated-driving operational design domains.",conformity:"Supports safety-case boundary definition and test coverage; not standalone approval.",access:"Official abstract and preview free; full text paid",url:"https://www.iso.org/standard/78952.html"},
+    {issuer:"Automotive",publication:"UN Regulation No. 155",title:"Cybersecurity and cybersecurity management systems",date:"Entered into force 2021",status:"In force",category:"Security & resilience",domain:"Automotive",physical:"High",summary:"Vehicle type-approval requirements for cybersecurity risk management across the lifecycle.",conformity:"Binding type approval in applying 1958 Agreement jurisdictions and vehicle categories; includes audit-related manufacturer requirements.",access:"Free official text and interpretation documents",url:"https://unece.org/transport/vehicle-regulations-wp29/cybersecurity-and-software-updates"},
+    {issuer:"Automotive",publication:"UN Regulation No. 156",title:"Software update and software-update management systems",date:"Entered into force 2021",status:"In force",category:"Lifecycle & process",domain:"Automotive",physical:"High",summary:"Vehicle type-approval rules for safe, secure, and controlled software updates, including over-the-air updates.",conformity:"Binding type approval in applying jurisdictions/categories; manufacturer SUMS assessment is central.",access:"Free official text and interpretation documents",url:"https://unece.org/transport/vehicle-regulations-wp29/cybersecurity-and-software-updates"},
+    {issuer:"Automotive",publication:"UN Regulation No. 157",title:"Automated Lane Keeping Systems",date:"In force; amended",status:"In force",category:"Functional & product safety",domain:"Automotive",physical:"High",summary:"Type-approval requirements for ALKS functionality, safety, HMI, data storage, and related controls.",conformity:"Binding type approval where adopted; scope and amendment series determine applicability.",access:"Free official text",url:"https://unece.org/transport/documents/2021/03/standards/un-regulation-no-157-automated-lane-keeping-systems-alks"},
+    {issuer:"Automotive",publication:"SAE J3018_202012",title:"Safety-relevant guidance for on-road testing of prototype ADS vehicles",date:"2020-12",status:"Published",category:"Operational safety",domain:"Automotive",physical:"High",summary:"Guidance for fallback test-driver training and supervised public-road testing of prototype Level 3–5 ADS.",conformity:"Voluntary recommended practice; may support permits, test plans, and due diligence, not vehicle type approval.",access:"Official abstract free; full text paid",url:"https://saemobilus.sae.org/standards/j3018_202012-safety-relevant-guidance-road-testing-prototype-automated-driving-system-ads-operated-vehicles"},
+    {issuer:"Automotive",publication:"SAE J3016_202104",title:"Taxonomy and definitions for driving automation",date:"2021-04",status:"Published",category:"Terminology & architecture",domain:"Automotive",physical:"High",summary:"Canonical Levels 0–5 taxonomy and role definitions for on-road driving automation.",conformity:"Terminology standard, not a safety assessment or approval.",access:"Official abstract free; full text paid",url:"https://saemobilus.sae.org/standards/j3016_202104-taxonomy-definitions-terms-related-driving-automation-systems-road-motor-vehicles"},
+
+    {issuer:"Medical / health",publication:"ISO 14971:2019",title:"Risk management for medical devices",date:"2019-12",status:"Published",category:"Risk & impact",domain:"Medical / health",physical:"High",summary:"Lifecycle hazard identification, risk evaluation, control, benefit-risk analysis, and production/post-production monitoring.",conformity:"Core medical-device regulatory evidence worldwide; conformity supports but does not replace market authorization.",access:"Official overview and abstract free; full text paid",url:"https://www.iso.org/standard/72704.html"},
+    {issuer:"Medical / health",publication:"IMDRF/AIML WG/N88 FINAL:2025",title:"Good machine learning practice for medical-device development",date:"2025-01",status:"Final guidance",category:"Lifecycle & process",domain:"Medical / health",physical:"Medium",summary:"Ten international regulator principles spanning multidisciplinary expertise, representative data, testing, monitoring, and user information.",conformity:"Nonbinding regulator consensus guidance; informs future standards and submissions.",access:"Free full text",url:"https://www.imdrf.org/documents/good-machine-learning-practice-medical-device-development-guiding-principles"},
+    {issuer:"Medical / health",publication:"IMDRF/SaMD WG/N41 FINAL:2017",title:"Software as a Medical Device — clinical evaluation",date:"2017-09",status:"Final guidance",category:"Testing & assurance",domain:"Medical / health",physical:"Medium",summary:"Clinical association, analytical/technical validation, and clinical validation framework for SaMD.",conformity:"Nonbinding IMDRF guidance widely reflected in regulator expectations.",access:"Free full text",url:"https://www.imdrf.org/documents/software-medical-device-samd-clinical-evaluation"},
+    {issuer:"Medical / health",publication:"FDA AI-enabled device lifecycle guidance",title:"Lifecycle management and marketing submission recommendations",date:"Draft 2025-01",status:"Draft",category:"Lifecycle & process",domain:"Medical / health",physical:"Medium",summary:"Comprehensive FDA draft recommendations for design, testing, bias, transparency, monitoring, and submission documentation.",conformity:"Draft—not for implementation. FDA clearance/approval remains through the applicable statutory pathway.",access:"Free full text",url:"https://www.fda.gov/regulatory-information/search-fda-guidance-documents/artificial-intelligence-enabled-device-software-functions-lifecycle-management-and-marketing"},
+    {issuer:"Medical / health",publication:"FDA PCCP guidance for AI-enabled devices",title:"Predetermined Change Control Plan marketing submissions",date:"Final 2025-08",status:"Final guidance",category:"Lifecycle & process",domain:"Medical / health",physical:"Medium",summary:"Recommendations for pre-authorized planned modifications, validation methods, and impact assessment for AI-enabled device software.",conformity:"Nonbinding final FDA guidance used within marketing submissions; does not itself authorize a device or modification.",access:"Free full text",url:"https://www.fda.gov/medical-devices/digital-health-center-excellence/guidances-digital-health-content"},
+    {issuer:"Medical / health",publication:"Regulation (EU) 2017/745",title:"EU Medical Device Regulation",date:"Current consolidated text 2026",status:"In force",category:"Regulation & policy",domain:"Medical / health",physical:"High",summary:"EU safety, performance, clinical evaluation, QMS, post-market, and conformity requirements for medical devices, including AI software that qualifies as a device.",conformity:"Mandatory CE-marking regime; notified-body involvement depends on classification and route.",access:"Free official legal text",url:"https://eur-lex.europa.eu/eli/reg/2017/745/oj?locale=en"},
+
+    {issuer:"Aviation",publication:"EASA AI Roadmap 2.0",title:"Human-centric approach to AI in aviation",date:"2023-05",status:"Published",category:"Regulation & policy",domain:"Aviation",physical:"High",summary:"EASA programme vision for AI safety, ethics, research, guidance, and rulemaking.",conformity:"Strategic roadmap, not an acceptable means of compliance or certification standard.",access:"Free full text",url:"https://www.easa.europa.eu/en/domains/research-innovation/ai"},
+    {issuer:"Aviation",publication:"EASA AI Concept Paper Issue 2",title:"Guidance for Level 1 and 2 ML applications",date:"2024-03",status:"Published",category:"Testing & assurance",domain:"Aviation",physical:"High",summary:"Learning assurance, explainability, ethics-based assessment, human-AI teaming, and oversight guidance.",conformity:"Conceptual guidance; informs certification discussions but is not binding AMC/GM by itself.",access:"Free full text",url:"https://www.easa.europa.eu/en/document-library/general-publications/easa-artificial-intelligence-concept-paper-issue-2"},
+    {issuer:"Aviation",publication:"EASA AI Concept Paper Proposed Issue 3",title:"Advanced automation and additional AI techniques",date:"2026-06",status:"Proposed",category:"Testing & assurance",domain:"Aviation",physical:"High",summary:"Proposed extension to Level 3 advanced automation, reinforcement learning, symbolic AI, and remotely/unsupervised operations.",conformity:"Consultation proposal through 12 August 2026; not final guidance.",access:"Free proposal and comment-response file",url:"https://www.easa.europa.eu/en/document-library/general-publications/easa-artificial-intelligence-concept-paper-proposed-issue-3"},
+    {issuer:"Aviation",publication:"EASA NPA 2025-07 / proposed DS.AI",title:"AI trustworthiness detailed specifications and AMC/GM",date:"2025-11",status:"Proposed",category:"Conformity assessment",domain:"Aviation",physical:"High",summary:"Proposed regulatory material for AI assurance, human factors, ethics, and EU AI Act alignment in aviation.",conformity:"Notice of Proposed Amendment; not final detailed specifications or AMC/GM.",access:"Free full proposal",url:"https://www.easa.europa.eu/en/document-library/notices-of-proposed-amendment/npa-2025-07"},
+    {issuer:"Aviation",publication:"EUROCAE ED-324 / SAE AS6983",title:"Development and assurance of aeronautical products using ML",date:"Target 2026-12",status:"Under development",category:"Lifecycle & process",domain:"Aviation",physical:"High",summary:"Joint process standard for development and certification/approval of safety-related aeronautical products implementing AI/ML.",conformity:"Draft at the status date; target publication after this matrix date. Not yet an accepted means of compliance.",access:"Work-programme status free; draft restricted",url:"https://www.eurocae.net/working-group/wg-114/"},
+    {issuer:"Aviation",publication:"EUROCAE ER-027",title:"AI in aeronautical safety-related systems — taxonomy",date:"2024-12",status:"Published",category:"Terminology & architecture",domain:"Aviation",physical:"High",summary:"Shared taxonomy supporting aeronautical AI assurance and ED-324 development.",conformity:"Informative EUROCAE Report; not a certification standard.",access:"Official work-programme entry; report access may require purchase",url:"https://www.eurocae.net/working-group/wg-114/"},
+    {issuer:"Aviation",publication:"FAA AI Safety Assurance Roadmap v1",title:"Roadmap for artificial-intelligence safety assurance",date:"2024",status:"Published",category:"Regulation & policy",domain:"Aviation",physical:"High",summary:"FAA principles, research priorities, collaboration, workforce, and assurance roadmap for safe AI adoption.",conformity:"Roadmap, not certification policy or an accepted means of compliance.",access:"Free full text",url:"https://www.faa.gov/aircraft/air_cert/step/roadmap_for_AI_safety_assurance"},
+    {issuer:"Aviation",publication:"RTCA DO-178C",title:"Software considerations in airborne systems and equipment certification",date:"2011",status:"Active",category:"Lifecycle & process",domain:"Aviation",physical:"High",summary:"Core design-assurance and product-assurance process for airborne software.",conformity:"FAA recognizes it through AC 20-115D. ML requires additional assurance approaches because DO-178C presumes requirements-based software development.",access:"Official overview free; full text paid",url:"https://www.rtca.org/do-178/"},
+    {issuer:"Aviation",publication:"SAE ARP4754B / ARP4761A",title:"Aircraft/system development and safety assessment processes",date:"2023",status:"Published",category:"Functional & product safety",domain:"Aviation",physical:"High",summary:"Aircraft-level development assurance and safety-assessment processes used to allocate and substantiate safety objectives.",conformity:"Often part of an agreed certification means; acceptance depends on authority, certification basis, and project.",access:"Official SAE catalogue; full text paid",url:"https://saemobilus.sae.org/standards"},
+
+    {issuer:"Government / professional",publication:"OMB M-25-21",title:"Federal AI use — innovation, governance, and public trust",date:"2025-04",status:"In force",category:"Regulation & policy",domain:"U.S. federal government",physical:"Medium",summary:"Current U.S. executive-branch governance requirements for agency AI use, including consequential decisions and risk management.",conformity:"Binding executive-branch policy for covered agencies, not a private-sector certification.",access:"Free official full text",url:"https://www.whitehouse.gov/wp-content/uploads/2025/02/M-25-21-Accelerating-Federal-Use-of-AI-through-Innovation-Governance-and-Public-Trust.pdf"},
+    {issuer:"Government / professional",publication:"OMB M-25-22",title:"Federal acquisition of artificial intelligence",date:"2025-04",status:"In force",category:"Procurement & supply chain",domain:"U.S. federal government",physical:"Medium",summary:"Requirements and recommendations for competition, data, documentation, monitoring, portability, and risk in federal AI procurement.",conformity:"Binding acquisition policy for covered executive agencies; implemented through procurement controls and contracts.",access:"Free official full text",url:"https://www.whitehouse.gov/wp-content/uploads/2025/02/M-25-22-Driving-Efficient-Acquisition-of-Artificial-Intelligence-in-Government.pdf"},
+    {issuer:"Government / professional",publication:"OMB M-26-04",title:"Unbiased AI principles for federal LLM procurement",date:"2025-12",status:"In force",category:"Procurement & supply chain",domain:"U.S. federal government",physical:"Low",summary:"Vendor disclosure and contract requirements for truth-seeking and ideological-neutrality principles in procured LLMs.",conformity:"Binding policy for covered federal procurement; not a general model-safety standard.",access:"Free official full text",url:"https://www.whitehouse.gov/wp-content/uploads/2025/12/M-26-04-Increasing-Public-Trust-in-Artificial-Intelligence-Through-Unbiased-AI-Principles-1.pdf"},
+    {issuer:"Government / professional",publication:"OECD AI Principles",title:"Principles for innovative and trustworthy AI",date:"2019; updated 2024",status:"Final guidance",category:"Governance & management",domain:"International policy",physical:"Medium",summary:"Five values-based principles and five policy recommendations, updated for GPAI, safety, privacy, and information integrity.",conformity:"Intergovernmental soft law; no certification.",access:"Free official text",url:"https://www.oecd.org/en/topics/ai-principles.html"},
+    {issuer:"Government / professional",publication:"UNESCO Recommendation on AI Ethics",title:"Global ethical and policy framework for AI",date:"2021-11",status:"Final guidance",category:"Governance & management",domain:"International policy",physical:"Medium",summary:"Human-rights-based values and policy actions, including ethical impact assessment, oversight, environment, and well-being.",conformity:"Recommendation to Member States and AI actors; monitored implementation, but no product certification.",access:"Free official full text",url:"https://www.unesco.org/en/legal-affairs/recommendation-ethics-artificial-intelligence"},
+    {issuer:"Government / professional",publication:"Council of Europe CETS No. 225",title:"Framework Convention on AI, human rights, democracy, and rule of law",date:"Opened 2024-09",status:"Open for signature",category:"Regulation & policy",domain:"International policy",physical:"Medium",summary:"Treaty framework requiring lifecycle safeguards, risk/impact management, transparency, accountability, remedies, and safe innovation.",conformity:"International legal obligations depend on signature, ratification, entry into force, reservations, and implementing law; no product certificate.",access:"Free official treaty and explanatory report",url:"https://www.coe.int/en/web/artificial-intelligence/the-framework-convention-on-artificial-intelligence"},
+    {issuer:"Government / professional",publication:"NCSC secure AI development guidelines",title:"Secure design, development, deployment, and operation of AI systems",date:"2023-11",status:"Final guidance",category:"Security & resilience",domain:"Cross-sector",physical:"Medium",summary:"Secure-by-default lifecycle guidance led by the UK NCSC and endorsed by international cyber agencies.",conformity:"Voluntary guidance; no certification, though it informed later UK and ETSI work.",access:"Free full text",url:"https://www.ncsc.gov.uk/collection/guidelines-secure-ai-system-development"},
+    {issuer:"Government / professional",publication:"UK AI Cyber Security Code of Practice",title:"Cybersecurity code for AI stakeholders",date:"2025-01",status:"Final guidance",category:"Security & resilience",domain:"Cross-sector",physical:"Medium",summary:"Voluntary lifecycle code that became a foundation for ETSI baseline AI cybersecurity standardization.",conformity:"Voluntary code; no statutory certification. Use ETSI EN 304 223 where a consensus standard is required.",access:"Free official full text",url:"https://www.gov.uk/government/publications/ai-cyber-security-code-of-practice/code-of-practice-for-the-cyber-security-of-ai"},
+    {issuer:"Government / professional",publication:"Canada Directive on Automated Decision-Making",title:"Federal automated-decision governance and impact assessment",date:"Current directive",status:"In force",category:"Regulation & policy",domain:"Canadian government",physical:"Low",summary:"Mandatory federal impact assessment, transparency, quality assurance, recourse, and monitoring for automated administrative decisions.",conformity:"Binding policy for covered Canadian federal institutions; not a private-sector certificate.",access:"Free official text and assessment tool",url:"https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32592"},
+    {issuer:"Government / professional",publication:"ITU-T X.2211",title:"Security requirements for artificial intelligence systems",date:"Determined 2026-06",status:"Under development",category:"Security & resilience",domain:"Telecom / ICT",physical:"Medium",summary:"Lifecycle security requirements based on AI system models and alignment with ISO/IEC AI security work.",conformity:"Determined in ITU-T process at the status date; check final approval/in-force status before citing normatively.",access:"Free work-item status; Recommendation access after approval",url:"https://www.itu.int/ITU-T/workprog/wp_item.aspx?isn=21679"}
+  ];
+
+  const state = { sortKey: "issuer", sortDir: 1, page: 1, size: 50 };
+  const $ = id => document.getElementById(id);
+  const controls = ["search","issuer","status","category","domain","physical"];
+  const normalize = v => String(v ?? "").toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g, "");
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+  const statusClass = s => normalize(s).replace(/\s+/g,"-").replace(/[^a-z-]/g,"");
+  const currentStatuses = new Set(["Published","Active","In force","Final guidance"]);
+
+  function fillSelect(id, key) {
+    const select = $(id);
+    [...new Set(data.map(d => d[key]))].sort((a,b)=>a.localeCompare(b)).forEach(v => {
+      const option = document.createElement("option"); option.value = v; option.textContent = v; select.appendChild(option);
+    });
+  }
+
+  function filtered() {
+    const q = normalize($("search").value);
+    return data.filter(d => {
+      if (q && !normalize(Object.values(d).join(" ")).includes(q)) return false;
+      for (const key of ["issuer","status","category","domain","physical"]) {
+        if ($(key).value && d[key] !== $(key).value) return false;
+      }
+      return true;
+    }).sort((a,b) => {
+      let av = a[state.sortKey] ?? "", bv = b[state.sortKey] ?? "";
+      if (state.sortKey === "physical") { const rank={High:3,Medium:2,Low:1}; av=rank[av]; bv=rank[bv]; }
+      return (typeof av === "number" ? av-bv : String(av).localeCompare(String(bv), undefined, {numeric:true})) * state.sortDir;
+    });
+  }
+
+  function render() {
+    const all = filtered();
+    const pages = Math.max(1, Math.ceil(all.length / state.size));
+    state.page = Math.min(state.page, pages);
+    const start = (state.page - 1) * state.size;
+    const shown = all.slice(start, start + state.size);
+    $("rows").innerHTML = shown.map(d => `<tr>
+      <td><a class="pub-link" href="${esc(d.url)}" target="_blank" rel="noopener noreferrer">${esc(d.publication)} ↗</a><span class="org">${esc(d.issuer)}</span></td>
+      <td class="title">${esc(d.title)}<span class="summary">${esc(d.summary)}</span></td>
+      <td class="date">${esc(d.date)}</td>
+      <td><span class="badge ${statusClass(d.status)}">${esc(d.status)}</span></td>
+      <td>${esc(d.category)}</td>
+      <td>${esc(d.domain)}</td>
+      <td class="physical"><i class="dot ${d.physical.toLowerCase()}"></i>${esc(d.physical)}</td>
+      <td class="note-cell">${esc(d.conformity)}</td>
+      <td class="access">${esc(d.access)}</td>
+    </tr>`).join("");
+    $("empty").hidden = all.length !== 0;
+    $("visibleCount").textContent = all.length;
+    const active = controls.filter(id => id !== "search" ? $(id).value : $(id).value.trim()).length;
+    $("filterNote").textContent = active ? `(${active} active filter${active>1?"s":""})` : "";
+    $("pageInfo").textContent = all.length ? `${start+1}–${Math.min(start+state.size,all.length)} of ${all.length}` : "0 results";
+    $("prev").disabled = state.page <= 1;
+    $("next").disabled = state.page >= pages;
+    document.querySelectorAll(".sort-btn").forEach(btn => {
+      btn.querySelector(".sort-mark").textContent = btn.dataset.sort === state.sortKey ? (state.sortDir === 1 ? "↑" : "↓") : "↕";
+      btn.setAttribute("aria-sort", btn.dataset.sort === state.sortKey ? (state.sortDir === 1 ? "ascending" : "descending") : "none");
+    });
+  }
+
+  function exportCsv() {
+    const cols = ["issuer","publication","title","date","status","category","domain","physical","summary","conformity","access","url"];
+    const quote = v => `"${String(v ?? "").replace(/"/g,'""')}"`;
+    const csv = [cols.map(quote).join(","), ...filtered().map(d => cols.map(c=>quote(d[c])).join(","))].join("\r\n");
+    const blob = new Blob(["\ufeff"+csv], {type:"text/csv;charset=utf-8"});
+    const a = document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="ai-safety-standards-filtered.csv"; a.click();
+    setTimeout(()=>URL.revokeObjectURL(a.href), 500);
+  }
+
+  fillSelect("issuer","issuer"); fillSelect("status","status"); fillSelect("category","category"); fillSelect("domain","domain");
+  $("statTotal").textContent = data.length;
+  $("statBodies").textContent = new Set(data.map(d=>d.issuer)).size;
+  $("statCurrent").textContent = data.filter(d=>currentStatuses.has(d.status)).length;
+  $("statPhysical").textContent = data.filter(d=>d.physical === "High").length;
+  controls.forEach(id => $(id).addEventListener(id === "search" ? "input" : "change", () => { state.page=1; render(); }));
+  $("pageSize").addEventListener("change", e => { state.size=Number(e.target.value); state.page=1; render(); });
+  $("prev").addEventListener("click", () => { if(state.page>1){state.page--;render();window.scrollTo({top:document.querySelector(".table-shell").offsetTop-10,behavior:"smooth"});} });
+  $("next").addEventListener("click", () => { state.page++;render();window.scrollTo({top:document.querySelector(".table-shell").offsetTop-10,behavior:"smooth"}); });
+  $("reset").addEventListener("click", () => { controls.forEach(id=>$(id).value=""); state.page=1; state.sortKey="issuer"; state.sortDir=1; render(); });
+  $("export").addEventListener("click", exportCsv);
+  document.querySelectorAll(".sort-btn").forEach(btn => btn.addEventListener("click", () => {
+    const key=btn.dataset.sort; state.sortDir = state.sortKey === key ? state.sortDir * -1 : 1; state.sortKey=key; state.page=1; render();
+  }));
+  render();
+  </script>
+</body>
+</html>
