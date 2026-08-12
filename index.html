@@ -254,7 +254,7 @@
       <h1>AI Safety Standards &amp; Publications Matrix</h1>
       <p class="lede">A cross-sector map of trustworthiness, safety, transparency, governance, risk, lifecycle, testing, cybersecurity, product assurance, and regulatory material relevant to AI.</p>
       <div class="header-meta">
-        <span class="header-pill">Status checked: 12 August 2026</span>
+        <span id="last-updated" class="header-pill">Last updated: 12 August 2026</span>
         <span class="header-pill">Official source links</span>
         <span class="header-pill">Sortable • filterable • offline</span>
       </div>
@@ -630,6 +630,33 @@
     const key=btn.dataset.sort; state.sortDir = state.sortKey === key ? state.sortDir * -1 : 1; state.sortKey=key; state.page=1; render();
   }));
   render();
+  async function updateLastUpdatedDate() {
+    try {
+      const response = await fetch(
+        "https://api.github.com/repos/eafpres/ai-safety-standards/commits/main",
+        { headers: { Accept: "application/vnd.github+json" } }
+      );
+
+      if (!response.ok) return;
+
+      const result = await response.json();
+      const commitDate = new Date(result.commit.committer.date);
+
+      const formattedDate = new Intl.DateTimeFormat("en-GB", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+        timeZone: "UTC"
+      }).format(commitDate);
+
+      const pill = document.getElementById("last-updated");
+      pill.textContent = `Last updated: ${formattedDate}`;
+    } catch {
+      // Retain the date written in the HTML when offline or unavailable.
+    }
+  }
+
+  updateLastUpdatedDate();
   </script>
 </body>
 </html>
