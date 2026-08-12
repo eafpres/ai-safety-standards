@@ -252,7 +252,7 @@
     <header>
       <p class="eyebrow">Standards landscape • curated reference</p>
       <h1>AI Safety Standards &amp; Publications Matrix</h1>
-      <p class="lede">A cross-sector map of governance, risk, lifecycle, testing, functional safety, cybersecurity, product assurance, and regulatory material relevant to AI—especially safety-critical and physical-AI systems.</p>
+      <p class="lede">A cross-sector map of trustworthiness, safety, transparency, governance, risk, lifecycle, testing, cybersecurity, product assurance, and regulatory material relevant to AI.</p>
       <div class="header-meta">
         <span class="header-pill">Status checked: 12 August 2026</span>
         <span class="header-pill">Official source links</span>
@@ -312,15 +312,15 @@
             </div>
           </details>
         </div>
-        <label>Physical-AI relevance
+        <label>Physical-AI relevance **
           <select id="physical"><option value="">All levels</option><option>High</option><option>Medium</option><option>Low</option></select>
         </label>
       </div>
       <div class="actions">
         <div class="actions-left">
           <div class="result-count"><strong id="visibleCount">0</strong> results <span id="filterNote"></span></div>
-          <div class="legend" aria-label="Physical AI relevance legend">
-            <span><i class="dot high"></i>High: directly controls or assures physical systems</span>
+          <div id="physical-ai-legend" class="legend" aria-label="Physical AI relevance legend">
+            <span><span aria-hidden="true">**</span> <i class="dot high"></i>High: directly controls or assures physical systems</span>
             <span><i class="dot medium"></i>Medium: materially supports cyber-physical safety</span>
             <span><i class="dot low"></i>Low: primarily organizational or informational</span>
           </div>
