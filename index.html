@@ -93,7 +93,7 @@
     .stat span { display: block; color: var(--muted); margin-top: 7px; font-size: .84rem; }
     .panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 8px 24px rgba(21,35,55,.04); }
     .filters { padding: 17px; margin-bottom: 14px; }
-    .filter-grid { display: grid; grid-template-columns: minmax(260px, 2fr) repeat(5, minmax(150px, 1fr)); gap: 11px; }
+    .filter-grid { display: grid; grid-template-columns: minmax(260px, 2fr) repeat(6, minmax(140px, 1fr)); gap: 11px; }
     label { display: flex; flex-direction: column; gap: 6px; color: var(--muted); font-size: .76rem; font-weight: 700; letter-spacing: .03em; }
     .filter-field { display: flex; min-width: 0; flex-direction: column; gap: 6px; }
     .filter-label { color: var(--muted); font-size: .76rem; font-weight: 700; letter-spacing: .03em; }
@@ -332,6 +332,9 @@
         <label>Physical-AI relevance **
           <select id="physical"><option value="">All levels</option><option>High</option><option>Medium</option><option>Low</option></select>
         </label>
+        <label>Added to matrix
+          <select id="newItems"><option value="">All items</option><option value="new">New (last 30 days)</option></select>
+        </label>
       </div>
       <div class="actions">
         <div class="actions-left">
@@ -528,7 +531,7 @@
 
   const state = { sortKey: "issuer", sortDir: 1, page: 1, size: 50 };
   const $ = id => document.getElementById(id);
-  const controls = ["search","physical"];
+  const controls = ["search","physical","newItems"];
   const multiKeys = ["issuer","status","category","domain"];
   const allLabels = {issuer:"All issuers",status:"All statuses",category:"All categories",domain:"All domains"};
   const normalize = v => String(v ?? "").toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g, "");
@@ -537,13 +540,18 @@
   const currentStatuses = new Set(["Published","Active","In force","Final guidance"]);
   const newWindowDays = 30;
 
-  function newBadge(d) {
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(d.added ?? "")) return "";
+  function isNew(d) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(d.added ?? "")) return false;
     const addedAt = new Date(`${d.added}T00:00:00Z`);
     const now = new Date();
     const today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
     const ageDays = (today - addedAt.getTime()) / 86400000;
-    if (ageDays < 0 || ageDays > newWindowDays) return "";
+    return ageDays >= 0 && ageDays <= newWindowDays;
+  }
+
+  function newBadge(d) {
+    if (!isNew(d)) return "";
+    const addedAt = new Date(`${d.added}T00:00:00Z`);
     const label = `Added to the matrix on ${addedAt.toLocaleDateString(undefined, {day:"numeric", month:"long", year:"numeric", timeZone:"UTC"})}`;
     return `<span class="new-badge" title="${esc(label)}" aria-label="${esc(label)}"><span aria-hidden="true">✦</span> New</span>`;
   }
@@ -584,6 +592,7 @@
       if (q && !normalize(Object.values(d).join(" ")).includes(q)) return false;
       for (const key of multiKeys) if (selections[key].size && !selections[key].has(d[key])) return false;
       if ($("physical").value && d.physical !== $("physical").value) return false;
+      if ($("newItems").value === "new" && !isNew(d)) return false;
       return true;
     }).sort((a,b) => {
       let av = a[state.sortKey] ?? "", bv = b[state.sortKey] ?? "";
