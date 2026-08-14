@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>AI Safety Products &amp; Vendors Matrix</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --surface: #ffffff;
+      --surface-2: #eef2f7;
+      --text: #172033;
+      --muted: #5d687a;
+      --line: #d9e0e9;
+      --accent: #075e73;
+      --accent-2: #0b8099;
+      --accent-soft: #dff3f7;
+      --success: #147a56;
+      --success-soft: #e4f5ed;
+      --warn: #9b5b05;
+      --warn-soft: #fff1d6;
+      --danger: #b33b42;
+      --danger-soft: #fde8e9;
+      --shadow: 0 14px 40px rgba(21, 35, 55, .08);
+      --radius: 14px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #101620;
+        --surface: #18212e;
+        --surface-2: #202c3a;
+        --text: #edf3fa;
+        --muted: #aab7c6;
+        --line: #344252;
+        --accent: #73d6e8;
+        --accent-2: #8ee3ef;
+        --accent-soft: #163d49;
+        --success: #78d8b1;
+        --success-soft: #163d31;
+        --warn: #f2c572;
+        --warn-soft: #49391d;
+        --danger: #f09aa0;
+        --danger-soft: #4a2529;
+        --shadow: 0 18px 48px rgba(0, 0, 0, .28);
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.45;
+    }
+    a { color: var(--accent); text-underline-offset: 2px; }
+    a:hover { color: var(--accent-2); }
+    button, input, select { min-height: 42px; font: inherit; color: inherit; }
+    .wrap { max-width: 1760px; margin: 0 auto; padding: 28px 22px 52px; }
+    header {
+      position: relative;
+      overflow: hidden;
+      padding: 34px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #073f4f, #0a6c7f 62%, #1895a6);
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+    header::after {
+      position: absolute;
+      width: 330px;
+      height: 330px;
+      right: -90px;
+      top: -180px;
+      border: 70px solid rgba(255,255,255,.08);
+      border-radius: 50%;
+      content: "";
+    }
+    .site-switcher { position: relative; z-index: 1; display: inline-flex; gap: 4px; margin: 0 0 24px; padding: 4px; border: 1px solid rgba(255,255,255,.28); border-radius: 12px; background: rgba(3,34,43,.28); }
+    .site-switcher a { padding: 8px 13px; border-radius: 8px; color: rgba(255,255,255,.82); font-size: .86rem; font-weight: 800; text-decoration: none; }
+    .site-switcher a:hover { color: #fff; background: rgba(255,255,255,.1); }
+    .site-switcher a[aria-current="page"] { color: #073f4f; background: #fff; box-shadow: 0 3px 10px rgba(0,0,0,.12); }
+    .eyebrow { margin: 0 0 7px; font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; opacity: .82; }
+    h1 { position: relative; z-index: 1; max-width: 960px; margin: 0; font-size: clamp(2rem, 4vw, 3.55rem); line-height: 1.03; letter-spacing: -.035em; }
+    .lede { position: relative; z-index: 1; max-width: 1080px; margin: 16px 0 0; font-size: 1.05rem; color: rgba(255,255,255,.9); }
+    .header-meta { position: relative; z-index: 1; display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+    .header-pill { padding: 7px 11px; border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.1); border-radius: 999px; font-size: .84rem; }
+    .stats { display: grid; grid-template-columns: repeat(4, minmax(150px, 1fr)); gap: 12px; margin: 18px 0; }
+    .stat, .panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 8px 24px rgba(21,35,55,.04); }
+    .stat { padding: 16px 18px; }
+    .stat strong { display: block; font-size: 1.75rem; line-height: 1; letter-spacing: -.03em; }
+    .stat span { display: block; margin-top: 7px; color: var(--muted); font-size: .84rem; }
+    .filters { padding: 17px; margin-bottom: 14px; }
+    .filter-grid { display: grid; grid-template-columns: minmax(280px, 2fr) repeat(5, minmax(150px, 1fr)); gap: 11px; }
+    label { display: flex; flex-direction: column; gap: 6px; color: var(--muted); font-size: .76rem; font-weight: 700; letter-spacing: .03em; }
+    input, select { width: 100%; padding: 9px 11px; border: 1px solid var(--line); border-radius: 9px; outline: none; background: var(--bg); }
+    input:focus, select:focus, button:focus-visible, a:focus-visible { border-color: var(--accent); outline: 3px solid color-mix(in srgb, var(--accent) 22%, transparent); }
+    .actions { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 13px; }
+    .actions-left, .actions-right { display: flex; align-items: center; flex-wrap: wrap; gap: 9px; }
+    button { padding: 8px 12px; border: 1px solid var(--line); border-radius: 9px; background: var(--surface-2); cursor: pointer; font-weight: 700; }
+    button:hover { border-color: var(--accent); }
+    .primary { color: var(--surface); border-color: var(--accent); background: var(--accent); }
+    .result-count { font-weight: 800; }
+    .result-count span { color: var(--muted); font-weight: 500; }
+    .legend { display: flex; gap: 13px; align-items: center; flex-wrap: wrap; color: var(--muted); font-size: .82rem; }
+    .dot { display: inline-block; width: 9px; height: 9px; margin-right: 5px; border-radius: 50%; }
+    .dot.high { background: var(--danger); }
+    .dot.medium { background: var(--warn); }
+    .dot.low { background: var(--success); }
+    .table-shell { overflow: hidden; }
+    .table-scroll-top { height: 16px; overflow-x: auto; overflow-y: hidden; border-bottom: 1px solid var(--line); background: var(--surface-2); scrollbar-color: var(--muted) var(--surface-2); scrollbar-width: thin; }
+    .table-scroll-top-content { height: 1px; }
+    .table-scroll-wrap { position: relative; }
+    .table-scroll-wrap::after { position: absolute; inset: 0 0 0 auto; z-index: 5; width: 46px; background: linear-gradient(to right, transparent, color-mix(in srgb, var(--surface) 92%, transparent)); content: ""; opacity: 0; pointer-events: none; transition: opacity .18s ease; }
+    .table-scroll-wrap.has-more-right::after { opacity: 1; }
+    .table-scroll { overflow-x: auto; }
+    table { width: 100%; min-width: 1700px; border-collapse: separate; border-spacing: 0; font-size: .88rem; }
+    th, td { padding: 12px; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; }
+    thead th { position: sticky; top: 0; z-index: 3; background: var(--surface-2); color: var(--muted); font-size: .74rem; letter-spacing: .04em; text-transform: uppercase; }
+    thead th:first-child, tbody td:first-child { position: sticky; left: 0; z-index: 2; background: var(--surface); box-shadow: 1px 0 var(--line); }
+    thead th:first-child { z-index: 4; background: var(--surface-2); }
+    tbody tr:hover td, tbody tr:hover td:first-child { background: color-mix(in srgb, var(--accent-soft) 36%, var(--surface)); }
+    .sort-btn { display: flex; min-height: auto; width: 100%; align-items: center; gap: 6px; padding: 0; border: 0; background: transparent; color: inherit; text-align: left; text-transform: inherit; letter-spacing: inherit; }
+    .sort-btn:hover { color: var(--text); }
+    .vendor-link { display: inline-block; font-weight: 800; line-height: 1.25; }
+    .offering { display: block; margin-top: 5px; color: var(--muted); font-size: .77rem; }
+    .summary { min-width: 300px; font-weight: 650; }
+    .summary small { display: block; margin-top: 5px; color: var(--muted); font-size: .8rem; font-weight: 400; }
+    .badge { display: inline-flex; align-items: center; padding: 4px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-size: .73rem; font-weight: 800; white-space: nowrap; }
+    .physical { font-weight: 800; white-space: nowrap; }
+    .note-cell { min-width: 245px; color: var(--muted); }
+    .access { min-width: 170px; }
+    .pager { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 14px 16px; }
+    .pager-controls { display: flex; align-items: center; gap: 8px; }
+    .pager button:disabled { opacity: .45; cursor: not-allowed; }
+    .empty { padding: 44px 20px; text-align: center; color: var(--muted); }
+    .sources { margin-top: 14px; padding: 20px; }
+    .sources h2, .method h2 { margin: 0 0 9px; font-size: 1.02rem; }
+    .sources p, .sources ul, .method p, .method ul { margin: 0; color: var(--muted); font-size: .87rem; }
+    .sources ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 28px; margin-top: 12px; padding-left: 20px; }
+    .sources li strong { color: var(--text); }
+    .method { display: grid; grid-template-columns: 1.3fr 1fr; gap: 14px; margin-top: 14px; }
+    .method section { padding: 18px; }
+    .method ul { padding-left: 19px; }
+    .method li + li { margin-top: 5px; }
+    footer { margin-top: 18px; color: var(--muted); font-size: .79rem; }
+    @media (max-width: 1120px) {
+      .filter-grid { grid-template-columns: repeat(3, minmax(150px, 1fr)); }
+      .filter-grid label:first-child { grid-column: span 3; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 720px) {
+      .wrap { padding: 12px 10px 34px; }
+      header { padding: 24px 20px; border-radius: 15px; }
+      .site-switcher { display: flex; width: 100%; }
+      .site-switcher a { flex: 1; text-align: center; }
+      .stats { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .filter-grid { grid-template-columns: 1fr; }
+      .filter-grid label:first-child { grid-column: auto; }
+      .sources ul, .method { grid-template-columns: 1fr; }
+      .actions-left, .actions-right { width: 100%; }
+      .actions-right button { flex: 1; }
+    }
+    @media print {
+      body { background: #fff; color: #000; }
+      .wrap { max-width: none; padding: 0; }
+      header { box-shadow: none; }
+      .site-switcher, .filters, .pager, footer { display: none; }
+      .table-shell { border: 0; box-shadow: none; }
+      .table-scroll-top, .table-scroll-wrap::after { display: none; }
+      .table-scroll { overflow: visible; }
+      table { min-width: 0; font-size: 7pt; }
+      th, td { padding: 5px; }
+      thead th, thead th:first-child, tbody td:first-child { position: static; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <nav class="site-switcher" aria-label="Matrix view">
+        <a href="index.html">Standards &amp; Publications</a>
+        <a href="products.html" aria-current="page">Products &amp; Vendors</a>
+      </nav>
+      <p class="eyebrow">Market landscape • curated starting point</p>
+      <h1>AI Safety Products &amp; Vendors Matrix</h1>
+      <p class="lede">A decision-support map of commercial products, specialist companies, open-source projects, and assurance providers working across AI governance, evaluation, security, monitoring, and physical-AI validation.</p>
+      <div class="header-meta">
+        <span class="header-pill">Initial review: 14 August 2026</span>
+        <span class="header-pill">Vendor links for verification</span>
+        <span class="header-pill">Sortable • filterable • offline</span>
+      </div>
+    </header>
+
+    <section class="stats" aria-label="Matrix summary">
+      <div class="stat"><strong id="statTotal">0</strong><span>products and providers</span></div>
+      <div class="stat"><strong id="statCategories">0</strong><span>primary categories</span></div>
+      <div class="stat"><strong id="statSpecialists">0</strong><span>specialist companies</span></div>
+      <div class="stat"><strong id="statPhysical">0</strong><span>high physical-AI relevance</span></div>
+    </section>
+
+    <section class="panel filters" aria-label="Product matrix filters">
+      <div class="filter-grid">
+        <label>Search
+          <input id="search" type="search" placeholder="Try: red teaming, EU AI Act, autonomy, guardrails…">
+        </label>
+        <label>Category
+          <select id="category"><option value="">All categories</option></select>
+        </label>
+        <label>Lifecycle stage
+          <select id="lifecycle"><option value="">All stages</option></select>
+        </label>
+        <label>Provider type
+          <select id="type"><option value="">All provider types</option></select>
+        </label>
+        <label>Domain
+          <select id="domain"><option value="">All domains</option></select>
+        </label>
+        <label>Physical-AI relevance *
+          <select id="physical"><option value="">All levels</option><option>High</option><option>Medium</option><option>Low</option></select>
+        </label>
+      </div>
+      <div class="actions">
+        <div class="actions-left">
+          <div class="result-count"><strong id="visibleCount">0</strong> results <span id="filterNote"></span></div>
+          <div class="legend" aria-label="Physical AI relevance legend">
+            <span><i class="dot high"></i>High: directly tests or protects physical systems</span>
+            <span><i class="dot medium"></i>Medium: can support cyber-physical deployments</span>
+            <span><i class="dot low"></i>Low: primarily digital or organizational</span>
+          </div>
+        </div>
+        <div class="actions-right">
+          <label style="flex-direction:row;align-items:center">Rows per page
+            <select class="page-size" style="width:auto"><option selected>10</option><option>25</option><option>50</option><option>100</option></select>
+          </label>
+          <button id="reset" type="button">Reset filters</button>
+          <button id="export" class="primary" type="button">Export filtered CSV</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel table-shell" aria-label="AI safety products and vendors matrix">
+      <div id="tableScrollTop" class="table-scroll-top" role="region" aria-label="Horizontal table scroll control" tabindex="0"><div id="tableScrollTopContent" class="table-scroll-top-content"></div></div>
+      <div id="tableScrollWrap" class="table-scroll-wrap">
+        <div id="tableScroll" class="table-scroll" role="region" aria-label="Scrollable products table" tabindex="0">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:205px"><button class="sort-btn" data-sort="provider">Provider / offering <span>↕</span></button></th>
+                <th style="width:330px"><button class="sort-btn" data-sort="summary">Focus / why it matters <span>↕</span></button></th>
+                <th><button class="sort-btn" data-sort="category">Category <span>↕</span></button></th>
+                <th><button class="sort-btn" data-sort="lifecycle">Lifecycle stage <span>↕</span></button></th>
+                <th><button class="sort-btn" data-sort="type">Provider type <span>↕</span></button></th>
+                <th><button class="sort-btn" data-sort="domain">Domain <span>↕</span></button></th>
+                <th><button class="sort-btn" data-sort="physical">Physical AI <span>↕</span></button></th>
+                <th style="width:300px">Potential standards relevance **</th>
+                <th style="width:190px">Access / delivery</th>
+              </tr>
+            </thead>
+            <tbody id="rows"></tbody>
+          </table>
+          <div id="empty" class="empty" hidden>No products or providers match these filters.</div>
+        </div>
+      </div>
+      <div class="pager">
+        <label style="flex-direction:row;align-items:center">Rows per page
+          <select class="page-size" style="width:auto"><option selected>10</option><option>25</option><option>50</option><option>100</option></select>
+        </label>
+        <span id="pageInfo" class="result-count"></span>
+        <div class="pager-controls">
+          <button id="prev" type="button" aria-label="Previous page">← Previous</button>
+          <button id="next" type="button" aria-label="Next page">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel sources" aria-labelledby="discovery-heading">
+      <h2 id="discovery-heading">Discovery sources used for this initial landscape</h2>
+      <p>These sources were used to discover categories, products, and providers—not as endorsements or as evidence that a vendor satisfies a standard.</p>
+      <ul>
+        <li><strong><a href="https://oecd.ai/en/catalogue/overview" target="_blank" rel="noopener noreferrer">OECD Catalogue of Tools &amp; Metrics for Trustworthy AI</a></strong> — lifecycle, trustworthiness, auditing, and measurement concepts.</li>
+        <li><strong><a href="https://airc.nist.gov/" target="_blank" rel="noopener noreferrer">NIST AI Resource Center</a></strong> — AI RMF operationalization and testing, evaluation, verification, and validation resources.</li>
+        <li><strong><a href="https://eaidb.org/map" target="_blank" rel="noopener noreferrer">Ethical AI Database market map</a></strong> — responsible-AI company and product discovery.</li>
+        <li><strong><a href="https://startups.prompt.security/" target="_blank" rel="noopener noreferrer">AI Security Startups Map</a></strong> — AI and agent-security vendor discovery and category inspiration.</li>
+      </ul>
+    </section>
+
+    <div class="method">
+      <section class="panel">
+        <h2>How to read this matrix</h2>
+        <ul>
+          <li><strong>Inclusion is not an endorsement.</strong> Products have not been independently tested for quality, effectiveness, or fitness for a particular use.</li>
+          <li><strong>Standards relevance is editorial.</strong> It identifies potentially useful standards or frameworks to investigate; it is not a vendor certification or compliance determination.</li>
+          <li><strong>Provider types are intentionally broad.</strong> The landscape includes startups, established platforms, integrated acquisitions, open-source projects, and assurance organizations.</li>
+          <li><strong>Physical-AI relevance is editorial</strong>, using the same High, Medium, and Low convention as the standards matrix.</li>
+        </ul>
+      </section>
+      <section class="panel">
+        <h2>Coverage and verification</h2>
+        <p>This is a curated starting point, not an exhaustive market catalogue or procurement recommendation. Offerings, ownership, availability, and vendor claims change quickly. Follow the provider link and obtain current technical, contractual, security, and assurance evidence before relying on an entry.</p>
+      </section>
+    </div>
+
+    <footer>Prepared as a standalone reference. Data and editorial classifications are embedded in this file; filtering and CSV export do not send information anywhere.</footer>
+  </main>
+
+  <script>
+  const data = [
+    {provider:"Credo AI",offering:"Responsible AI Governance Platform",category:"Governance & compliance",lifecycle:"Govern & plan",type:"Specialist company",domain:"Regulated enterprise",physical:"Low",summary:"Inventory, policy, risk, evidence, and oversight workflows for enterprise AI governance.",relevance:"ISO/IEC 42001; ISO/IEC 23894; NIST AI RMF; EU AI Act",access:"Commercial platform",url:"https://www.credo.ai/"},
+    {provider:"Holistic AI",offering:"AI governance and assurance platform",category:"Governance & compliance",lifecycle:"Multiple stages",type:"Specialist company",domain:"Regulated enterprise",physical:"Low",summary:"AI inventory, risk management, testing, compliance workflows, and assurance services.",relevance:"ISO/IEC 42001; ISO/IEC 23894; NIST AI RMF; EU AI Act",access:"Commercial platform and services",url:"https://www.holisticai.com/"},
+    {provider:"Fairly AI",offering:"AI governance, risk, and compliance",category:"Governance & compliance",lifecycle:"Govern & plan",type:"Specialist company",domain:"Regulated enterprise",physical:"Low",summary:"Governance workflows and risk evidence for AI systems and third-party AI suppliers.",relevance:"ISO/IEC 42001; NIST AI RMF; EU AI Act",access:"Commercial platform",url:"https://fairly.ai/"},
+    {provider:"Monitaur",offering:"AI Governance Platform",category:"Governance & compliance",lifecycle:"Multiple stages",type:"Specialist company",domain:"Financial services",physical:"Low",summary:"Policy, model governance, assurance, and documentation workflows with a regulated-industry focus.",relevance:"ISO/IEC 42001; NIST AI RMF; model risk management guidance",access:"Commercial platform",url:"https://www.monitaur.ai/"},
+    {provider:"Trustible",offering:"Responsible AI governance platform",category:"Governance & compliance",lifecycle:"Govern & plan",type:"Specialist company",domain:"Regulated enterprise",physical:"Low",summary:"AI use-case inventory, policy mapping, risk assessment, and governance evidence.",relevance:"ISO/IEC 42001; NIST AI RMF; EU AI Act",access:"Commercial platform",url:"https://trustible.ai/"},
+    {provider:"Saidot",offering:"AI governance platform",category:"Governance & compliance",lifecycle:"Multiple stages",type:"Specialist company",domain:"Cross-sector",physical:"Low",summary:"Governance, transparency, risk, and control workflows for AI portfolios and suppliers.",relevance:"ISO/IEC 42001; ISO/IEC 23894; EU AI Act",access:"Commercial platform",url:"https://www.saidot.ai/"},
+    {provider:"ModelOp",offering:"ModelOp Center",category:"Governance & compliance",lifecycle:"Operate & monitor",type:"Specialist company",domain:"Regulated enterprise",physical:"Medium",summary:"Enterprise model and AI governance with inventory, controls, monitoring, and reporting.",relevance:"ISO/IEC 42001; NIST AI RMF; model risk management guidance",access:"Commercial platform",url:"https://www.modelop.com/"},
+    {provider:"ValidMind",offering:"AI and model risk management",category:"Governance & compliance",lifecycle:"Verify & validate",type:"Specialist company",domain:"Financial services",physical:"Low",summary:"Model documentation, validation tests, governance workflows, and audit-ready evidence.",relevance:"ISO/IEC 42001; ISO/IEC 25059; model risk management guidance",access:"Commercial platform",url:"https://validmind.com/"},
+    {provider:"Enzai",offering:"AI governance platform",category:"Governance & compliance",lifecycle:"Govern & plan",type:"Specialist company",domain:"Regulated enterprise",physical:"Low",summary:"AI inventory, impact assessment, controls, obligations, and compliance evidence management.",relevance:"ISO/IEC 42001; ISO/IEC 42005; EU AI Act",access:"Commercial platform",url:"https://www.enz.ai/"},
+    {provider:"OneTrust",offering:"AI Governance",category:"Governance & compliance",lifecycle:"Multiple stages",type:"Established platform",domain:"Regulated enterprise",physical:"Low",summary:"AI inventory, assessment, policy, data-governance, and compliance workflows within a broader trust platform.",relevance:"ISO/IEC 42001; NIST AI RMF; EU AI Act; privacy frameworks",access:"Commercial platform",url:"https://www.onetrust.com/products/ai-governance/"},
+    {provider:"Securiti",offering:"AI Security & Governance",category:"Governance & compliance",lifecycle:"Multiple stages",type:"Established platform",domain:"Cloud / data",physical:"Medium",summary:"AI discovery, data controls, governance, security posture, and compliance workflows.",relevance:"ISO/IEC 42001; NIST AI RMF; EU AI Act; privacy frameworks",access:"Commercial platform",url:"https://securiti.ai/"},
+    {provider:"IBM",offering:"watsonx.governance",category:"Governance & compliance",lifecycle:"Multiple stages",type:"Established platform",domain:"Cross-sector",physical:"Medium",summary:"Lifecycle governance, factsheets, evaluation, monitoring, risk, and compliance tooling.",relevance:"ISO/IEC 42001; NIST AI RMF; EU AI Act",access:"Cloud and software platform",url:"https://www.ibm.com/products/watsonx-governance"},
+    {provider:"Microsoft",offering:"Azure AI Foundry governance and evaluation",category:"Governance & compliance",lifecycle:"Multiple stages",type:"Established platform",domain:"Cloud / data",physical:"Medium",summary:"Model catalog, evaluations, content safety, monitoring, and enterprise policy integrations.",relevance:"NIST AI RMF; ISO/IEC 42001; generative-AI risk guidance",access:"Cloud platform",url:"https://azure.microsoft.com/products/ai-foundry"},
+    {provider:"Amazon Web Services",offering:"SageMaker AI governance",category:"Governance & compliance",lifecycle:"Multiple stages",type:"Established platform",domain:"Cloud / data",physical:"Medium",summary:"Model registry, cards, lineage, monitoring, clarification, and governance capabilities for ML workloads.",relevance:"NIST AI RMF; ISO/IEC 42001; ISO/IEC 5338",access:"Cloud platform",url:"https://aws.amazon.com/sagemaker-ai/"},
+    {provider:"Google Cloud",offering:"Vertex AI governance and evaluation",category:"Governance & compliance",lifecycle:"Multiple stages",type:"Established platform",domain:"Cloud / data",physical:"Medium",summary:"Model registry, evaluation, monitoring, explainability, safety controls, and enterprise governance.",relevance:"NIST AI RMF; ISO/IEC 42001; ISO/IEC 25059",access:"Cloud platform",url:"https://cloud.google.com/vertex-ai"},
+    {provider:"Fiddler AI",offering:"AI Observability Platform",category:"Monitoring & observability",lifecycle:"Operate & monitor",type:"Specialist company",domain:"Cross-sector",physical:"Medium",summary:"Monitoring, explainability, performance, drift, and guardrails for predictive and generative AI.",relevance:"ISO/IEC 25059; NIST AI RMF MEASURE and MANAGE",access:"Commercial platform",url:"https://www.fiddler.ai/"},
+    {provider:"Arthur",offering:"AI performance and evaluation platform",category:"Monitoring & observability",lifecycle:"Operate & monitor",type:"Specialist company",domain:"Cross-sector",physical:"Medium",summary:"Monitoring, evaluation, explainability, and guardrails for machine-learning and generative-AI systems.",relevance:"ISO/IEC 25059; NIST AI RMF; ISO/IEC 42119 family",access:"Commercial platform",url:"https://www.arthur.ai/"},
+    {provider:"Arize AI",offering:"Phoenix and AX",category:"Monitoring & observability",lifecycle:"Operate & monitor",type:"Specialist company",domain:"Generative AI / agents",physical:"Low",summary:"Tracing, evaluation, observability, and troubleshooting for machine-learning and LLM applications.",relevance:"NIST AI RMF MEASURE; ISO/IEC 25059; ISO/IEC 42119 family",access:"Commercial and open-source",url:"https://arize.com/"},
+    {provider:"Galileo",offering:"AI evaluation and observability",category:"Testing & evaluation",lifecycle:"Verify & validate",type:"Specialist company",domain:"Generative AI / agents",physical:"Low",summary:"Evaluation, experimentation, monitoring, and guardrails for generative-AI applications.",relevance:"NIST AI RMF MEASURE; ISO/IEC 25059; ISO/IEC 42119 family",access:"Commercial platform",url:"https://galileo.ai/"},
+    {provider:"Patronus AI",offering:"AI evaluation and security platform",category:"Testing & evaluation",lifecycle:"Verify & validate",type:"Specialist company",domain:"Generative AI / agents",physical:"Low",summary:"Automated evaluations, adversarial testing, hallucination checks, and policy-focused testing for LLM systems.",relevance:"NIST AI RMF; ISO/IEC 42119 family; OWASP LLM guidance",access:"Commercial platform",url:"https://www.patronus.ai/"},
+    {provider:"Giskard",offering:"AI quality and security testing",category:"Testing & evaluation",lifecycle:"Verify & validate",type:"Specialist company",domain:"Generative AI / agents",physical:"Low",summary:"Testing, red teaming, evaluation, and monitoring for machine-learning and generative-AI systems.",relevance:"ISO/IEC 25059; ISO/IEC 42119 family; NIST AI RMF",access:"Commercial and open-source",url:"https://www.giskard.ai/"},
+    {provider:"Confident AI",offering:"DeepEval and Confident AI",category:"Testing & evaluation",lifecycle:"Verify & validate",type:"Specialist company",domain:"Generative AI / agents",physical:"Low",summary:"Open-source and hosted LLM evaluation, regression testing, and observability.",relevance:"NIST AI RMF MEASURE; ISO/IEC 42119 family",access:"Commercial and open-source",url:"https://www.confident-ai.com/"},
+    {provider:"Braintrust",offering:"AI evaluation platform",category:"Testing & evaluation",lifecycle:"Design & build",type:"Specialist company",domain:"Generative AI / agents",physical:"Low",summary:"Experiments, datasets, scorers, prompt management, and production tracing for AI applications.",relevance:"NIST AI RMF MEASURE; ISO/IEC 25059",access:"Commercial platform",url:"https://www.braintrust.dev/"},
+    {provider:"Kolena",offering:"AI and ML testing platform",category:"Testing & evaluation",lifecycle:"Verify & validate",type:"Specialist company",domain:"Cross-sector",physical:"Medium",summary:"Scenario-based testing, model comparison, failure analysis, and evaluation workflows.",relevance:"ISO/IEC 25059; ISO/IEC 42119 family; NIST AI RMF",access:"Commercial platform",url:"https://www.kolena.com/"},
+    {provider:"Okareo",offering:"AI testing and evaluation",category:"Testing & evaluation",lifecycle:"Verify & validate",type:"Specialist company",domain:"Generative AI / agents",physical:"Low",summary:"Test generation, evaluation, scenario coverage, and monitoring for AI applications and agents.",relevance:"NIST AI RMF MEASURE; ISO/IEC 42119 family",access:"Commercial platform",url:"https://okareo.com/"},
+    {provider:"Dynamo AI",offering:"Enterprise AI security and evaluation",category:"Testing & evaluation",lifecycle:"Multiple stages",type:"Specialist company",domain:"Regulated enterprise",physical:"Low",summary:"Evaluation, red teaming, governance, and runtime controls for enterprise generative AI.",relevance:"NIST AI RMF; EU AI Act; OWASP LLM guidance",access:"Commercial platform",url:"https://dynamo.ai/"},
+    {provider:"Gray Swan AI",offering:"AI red teaming and evaluation",category:"Testing & evaluation",lifecycle:"Verify & validate",type:"Specialist company",domain:"Generative AI / agents",physical:"Low",summary:"Adversarial evaluation and community red teaming for model and application safety.",relevance:"NIST AI RMF; ISO/IEC 42119 family; MITRE ATLAS",access:"Commercial platform and research",url:"https://www.grayswan.ai/"},
+    {provider:"Haize Labs",offering:"Frontier AI evaluation and red teaming",category:"Testing & evaluation",lifecycle:"Verify & validate",type:"Specialist company",domain:"Generative AI / agents",physical:"Low",summary:"Adversarial testing and evaluation of advanced models and AI applications.",relevance:"NIST AI RMF; ISO/IEC 42119 family; frontier-model evaluation guidance",access:"Commercial services and tooling",url:"https://www.haizelabs.com/"},
+    {provider:"Scale AI",offering:"Safety, evaluation, and red teaming",category:"Testing & evaluation",lifecycle:"Verify & validate",type:"Established platform",domain:"Generative AI / agents",physical:"Medium",summary:"Model evaluations, red teaming, data, and human-feedback programs for advanced AI systems.",relevance:"NIST AI RMF; ISO/IEC 42119 family; frontier-model evaluation guidance",access:"Commercial platform and services",url:"https://scale.com/"},
+    {provider:"Weights & Biases",offering:"Weave",category:"Monitoring & observability",lifecycle:"Design & build",type:"Established platform",domain:"Generative AI / agents",physical:"Low",summary:"Tracing, evaluation, experimentation, and monitoring for LLM applications.",relevance:"NIST AI RMF MEASURE; ISO/IEC 25059",access:"Commercial and open-source",url:"https://wandb.ai/site/weave/"},
+    {provider:"LangChain",offering:"LangSmith",category:"Monitoring & observability",lifecycle:"Multiple stages",type:"Established platform",domain:"Generative AI / agents",physical:"Low",summary:"Tracing, evaluation, testing, and deployment observability for LLM applications and agents.",relevance:"NIST AI RMF MEASURE; ISO/IEC 25059",access:"Commercial platform",url:"https://www.langchain.com/langsmith"},
+    {provider:"Deepchecks",offering:"LLM evaluation and ML validation",category:"Testing & evaluation",lifecycle:"Verify & validate",type:"Specialist company",domain:"Cross-sector",physical:"Low",summary:"Testing and validation for machine-learning and LLM applications, including continuous checks.",relevance:"ISO/IEC 25059; ISO/IEC 42119 family; NIST AI RMF",access:"Commercial and open-source",url:"https://www.deepchecks.com/"},
+    {provider:"Cisco",offering:"AI Defense",category:"Security & resilience",lifecycle:"Deploy & protect",type:"Acquired / integrated",domain:"Generative AI / agents",physical:"Medium",summary:"Discovery, validation, runtime protection, and security controls for enterprise AI applications.",relevance:"NIST AI RMF; NIST AI 100-2; OWASP LLM guidance; MITRE ATLAS",access:"Commercial security platform",url:"https://www.cisco.com/site/us/en/products/security/ai-defense/index.html"},
+    {provider:"Palo Alto Networks",offering:"Prisma AIRS",category:"Security & resilience",lifecycle:"Multiple stages",type:"Acquired / integrated",domain:"Cloud / data",physical:"Medium",summary:"AI posture, model scanning, red teaming, runtime security, and agent security within a broader cloud-security platform.",relevance:"NIST AI RMF; NIST AI 100-2; OWASP LLM guidance; MITRE ATLAS",access:"Commercial security platform",url:"https://www.paloaltonetworks.com/prisma/cloud/ai-security"},
+    {provider:"HiddenLayer",offering:"AISec Platform",category:"Security & resilience",lifecycle:"Deploy & protect",type:"Specialist company",domain:"Cross-sector",physical:"Medium",summary:"Model scanning, threat detection, runtime protection, and security testing for AI systems.",relevance:"NIST AI 100-2; MITRE ATLAS; ETSI AI security guidance",access:"Commercial platform",url:"https://hiddenlayer.com/"},
+    {provider:"Mindgard",offering:"AI security testing",category:"Security & resilience",lifecycle:"Verify & validate",type:"Specialist company",domain:"Generative AI / agents",physical:"Low",summary:"Automated security testing and red teaming for models and AI applications.",relevance:"NIST AI 100-2; OWASP LLM guidance; MITRE ATLAS",access:"Commercial platform",url:"https://mindgard.ai/"},
+    {provider:"Enkrypt AI",offering:"AI security and compliance platform",category:"Security & resilience",lifecycle:"Multiple stages",type:"Specialist company",domain:"Generative AI / agents",physical:"Low",summary:"Red teaming, guardrails, risk assessment, and monitoring for enterprise generative AI.",relevance:"NIST AI RMF; NIST AI 100-2; OWASP LLM guidance; EU AI Act",access:"Commercial platform",url:"https://www.enkryptai.com/"},
+    {provider:"Vijil",offering:"AI agent security platform",category:"Security & resilience",lifecycle:"Multiple stages",type:"Specialist company",domain:"Generative AI / agents",physical:"Medium",summary:"Automated testing, trust scoring, monitoring, and runtime protection for AI agents.",relevance:"NIST AI RMF; NIST AI 100-2; OWASP LLM guidance",access:"Commercial platform",url:"https://vijil.ai/"},
+    {provider:"Noma Security",offering:"AI and data security platform",category:"Security & resilience",lifecycle:"Multiple stages",type:"Specialist company",domain:"Cloud / data",physical:"Medium",summary:"Discovery, posture management, data and model security, and runtime protection across the AI lifecycle.",relevance:"NIST AI RMF; NIST AI 100-2; ISO/IEC 5338",access:"Commercial platform",url:"https://noma.security/"},
+    {provider:"WitnessAI",offering:"Secure AI enablement platform",category:"Security & resilience",lifecycle:"Deploy & protect",type:"Specialist company",domain:"Workplace AI",physical:"Low",summary:"Visibility, policy enforcement, data protection, and governance for enterprise AI use and agents.",relevance:"NIST AI RMF; ISO/IEC 42001; OWASP LLM guidance",access:"Commercial platform",url:"https://witness.ai/"},
+    {provider:"SentinelOne",offering:"Prompt Security",category:"Security & resilience",lifecycle:"Deploy & protect",type:"Acquired / integrated",domain:"Workplace AI",physical:"Low",summary:"Discovery, policy, data-loss prevention, and runtime protection for employee and application use of generative AI.",relevance:"NIST AI RMF; NIST AI 100-2; OWASP LLM guidance",access:"Commercial security platform",url:"https://www.prompt.security/"},
+    {provider:"Check Point",offering:"Lakera",category:"Runtime guardrails",lifecycle:"Deploy & protect",type:"Acquired / integrated",domain:"Generative AI / agents",physical:"Low",summary:"Prompt-injection defense, content moderation, and runtime guardrails for LLM applications.",relevance:"NIST AI 100-2; OWASP LLM guidance; MITRE ATLAS",access:"Commercial API and platform",url:"https://www.lakera.ai/"},
+    {provider:"CalypsoAI",offering:"AI security platform",category:"Runtime guardrails",lifecycle:"Deploy & protect",type:"Specialist company",domain:"Regulated enterprise",physical:"Medium",summary:"Enterprise guardrails, red teaming, observability, and policy controls for generative AI.",relevance:"NIST AI RMF; NIST AI 100-2; OWASP LLM guidance",access:"Commercial platform",url:"https://calypsoai.com/"},
+    {provider:"Lasso Security",offering:"Generative AI security",category:"Security & resilience",lifecycle:"Deploy & protect",type:"Specialist company",domain:"Workplace AI",physical:"Low",summary:"AI usage discovery, data protection, threat prevention, and application security controls.",relevance:"NIST AI RMF; NIST AI 100-2; OWASP LLM guidance",access:"Commercial platform",url:"https://www.lasso.security/"},
+    {provider:"Aim Security",offering:"Enterprise AI security platform",category:"Security & resilience",lifecycle:"Deploy & protect",type:"Specialist company",domain:"Workplace AI",physical:"Low",summary:"Secure access, data protection, threat prevention, and governance for enterprise generative-AI use.",relevance:"NIST AI RMF; NIST AI 100-2; OWASP LLM guidance",access:"Commercial platform",url:"https://www.aim.security/"},
+    {provider:"Zenity",offering:"AI agent security and governance",category:"Security & resilience",lifecycle:"Operate & monitor",type:"Specialist company",domain:"Workplace AI",physical:"Medium",summary:"Discovery, posture management, runtime controls, and governance for enterprise agents and copilots.",relevance:"NIST AI RMF; NIST AI 100-2; EU AI Act",access:"Commercial platform",url:"https://zenity.io/"},
+    {provider:"Astrix Security",offering:"Non-human identity and agent security",category:"Security & resilience",lifecycle:"Deploy & protect",type:"Specialist company",domain:"Cloud / data",physical:"Medium",summary:"Discovery and least-privilege controls for non-human identities, integrations, service accounts, and AI agents.",relevance:"NIST AI RMF; NIST cybersecurity guidance; agent-identity controls",access:"Commercial platform",url:"https://astrix.security/"},
+    {provider:"Oasis Security",offering:"Non-human identity management",category:"Security & resilience",lifecycle:"Deploy & protect",type:"Specialist company",domain:"Cloud / data",physical:"Medium",summary:"Inventory, posture, ownership, and lifecycle controls for non-human identities used by automation and agents.",relevance:"NIST cybersecurity guidance; NIST AI RMF; agent-identity controls",access:"Commercial platform",url:"https://www.oasis.security/"},
+    {provider:"Operant AI",offering:"3D Runtime Defense",category:"Runtime guardrails",lifecycle:"Deploy & protect",type:"Specialist company",domain:"Cloud / data",physical:"Medium",summary:"Runtime protection, gateways, sensitive-data controls, and agent security for cloud-native AI applications.",relevance:"NIST AI 100-2; OWASP LLM guidance; MITRE ATLAS",access:"Commercial and open-source",url:"https://www.operant.ai/"},
+    {provider:"Guardrails AI",offering:"Guardrails",category:"Runtime guardrails",lifecycle:"Design & build",type:"Specialist company",domain:"Generative AI / agents",physical:"Low",summary:"Validation, structured outputs, policy checks, and reusable validators for LLM applications.",relevance:"NIST AI RMF MEASURE and MANAGE; OWASP LLM guidance",access:"Commercial and open-source",url:"https://www.guardrailsai.com/"},
+    {provider:"Preamble",offering:"AI safety and governance platform",category:"Runtime guardrails",lifecycle:"Deploy & protect",type:"Specialist company",domain:"Generative AI / agents",physical:"Low",summary:"Policy-based controls, safety configurations, and governance for generative-AI applications.",relevance:"NIST AI RMF; ISO/IEC 42001; generative-AI risk guidance",access:"Commercial platform",url:"https://www.preamble.com/"},
+    {provider:"Irregular",offering:"Frontier AI security",category:"Security & resilience",lifecycle:"Verify & validate",type:"Specialist company",domain:"Generative AI / agents",physical:"Low",summary:"Security evaluation and research focused on advanced models, agents, and high-impact threat scenarios.",relevance:"NIST AI 100-2; MITRE ATLAS; frontier-model evaluation guidance",access:"Commercial services and research",url:"https://irregular.com/"},
+    {provider:"Virtue AI",offering:"AI security and safety platform",category:"Security & resilience",lifecycle:"Multiple stages",type:"Specialist company",domain:"Generative AI / agents",physical:"Low",summary:"Evaluation, red teaming, guardrails, and monitoring for generative-AI systems.",relevance:"NIST AI RMF; NIST AI 100-2; OWASP LLM guidance",access:"Commercial platform",url:"https://virtueai.com/"},
+    {provider:"Nightfall AI",offering:"AI data-loss prevention",category:"Security & resilience",lifecycle:"Deploy & protect",type:"Established platform",domain:"Workplace AI",physical:"Low",summary:"Sensitive-data discovery and loss prevention across generative-AI applications, SaaS, endpoints, and browsers.",relevance:"NIST AI RMF; privacy and data-security frameworks",access:"Commercial platform",url:"https://www.nightfall.ai/"},
+    {provider:"CyBox Security",offering:"AI security control plane",category:"Security & resilience",lifecycle:"Multiple stages",type:"Specialist company",domain:"Generative AI / agents",physical:"Medium",summary:"Discovery, governance, and enforcement across AI tools, models, agents, and MCP servers.",relevance:"NIST AI RMF; NIST AI 100-2; OWASP LLM guidance",access:"Commercial platform",url:"https://cybox.ai/"},
+    {provider:"Capsule Security",offering:"Agent security platform",category:"Runtime guardrails",lifecycle:"Deploy & protect",type:"Specialist company",domain:"Generative AI / agents",physical:"Medium",summary:"Agent discovery, runtime monitoring, tool-call controls, red teaming, and audit logging.",relevance:"NIST AI RMF; NIST AI 100-2; OWASP LLM guidance",access:"Commercial platform",url:"https://capsulesecurity.io/"},
+    {provider:"Onyx Security",offering:"AI security and governance",category:"Security & resilience",lifecycle:"Multiple stages",type:"Specialist company",domain:"Generative AI / agents",physical:"Medium",summary:"Shadow-AI discovery, posture, policy, orchestration, and runtime agent controls.",relevance:"NIST AI RMF; EU AI Act; OWASP LLM guidance",access:"Commercial platform",url:"https://onyx.security/"},
+    {provider:"Lumia Security",offering:"AI security platform",category:"Runtime guardrails",lifecycle:"Deploy & protect",type:"Specialist company",domain:"Workplace AI",physical:"Low",summary:"Network-layer discovery and data-protection guardrails for human and agentic AI use.",relevance:"NIST AI RMF; NIST AI 100-2; privacy and data-security frameworks",access:"Commercial platform",url:"https://lumia.security/"},
+    {provider:"Helmet Security",offering:"MCP and agent security",category:"Security & resilience",lifecycle:"Deploy & protect",type:"Specialist company",domain:"Generative AI / agents",physical:"Medium",summary:"MCP discovery, registry, traffic monitoring, supply-chain analysis, and tool-call enforcement.",relevance:"NIST AI 100-2; OWASP LLM guidance; agent-identity controls",access:"Commercial platform",url:"https://helmetsecurity.com/"},
+    {provider:"Akto",offering:"AI and API security testing",category:"Security & resilience",lifecycle:"Verify & validate",type:"Specialist company",domain:"Generative AI / agents",physical:"Low",summary:"Agent and MCP discovery, automated red teaming, API security testing, and runtime validation.",relevance:"NIST AI 100-2; OWASP LLM guidance; MITRE ATLAS",access:"Commercial and open-source",url:"https://www.akto.io/"},
+    {provider:"IBM Research",offering:"AI Fairness 360",category:"Bias & explainability",lifecycle:"Verify & validate",type:"Open-source / nonprofit",domain:"Cross-sector",physical:"Low",summary:"Open-source metrics and algorithms for detecting and mitigating unwanted bias.",relevance:"ISO/IEC TR 24027; ISO/IEC TS 12791; IEEE 7003; NIST SP 1270",access:"Open source",url:"https://aif360.res.ibm.com/"},
+    {provider:"Microsoft Research",offering:"Fairlearn",category:"Bias & explainability",lifecycle:"Verify & validate",type:"Open-source / nonprofit",domain:"Cross-sector",physical:"Low",summary:"Open-source toolkit for assessing and mitigating fairness-related harms in machine learning.",relevance:"ISO/IEC TR 24027; ISO/IEC TS 12791; IEEE 7003; NIST SP 1270",access:"Open source",url:"https://fairlearn.org/"},
+    {provider:"AI Verify Foundation",offering:"AI Verify and Project Moonshot",category:"Testing & evaluation",lifecycle:"Verify & validate",type:"Open-source / nonprofit",domain:"Cross-sector",physical:"Low",summary:"Open-source governance testing and LLM evaluation toolkits developed through a multi-stakeholder foundation.",relevance:"NIST AI RMF; ISO/IEC 25059; testing and transparency guidance",access:"Open source",url:"https://aiverifyfoundation.sg/"},
+    {provider:"OpenMined",offering:"Privacy-enhancing technology ecosystem",category:"Bias & explainability",lifecycle:"Design & build",type:"Open-source / nonprofit",domain:"Cloud / data",physical:"Low",summary:"Open-source privacy-preserving computation and governance tools for sensitive data and AI.",relevance:"Privacy frameworks; ISO/IEC 27001 family; trustworthy-AI data governance",access:"Open source and community",url:"https://www.openmined.org/"},
+    {provider:"BABL AI",offering:"AI audit and governance services",category:"Assurance & certification",lifecycle:"Assure & audit",type:"Assurance provider",domain:"Regulated enterprise",physical:"Low",summary:"Independent AI risk, impact, governance, and audit services with supporting software and training.",relevance:"ISO/IEC 42001; ISO/IEC 42005; NIST AI RMF; EU AI Act",access:"Professional services",url:"https://babl.ai/"},
+    {provider:"AIUC",offering:"AI agent certification and standard",category:"Assurance & certification",lifecycle:"Assure & audit",type:"Assurance provider",domain:"Generative AI / agents",physical:"Medium",summary:"Assurance criteria and certification-oriented evaluation for enterprise AI agents.",relevance:"AI agent assurance; NIST AI RMF; security and reliability controls",access:"Assessment and certification services",url:"https://www.aiuc.com/"},
+    {provider:"Responsible AI Institute",offering:"Responsible AI assessments",category:"Assurance & certification",lifecycle:"Assure & audit",type:"Open-source / nonprofit",domain:"Regulated enterprise",physical:"Low",summary:"Assessment frameworks, conformity-oriented programs, and responsible-AI implementation resources.",relevance:"ISO/IEC 42001; NIST AI RMF; responsible-AI frameworks",access:"Membership, assessments, and resources",url:"https://www.responsible.ai/"},
+    {provider:"BSI",offering:"AI management and assurance services",category:"Assurance & certification",lifecycle:"Assure & audit",type:"Assurance provider",domain:"Cross-sector",physical:"Medium",summary:"Training, assessment, testing, and certification services for AI management and trustworthiness.",relevance:"ISO/IEC 42001 and related ISO/IEC AI standards",access:"Professional and certification services",url:"https://www.bsigroup.com/"},
+    {provider:"UL Solutions",offering:"AI and autonomous-product assurance",category:"Assurance & certification",lifecycle:"Assure & audit",type:"Assurance provider",domain:"Robotics / physical AI",physical:"High",summary:"Testing, inspection, certification, and advisory services for software, autonomy, robotics, and connected products.",relevance:"UL 4600; UL 1740; UL 3300; functional and product-safety standards",access:"Testing and certification services",url:"https://www.ul.com/services/artificial-intelligence"},
+    {provider:"TÜV SÜD",offering:"AI quality and safety assurance",category:"Assurance & certification",lifecycle:"Assure & audit",type:"Assurance provider",domain:"Robotics / physical AI",physical:"High",summary:"Testing, assessment, and certification services for AI quality, management systems, and safety-related products.",relevance:"ISO/IEC 42001; functional-safety and sector standards",access:"Testing and certification services",url:"https://www.tuvsud.com/"},
+    {provider:"DEKRA",offering:"AI and automated-system testing",category:"Assurance & certification",lifecycle:"Assure & audit",type:"Assurance provider",domain:"Automotive / autonomy",physical:"High",summary:"Testing, inspection, and assurance services for connected, automated, and AI-enabled products.",relevance:"Automotive, cybersecurity, product-safety, and AI management standards",access:"Testing and certification services",url:"https://www.dekra.com/"},
+    {provider:"DNV",offering:"Assurance of AI-enabled systems",category:"Assurance & certification",lifecycle:"Assure & audit",type:"Assurance provider",domain:"Robotics / physical AI",physical:"High",summary:"Independent assurance, recommended practices, and risk-based assessment for AI in safety-critical industries.",relevance:"ISO/IEC 42001; sector safety cases; risk and assurance guidance",access:"Professional assurance services",url:"https://www.dnv.com/"},
+    {provider:"Applied Intuition",offering:"Vehicle and autonomy platform",category:"Physical-AI validation",lifecycle:"Verify & validate",type:"Specialist company",domain:"Automotive / autonomy",physical:"High",summary:"Simulation, scenario, validation, and development tooling for autonomous vehicles and other intelligent machines.",relevance:"ISO/PAS 8800; ISO 26262; ISO 21448; ISO 34502 and 34503",access:"Commercial platform",url:"https://www.appliedintuition.com/"},
+    {provider:"Foretellix",offering:"Foretify",category:"Physical-AI validation",lifecycle:"Verify & validate",type:"Specialist company",domain:"Automotive / autonomy",physical:"High",summary:"Scenario-based verification, coverage measurement, and safety validation for automated-driving systems.",relevance:"ISO/PAS 8800; ISO 21448; ISO 34502 and 34503; UL 4600",access:"Commercial platform",url:"https://www.foretellix.com/"},
+    {provider:"Parallel Domain",offering:"Synthetic data and simulation",category:"Physical-AI validation",lifecycle:"Design & build",type:"Specialist company",domain:"Automotive / autonomy",physical:"High",summary:"Synthetic environments and data for training and testing perception systems used in autonomy.",relevance:"ISO/PAS 8800; ISO 21448; ISO 34502; data-quality standards",access:"Commercial platform",url:"https://paralleldomain.com/"},
+    {provider:"Cognata",offering:"Autonomous-system simulation",category:"Physical-AI validation",lifecycle:"Verify & validate",type:"Specialist company",domain:"Automotive / autonomy",physical:"High",summary:"Digital-twin simulation and scenario testing for automated vehicles, robotics, and smart infrastructure.",relevance:"ISO/PAS 8800; ISO 21448; ISO 34502 and 34503; UL 4600",access:"Commercial platform",url:"https://www.cognata.com/"},
+    {provider:"Ansys",offering:"AVxcelerate",category:"Physical-AI validation",lifecycle:"Verify & validate",type:"Established platform",domain:"Automotive / autonomy",physical:"High",summary:"Physics-based sensor and driving simulation for development and validation of ADAS and automated vehicles.",relevance:"ISO 26262; ISO 21448; ISO/PAS 8800; ISO 34502",access:"Commercial engineering software",url:"https://www.ansys.com/products/av-simulation"},
+    {provider:"Siemens",offering:"Simcenter Prescan",category:"Physical-AI validation",lifecycle:"Verify & validate",type:"Established platform",domain:"Automotive / autonomy",physical:"High",summary:"Scenario and sensor simulation for testing ADAS and autonomous-driving functions.",relevance:"ISO 26262; ISO 21448; ISO/PAS 8800; ISO 34502",access:"Commercial engineering software",url:"https://plm.sw.siemens.com/en-US/simcenter/autonomous-vehicle-solutions/prescan/"},
+    {provider:"dSPACE",offering:"Automotive simulation and validation",category:"Physical-AI validation",lifecycle:"Verify & validate",type:"Established platform",domain:"Automotive / autonomy",physical:"High",summary:"Software- and hardware-in-the-loop systems, scenario testing, data replay, and validation for automated vehicles.",relevance:"ISO 26262; ISO 21448; ISO/PAS 8800; ISO 34502",access:"Commercial hardware and software",url:"https://www.dspace.com/"},
+    {provider:"MathWorks",offering:"RoadRunner and Automated Driving Toolbox",category:"Physical-AI validation",lifecycle:"Multiple stages",type:"Established platform",domain:"Automotive / autonomy",physical:"High",summary:"Scenario authoring, simulation, perception development, testing, and code-generation support for automated driving.",relevance:"ISO 26262; ISO 21448; ISO/PAS 8800; ISO 34502 and 34503",access:"Commercial engineering software",url:"https://www.mathworks.com/products/roadrunner.html"},
+    {provider:"Edge Case Research",offering:"Autonomy safety engineering",category:"Physical-AI validation",lifecycle:"Assure & audit",type:"Specialist company",domain:"Robotics / physical AI",physical:"High",summary:"Safety engineering, risk analysis, assurance cases, and testing support for autonomous and robotic systems.",relevance:"UL 4600; ISO/PAS 8800; ISO 21448; safety-case practices",access:"Professional services and tooling",url:"https://www.edge-case-research.com/"},
+    {provider:"Hexagon",offering:"Autonomous Solutions",category:"Physical-AI validation",lifecycle:"Multiple stages",type:"Established platform",domain:"Robotics / physical AI",physical:"High",summary:"Positioning, perception, simulation, autonomy, and validation technologies for vehicles, robots, and industrial systems.",relevance:"Functional safety; automotive and machinery safety; positioning assurance",access:"Commercial hardware, software, and services",url:"https://hexagon.com/company/divisions/autonomous-solutions"}
+  ];
+
+  const state = {page: 1, size: 10, sort: "provider", direction: 1};
+  const filterIds = ["category", "lifecycle", "type", "domain", "physical"];
+  const search = document.getElementById("search");
+  const rows = document.getElementById("rows");
+  const empty = document.getElementById("empty");
+
+  function unique(field) {
+    return Array.from(new Set(data.map(function(item) { return item[field]; }))).sort(function(a, b) { return a.localeCompare(b); });
+  }
+
+  ["category", "lifecycle", "type", "domain"].forEach(function(field) {
+    const select = document.getElementById(field);
+    unique(field).forEach(function(value) {
+      const option = document.createElement("option");
+      option.value = value;
+      option.textContent = value;
+      select.appendChild(option);
+    });
+  });
+
+  document.getElementById("statTotal").textContent = data.length;
+  document.getElementById("statCategories").textContent = unique("category").length;
+  document.getElementById("statSpecialists").textContent = data.filter(function(item) { return item.type === "Specialist company"; }).length;
+  document.getElementById("statPhysical").textContent = data.filter(function(item) { return item.physical === "High"; }).length;
+
+  function filteredData() {
+    const term = search.value.trim().toLowerCase();
+    return data.filter(function(item) {
+      const matchesSearch = !term || Object.keys(item).some(function(key) { return String(item[key]).toLowerCase().includes(term); });
+      const matchesFilters = filterIds.every(function(field) {
+        const value = document.getElementById(field).value;
+        return !value || item[field] === value;
+      });
+      return matchesSearch && matchesFilters;
+    }).sort(function(a, b) {
+      return String(a[state.sort]).localeCompare(String(b[state.sort]), undefined, {numeric: true}) * state.direction;
+    });
+  }
+
+  function td(text, className) {
+    const cell = document.createElement("td");
+    if (className) cell.className = className;
+    cell.textContent = text;
+    return cell;
+  }
+
+  function render() {
+    const filtered = filteredData();
+    const totalPages = Math.max(1, Math.ceil(filtered.length / state.size));
+    if (state.page > totalPages) state.page = totalPages;
+    const start = (state.page - 1) * state.size;
+    const pageRows = filtered.slice(start, start + state.size);
+    rows.replaceChildren();
+
+    pageRows.forEach(function(item) {
+      const row = document.createElement("tr");
+      const providerCell = document.createElement("td");
+      const link = document.createElement("a");
+      link.className = "vendor-link";
+      link.href = item.url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.textContent = item.provider;
+      const offering = document.createElement("span");
+      offering.className = "offering";
+      offering.textContent = item.offering;
+      providerCell.append(link, offering);
+      row.appendChild(providerCell);
+
+      const summaryCell = document.createElement("td");
+      summaryCell.className = "summary";
+      summaryCell.textContent = item.summary;
+      row.appendChild(summaryCell);
+
+      const categoryCell = document.createElement("td");
+      const badge = document.createElement("span");
+      badge.className = "badge";
+      badge.textContent = item.category;
+      categoryCell.appendChild(badge);
+      row.appendChild(categoryCell);
+      row.appendChild(td(item.lifecycle));
+      row.appendChild(td(item.type));
+      row.appendChild(td(item.domain));
+
+      const physicalCell = document.createElement("td");
+      physicalCell.className = "physical";
+      const dot = document.createElement("i");
+      dot.className = "dot " + item.physical.toLowerCase();
+      physicalCell.append(dot, document.createTextNode(item.physical));
+      row.appendChild(physicalCell);
+      row.appendChild(td(item.relevance, "note-cell"));
+      row.appendChild(td(item.access, "access"));
+      rows.appendChild(row);
+    });
+
+    empty.hidden = filtered.length !== 0;
+    document.getElementById("visibleCount").textContent = filtered.length;
+    const activeCount = (search.value ? 1 : 0) + filterIds.filter(function(field) { return document.getElementById(field).value; }).length;
+    document.getElementById("filterNote").textContent = activeCount ? "(" + activeCount + " active filter" + (activeCount === 1 ? "" : "s") + ")" : "";
+    document.getElementById("pageInfo").textContent = filtered.length ? (start + 1) + "–" + Math.min(start + state.size, filtered.length) + " of " + filtered.length : "0 results";
+    document.getElementById("prev").disabled = state.page === 1;
+    document.getElementById("next").disabled = state.page === totalPages;
+    syncScrollers();
+  }
+
+  search.addEventListener("input", function() { state.page = 1; render(); });
+  filterIds.forEach(function(field) {
+    document.getElementById(field).addEventListener("change", function() { state.page = 1; render(); });
+  });
+  document.querySelectorAll(".page-size").forEach(function(select) {
+    select.addEventListener("change", function() {
+      state.size = Number(select.value);
+      state.page = 1;
+      document.querySelectorAll(".page-size").forEach(function(other) { other.value = select.value; });
+      render();
+    });
+  });
+  document.querySelectorAll(".sort-btn").forEach(function(button) {
+    button.addEventListener("click", function() {
+      const field = button.dataset.sort;
+      state.direction = state.sort === field ? state.direction * -1 : 1;
+      state.sort = field;
+      state.page = 1;
+      render();
+    });
+  });
+  document.getElementById("prev").addEventListener("click", function() { state.page -= 1; render(); });
+  document.getElementById("next").addEventListener("click", function() { state.page += 1; render(); });
+  document.getElementById("reset").addEventListener("click", function() {
+    search.value = "";
+    filterIds.forEach(function(field) { document.getElementById(field).value = ""; });
+    state.page = 1;
+    render();
+  });
+
+  document.getElementById("export").addEventListener("click", function() {
+    const fields = ["provider", "offering", "summary", "category", "lifecycle", "type", "domain", "physical", "relevance", "access", "url"];
+    const escapeCsv = function(value) { return '"' + String(value).replace(/"/g, '""') + '"'; };
+    const csv = [fields.join(",")].concat(filteredData().map(function(item) {
+      return fields.map(function(field) { return escapeCsv(item[field]); }).join(",");
+    })).join("\n");
+    const blob = new Blob([csv], {type: "text/csv;charset=utf-8"});
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "ai-safety-products-vendors.csv";
+    link.click();
+    URL.revokeObjectURL(url);
+  });
+
+  const tableScroll = document.getElementById("tableScroll");
+  const tableScrollTop = document.getElementById("tableScrollTop");
+  const tableScrollTopContent = document.getElementById("tableScrollTopContent");
+  const tableScrollWrap = document.getElementById("tableScrollWrap");
+  let syncing = false;
+  function updateScrollHint() {
+    tableScrollWrap.classList.toggle("has-more-right", tableScroll.scrollLeft + tableScroll.clientWidth < tableScroll.scrollWidth - 2);
+  }
+  function syncScrollers() {
+    tableScrollTopContent.style.width = tableScroll.scrollWidth + "px";
+    tableScrollTop.scrollLeft = tableScroll.scrollLeft;
+    updateScrollHint();
+  }
+  tableScroll.addEventListener("scroll", function() {
+    if (!syncing) {
+      syncing = true;
+      tableScrollTop.scrollLeft = tableScroll.scrollLeft;
+      syncing = false;
+    }
+    updateScrollHint();
+  });
+  tableScrollTop.addEventListener("scroll", function() {
+    if (!syncing) {
+      syncing = true;
+      tableScroll.scrollLeft = tableScrollTop.scrollLeft;
+      syncing = false;
+    }
+    updateScrollHint();
+  });
+  window.addEventListener("resize", syncScrollers);
+  render();
+  </script>
+</body>
+</html>

@@ -87,6 +87,10 @@
     .lede { max-width: 1020px; margin: 16px 0 0; font-size: 1.05rem; color: rgba(255,255,255,.9); }
     .header-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
     .header-pill { padding: 7px 11px; border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.1); border-radius: 999px; font-size: .84rem; }
+    .site-switcher { position: relative; z-index: 1; display: inline-flex; gap: 4px; margin: 0 0 24px; padding: 4px; border: 1px solid rgba(255,255,255,.28); border-radius: 12px; background: rgba(3,34,43,.28); }
+    .site-switcher a { padding: 8px 13px; border-radius: 8px; color: rgba(255,255,255,.82); font-size: .86rem; font-weight: 800; text-decoration: none; }
+    .site-switcher a:hover { color: #fff; background: rgba(255,255,255,.1); }
+    .site-switcher a[aria-current="page"] { color: #073f4f; background: #fff; box-shadow: 0 3px 10px rgba(0,0,0,.12); }
     .stats { display: grid; grid-template-columns: repeat(4, minmax(150px, 1fr)); gap: 12px; margin: 18px 0; }
     .stat { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; box-shadow: 0 8px 24px rgba(21,35,55,.04); }
     .stat strong { display: block; font-size: 1.75rem; line-height: 1; letter-spacing: -.03em; }
@@ -291,12 +295,14 @@
       .actions { align-items: stretch; }
       .actions-left, .actions-right { width: 100%; }
       .actions-right button { flex: 1; }
+      .site-switcher { display: flex; width: 100%; }
+      .site-switcher a { flex: 1; text-align: center; }
     }
     @media print {
       body { background: #fff; color: #000; }
       .wrap { max-width: none; padding: 0; }
       header { box-shadow: none; }
-      .filters, .pager, .method, footer { display: none; }
+      .site-switcher, .filters, .pager, .method, footer { display: none; }
       .table-shell { border: 0; box-shadow: none; }
       .table-scroll-top { display: none; }
       .table-scroll-wrap::after { display: none; }
@@ -310,6 +316,10 @@
 <body>
   <main class="wrap">
     <header>
+      <nav class="site-switcher" aria-label="Matrix view">
+        <a href="index.html" aria-current="page">Standards &amp; Publications</a>
+        <a href="products.html">Products &amp; Vendors</a>
+      </nav>
       <p class="eyebrow">Standards landscape • curated reference</p>
       <h1>AI Safety Standards &amp; Publications Matrix</h1>
       <p class="lede">A cross-sector map of trustworthiness, safety, transparency, governance, risk, lifecycle, testing, cybersecurity, product assurance, and regulatory material relevant to AI.</p>
