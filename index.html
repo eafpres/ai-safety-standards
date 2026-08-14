@@ -200,10 +200,10 @@
       gap: 3px;
       margin-left: 7px;
       padding: 2px 6px;
-      border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+      border: 1px solid #d6a900;
       border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent);
+      background: #fff3a3;
+      color: #6b5100;
       font-size: .66rem;
       font-weight: 900;
       line-height: 1.2;
@@ -211,6 +211,9 @@
       text-transform: uppercase;
       vertical-align: 1px;
     }
+    .audit-badge { display: inline-flex; align-items: center; gap: 3px; margin-left: 7px; padding: 2px 6px; border: 1px solid currentColor; border-radius: 999px; font-size: .66rem; font-weight: 900; line-height: 1.2; letter-spacing: .03em; text-transform: uppercase; vertical-align: 1px; }
+    .access-badge { color: #b42318; background: #fee4e2; }
+    .unverified-badge { color: #b54708; background: #ffead5; }
     .org { display: block; margin-top: 5px; color: var(--muted); font-size: .77rem; }
     .title { min-width: 290px; font-weight: 700; }
     .summary { display: block; margin-top: 5px; color: var(--muted); font-size: .8rem; font-weight: 400; }
@@ -385,6 +388,8 @@
       </div>
     </section>
 
+    <p class="audit-footnotes"><strong>^*</strong> Access may be restricted for bots / automation. <strong>##</strong> Site is currently unavailable or otherwise could not be verified on the last audit.</p>
+
     <div class="method">
       <section class="panel">
         <h2>How to read this matrix</h2>
@@ -491,12 +496,12 @@
     {issuer:"Automotive",publication:"ISO/TS 5083:2025",title:"ADS safety — design, verification, and validation",date:"2025-04",status:"Published",category:"Testing & assurance",domain:"Automotive",physical:"High",summary:"Safety-by-design, V&V, post-deployment, and cybersecurity guidance for Level 3/4 automated driving systems.",conformity:"Technical Specification supporting safety cases; it replaced withdrawn ISO/TR 4804 and is itself under revision.",access:"Official abstract and preview free; full text paid",url:"https://www.iso.org/standard/81920.html"},
     {issuer:"Automotive",publication:"ISO 34502:2022",title:"Scenario-based ADS safety evaluation framework",date:"2022-11",status:"Published",category:"Testing & assurance",domain:"Automotive",physical:"High",summary:"Scenario-based development and safety-evaluation framework for automated driving systems.",conformity:"Test framework supporting evidence; not standalone type approval.",access:"Official abstract and preview free; full text paid",url:"https://www.iso.org/standard/78951.html"},
     {issuer:"Automotive",publication:"ISO 34503:2023",title:"Operational design domain specification for ADS",date:"2023-08",status:"Published",category:"Testing & assurance",domain:"Automotive",physical:"High",summary:"Hierarchical taxonomy and format for defining Level 3/4 automated-driving operational design domains.",conformity:"Supports safety-case boundary definition and test coverage; not standalone approval.",access:"Official abstract and preview free; full text paid",url:"https://www.iso.org/standard/78952.html"},
-    {issuer:"Automotive",publication:"UN Regulation No. 155",title:"Cybersecurity and cybersecurity management systems",date:"Entered into force 2021",status:"In force",category:"Security & resilience",domain:"Automotive",physical:"High",summary:"Vehicle type-approval requirements for cybersecurity risk management across the lifecycle.",conformity:"Binding type approval in applying 1958 Agreement jurisdictions and vehicle categories; includes audit-related manufacturer requirements.",access:"Free official text and interpretation documents",url:"https://unece.org/transport/vehicle-regulations-wp29/cybersecurity-and-software-updates"},
-    {issuer:"Automotive",publication:"UN Regulation No. 156",title:"Software update and software-update management systems",date:"Entered into force 2021",status:"In force",category:"Lifecycle & process",domain:"Automotive",physical:"High",summary:"Vehicle type-approval rules for safe, secure, and controlled software updates, including over-the-air updates.",conformity:"Binding type approval in applying jurisdictions/categories; manufacturer SUMS assessment is central.",access:"Free official text and interpretation documents",url:"https://unece.org/transport/vehicle-regulations-wp29/cybersecurity-and-software-updates"},
-    {issuer:"Automotive",publication:"UN Regulation No. 157",title:"Automated Lane Keeping Systems",date:"In force; amended",status:"In force",category:"Functional & product safety",domain:"Automotive",physical:"High",summary:"Type-approval requirements for ALKS functionality, safety, HMI, data storage, and related controls.",conformity:"Binding type approval where adopted; scope and amendment series determine applicability.",access:"Free official text",url:"https://unece.org/transport/documents/2021/03/standards/un-regulation-no-157-automated-lane-keeping-systems-alks"},
-    {issuer:"Automotive",publication:"UN Regulation on Automated Driving Systems (ADS)",title:"Uniform safety requirements for fully driverless ADS",date:"Adopted 2026-06",status:"Adopted",category:"Functional & product safety",domain:"Automotive",physical:"High",summary:"Global framework for validating fully driverless ADS using audited safety management, credible testing, safety cases, in-service monitoring, and safety-relevant data storage.",conformity:"Adopted by UNECE WP.29 on 24 June 2026. UNECE stated that it would enter into force in about a month; type-approval effect depends on the applicable 1958 Agreement jurisdiction and scope.",access:"Free official announcement and working documents",url:"https://unece.org/media/Sustainable-Development/press/414913",added:"2026-08-13"},
+    {issuer:"Automotive",publication:"UN Regulation No. 155",title:"Cybersecurity and cybersecurity management systems",date:"Entered into force 2021",status:"In force",category:"Security & resilience",domain:"Automotive",physical:"High",summary:"Vehicle type-approval requirements for cybersecurity risk management across the lifecycle.",conformity:"Binding type approval in applying 1958 Agreement jurisdictions and vehicle categories; includes audit-related manufacturer requirements.",access:"Free official text and interpretation documents",url:"https://unece.org/transport/vehicle-regulations-wp29/cybersecurity-and-software-updates",auditFlag:"unverified"},
+    {issuer:"Automotive",publication:"UN Regulation No. 156",title:"Software update and software-update management systems",date:"Entered into force 2021",status:"In force",category:"Lifecycle & process",domain:"Automotive",physical:"High",summary:"Vehicle type-approval rules for safe, secure, and controlled software updates, including over-the-air updates.",conformity:"Binding type approval in applying jurisdictions/categories; manufacturer SUMS assessment is central.",access:"Free official text and interpretation documents",url:"https://unece.org/transport/vehicle-regulations-wp29/cybersecurity-and-software-updates",auditFlag:"unverified"},
+    {issuer:"Automotive",publication:"UN Regulation No. 157",title:"Automated Lane Keeping Systems",date:"In force; amended",status:"In force",category:"Functional & product safety",domain:"Automotive",physical:"High",summary:"Type-approval requirements for ALKS functionality, safety, HMI, data storage, and related controls.",conformity:"Binding type approval where adopted; scope and amendment series determine applicability.",access:"Free official text",url:"https://unece.org/transport/documents/2021/03/standards/un-regulation-no-157-automated-lane-keeping-systems-alks",auditFlag:"unverified"},
+    {issuer:"Automotive",publication:"UN Regulation on Automated Driving Systems (ADS)",title:"Uniform safety requirements for fully driverless ADS",date:"Adopted 2026-06",status:"Adopted",category:"Functional & product safety",domain:"Automotive",physical:"High",summary:"Global framework for validating fully driverless ADS using audited safety management, credible testing, safety cases, in-service monitoring, and safety-relevant data storage.",conformity:"Adopted by UNECE WP.29 on 24 June 2026. UNECE stated that it would enter into force in about a month; type-approval effect depends on the applicable 1958 Agreement jurisdiction and scope.",access:"Free official announcement and working documents",url:"https://unece.org/media/Sustainable-Development/press/414913",added:"2026-08-13",auditFlag:"access"},
     {issuer:"Automotive",publication:"SAE J3018_202012",title:"Safety-relevant guidance for on-road testing of prototype ADS vehicles",date:"2020-12",status:"Published",category:"Operational safety",domain:"Automotive",physical:"High",summary:"Guidance for fallback test-driver training and supervised public-road testing of prototype Level 3–5 ADS.",conformity:"Voluntary recommended practice; may support permits, test plans, and due diligence, not vehicle type approval.",access:"Official abstract free; full text paid",url:"https://saemobilus.sae.org/standards/j3018_202012-safety-relevant-guidance-road-testing-prototype-automated-driving-system-ads-operated-vehicles"},
-    {issuer:"Automotive",publication:"SAE J3016_202104",title:"Taxonomy and definitions for driving automation",date:"2021-04",status:"Published",category:"Terminology & architecture",domain:"Automotive",physical:"High",summary:"Canonical Levels 0–5 taxonomy and role definitions for on-road driving automation.",conformity:"Terminology standard, not a safety assessment or approval.",access:"Official abstract free; full text paid",url:"https://saemobilus.sae.org/standards/j3016_202104-taxonomy-definitions-terms-related-driving-automation-systems-road-motor-vehicles"},
+    {issuer:"Automotive",publication:"SAE J3016_202104",title:"Taxonomy and definitions for driving automation",date:"2021-04",status:"Published",category:"Terminology & architecture",domain:"Automotive",physical:"High",summary:"Canonical Levels 0–5 taxonomy and role definitions for on-road driving automation.",conformity:"Terminology standard, not a safety assessment or approval.",access:"Official abstract free; full text paid",url:"https://saemobilus.sae.org/standards/j3016_202104-taxonomy-definitions-terms-related-driving-automation-systems-road-motor-vehicles",auditFlag:"unverified"},
 
     {issuer:"Medical / health",publication:"ISO 14971:2019",title:"Risk management for medical devices",date:"2019-12",status:"Published",category:"Risk & impact",domain:"Medical / health",physical:"High",summary:"Lifecycle hazard identification, risk evaluation, control, benefit-risk analysis, and production/post-production monitoring.",conformity:"Core medical-device regulatory evidence worldwide; conformity supports but does not replace market authorization.",access:"Official overview and abstract free; full text paid",url:"https://www.iso.org/standard/72704.html"},
     {issuer:"Medical / health",publication:"ISO/TS 24971-2:2026",title:"Applying ISO 14971 to machine-learning medical devices",date:"2026-06",status:"Published",category:"Risk & impact",domain:"Medical / health",physical:"High",summary:"Guidance on AI/ML-specific risks and application of the ISO 14971 risk-management process to ML-enabled medical devices; excludes LLM and generative-AI devices.",conformity:"Technical Specification supporting risk-management and submission evidence; it does not replace ISO 14971 or regulatory market authorization.",access:"Official abstract and preview free; full text paid",url:"https://www.iso.org/standard/24971-2",added:"2026-08-13"},
@@ -557,6 +562,12 @@
     return `<span class="new-badge" title="${esc(label)}" aria-label="${esc(label)}"><span aria-hidden="true">✦</span> New</span>`;
   }
 
+  function auditBadge(d) {
+    if (d.auditFlag === "access") return `<span class="audit-badge access-badge" title="Access may be restricted for bots or automation" aria-label="Access may be restricted for bots or automation">Access ^*</span>`;
+    if (d.auditFlag === "unverified") return `<span class="audit-badge unverified-badge" title="Site is currently unavailable or otherwise could not be verified on the last audit" aria-label="Site is currently unavailable or otherwise could not be verified on the last audit">Unverified ##</span>`;
+    return "";
+  }
+
   function selectedValues(key) {
     return new Set([...document.querySelectorAll(`input[data-filter="${key}"]:checked`)].map(input => input.value));
   }
@@ -609,7 +620,7 @@
     const start = (state.page - 1) * state.size;
     const shown = all.slice(start, start + state.size);
     $("rows").innerHTML = shown.map(d => `<tr>
-      <td><a class="pub-link" href="${esc(d.url)}" target="_blank" rel="noopener noreferrer">${esc(d.publication)} ↗</a>${newBadge(d)}<span class="org">${esc(d.issuer)}</span></td>
+      <td><a class="pub-link" href="${esc(d.url)}" target="_blank" rel="noopener noreferrer">${esc(d.publication)} ↗</a>${newBadge(d)}${auditBadge(d)}<span class="org">${esc(d.issuer)}</span></td>
       <td class="title">${esc(d.title)}<span class="summary">${esc(d.summary)}</span></td>
       <td class="date">${esc(d.date)}</td>
       <td><span class="badge ${statusClass(d.status)}">${esc(d.status)}</span></td>
