@@ -15,6 +15,7 @@ Run `git status --short` before reading external sources or editing files.
 - Read `AGENTS.md`, this playbook, and the latest relevant entry in `audit-log.md`.
 - Treat `index.html` as the source of truth unless the repository later contains explicit maintenance documentation that designates structured data files.
 - Inspect the embedded data before research so the audit prioritizes current drafts, work items, revision markers, and potentially fragile links.
+- Use Codex web retrieval for external research and URL checks. The workspace shell may be sandboxed from outbound HTTPS even when web retrieval is available; do not use shell-network failures as evidence about an issuer site.
 
 ## 3. Research scope
 
@@ -76,13 +77,14 @@ Run available local checks without installing dependencies:
 2. Confirm every row contains all required fields.
 3. Check for duplicate publication identifiers.
 4. Check that official URLs use HTTPS where available.
-5. Crawl every unique, nonempty `url` value in the embedded matrix with bounded parallelism. Follow redirects and record the final URL. If a server rejects or does not support `HEAD`, retry with `GET`. Retry transient failures before classifying a result.
-6. Classify each crawled URL as healthy, redirected, broken, temporarily unavailable, or access-blocked. Treat successful HTTP responses as healthy; report permanent not-found responses, DNS failures, and TLS failures as broken. Keep authentication challenges, rate limits, bot protections, timeouts, and transient server errors separate from broken links.
-7. Manually inspect redirected, broken, unavailable, and access-blocked results against an authoritative primary source. Do not replace or remove a matrix URL solely because an automated request was blocked or failed transiently.
-8. Recalculate publication, issuer, current-status, and Physical-AI counts.
-9. Exercise representative search, single-filter, and combined-filter cases.
-10. Run `git diff --check`.
-11. Review `git diff -- index.html docs/maintenance/audit-log.md` for unintended changes.
+5. Before the full crawl, use web retrieval to open one known official matrix URL. If web retrieval is unavailable, report the external-review portion as environment-blocked and do not infer that every matrix URL is unavailable. Do not substitute sandboxed shell HTTP commands for web retrieval.
+6. Crawl every unique, nonempty `url` value in the embedded matrix with bounded parallelism using web retrieval or another execution path with confirmed outbound HTTPS. Follow redirects and record the final URL. Where the retrieval capability supports it, retry `GET` after a rejected or unsupported `HEAD`, and retry transient failures before classifying a result.
+7. Classify each crawled URL as healthy, redirected, broken, temporarily unavailable, or access-blocked. Treat a successful response as healthy only when the final official page identifies the represented publication; a response that resolves to an unrelated publication is broken (wrong target). Report permanent not-found responses, DNS failures, and TLS failures as broken. Keep authentication challenges, rate limits, bot protections, timeouts, and transient server errors separate from broken links. Treat a repeated local sandbox-policy failure as environment-blocked, not as a URL classification.
+8. Manually inspect redirected, broken, unavailable, and access-blocked results against an authoritative primary source. Do not replace or remove a matrix URL solely because an automated request was blocked or failed transiently.
+9. Recalculate publication, issuer, current-status, and Physical-AI counts.
+10. Exercise representative search, single-filter, and combined-filter cases.
+11. Run `git diff --check`.
+12. Review `git diff -- index.html docs/maintenance/audit-log.md` for unintended changes.
 
 ## 7. Report and handoff
 
@@ -93,6 +95,7 @@ If changes were made:
 - Separate confirmed facts from editorial judgments.
 - List validation performed and its result.
 - Report the URL crawl totals by classification and identify every redirected, broken, temporarily unavailable, or access-blocked URL with its affected publication identifier.
+- If external review was environment-blocked, report that condition separately and do not present it as a URL-crawl result.
 - Identify unavailable or ambiguous sources as follow-up items.
 - Leave the diff uncommitted for human review.
 
@@ -101,4 +104,5 @@ If no supported changes were found:
 - Make no file edits.
 - Report the issuer sources checked.
 - Report the URL crawl totals by classification and identify every redirected, broken, temporarily unavailable, or access-blocked URL with its affected publication identifier.
+- If external review was environment-blocked, report that condition separately and do not present it as a URL-crawl result.
 - List unavailable or ambiguous sources as follow-up items.

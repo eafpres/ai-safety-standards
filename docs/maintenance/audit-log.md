@@ -6,6 +6,7 @@ This log records audits that produced a material matrix change. No-change runs a
 
 ### Confirmed factual changes
 
+- Corrected the `ISO/IEC 42001:2023` official URL from `https://www.iso.org/standard/42001.html`, which resolves to unrelated withdrawn ISO 12164-4, to ISO's official `ISO/IEC 42001:2023` landing page: https://www.iso.org/standard/42001
 - Added `IEEE P4501`. IEEE records approval of the active standards project on 14 May 2026. Its official scope establishes a lifecycle framework for Physical AI in manufacturing, including terminology, high-level reliability and precision requirements, secure data governance, human-system interaction, and alignment with industrial safety and security standards. Source: https://standards.ieee.org/ieee/4501/12576/
 
 ### Editorial judgments
@@ -14,6 +15,7 @@ This log records audits that produced a material matrix change. No-change runs a
 
 ### Validation
 
+- ISO's official page identifies `ISO/IEC 42001:2023` as a published International Standard with a December 2023 publication date.
 - Embedded data evaluated successfully as JavaScript using the available Windows Script Host runtime.
 - Verified 112 entries, 11 issuer groups, 95 current-status entries, and 55 High Physical-AI entries.
 - Verified all required fields, HTTPS-only URLs, and no duplicate publication identifiers.
