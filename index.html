@@ -229,6 +229,9 @@
     .withdrawn, .superseded { color: var(--danger); background: var(--danger-soft); }
     .physical { font-weight: 800; white-space: nowrap; }
     .note-cell { min-width: 245px; color: var(--muted); }
+    .note-cell details { max-width: 320px; }
+    .note-cell summary { color: var(--accent); cursor: pointer; font-weight: 700; }
+    .note-cell details[open] summary { margin-bottom: 6px; }
     .access { min-width: 180px; }
     .date { min-width: 98px; white-space: nowrap; }
     .pager { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 14px 16px; }
@@ -572,6 +575,10 @@
     return "";
   }
 
+  function conformityNote(d) {
+    return `<details><summary>Conformity note</summary>${esc(d.conformity)}</details>`;
+  }
+
   function selectedValues(key) {
     return new Set([...document.querySelectorAll(`input[data-filter="${key}"]:checked`)].map(input => input.value));
   }
@@ -631,7 +638,7 @@
       <td>${esc(d.category)}</td>
       <td>${esc(d.domain)}</td>
       <td class="physical"><i class="dot ${d.physical.toLowerCase()}"></i>${esc(d.physical)}</td>
-      <td class="note-cell">${esc(d.conformity)}</td>
+      <td class="note-cell">${conformityNote(d)}</td>
       <td class="access">${esc(d.access)}</td>
     </tr>`).join("");
     $("empty").hidden = all.length !== 0;
