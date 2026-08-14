@@ -182,6 +182,37 @@
     .dot.medium { background: var(--warn); }
     .dot.low { background: var(--success); }
     .table-shell { overflow: hidden; }
+    .table-scroll-top {
+      height: 16px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      border-bottom: 1px solid var(--line);
+      background: var(--surface-2);
+      scrollbar-color: var(--muted) var(--surface-2);
+      scrollbar-width: thin;
+    }
+    .table-scroll-top::-webkit-scrollbar { height: 12px; }
+    .table-scroll-top::-webkit-scrollbar-track { background: var(--surface-2); }
+    .table-scroll-top::-webkit-scrollbar-thumb {
+      border: 2px solid var(--surface-2);
+      border-radius: 999px;
+      background: var(--muted);
+    }
+    .table-scroll-top:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+    .table-scroll-top-content { height: 1px; }
+    .table-scroll-wrap { position: relative; }
+    .table-scroll-wrap::after {
+      position: absolute;
+      inset: 0 0 0 auto;
+      width: 46px;
+      background: linear-gradient(to right, transparent, color-mix(in srgb, var(--surface) 92%, transparent));
+      content: "";
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .18s ease;
+      z-index: 5;
+    }
+    .table-scroll-wrap.has-more-right::after { opacity: 1; }
     .table-scroll { overflow-x: auto; }
     table { width: 100%; min-width: 1680px; border-collapse: separate; border-spacing: 0; font-size: .88rem; }
     th, td { border-bottom: 1px solid var(--line); padding: 12px 12px; vertical-align: top; text-align: left; }
@@ -267,6 +298,8 @@
       header { box-shadow: none; }
       .filters, .pager, .method, footer { display: none; }
       .table-shell { border: 0; box-shadow: none; }
+      .table-scroll-top { display: none; }
+      .table-scroll-wrap::after { display: none; }
       .table-scroll { overflow: visible; }
       table { min-width: 0; font-size: 7pt; }
       th, td { padding: 5px; }
@@ -364,24 +397,29 @@
     </section>
 
     <section class="panel table-shell" aria-label="AI safety standards matrix">
-      <div class="table-scroll">
-        <table>
-          <thead>
-            <tr>
-              <th style="width:190px"><button class="sort-btn" data-sort="publication">Publication <span class="sort-mark">↕</span></button></th>
-              <th style="width:330px"><button class="sort-btn" data-sort="title">Scope / why it matters <span class="sort-mark">↕</span></button></th>
-              <th><button class="sort-btn" data-sort="date">Date <span class="sort-mark">↕</span></button></th>
-              <th><button class="sort-btn" data-sort="status">Status <span class="sort-mark">↕</span></button></th>
-              <th><button class="sort-btn" data-sort="category">Category <span class="sort-mark">↕</span></button></th>
-              <th><button class="sort-btn" data-sort="domain">Domain <span class="sort-mark">↕</span></button></th>
-              <th><button class="sort-btn" data-sort="physical">Physical AI <span class="sort-mark">↕</span></button></th>
-              <th style="width:280px">Certification / conformity note</th>
-              <th style="width:210px">Access</th>
-            </tr>
-          </thead>
-          <tbody id="rows"></tbody>
-        </table>
-        <div id="empty" class="empty" hidden>No publications match these filters.</div>
+      <div id="tableScrollTop" class="table-scroll-top" role="region" aria-label="Horizontal table scroll control" tabindex="0">
+        <div id="tableScrollTopContent" class="table-scroll-top-content"></div>
+      </div>
+      <div id="tableScrollWrap" class="table-scroll-wrap">
+        <div id="tableScroll" class="table-scroll" role="region" aria-label="Scrollable standards table" tabindex="0">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:190px"><button class="sort-btn" data-sort="publication">Publication <span class="sort-mark">↕</span></button></th>
+                <th style="width:330px"><button class="sort-btn" data-sort="title">Scope / why it matters <span class="sort-mark">↕</span></button></th>
+                <th><button class="sort-btn" data-sort="date">Date <span class="sort-mark">↕</span></button></th>
+                <th><button class="sort-btn" data-sort="status">Status <span class="sort-mark">↕</span></button></th>
+                <th><button class="sort-btn" data-sort="category">Category <span class="sort-mark">↕</span></button></th>
+                <th><button class="sort-btn" data-sort="domain">Domain <span class="sort-mark">↕</span></button></th>
+                <th><button class="sort-btn" data-sort="physical">Physical AI <span class="sort-mark">↕</span></button></th>
+                <th style="width:280px">Certification / conformity note</th>
+                <th style="width:210px">Access</th>
+              </tr>
+            </thead>
+            <tbody id="rows"></tbody>
+          </table>
+          <div id="empty" class="empty" hidden>No publications match these filters.</div>
+        </div>
       </div>
       <div class="pager">
         <label style="flex-direction:row;align-items:center">Rows per page
@@ -544,6 +582,10 @@
 
   const state = { sortKey: "issuer", sortDir: 1, page: 1, size: 50 };
   const $ = id => document.getElementById(id);
+  const tableScroll = $("tableScroll");
+  const tableScrollTop = $("tableScrollTop");
+  const tableScrollTopContent = $("tableScrollTopContent");
+  const tableScrollWrap = $("tableScrollWrap");
   const controls = ["search","physical","newItems"];
   const multiKeys = ["issuer","status","category","domain"];
   const allLabels = {issuer:"All issuers",status:"All statuses",category:"All categories",domain:"All domains"};
@@ -552,6 +594,27 @@
   const statusClass = s => normalize(s).replace(/\s+/g,"-").replace(/[^a-z-]/g,"");
   const currentStatuses = new Set(["Published","Active","In force","Final guidance"]);
   const newWindowDays = 30;
+
+  function updateTableScrollUi() {
+    const maxScroll = Math.max(0, tableScroll.scrollWidth - tableScroll.clientWidth);
+    const hasOverflow = maxScroll > 1;
+    tableScrollTopContent.style.width = `${tableScroll.scrollWidth}px`;
+    tableScrollTop.hidden = !hasOverflow;
+    if (hasOverflow && Math.abs(tableScrollTop.scrollLeft - tableScroll.scrollLeft) > 1) {
+      tableScrollTop.scrollLeft = tableScroll.scrollLeft;
+    }
+    tableScrollWrap.classList.toggle("has-more-right", hasOverflow && tableScroll.scrollLeft < maxScroll - 1);
+  }
+
+  tableScrollTop.addEventListener("scroll", () => {
+    if (Math.abs(tableScroll.scrollLeft - tableScrollTop.scrollLeft) > 1) tableScroll.scrollLeft = tableScrollTop.scrollLeft;
+    updateTableScrollUi();
+  });
+  tableScroll.addEventListener("scroll", () => {
+    if (Math.abs(tableScrollTop.scrollLeft - tableScroll.scrollLeft) > 1) tableScrollTop.scrollLeft = tableScroll.scrollLeft;
+    updateTableScrollUi();
+  });
+  window.addEventListener("resize", updateTableScrollUi);
 
   function isNew(d) {
     if (!/^\d{4}-\d{2}-\d{2}$/.test(d.added ?? "")) return false;
@@ -653,6 +716,7 @@
       btn.querySelector(".sort-mark").textContent = btn.dataset.sort === state.sortKey ? (state.sortDir === 1 ? "↑" : "↓") : "↕";
       btn.setAttribute("aria-sort", btn.dataset.sort === state.sortKey ? (state.sortDir === 1 ? "ascending" : "descending") : "none");
     });
+    requestAnimationFrame(updateTableScrollUi);
   }
 
   $("rows").addEventListener("click", event => {
