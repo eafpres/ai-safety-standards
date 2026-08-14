@@ -390,6 +390,9 @@
           <div class="filter-logic">Multiple choices within a filter use OR; choices across filters use AND.</div>
         </div>
         <div class="actions-right">
+          <label style="flex-direction:row;align-items:center">Rows per page
+            <select class="page-size" style="width:auto"><option selected>10</option><option>25</option><option>50</option><option>100</option></select>
+          </label>
           <button id="reset" type="button">Reset filters</button>
           <button id="export" class="primary" type="button">Export filtered CSV</button>
         </div>
@@ -423,7 +426,7 @@
       </div>
       <div class="pager">
         <label style="flex-direction:row;align-items:center">Rows per page
-          <select id="pageSize" style="width:auto"><option>25</option><option selected>50</option><option>100</option></select>
+          <select class="page-size" style="width:auto"><option selected>10</option><option>25</option><option>50</option><option>100</option></select>
         </label>
         <span id="pageInfo" class="result-count"></span>
         <div class="pager-controls">
@@ -580,7 +583,7 @@
     {issuer:"Government / professional",publication:"ITU-T X.2211",title:"Security requirements for artificial intelligence systems",date:"Determined 2026-06",status:"Under development",category:"Security & resilience",domain:"Telecom / ICT",physical:"Medium",summary:"Lifecycle security requirements based on AI system models and alignment with ISO/IEC AI security work.",conformity:"Determined in ITU-T process at the status date; check final approval/in-force status before citing normatively.",access:"Free work-item status; Recommendation access after approval",url:"https://www.itu.int/ITU-T/workprog/wp_item.aspx?isn=21679"}
   ];
 
-  const state = { sortKey: "issuer", sortDir: 1, page: 1, size: 50 };
+  const state = { sortKey: "issuer", sortDir: 1, page: 1, size: 10 };
   const $ = id => document.getElementById(id);
   const tableScroll = $("tableScroll");
   const tableScrollTop = $("tableScrollTop");
@@ -752,7 +755,12 @@
   document.addEventListener("keydown", event => {
     if (event.key === "Escape") document.querySelectorAll(".multi-filter[open]").forEach(details => { details.open = false; details.querySelector("summary").focus(); });
   });
-  $("pageSize").addEventListener("change", e => { state.size=Number(e.target.value); state.page=1; render(); });
+  document.querySelectorAll(".page-size").forEach(select => select.addEventListener("change", e => {
+    state.size=Number(e.target.value);
+    state.page=1;
+    document.querySelectorAll(".page-size").forEach(other => { other.value=e.target.value; });
+    render();
+  }));
   $("prev").addEventListener("click", () => { if(state.page>1){state.page--;render();window.scrollTo({top:document.querySelector(".table-shell").offsetTop-10,behavior:"smooth"});} });
   $("next").addEventListener("click", () => { state.page++;render();window.scrollTo({top:document.querySelector(".table-shell").offsetTop-10,behavior:"smooth"}); });
   $("reset").addEventListener("click", () => {
