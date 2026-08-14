@@ -6,6 +6,7 @@ This log records audits that produced a material matrix change. No-change runs a
 
 ### Confirmed factual changes
 
+- Corrected the `ISO/IEC 42005:2025` URL from `https://www.iso.org/standard/42005.html` to ISO's official `https://www.iso.org/standard/42005`, and the `ISO/IEC 42006:2025` URL from `https://www.iso.org/standard/42006.html`, which resolves to unrelated withdrawn ISO 24095:2009, to ISO's official `https://www.iso.org/standard/42006?browse=tc`. ISO identifies both as published International Standards; the latter is the AIMS audit-and-certification-bodies standard. Sources: https://www.iso.org/standard/42005 and https://www.iso.org/standard/42006?browse=tc
 - Corrected the `ISO/IEC 42001:2023` official URL from `https://www.iso.org/standard/42001.html`, which resolves to unrelated withdrawn ISO 12164-4, to ISO's official `ISO/IEC 42001:2023` landing page: https://www.iso.org/standard/42001
 - Added `IEEE P4501`. IEEE records approval of the active standards project on 14 May 2026. Its official scope establishes a lifecycle framework for Physical AI in manufacturing, including terminology, high-level reliability and precision requirements, secure data governance, human-system interaction, and alignment with industrial safety and security standards. Source: https://standards.ieee.org/ieee/4501/12576/
 
