@@ -215,8 +215,9 @@
     .audit-badge:hover, .audit-badge:focus-visible { filter: brightness(.9); outline: 2px solid currentColor; outline-offset: 2px; }
     .access-badge { color: #b42318; background: #fee4e2; }
     .unverified-badge { color: #b54708; background: #ffead5; }
-    .audit-footnotes { scroll-margin-top: 24px; color: var(--muted); font-size: .85rem; }
-    .audit-footnotes span:target { color: var(--text); background: var(--warn-soft); border-radius: 4px; padding: 2px 4px; }
+    .audit-footnotes { display: flex; gap: 12px 20px; flex-wrap: wrap; scroll-margin-top: 24px; color: var(--muted); font-size: .85rem; }
+    .audit-note { padding: 2px 4px; border-radius: 4px; }
+    .audit-note.is-highlighted { color: var(--text); background: var(--warn-soft); }
     .org { display: block; margin-top: 5px; color: var(--muted); font-size: .77rem; }
     .title { min-width: 290px; font-weight: 700; }
     .summary { display: block; margin-top: 5px; color: var(--muted); font-size: .8rem; font-weight: 400; }
@@ -391,7 +392,7 @@
       </div>
     </section>
 
-    <p class="audit-footnotes"><span id="access-note"><strong>^*</strong> Access may be restricted for bots / automation.</span> <span id="unverified-note"><strong>##</strong> Site is currently unavailable or otherwise could not be verified on the last audit.</span></p>
+    <div id="audit-notes" class="audit-footnotes" aria-label="Audit link notes"><span id="access-note" class="audit-note"><strong>^*</strong> Access may be restricted for bots / automation.</span><span id="unverified-note" class="audit-note"><strong>##</strong> Site is currently unavailable or otherwise could not be verified on the last audit.</span></div>
 
     <div class="method">
       <section class="panel">
@@ -566,8 +567,8 @@
   }
 
   function auditBadge(d) {
-    if (d.auditFlag === "access") return `<a class="audit-badge access-badge" href="#access-note" title="Jump to access note" aria-label="Jump to access note">Access ^*</a>`;
-    if (d.auditFlag === "unverified") return `<a class="audit-badge unverified-badge" href="#unverified-note" title="Jump to unverified note" aria-label="Jump to unverified note">Unverified ##</a>`;
+    if (d.auditFlag === "access") return `<a class="audit-badge access-badge" href="#audit-notes" data-audit-note="access" title="Jump to audit notes" aria-label="Jump to access note">Access ^*</a>`;
+    if (d.auditFlag === "unverified") return `<a class="audit-badge unverified-badge" href="#audit-notes" data-audit-note="unverified" title="Jump to audit notes" aria-label="Jump to unverified note">Unverified ##</a>`;
     return "";
   }
 
@@ -646,6 +647,13 @@
       btn.setAttribute("aria-sort", btn.dataset.sort === state.sortKey ? (state.sortDir === 1 ? "ascending" : "descending") : "none");
     });
   }
+
+  $("rows").addEventListener("click", event => {
+    const badge = event.target.closest("[data-audit-note]");
+    if (!badge) return;
+    document.querySelectorAll(".audit-note").forEach(note => note.classList.remove("is-highlighted"));
+    $(badge.dataset.auditNote + "-note").classList.add("is-highlighted");
+  });
 
   function exportCsv() {
     const cols = ["issuer","publication","title","date","status","category","domain","physical","summary","conformity","access","url"];
