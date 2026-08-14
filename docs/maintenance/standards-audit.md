@@ -76,10 +76,13 @@ Run available local checks without installing dependencies:
 2. Confirm every row contains all required fields.
 3. Check for duplicate publication identifiers.
 4. Check that official URLs use HTTPS where available.
-5. Recalculate publication, issuer, current-status, and Physical-AI counts.
-6. Exercise representative search, single-filter, and combined-filter cases.
-7. Run `git diff --check`.
-8. Review `git diff -- index.html docs/maintenance/audit-log.md` for unintended changes.
+5. Crawl every unique, nonempty `url` value in the embedded matrix with bounded parallelism. Follow redirects and record the final URL. If a server rejects or does not support `HEAD`, retry with `GET`. Retry transient failures before classifying a result.
+6. Classify each crawled URL as healthy, redirected, broken, temporarily unavailable, or access-blocked. Treat successful HTTP responses as healthy; report permanent not-found responses, DNS failures, and TLS failures as broken. Keep authentication challenges, rate limits, bot protections, timeouts, and transient server errors separate from broken links.
+7. Manually inspect redirected, broken, unavailable, and access-blocked results against an authoritative primary source. Do not replace or remove a matrix URL solely because an automated request was blocked or failed transiently.
+8. Recalculate publication, issuer, current-status, and Physical-AI counts.
+9. Exercise representative search, single-filter, and combined-filter cases.
+10. Run `git diff --check`.
+11. Review `git diff -- index.html docs/maintenance/audit-log.md` for unintended changes.
 
 ## 7. Report and handoff
 
@@ -89,6 +92,7 @@ If changes were made:
 - Cite the exact official sources and summarize their evidence.
 - Separate confirmed facts from editorial judgments.
 - List validation performed and its result.
+- Report the URL crawl totals by classification and identify every redirected, broken, temporarily unavailable, or access-blocked URL with its affected publication identifier.
 - Identify unavailable or ambiguous sources as follow-up items.
 - Leave the diff uncommitted for human review.
 
@@ -96,4 +100,5 @@ If no supported changes were found:
 
 - Make no file edits.
 - Report the issuer sources checked.
+- Report the URL crawl totals by classification and identify every redirected, broken, temporarily unavailable, or access-blocked URL with its affected publication identifier.
 - List unavailable or ambiguous sources as follow-up items.
