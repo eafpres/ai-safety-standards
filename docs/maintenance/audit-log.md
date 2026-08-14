@@ -2,6 +2,29 @@
 
 This log records audits that produced a material matrix change. No-change runs are intentionally not recorded here because scheduled audits must leave a clean repository untouched.
 
+## 2026-08-14
+
+### Confirmed factual changes
+
+- Added `IEEE P4501`. IEEE records approval of the active standards project on 14 May 2026. Its official scope establishes a lifecycle framework for Physical AI in manufacturing, including terminology, high-level reliability and precision requirements, secure data governance, human-system interaction, and alignment with industrial safety and security standards. Source: https://standards.ieee.org/ieee/4501/12576/
+
+### Editorial judgments
+
+- Rated `IEEE P4501` High for Physical-AI relevance because it directly addresses AI systems that sense, decide, and actuate in industrial manufacturing environments. Classified it under Lifecycle & process because the official scope spans the full implementation lifecycle and uses existing safety standards rather than defining a standalone product-safety approval.
+
+### Validation
+
+- Embedded data evaluated successfully as JavaScript using the available Windows Script Host runtime.
+- Verified 112 entries, 11 issuer groups, 95 current-status entries, and 55 High Physical-AI entries.
+- Verified all required fields, HTTPS-only URLs, and no duplicate publication identifiers.
+- Exercised representative search, single-filter, and combined-filter derivations.
+- `git diff --check` passed.
+
+### Follow-up items
+
+- The EASA Proposed Issue 3 landing page still does not expose the stated 12 August 2026 consultation deadline in retrievable official text, so that claim was not changed.
+- UNECE's available official records still identify the new ADS measure as an adopted draft UN Regulation without exposing a final regulation number or exact entry-into-force date; retain `Adopted` status.
+
 ## 2026-08-13
 
 ### Confirmed factual changes
