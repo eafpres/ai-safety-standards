@@ -101,6 +101,8 @@
     .actions-right { margin-left: auto; }
     button { padding: 8px 12px; border: 1px solid var(--line); border-radius: 9px; background: var(--surface-2); cursor: pointer; font-weight: 700; }
     button:hover { border-color: var(--accent); }
+    .issue-link { display: inline-flex; min-height: 42px; align-items: center; padding: 8px 12px; border: 1px solid var(--line); border-radius: 9px; background: var(--surface-2); font-weight: 700; text-decoration: none; }
+    .issue-link:hover { border-color: var(--accent); }
     .primary { color: var(--surface); border-color: var(--accent); background: var(--accent); }
     .result-count { font-weight: 800; }
     .result-count span { color: var(--muted); font-weight: 500; }
@@ -194,7 +196,7 @@
       .filter-grid label:first-child { grid-column: auto; }
       .sources ul, .method { grid-template-columns: 1fr; }
       .actions-left, .actions-right { width: 100%; }
-      .actions-right button { flex: 1; }
+      .actions-right button, .actions-right .issue-link { flex: 1; justify-content: center; }
     }
     @media print {
       body { background: #fff; color: #000; }
@@ -265,6 +267,7 @@
           </div>
         </div>
         <div class="actions-right">
+          <a class="issue-link" href="https://github.com/eafpres/ai-safety-standards/issues/new?template=product-candidate.yml" target="_blank" rel="noopener noreferrer">Open an issue for a missing company or product ↗</a>
           <label style="flex-direction:row;align-items:center">Rows per page
             <select class="page-size" style="width:auto"><option selected>10</option><option>25</option><option>50</option><option>100</option></select>
           </label>

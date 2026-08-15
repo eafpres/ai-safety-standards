@@ -177,6 +177,9 @@
       font-weight: 700;
     }
     button:hover { border-color: var(--accent); }
+    .issue-link { display: inline-flex; min-height: 42px; align-items: center; padding: 8px 12px; border: 1px solid var(--line); border-radius: 9px; background: var(--surface-2); font-weight: 700; text-decoration: none; }
+    .issue-link:hover { border-color: var(--accent); }
+    .issue-link:focus-visible { border-color: var(--accent); outline: 3px solid color-mix(in srgb, var(--accent) 22%, transparent); }
     .primary { background: var(--accent); color: var(--surface); border-color: var(--accent); }
     .result-count { font-weight: 800; }
     .result-count span { color: var(--muted); font-weight: 500; }
@@ -294,7 +297,7 @@
       .method { grid-template-columns: 1fr; }
       .actions { align-items: stretch; }
       .actions-left, .actions-right { width: 100%; }
-      .actions-right button { flex: 1; }
+      .actions-right button, .actions-right .issue-link { flex: 1; justify-content: center; }
       .site-switcher { display: flex; width: 100%; }
       .site-switcher a { flex: 1; text-align: center; }
     }
@@ -400,6 +403,7 @@
           <div class="filter-logic">Multiple choices within a filter use OR; choices across filters use AND.</div>
         </div>
         <div class="actions-right">
+          <a class="issue-link" href="https://github.com/eafpres/ai-safety-standards/issues/new?template=standards-candidate.yml" target="_blank" rel="noopener noreferrer">Open an issue for a missing standard ↗</a>
           <label style="flex-direction:row;align-items:center">Rows per page
             <select class="page-size" style="width:auto"><option selected>10</option><option>25</option><option>50</option><option>100</option></select>
           </label>
