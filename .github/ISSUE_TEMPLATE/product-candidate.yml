@@ -1,0 +1,95 @@
+name: Product candidate
+description: Submit a provider, offering, or official link for review in the products matrix.
+title: "[Product candidate] "
+labels:
+  - candidate
+  - "matrix:products"
+  - "status:needs-verification"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for a provider, offering, ownership or availability change, replacement link, or research lead that may affect the AI Safety Products & Vendors Matrix. Discovery-source inclusion is not evidence or an endorsement; factual changes must be verified against an authoritative primary source.
+
+  - type: input
+    id: provider
+    attributes:
+      label: Provider
+      placeholder: "Example AI"
+    validations:
+      required: true
+
+  - type: input
+    id: offering
+    attributes:
+      label: Offering
+      description: Enter the product, service, platform, or represented offering.
+      placeholder: "Example assurance platform"
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: Candidate URL
+      description: Paste the most direct link you found. An official provider or acquirer URL is preferred but not required for intake.
+      placeholder: "https://www.example.com/product"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: proposed_action
+    attributes:
+      label: Possible matrix action
+      description: Choose the action that seems most likely. The audit may reach a different conclusion.
+      options:
+        - Add a provider or offering
+        - Update an existing provider or offering
+        - Replace or repair a URL
+        - Research lead only
+    validations:
+      required: true
+
+  - type: dropdown
+    id: source_type
+    attributes:
+      label: Source type
+      options:
+        - Official provider, acquirer, or product-documentation source
+        - Secondary or discovery source
+        - Unknown
+    validations:
+      required: true
+
+  - type: textarea
+    id: suspected_change
+    attributes:
+      label: Suspected factual change
+      description: Describe the offering, ownership, lifecycle, availability, URL, or other fact that may need review.
+      placeholder: "The provider announcement appears to show that this offering was acquired and renamed."
+    validations:
+      required: true
+
+  - type: textarea
+    id: relevance
+    attributes:
+      label: Why this may belong in the matrix
+      description: Briefly explain its AI-safety, trust, governance, assurance, security, evaluation, monitoring, or Physical-AI relevance.
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional notes
+      description: Add alternate official links, discovery-catalogue references, access problems, or other useful context.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: acknowledgement
+    attributes:
+      label: Intake acknowledgement
+      options:
+        - label: I understand that this submission is a research lead and will be verified before any matrix change is proposed.
+          required: true

@@ -13,6 +13,7 @@ Run git status --short before reading external sources or editing files.
 ## 2. Repository context
 
 - Read AGENTS.md, this playbook, and the latest relevant entry in products-audit-log.md.
+- Read candidate-issues.md and review open GitHub issues matching `is:issue is:open label:"matrix:products" label:"status:needs-verification"`. If GitHub issue access is unavailable, report that the candidate queue was not reviewed and continue the audit.
 - Treat products.html as the source of truth unless the repository later explicitly designates a structured data source.
 - Inspect the embedded data before research so the audit prioritizes recent startups, acquisitions, integrated products, fragile links, and offerings whose availability may change quickly.
 - Keep this audit separate from the standards audit. Do not change index.html or docs/maintenance/audit-log.md.
@@ -44,6 +45,7 @@ Discovery-source inclusion is not an endorsement and is not sufficient evidence 
 
 For every proposed data change, capture in the audit report and, when a material edit is made, in products-audit-log.md:
 
+- Candidate issue number, when the change originated from the candidate queue.
 - Provider and offering.
 - Affected field.
 - Exact primary-source URL.
@@ -82,11 +84,16 @@ Run available local checks without installing dependencies:
 11. Run git diff --check.
 12. Review the diff for products.html and docs/maintenance/products-audit-log.md for unintended changes.
 
-## 7. Report and handoff
+## 7. Candidate issue disposition
+
+Follow candidate-issues.md after verifying each product candidate. A supported candidate remains open with `status:ready-for-change` until its uncommitted matrix diff has received human review and the approved change is committed outside the audit workflow. Do not treat the submitted link, discovery-source inclusion, or issue text as evidence; cite the exact authoritative primary source used for the disposition.
+
+## 8. Report and handoff
 
 If changes were made:
 
 - List each provider or offering added, changed, removed, or flagged.
+- List each reviewed candidate issue and its disposition.
 - Cite the exact primary sources and summarize their evidence.
 - Separate confirmed facts from editorial judgments.
 - List validation performed and its result.
@@ -102,3 +109,4 @@ If no supported changes were found:
 - Report URL-crawl totals by classification and identify every redirected, broken, temporarily unavailable, access-blocked, or wrong-target URL.
 - If external review was environment-blocked, report that condition separately and do not present it as a URL-crawl result.
 - List unavailable or ambiguous sources as follow-up items.
+- List each reviewed candidate issue and its disposition.

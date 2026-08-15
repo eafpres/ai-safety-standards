@@ -25,5 +25,6 @@ This repository maintains the AI Safety Standards & Publications Matrix. `index.
 ## General editing rules
 
 - Keep project-specific maintenance instructions and material audit decisions in this repository.
+- Capture manually discovered standards and product links through the GitHub candidate-issue workflow in `docs/maintenance/candidate-issues.md`.
 - Avoid unrelated formatting or wording churn.
 - Do not install dependencies for validation.

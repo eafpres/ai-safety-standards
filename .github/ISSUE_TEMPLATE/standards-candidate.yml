@@ -1,0 +1,87 @@
+name: Standards candidate
+description: Submit a publication or official link for review in the standards matrix.
+title: "[Standards candidate] "
+labels:
+  - candidate
+  - "matrix:standards"
+  - "status:needs-verification"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for a publication, status change, replacement link, or research lead that may affect the AI Safety Standards & Publications Matrix. A submitted link is a lead until it is verified against an authoritative primary source.
+
+  - type: input
+    id: publication
+    attributes:
+      label: Publication or identifier
+      description: Enter the official identifier when known, followed by a short title if useful.
+      placeholder: "ISO/IEC 12345 — Example title"
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: Candidate URL
+      description: Paste the most direct link you found. An official issuer URL is preferred but not required for intake.
+      placeholder: "https://www.example.org/publication/12345"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: proposed_action
+    attributes:
+      label: Possible matrix action
+      description: Choose the action that seems most likely. The audit may reach a different conclusion.
+      options:
+        - Add a publication
+        - Update an existing publication
+        - Replace or repair a URL
+        - Research lead only
+    validations:
+      required: true
+
+  - type: dropdown
+    id: source_type
+    attributes:
+      label: Source type
+      options:
+        - Official issuer, regulator, standards-body, or treaty-office source
+        - Secondary or discovery source
+        - Unknown
+    validations:
+      required: true
+
+  - type: textarea
+    id: suspected_change
+    attributes:
+      label: Suspected factual change
+      description: Describe the status, date, edition, amendment, legal milestone, URL, or other fact that may need review.
+      placeholder: "The official page appears to show that the project advanced to DIS stage in August 2026."
+    validations:
+      required: true
+
+  - type: textarea
+    id: relevance
+    attributes:
+      label: Why this may belong in the matrix
+      description: Briefly explain its AI-safety, assurance, conformity, or Physical-AI relevance.
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional notes
+      description: Add alternate official links, related publications, access problems, or other useful context.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: acknowledgement
+    attributes:
+      label: Intake acknowledgement
+      options:
+        - label: I understand that this submission is a research lead and will be verified before any matrix change is proposed.
+          required: true

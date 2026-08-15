@@ -13,6 +13,7 @@ Run `git status --short` before reading external sources or editing files.
 ## 2. Repository context
 
 - Read `AGENTS.md`, this playbook, and the latest relevant entry in `audit-log.md`.
+- Read `candidate-issues.md` and review open GitHub issues matching `is:issue is:open label:"matrix:standards" label:"status:needs-verification"`. If GitHub issue access is unavailable, report that the candidate queue was not reviewed and continue the audit.
 - Treat `index.html` as the source of truth unless the repository later contains explicit maintenance documentation that designates structured data files.
 - Inspect the embedded data before research so the audit prioritizes current drafts, work items, revision markers, and potentially fragile links.
 - Use Codex web retrieval for external research and URL checks. The workspace shell may be sandboxed from outbound HTTPS even when web retrieval is available; do not use shell-network failures as evidence about an issuer site.
@@ -48,6 +49,7 @@ Use only issuer, regulator, standards-body, treaty-office, or other primary offi
 
 For every proposed data change, capture in the audit report and, when a material edit is made, in `audit-log.md`:
 
+- Candidate issue number, when the change originated from the candidate queue.
 - Publication identifier and affected field.
 - Exact official source URL.
 - Official status, date, lifecycle stage, legal milestone, or other evidence supporting the change.
@@ -86,11 +88,16 @@ Run available local checks without installing dependencies:
 11. Run `git diff --check`.
 12. Review `git diff -- index.html docs/maintenance/audit-log.md` for unintended changes.
 
-## 7. Report and handoff
+## 7. Candidate issue disposition
+
+Follow `candidate-issues.md` after verifying each standards candidate. A supported candidate remains open with `status:ready-for-change` until its uncommitted matrix diff has received human review and the approved change is committed outside the audit workflow. Do not treat the submitted link or issue text as evidence; cite the exact authoritative primary source used for the disposition.
+
+## 8. Report and handoff
 
 If changes were made:
 
 - List each publication added, changed, removed, or flagged.
+- List each reviewed candidate issue and its disposition.
 - Cite the exact official sources and summarize their evidence.
 - Separate confirmed facts from editorial judgments.
 - List validation performed and its result.
@@ -106,3 +113,4 @@ If no supported changes were found:
 - Report the URL crawl totals by classification and identify every redirected, broken, temporarily unavailable, or access-blocked URL with its affected publication identifier.
 - If external review was environment-blocked, report that condition separately and do not present it as a URL-crawl result.
 - List unavailable or ambiguous sources as follow-up items.
+- List each reviewed candidate issue and its disposition.
