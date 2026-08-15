@@ -30,3 +30,22 @@ Editorial judgments:
 Follow-up:
 
 - Check Point announced a definitive agreement to acquire Deepchecks' team and intellectual property on 19 May 2026, but did not state that the transaction had closed; the row remains under Deepchecks pending authoritative confirmation: https://www.checkpoint.com/press-releases/check-point-launches-agentic-network-security-orchestration-platform-turning-months-of-manual-policy-work-into-minutes-of-verified-action/
+
+## 15 August 2026 — Follow-up products-and-vendors audit
+
+Confirmed provider facts:
+
+- Candidate issue #1 — AISquare / System of record for AI decisions — fields: provider, offering, summary, access, URL. AISquare markets a platform that records agent reasoning and evidence, enforces policy before actions, preserves corrections and approvals, and offers free starting access: https://aisquare.studio/
+- Check Point / Deepchecks — fields: provider, offering, type, summary. Check Point's official channels welcome the Deepchecks team into Check Point, and Deepchecks identifies itself as now within Check Point following the acquisition; the current product site continues to market evaluation, observability, testing, and monitoring: https://blog.checkpoint.com/security/the-network-security-problem-no-one-could-solve-until-now/ and https://www.linkedin.com/company/deepchecks/ and https://deepchecks.com/
+- Parallel Domain / PD Replica and PD Sim — fields: offering, lifecycle, domain, summary, URL verification status. Parallel Domain now markets real-world reconstruction and deterministic multi-sensor simulation for autonomy testing and validation across vehicles, drones, and robots: https://paralleldomain.com/ and https://paralleldomain.com/company/about
+- Canonical official URL replacements — field: URL and URL verification status. AI Fairness 360 now links to its current official project repository at https://github.com/Trusted-AI/AIF360; AIUC now uses its directly retrievable canonical apex URL at https://aiuc.com/.
+
+Editorial judgments:
+
+- Adding AISquare is an editorial inclusion decision based on its verified AI-agent governance, runtime policy, traceability, and audit functions. Its Governance & compliance category, Multiple stages lifecycle, Medium Physical-AI relevance, and potential standards relevance are editorial classifications, not provider or standards-body determinations.
+- Deepchecks' Testing & evaluation category, lifecycle, domain, Physical-AI relevance, and potential standards relevance remain editorial; the ownership and capability changes are confirmed provider and official-acquirer facts.
+- Parallel Domain's Physical-AI validation category, Multiple stages lifecycle, Robotics / physical AI domain, High Physical-AI relevance, and potential standards relevance are editorial classifications based on the verified current offering.
+
+Follow-up:
+
+- OpenAI's Promptfoo acquisition remains subject to customary closing conditions on the latest authoritative announcement: https://openai.com/index/openai-to-acquire-promptfoo/
