@@ -2,6 +2,41 @@
 
 This log records audits that produced a material matrix change. No-change runs are intentionally not recorded here because scheduled audits must leave a clean repository untouched.
 
+## 2026-08-15
+
+### Confirmed factual changes
+
+- Updated `ISO/IEC DIS 42007` from DIS registration to its 12-week DIS ballot, which ISO records as initiated on 11 August 2026 at stage 40.20. Source: https://www.iso.org/standard/89967.html
+- Added `ISO/IEC DIS 4213`. ISO records the expanded performance-measurement revision at stage 40.20, with its 12-week DIS ballot initiated on 28 July 2026; it is intended to replace ISO/IEC TS 4213:2022. Source: https://www.iso.org/standard/89455.html
+- Added `ISO/IEC FDIS 24970`. ISO records the AI-system event-logging project at stage 50.00 since 18 May 2026. Source: https://www.iso.org/standard/88723.html
+- Added `ISO/IEC FDIS 25059` as the proposed second edition of the AI-system quality model. ISO records stage 50.00 on 23 July 2026 and states that it will replace ISO/IEC 25059:2023; retained the published first edition as current while the replacement remains under development. Source: https://www.iso.org/standard/88234.html
+- Added `IEEE 2863-2026`. IEEE records an active recommended practice for organizational AI governance, with Standards Board approval on 4 June 2026. Source: https://standards.ieee.org/ieee/2863/10142/
+- Added `EN 18286:2026`. CEN-CENELEC records the AI quality-management-system standard as published with a 22 July 2026 date of availability and states that OJEU citation for Regulation (EU) 2024/1689 is expected. Source: https://standards.cencenelec.eu/ords/f?cs=12A382BDB5385F509EBAA7CD4808AFBF3&p=CEN%3A110%3A%3A%3A%3A%3AFSP_PROJECT%2CFSP_ORG_ID%3A80556%2C2916257
+- Updated `Council of Europe CETS No. 225` to record the European Union's 15 May 2026 approval and clarify that the treaty has not yet met its entry-into-force threshold of five ratifications including at least three Council of Europe member states. Sources: https://www.coe.int/en/web/conventions/full-list?module=signatures-by-treaty&treatynum=225 and https://www.coe.int/en/web/conventions/full-list?module=treaty-detail&treatynum=225
+- Confirmed the existing 12 August 2026 deadline for comments on EASA AI Concept Paper Proposed Issue 3 from EASA's official 3 June 2026 announcement; no matrix field required a change. Source: https://www.easa.europa.eu/en/newsroom-and-events/news/easa-releases-latest-issue-its-concept-paper-artificial-intelligence
+
+### Editorial judgments
+
+- Rated `ISO/IEC DIS 4213`, `ISO/IEC FDIS 24970`, and `ISO/IEC FDIS 25059` Medium for Physical-AI relevance because their cross-sector performance, logging, and quality-model provisions can support cyber-physical assurance but do not define domain-specific product safety.
+- Rated `IEEE 2863-2026` Medium because organizational AI governance can support safety accountability across sectors but is not a direct physical-system safety standard.
+- Rated `EN 18286:2026` Medium because its quality-management requirements support providers of high-risk AI, including safety-relevant systems, while remaining cross-sector and organizational.
+
+### Validation
+
+- Embedded data evaluated successfully as JavaScript using the bundled Node.js runtime.
+- Verified 117 entries, 11 issuer groups, 97 current-status entries, and 55 High Physical-AI entries.
+- Verified all required fields, HTTPS-only URLs, and no duplicate publication identifiers.
+- Exercised representative search, single-filter, combined-filter, sort, and pagination derivations.
+- Crawled all 104 unique matrix URLs: 96 healthy, 0 redirected, 0 broken, 0 temporarily unavailable, and 8 access-blocked. The access-blocked URLs affect `IEEE 7002-2022`; `UN Regulation No. 155` and `UN Regulation No. 156` (shared UNECE page); `UN Regulation No. 157`; `UN Regulation on Automated Driving Systems (ADS)`; `EASA AI Concept Paper Proposed Issue 3`; `EASA NPA 2025-07 / proposed DS.AI`; `UNESCO Recommendation on AI Ethics`; and `Canada Directive on Automated Decision-Making`. Each represented publication was confirmed through another official page or an authoritative indexed record; none was classified as broken.
+- The `EN 18286:2026` catalogue URL initially failed direct retrieval but loaded successfully through the official CEN-CENELEC publication link on retry and was classified healthy.
+- `git diff --check` passed, and the standards-matrix diff was reviewed for unintended changes.
+
+### Follow-up items
+
+- UNECE's available official records still identify the new ADS measure as an adopted draft UN Regulation without exposing a final regulation number or exact entry-into-force date; retain `Adopted` status.
+- EASA's matrix landing pages were access-blocked in automated retrieval, although the official news announcement confirmed the Proposed Issue 3 consultation deadline.
+- ETSI work-programme scheduling data for current SAI drafts contains ambiguous milestone ordering; no draft status or publication claim was changed without an unambiguous official record.
+
 ## 2026-08-14
 
 ### Confirmed factual changes
