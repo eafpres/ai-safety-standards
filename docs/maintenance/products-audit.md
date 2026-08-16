@@ -13,7 +13,7 @@ Run git status --short before reading external sources or editing files.
 ## 2. Repository context
 
 - Read AGENTS.md, this playbook, and the latest relevant entry in products-audit-log.md.
-- Read candidate-issues.md and review open GitHub issues matching both `is:issue is:open label:"matrix:products" label:"status:needs-verification"` and `is:issue is:open label:"matrix:products" label:"status:ready-for-change"`. If GitHub issue access is unavailable, report that the candidate queues were not reviewed and continue the audit.
+- Read candidate-issues.md and review every open GitHub issue matching `is:issue is:open label:candidate label:"matrix:products"`. Route candidates by their current status, inspect deferred candidates for material activity since their latest audit disposition, and normalize invalid ready-for-change states before relying on them. If GitHub issue access is unavailable, report that the candidate queue was not reviewed and continue the audit.
 - Treat products.html as the source of truth unless the repository later explicitly designates a structured data source.
 - Inspect the embedded data before research so the audit prioritizes recent startups, acquisitions, integrated products, fragile links, and offerings whose availability may change quickly.
 - Keep this audit separate from the standards audit. Do not change index.html or docs/maintenance/audit-log.md.
@@ -89,12 +89,19 @@ Run available local checks without installing dependencies:
 
 Follow candidate-issues.md after verifying each product candidate. A supported candidate remains open with `status:ready-for-change` until its uncommitted matrix diff has received human review and the approved change is committed outside the audit workflow. Do not treat the submitted link, discovery-source inclusion, or issue text as evidence; cite the exact authoritative primary source used for the disposition.
 
-After the clean-worktree preflight, reconcile every open product candidate with `status:ready-for-change`:
+After the clean-worktree preflight, normalize and route the candidate queue before committed-change reconciliation:
+
+1. Inspect each issue's labels, comments, and latest audit disposition.
+2. If a deferred candidate has new evidence or a material correction after its latest audit disposition, replace `status:deferred` with `status:needs-verification` and evaluate it in the current audit. Leave unchanged deferred candidates without new material activity; do not repeat the same research.
+3. For every candidate labeled `status:ready-for-change`, confirm that its latest supported audit disposition cites exact authoritative evidence, identifies the affected fields, and records the exact recommended or prepared provider-and-offering change. A manual label change or unverified issue comment does not satisfy this requirement.
+4. If a ready-for-change candidate fails that check, or material new evidence supersedes its supported disposition, replace its status with `status:needs-verification` and evaluate it again. Apply the supported, deferred, duplicate/out-of-scope/unsupported, or needs-more-research disposition based on the current evidence.
+
+Then reconcile every product candidate that still validly carries `status:ready-for-change`:
 
 1. Inspect `products.html` on the GitHub repository's default branch, not the local working tree, and confirm that the exact approved provider-and-offering change is present.
 2. Identify the specific pushed commit reachable from the default branch that introduced the approved change. An issue reference, commit message, local diff, staged change, or unmerged branch is not sufficient.
 3. If both the implemented change and its pushed commit are unambiguous, comment on the issue with the commit link, remove `status:ready-for-change`, and close the issue as completed.
-4. If the implementation or commit cannot be verified exactly, leave the issue open and unchanged and report the ambiguity as a follow-up item.
+4. If the implementation or commit cannot be verified exactly, leave the issue open with `status:ready-for-change` and report the ambiguity as a follow-up item.
 
 Candidate reconciliation is GitHub issue bookkeeping, not a material matrix change. It must not by itself edit products.html or products-audit-log.md.
 

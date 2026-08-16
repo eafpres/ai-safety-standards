@@ -67,3 +67,27 @@ Follow-up:
 
 - Recheck BeyondTrust AI Agent Security availability after its planned US general-availability window in fall 2026.
 - Candidate issues #2 and #3 remain open with `status:ready-for-change` until the uncommitted matrix diff receives human review and an approved change is committed outside the audit workflow.
+
+## 16 August 2026 — Scheduled products-and-vendors audit
+
+Confirmed provider facts:
+
+- Candidate issue #5 — DigiCert / AI Trust — fields: provider, offering, summary, access, URL. DigiCert markets cryptographic content provenance, model signing and integrity, and verifiable identities, policy controls, and audit records for AI agents; AI Model Trust and AI Agent Trust are offered as previews: https://www.digicert.com/solutions/ai-trust
+- Candidate issue #6 — Concentric AI / AI and Data Security Governance Platform — fields: provider, offering, summary, access, URL. Concentric AI markets sensitive-data discovery and access governance, semantic data-loss prevention, and prompt, response, and policy-violation visibility across generative-AI applications; it documents SaaS and browser-extension deployment: https://concentric.ai/product-overview/
+- Candidate issue #7 — NVIDIA / Halos Outside-In Safety Blueprint — fields: provider, offering, summary, access, URL. NVIDIA publishes an open-source, early-access reference architecture for physical-AI safety agents using external cameras, AI perception, safety-event fusion, robot control logic, continuous verification, closed-loop testing, and audit logging; NVIDIA states that it is not for production safety use without a certified safety layer: https://github.com/NVIDIA/halos-outside-in-safety and https://docs.nvidia.com/halos-outside-in/latest/
+- Patronus AI / AI evaluation and security platform — field: URL. Patronus AI's current products page continues to identify its evaluation platform, evaluators, experiments, tracing, and agent-evaluation tooling while its homepage now emphasizes digital-world-model research: https://www.patronus.ai/products
+- Veeam / DataAI Command Platform and Agent Commander — fields: provider, offering, type, summary, access, URL. Veeam completed its acquisition of Securiti AI in December 2025, launched the integrated DataAI Command Platform in May 2026, and currently markets Agent Commander for AI discovery, risk controls, policy enforcement, and precise recovery: https://www.veeam.com/company/press-release/veeam-acquires-securiti-ai.html and https://www.veeam.com/platform.html
+
+Editorial judgments:
+
+- Adding DigiCert is an editorial inclusion decision based on its verified content-provenance, model-integrity, agent-identity, policy-control, and audit functions. Its Security & resilience category, Multiple stages lifecycle, Cross-sector domain, Medium Physical-AI relevance, and potential standards relevance are editorial classifications, not provider or standards-body determinations.
+- Adding Concentric AI is an editorial inclusion decision based on its verified sensitive-data discovery, governance, data-loss-prevention, and generative-AI visibility and control functions. Its Security & resilience category, Deploy & protect lifecycle, Workplace AI domain, Low Physical-AI relevance, and potential standards relevance are editorial classifications, not provider or standards-body determinations.
+- Adding NVIDIA Halos Outside-In Safety Blueprint is an editorial inclusion decision based on its verified physical-AI safety, continuous-verification, closed-loop-testing, and audit functions. Its Physical-AI validation category, Multiple stages lifecycle, Robotics / physical AI domain, High Physical-AI relevance, and potential standards relevance are editorial classifications, not provider or standards-body determinations.
+- Veeam's Governance & compliance category, Multiple stages lifecycle, Cloud / data domain, Medium Physical-AI relevance, and potential standards relevance remain editorial classifications. The acquisition, integrated offering, and marketed capabilities are confirmed Veeam facts.
+
+Follow-up:
+
+- Candidate issue #4 — GuvFlow remains open with `status:ready-for-change`; the corrected provider domain was blocked by the web safety guard, browser control was unavailable, and the committed default-branch matrix does not contain GuvFlow. Verify the live provider page and implement or revise the candidate in a later clean-worktree audit.
+- Recheck DigiCert AI Model Trust and AI Agent Trust after their preview periods.
+- Recheck NVIDIA Halos Outside-In Safety after early access and before describing any production-safety availability.
+- Recheck Veeam DataAI Agent Commander after early access.
