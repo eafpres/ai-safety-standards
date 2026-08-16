@@ -92,7 +92,7 @@
     .stat strong { display: block; font-size: 1.75rem; line-height: 1; letter-spacing: -.03em; }
     .stat span { display: block; margin-top: 7px; color: var(--muted); font-size: .84rem; }
     .filters { padding: 17px; margin-bottom: 14px; }
-    .filter-grid { display: grid; grid-template-columns: minmax(280px, 2fr) repeat(5, minmax(150px, 1fr)); gap: 11px; }
+    .filter-grid { display: grid; grid-template-columns: minmax(280px, 2fr) repeat(6, minmax(150px, 1fr)); gap: 11px; }
     label { display: flex; flex-direction: column; gap: 6px; color: var(--muted); font-size: .76rem; font-weight: 700; letter-spacing: .03em; }
     input, select { width: 100%; padding: 9px 11px; border: 1px solid var(--line); border-radius: 9px; outline: none; background: var(--bg); }
     input:focus, select:focus, button:focus-visible, a:focus-visible { border-color: var(--accent); outline: 3px solid color-mix(in srgb, var(--accent) 22%, transparent); }
@@ -153,6 +153,23 @@
     .sort-btn { display: flex; min-height: auto; width: 100%; align-items: center; gap: 6px; padding: 0; border: 0; background: transparent; color: inherit; text-align: left; text-transform: inherit; letter-spacing: inherit; }
     .sort-btn:hover { color: var(--text); }
     .vendor-link { display: inline-block; font-weight: 800; line-height: 1.25; }
+    .new-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      margin-left: 7px;
+      padding: 2px 6px;
+      border: 1px solid #d6a900;
+      border-radius: 999px;
+      background: #fff3a3;
+      color: #6b5100;
+      font-size: .66rem;
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      vertical-align: 1px;
+    }
     .offering { display: block; margin-top: 5px; color: var(--muted); font-size: .77rem; }
     .summary { min-width: 300px; font-weight: 650; }
     .summary small { display: block; margin-top: 5px; color: var(--muted); font-size: .8rem; font-weight: 400; }
@@ -256,6 +273,9 @@
         <label>Physical-AI relevance **
           <select id="physical"><option value="">All levels</option><option>High</option><option>Medium</option><option>Low</option></select>
         </label>
+        <label>Added to matrix
+          <select id="newItems"><option value="">All items</option><option value="new">New (last 30 days)</option></select>
+        </label>
       </div>
       <div class="actions">
         <div class="actions-left">
@@ -349,7 +369,7 @@
     {provider:"Credo AI",offering:"Responsible AI Governance Platform",category:"Governance & compliance",lifecycle:"Govern & plan",type:"Specialist company",domain:"Regulated enterprise",physical:"Low",summary:"Inventory, policy, risk, evidence, and oversight workflows for enterprise AI governance.",relevance:"ISO/IEC 42001; ISO/IEC 23894; NIST AI RMF; EU AI Act",access:"Commercial platform",url:"https://www.credo.ai/"},
     {provider:"Holistic AI",offering:"AI governance and assurance platform",category:"Governance & compliance",lifecycle:"Multiple stages",type:"Specialist company",domain:"Regulated enterprise",physical:"Low",summary:"AI inventory, risk management, testing, compliance workflows, and assurance services.",relevance:"ISO/IEC 42001; ISO/IEC 23894; NIST AI RMF; EU AI Act",access:"Commercial platform and services",url:"https://www.holisticai.com/"},
     {provider:"Asenion",offering:"AI governance, risk, and compliance platform",category:"Governance & compliance",lifecycle:"Multiple stages",type:"Specialist company",domain:"Regulated enterprise",physical:"Low",summary:"AI inventory, risk assessment, assurance testing, and runtime governance for predictive, generative, and agentic AI.",relevance:"ISO/IEC 42001; NIST AI RMF; EU AI Act",access:"Commercial platform",url:"https://asenion.ai/"},
-    {provider:"AISquare",offering:"System of record for AI decisions",category:"Governance & compliance",lifecycle:"Multiple stages",type:"Specialist company",domain:"Generative AI / agents",physical:"Medium",summary:"Reasoning traces, policy enforcement, human correction, reusable enterprise memory, and audit records for AI-agent decisions.",relevance:"ISO/IEC 42001; NIST AI RMF; ISO/IEC 25059",access:"Commercial platform with free access",url:"https://aisquare.studio/"},
+    {provider:"AISquare",offering:"System of record for AI decisions",category:"Governance & compliance",lifecycle:"Multiple stages",type:"Specialist company",domain:"Generative AI / agents",physical:"Medium",summary:"Reasoning traces, policy enforcement, human correction, reusable enterprise memory, and audit records for AI-agent decisions.",relevance:"ISO/IEC 42001; NIST AI RMF; ISO/IEC 25059",access:"Commercial platform with free access",url:"https://aisquare.studio/",added:"2026-08-15"},
     {provider:"Monitaur",offering:"AI Governance Platform",category:"Governance & compliance",lifecycle:"Multiple stages",type:"Specialist company",domain:"Financial services",physical:"Low",summary:"Policy, model governance, assurance, and documentation workflows with a regulated-industry focus.",relevance:"ISO/IEC 42001; NIST AI RMF; model risk management guidance",access:"Commercial platform",url:"https://www.monitaur.ai/"},
     {provider:"Trustible",offering:"Responsible AI governance platform",category:"Governance & compliance",lifecycle:"Govern & plan",type:"Specialist company",domain:"Regulated enterprise",physical:"Low",summary:"AI use-case inventory, policy mapping, risk assessment, and governance evidence.",relevance:"ISO/IEC 42001; NIST AI RMF; EU AI Act",access:"Commercial platform",url:"https://trustible.ai/"},
     {provider:"Saidot",offering:"AI governance platform",category:"Governance & compliance",lifecycle:"Multiple stages",type:"Specialist company",domain:"Cross-sector",physical:"Low",summary:"Governance, transparency, risk, and control workflows for AI portfolios and suppliers.",relevance:"ISO/IEC 42001; ISO/IEC 23894; EU AI Act",access:"Commercial platform",url:"https://www.saidot.ai/"},
@@ -395,8 +415,8 @@
     {provider:"Zenity",offering:"AI agent security and governance",category:"Security & resilience",lifecycle:"Operate & monitor",type:"Specialist company",domain:"Workplace AI",physical:"Medium",summary:"Discovery, posture management, runtime controls, and governance for enterprise agents and copilots.",relevance:"NIST AI RMF; NIST AI 100-2; EU AI Act",access:"Commercial platform",url:"https://zenity.io/"},
     {provider:"Astrix Security",offering:"Non-human identity and agent security",category:"Security & resilience",lifecycle:"Deploy & protect",type:"Specialist company",domain:"Cloud / data",physical:"Medium",summary:"Discovery and least-privilege controls for non-human identities, integrations, service accounts, and AI agents.",relevance:"NIST AI RMF; NIST cybersecurity guidance; agent-identity controls",access:"Commercial platform",url:"https://astrix.security/"},
     {provider:"Oasis Security",offering:"Non-human identity management",category:"Security & resilience",lifecycle:"Deploy & protect",type:"Specialist company",domain:"Cloud / data",physical:"Medium",summary:"Inventory, posture, ownership, and lifecycle controls for non-human identities used by automation and agents.",relevance:"NIST cybersecurity guidance; NIST AI RMF; agent-identity controls",access:"Commercial platform",url:"https://www.oasis.security/"},
-    {provider:"Delinea",offering:"Delinea Platform",category:"Security & resilience",lifecycle:"Deploy & protect",type:"Established platform",domain:"Cloud / data",physical:"Medium",summary:"Continuous discovery, risk analysis, credential controls, just-in-time privilege, runtime authorization, and audit trails across human, machine, and AI identities.",relevance:"NIST AI RMF; NIST cybersecurity guidance; agent-identity controls",access:"Commercial platform",url:"https://delinea.com/products"},
-    {provider:"BeyondTrust",offering:"AI Agent Security",category:"Security & resilience",lifecycle:"Deploy & protect",type:"Established platform",domain:"Generative AI / agents",physical:"Medium",summary:"Agent discovery, action attribution, execution-chain mapping, least-privilege enforcement, runtime controls, and human approval across agentic frameworks.",relevance:"NIST AI RMF; NIST cybersecurity guidance; agent-identity controls",access:"Limited private beta; US general availability planned for fall 2026",url:"https://www.beyondtrust.com/products/ai-agent-security"},
+    {provider:"Delinea",offering:"Delinea Platform",category:"Security & resilience",lifecycle:"Deploy & protect",type:"Established platform",domain:"Cloud / data",physical:"Medium",summary:"Continuous discovery, risk analysis, credential controls, just-in-time privilege, runtime authorization, and audit trails across human, machine, and AI identities.",relevance:"NIST AI RMF; NIST cybersecurity guidance; agent-identity controls",access:"Commercial platform",url:"https://delinea.com/products",added:"2026-08-15"},
+    {provider:"BeyondTrust",offering:"AI Agent Security",category:"Security & resilience",lifecycle:"Deploy & protect",type:"Established platform",domain:"Generative AI / agents",physical:"Medium",summary:"Agent discovery, action attribution, execution-chain mapping, least-privilege enforcement, runtime controls, and human approval across agentic frameworks.",relevance:"NIST AI RMF; NIST cybersecurity guidance; agent-identity controls",access:"Limited private beta; US general availability planned for fall 2026",url:"https://www.beyondtrust.com/products/ai-agent-security",added:"2026-08-15"},
     {provider:"Operant AI",offering:"3D Runtime Defense",category:"Runtime guardrails",lifecycle:"Deploy & protect",type:"Specialist company",domain:"Cloud / data",physical:"Medium",summary:"Runtime protection, gateways, sensitive-data controls, and agent security for cloud-native AI applications.",relevance:"NIST AI 100-2; OWASP LLM guidance; MITRE ATLAS",access:"Commercial and open-source",url:"https://www.operant.ai/"},
     {provider:"Guardrails AI",offering:"Guardrails",category:"Runtime guardrails",lifecycle:"Design & build",type:"Specialist company",domain:"Generative AI / agents",physical:"Low",summary:"Validation, structured outputs, policy checks, and reusable validators for LLM applications.",relevance:"NIST AI RMF MEASURE and MANAGE; OWASP LLM guidance",access:"Commercial and open-source",url:"https://guardrailsai.com/"},
     {provider:"Preamble",offering:"AI safety and governance platform",category:"Runtime guardrails",lifecycle:"Deploy & protect",type:"Specialist company",domain:"Generative AI / agents",physical:"Low",summary:"Policy-based controls, safety configurations, and governance for generative-AI applications.",relevance:"NIST AI RMF; ISO/IEC 42001; generative-AI risk guidance",access:"Commercial platform",url:"https://www.preamble.com/"},
@@ -435,6 +455,7 @@
 
   const state = {page: 1, size: 10, sort: "provider", direction: 1};
   const filterIds = ["category", "lifecycle", "type", "domain", "physical"];
+  const newWindowDays = 30;
   const search = document.getElementById("search");
   const rows = document.getElementById("rows");
   const empty = document.getElementById("empty");
@@ -458,6 +479,15 @@
   document.getElementById("statSpecialists").textContent = data.filter(function(item) { return item.type === "Specialist company"; }).length;
   document.getElementById("statPhysical").textContent = data.filter(function(item) { return item.physical === "High"; }).length;
 
+  function isNew(item) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(item.added || "")) return false;
+    const addedAt = new Date(item.added + "T00:00:00Z");
+    const now = new Date();
+    const today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+    const ageDays = (today - addedAt.getTime()) / 86400000;
+    return ageDays >= 0 && ageDays <= newWindowDays;
+  }
+
   function filteredData() {
     const term = search.value.trim().toLowerCase();
     return data.filter(function(item) {
@@ -466,7 +496,8 @@
         const value = document.getElementById(field).value;
         return !value || item[field] === value;
       });
-      return matchesSearch && matchesFilters;
+      const matchesNew = document.getElementById("newItems").value !== "new" || isNew(item);
+      return matchesSearch && matchesFilters && matchesNew;
     }).sort(function(a, b) {
       return String(a[state.sort]).localeCompare(String(b[state.sort]), undefined, {numeric: true}) * state.direction;
     });
@@ -492,6 +523,18 @@
     return badge;
   }
 
+  function newBadge(item) {
+    if (!isNew(item)) return null;
+    const addedAt = new Date(item.added + "T00:00:00Z");
+    const label = "Added to the matrix on " + addedAt.toLocaleDateString(undefined, {day: "numeric", month: "long", year: "numeric", timeZone: "UTC"});
+    const badge = document.createElement("span");
+    badge.className = "new-badge";
+    badge.title = label;
+    badge.setAttribute("aria-label", label);
+    badge.innerHTML = '<span aria-hidden="true">✦</span> New';
+    return badge;
+  }
+
   function render() {
     const filtered = filteredData();
     const totalPages = Math.max(1, Math.ceil(filtered.length / state.size));
@@ -513,6 +556,8 @@
       offering.className = "offering";
       offering.textContent = item.offering;
       providerCell.appendChild(link);
+      const added = newBadge(item);
+      if (added) providerCell.appendChild(added);
       const audit = auditBadge(item);
       if (audit) providerCell.appendChild(audit);
       providerCell.appendChild(offering);
@@ -546,7 +591,7 @@
 
     empty.hidden = filtered.length !== 0;
     document.getElementById("visibleCount").textContent = filtered.length;
-    const activeCount = (search.value ? 1 : 0) + filterIds.filter(function(field) { return document.getElementById(field).value; }).length;
+    const activeCount = (search.value ? 1 : 0) + filterIds.filter(function(field) { return document.getElementById(field).value; }).length + (document.getElementById("newItems").value ? 1 : 0);
     document.getElementById("filterNote").textContent = activeCount ? "(" + activeCount + " active filter" + (activeCount === 1 ? "" : "s") + ")" : "";
     document.getElementById("pageInfo").textContent = filtered.length ? (start + 1) + "–" + Math.min(start + state.size, filtered.length) + " of " + filtered.length : "0 results";
     document.getElementById("prev").disabled = state.page === 1;
@@ -565,6 +610,7 @@
   filterIds.forEach(function(field) {
     document.getElementById(field).addEventListener("change", function() { state.page = 1; render(); });
   });
+  document.getElementById("newItems").addEventListener("change", function() { state.page = 1; render(); });
   document.querySelectorAll(".page-size").forEach(function(select) {
     select.addEventListener("change", function() {
       state.size = Number(select.value);
@@ -587,6 +633,7 @@
   document.getElementById("reset").addEventListener("click", function() {
     search.value = "";
     filterIds.forEach(function(field) { document.getElementById(field).value = ""; });
+    document.getElementById("newItems").value = "";
     state.page = 1;
     render();
   });
