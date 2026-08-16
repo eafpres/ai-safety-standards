@@ -33,4 +33,17 @@ The applicable audit checks each candidate for duplication and verifies factual 
 - **Duplicate, out of scope, or unsupported:** Comment with the reason and relevant existing row or issue, then close the issue as not planned.
 - **Needs more research:** Keep `status:needs-verification` and comment with the specific follow-up needed.
 
-After a supported matrix change is reviewed and committed outside the audit workflow, close its issue as completed and reference the commit. Do not close an accepted candidate merely because an audit prepared an uncommitted diff.
+## Committed-change reconciliation
+
+After the clean-worktree preflight, each audit reviews the applicable open `status:ready-for-change` queue as well as candidates awaiting verification.
+
+Close a supported candidate as completed only when all of the following are true:
+
+- The exact approved change is present in the applicable source-of-truth file on the GitHub repository's default branch.
+- A specific pushed commit reachable from the default branch can be identified as introducing that change.
+- The issue receives a comment linking the implementing commit.
+- `status:ready-for-change` is removed when the issue is closed so that the label continues to mean that a committed change is still pending.
+
+Do not close a candidate based only on a local working-tree change, staged change, unmerged branch, issue reference, or commit message. If the implementation or commit is ambiguous, leave the issue open and unchanged and record the required follow-up in the audit report.
+
+Do not close an accepted candidate merely because an audit prepared an uncommitted diff. Reconciliation of an already committed change is issue bookkeeping and does not require a matrix or material-audit-log edit.

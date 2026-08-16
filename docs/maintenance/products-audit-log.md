@@ -49,3 +49,21 @@ Editorial judgments:
 Follow-up:
 
 - OpenAI's Promptfoo acquisition remains subject to customary closing conditions on the latest authoritative announcement: https://openai.com/index/openai-to-acquire-promptfoo/
+
+## 15 August 2026 — Scheduled products-and-vendors audit
+
+Confirmed provider facts:
+
+- Candidate issue #2 — Delinea / Delinea Platform — fields: provider, offering, summary, access, URL. Delinea markets an identity-security control plane that continuously discovers human, machine, and AI identities and governs AI agents with just-in-time least privilege, runtime authorization, and auditable activity: https://delinea.com/products
+- Candidate issue #3 — BeyondTrust / AI Agent Security — fields: provider, offering, summary, access, URL. BeyondTrust markets agent discovery and attribution, execution-chain mapping, runtime privilege and command controls, MCP and API controls, and human approval; the offering is in limited private beta with US general availability planned for fall 2026: https://www.beyondtrust.com/products/ai-agent-security
+- OpenAI / Promptfoo — fields: provider, offering, type. Promptfoo's current official product site states that Promptfoo is part of OpenAI while continuing to offer commercial and open-source evaluation and AI-security testing: https://www.promptfoo.dev/
+
+Editorial judgments:
+
+- Adding Delinea and BeyondTrust is an editorial inclusion decision based on their verified AI-agent identity, privilege, runtime-control, traceability, and audit functions. Their Security & resilience category, Deploy & protect lifecycle, Medium Physical-AI relevance, and potential standards relevance are editorial classifications, not provider or standards-body determinations.
+- Promptfoo's Testing & evaluation category, lifecycle, standards relevance, and Low Physical-AI relevance remain editorial. Its ownership and acquired/integrated provider type are confirmed provider facts.
+
+Follow-up:
+
+- Recheck BeyondTrust AI Agent Security availability after its planned US general-availability window in fall 2026.
+- Candidate issues #2 and #3 remain open with `status:ready-for-change` until the uncommitted matrix diff receives human review and an approved change is committed outside the audit workflow.
