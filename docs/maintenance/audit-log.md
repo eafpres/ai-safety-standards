@@ -2,6 +2,38 @@
 
 This log records audits that produced a material matrix change. No-change runs are intentionally not recorded here because scheduled audits must leave a clean repository untouched.
 
+## 2026-08-16
+
+### Confirmed factual changes
+
+- Updated `Regulation (EU) 2024/1689` to reflect Regulation (EU) 2026/1744. Chapter III Sections 1–3 now apply from 2 December 2027 for Article 6(2)/Annex III high-risk systems and from 2 August 2028 for Article 6(1)/Annex I systems, except Article 6(5). Source: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32026R1744
+- Added `IEEE P4502`. IEEE records an active standards project, approved on 26 March 2026, for smart mandibular advancement devices with AI-based closed-loop control, mandatory control limits, and fail-safe mechanisms. Source: https://standards.ieee.org/ieee/4502/12502/
+- Added `IEC PAS 63621:2026`. IEC records the medical-device AI data-management specification as published on 18 March 2026, covering data lifecycle and quality-management requirements. Source: https://webstore.iec.ch/en/publication/100814
+- Added `UL 3115 Ed. 3`. UL records the active Outline of Investigation for AI-based products as published on 18 June 2026, with horizontal requirements applying to AI-embedded products including robots, autonomous vehicles, and medical devices. Source: https://www.shopulstandards.com/ProductDetail.aspx?productId=UL3115_3_O_20260618
+- Added `SAE J3321_202603`. SAE records the Information Report as published on 16 March 2026, covering verification and validation of AI/ML-based systems in ground vehicles without establishing mandatory requirements. Source: https://saemobilus.sae.org/standards/j3321_202603-verification-validation-ai-ml-based-systems-ground-vehicles
+
+### Editorial judgments
+
+- Rated `IEEE P4502` High for Physical-AI relevance because it directly addresses sensing, AI inference, safety supervision, actuation, control limits, and fail-safe behavior in a medical device.
+- Rated `IEC PAS 63621:2026` High because its normative data-lifecycle requirements directly support the safety and quality evidence for AI-enabled medical devices.
+- Rated `UL 3115 Ed. 3` High because its horizontal product-safety scope explicitly includes robots, autonomous vehicles, medical devices, and other AI-embedded products.
+- Rated `SAE J3321_202603` High because it directly addresses lifecycle verification and validation for AI/ML functions in ground vehicles.
+
+### Validation
+
+- Parsed and evaluated all embedded matrix rows with PowerShell because Node.js was not available in this environment.
+- Verified 121 entries, 11 issuer groups, 100 current-status entries, and 59 High Physical-AI entries.
+- Verified all required fields, HTTPS-only URLs, and no duplicate publication identifiers.
+- Exercised representative search, single-filter, combined-filter, sort, and pagination derivations: `medical` returned 17 entries, IEC returned 9, Automotive plus High returned 13, issuer/publication sorting retained all rows, and a page size of 10 produced 13 pages.
+- Crawled all 108 unique matrix URLs: 100 healthy, 0 redirected, 0 broken, 0 temporarily unavailable, and 8 access-blocked. The access-blocked URLs affect `SAE ARP4754B / ARP4761A`; `SAE J3016_202104`; `EN 18286:2026`; `UN Regulation No. 155` and `UN Regulation No. 156` (shared UNECE page); `UN Regulation No. 157`; `UN Regulation on Automated Driving Systems (ADS)`; `EASA NPA 2025-07 / proposed DS.AI`; and `Canada Directive on Automated Decision-Making`. Each represented publication was confirmed through another official page or authoritative official indexed record; none was classified as broken.
+- Normalized the new `IEEE P4502` URL to IEEE's final trailing-slash form after the initial official URL redirected.
+- `git diff --check` passed, and the standards-matrix diff was reviewed for unintended changes.
+
+### Follow-up items
+
+- UNECE's available official records still do not expose a final regulation number or exact entry-into-force date for the adopted ADS regulation; retain `Adopted` status.
+- No final EASA AI Concept Paper Issue 3 was found after the Proposed Issue 3 consultation closed; retain `Proposed` status.
+
 ## 2026-08-15
 
 ### Confirmed factual changes
