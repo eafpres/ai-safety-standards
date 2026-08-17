@@ -2,6 +2,33 @@
 
 This log records audits that produced a material matrix change. No-change runs are intentionally not recorded here because scheduled audits must leave a clean repository untouched.
 
+## 2026-08-17
+
+### Confirmed factual changes
+
+- Added `ISO/IEC DTS 22443`. ISO records the draft Technical Specification at stage 50.00 since 18 May 2026, with final text registered for formal approval, for lifecycle guidance on societal concerns and ethical considerations that can harm individuals or society. Source: https://www.iso.org/standard/87119.html?browse=tc
+- Added `IEEE P4106`. IEEE records an active standards project approved on 4 June 2026 for performance and safety evaluation of AI-based smart mandibular advancement devices, including sensing, actuation, control algorithms, fail-safe mechanisms, clinical validation, interoperability, and cybersecurity. Source: https://standards.ieee.org/ieee/4106/12621/
+- Replaced the generic SAE catalogue URL for `SAE ARP4754B / ARP4761A` with SAE's exact ARP4754B record, which explicitly identifies ARP4761A as the companion safety-assessment process. Source: https://saemobilus.sae.org/standards/arp4754b-guidelines-development-civil-aircraft-systems
+
+### Editorial judgments
+
+- Rated `ISO/IEC DTS 22443` Medium for Physical-AI relevance because its cross-sector lifecycle guidance can support harm analysis for cyber-physical systems but is not a domain-specific product-safety publication.
+- Rated `IEEE P4106` High because it directly evaluates sensing, physical actuation, safety controls, fail-safe behavior, clinical performance, and cybersecurity in an AI-enabled medical device.
+
+### Validation
+
+- Evaluated all embedded matrix rows as JavaScript using Windows Script Host.
+- Verified 123 entries, 11 issuer groups, 100 current-status entries, and 60 High Physical-AI entries.
+- Verified all required fields, HTTPS-only URLs, and no duplicate publication identifiers.
+- Exercised representative search, single-filter, combined-filter, sort, and pagination derivations: `medical` returned 18 entries, IEC returned 9, Automotive plus High returned 15, issuer/publication sorting retained all rows, and a page size of 10 produced 13 pages.
+- Crawled all 110 unique matrix URLs: 102 healthy, 0 redirected, 0 broken, 0 temporarily unavailable, and 8 access-blocked. The access-blocked URLs affect `Regulation (EU) 2017/745`; `Regulation (EU) 2023/1230`; `EN 18286:2026`; `UN Regulation No. 155` and `UN Regulation No. 156` (shared UNECE page); `UN Regulation No. 157`; `UN Regulation on Automated Driving Systems (ADS)`; `SAE ARP4754B / ARP4761A`; and `Canada Directive on Automated Decision-Making`. Each represented publication was confirmed through another official page or authoritative official indexed record; none was classified as broken.
+- `git diff --check` passed, and the standards-matrix diff was reviewed for unintended changes.
+
+### Follow-up items
+
+- UNECE's available official records still do not expose a final regulation number or exact entry-into-force date for the adopted ADS regulation; retain `Adopted` status.
+- No final EASA AI Concept Paper Issue 3 was found after the Proposed Issue 3 consultation closed; retain `Proposed` status.
+
 ## 2026-08-16
 
 ### Confirmed factual changes

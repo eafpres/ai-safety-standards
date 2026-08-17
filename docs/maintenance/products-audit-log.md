@@ -91,3 +91,21 @@ Follow-up:
 - Recheck DigiCert AI Model Trust and AI Agent Trust after their preview periods.
 - Recheck NVIDIA Halos Outside-In Safety after early access and before describing any production-safety availability.
 - Recheck Veeam DataAI Agent Commander after early access.
+
+## 17 August 2026 — Scheduled products-and-vendors audit
+
+Confirmed provider facts:
+
+- Candidate issue #4 — GuvFlow / GuvFlow Audit — fields: provider, offering, summary, access, URL. GuvFlow markets a bookable audit of existing tools, SaaS, AI agents, repositories, teams, and workflows that returns auditable flow maps, severity-tagged governance, security, cost, and provider-risk findings, recommendations, and optional implementation services: https://www.guvflow.com/
+- Haize Labs / Haize Reliability Harness — fields: offering, summary, access. Haize Labs now markets a named Reliability Harness spanning agent architecture, supervisor models, simulation testing, red teaming, runtime guardrails, annotation tooling, and ongoing production improvement: https://www.haizelabs.com/
+- Cognata / OneSim — fields: offering, summary. Cognata currently identifies OneSim as its simulation-first platform for training, testing, and validating autonomous systems with real-world and synthetic data, sensor and scenario simulation, and hardware- and driver-in-the-loop tooling: https://www.cognata.com/
+
+Editorial judgments:
+
+- Adding GuvFlow is an editorial inclusion decision based on its verified AI-tool inventory, governance audit, operational-assurance, risk-finding, and implementation functions. Its Governance & compliance category, Assure & audit lifecycle, Workplace AI domain, Low Physical-AI relevance, and potential standards relevance are editorial classifications, not provider or standards-body determinations.
+- Haize Labs' Multiple stages lifecycle and potential standards relevance are editorial classifications based on the verified current scope; its Testing & evaluation category, Generative AI / agents domain, and Low Physical-AI relevance are preserved.
+- Cognata's Physical-AI validation category, Verify & validate lifecycle, Automotive / autonomy domain, High Physical-AI relevance, and potential standards relevance remain editorial classifications; the OneSim name and represented capabilities are confirmed provider facts.
+
+Follow-up:
+
+- Candidate issue #4 remains open with `status:ready-for-change` until the uncommitted GuvFlow matrix addition receives human review and an approved change is committed outside the audit workflow.
