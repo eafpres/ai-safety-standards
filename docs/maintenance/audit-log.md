@@ -2,6 +2,35 @@
 
 This log records audits that produced a material matrix change. No-change runs are intentionally not recorded here because scheduled audits must leave a clean repository untouched.
 
+## 2026-08-18
+
+### Confirmed factual changes
+
+- Added `ISO/IEC FDIS 27091`. ISO records the AI privacy-protection project at stage 50.00 since 13 July 2026, after its DIS was approved for registration as an FDIS. The draft provides lifecycle guidance for identifying, evaluating, and treating privacy risks in AI systems and machine-learning models. Source: https://www.iso.org/standard/56582.html?browse=tc
+- Added `IEEE 7015-2026`. IEEE records an active standard approved on 4 June 2026 that defines an operational framework for data and AI literacy, skills, and readiness across proficiency levels. Source: https://standards.ieee.org/ieee/7015/10688/
+- Added `SAE J3329_202604`. SAE records the Information Report as issued on 12 April 2026 and covering technical, operational, safety, security, and regulatory challenges for AI in ground vehicles and supporting infrastructure. Source: https://saemobilus.sae.org/standards/j3329_202604-artificial-intelligence-ground-vehicles-technical-operational-regulatory-challenges
+
+### Editorial judgments
+
+- Rated `ISO/IEC FDIS 27091` Low for Physical-AI relevance because it is cross-sector privacy guidance rather than direct physical-system safety or assurance material.
+- Rated `IEEE 7015-2026` Low because it addresses literacy, competencies, and organizational readiness rather than product or physical-system assurance.
+- Rated `SAE J3329_202604` High because it directly addresses lifecycle and operational challenges, including safety and security, for AI deployed in ground vehicles and supporting infrastructure.
+
+### Validation
+
+- Parsed and evaluated all embedded matrix rows with PowerShell.
+- Verified 126 entries, 11 issuer groups, 102 current-status entries, and 61 High Physical-AI entries.
+- Verified all required fields, HTTPS-only URLs, and no duplicate publication identifiers.
+- Exercised representative search, single-filter, combined-filter, sort, and pagination derivations: `medical` returned 18 entries, IEC returned 9, Automotive plus High returned 16, issuer/publication sorting retained all rows, and a page size of 10 produced 13 pages.
+- Crawled all 113 unique matrix URLs: 104 healthy, 0 redirected, 0 broken, 1 temporarily unavailable, and 8 access-blocked. The temporarily unavailable SAE page affects `SAE J3321_202603`; its exact official record was confirmed through SAE's authoritative indexed result. The access-blocked URLs affect `Regulation (EU) 2017/745`; `Regulation (EU) 2023/1230`; `EN 18286:2026`; `UN Regulation No. 155` and `UN Regulation No. 156` (shared UNECE page); `UN Regulation No. 157`; `UN Regulation on Automated Driving Systems (ADS)`; `EASA NPA 2025-07 / proposed DS.AI`; and `Canada Directive on Automated Decision-Making`. Each represented publication was confirmed through another official page or authoritative official indexed record; none was classified as broken.
+- `git diff --check` passed, and the standards-matrix diff was reviewed for unintended changes.
+
+### Follow-up items
+
+- UNECE's available official records still do not expose a final regulation number or exact entry-into-force date for the adopted ADS regulation; retain `Adopted` status.
+- No final EASA AI Concept Paper Issue 3 was found after the Proposed Issue 3 consultation closed; retain `Proposed` status.
+- NIST states that AI RMF 1.0 is being revised but does not expose a replacement publication; retain the current AI RMF 1.0 row.
+
 ## 2026-08-17
 
 ### Confirmed factual changes
