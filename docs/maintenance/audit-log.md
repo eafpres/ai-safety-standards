@@ -2,6 +2,40 @@
 
 This log records audits that produced a material matrix change. No-change runs are intentionally not recorded here because scheduled audits must leave a clean repository untouched.
 
+## 2026-08-19
+
+### Confirmed factual changes
+
+- Added `ISO/IEC DIS 24029-3`. ISO records the statistical-methods robustness-assessment draft at stage 40.99 since 17 August 2026, when the DIS was approved for registration as an FDIS. Source: https://www.iso.org/standard/86901.html
+- Added `ISO/IEC WD TS 25570`. ISO records the AI-system reliability-assessment project at stage 20.60, with its working-draft study initiated on 27 May 2026 and comment period closed on 9 July 2026. Source: https://www.iso.org/standard/90757.html
+- Added `ISO/IEC CD 25589`. ISO records the human-machine-teaming framework at stage 30.20, with CD consultation initiated on 1 July 2026; its scope covers concepts, technical characteristics, and design principles for human-machine teams. Source: https://www.iso.org/standard/90831.html
+- Added `ISO/CD 9241-812`. ISO records the human-systems ergonomics draft at stage 30.60 and explicitly includes physical interaction with robots, autonomous vehicles, and intelligent environments. Source: https://www.iso.org/standard/88374.html
+- Added `IEEE P8000.1`. IEEE records an active standards project approved on 4 June 2026 for a seven-score method to assess AI-system trustworthiness across the supply chain, intended as the foundation for a trust-rating service and certification program. Source: https://standards.ieee.org/ieee/8000.1/12593/
+
+### Editorial judgments
+
+- Rated `ISO/IEC DIS 24029-3` High for Physical-AI relevance because statistical neural-network robustness assessment can directly support verification evidence for safety-relevant perception and control functions.
+- Rated `ISO/CD 9241-812` High because its scope explicitly covers physical interaction with robots, autonomous vehicles, smart environments, and combinations of intelligent systems.
+- Rated `ISO/IEC WD TS 25570`, `ISO/IEC CD 25589`, and `IEEE P8000.1` Medium because their cross-sector reliability, human-machine-teaming, and trustworthiness-assessment methods can support cyber-physical assurance but do not define domain-specific product-safety requirements.
+
+### Validation
+
+- Evaluated all embedded matrix rows as JavaScript using Windows Script Host.
+- Verified 131 entries, 11 issuer groups, 102 current-status entries, and 63 High Physical-AI entries.
+- Verified all required fields, HTTPS-only URLs, and no duplicate publication identifiers.
+- Exercised representative search, single-filter, combined-filter, sort, and pagination derivations: `medical` returned 18 entries, IEC returned 9, Automotive plus High returned 16, issuer/publication sorting retained all rows, and a page size of 10 produced 14 pages.
+- Crawled all 118 unique matrix URLs: 100 healthy, 0 redirected, 0 broken, 5 temporarily unavailable, and 13 access-blocked.
+- The temporarily unavailable URLs affect `NIST AI 700-2`, `SAE J3018_202012`, `IEEE 3119-2025`, `IEEE P4106`, and `IEEE P4502`. Each exact publication was confirmed through another official NIST, SAE, or IEEE page or authoritative official indexed record.
+- The access-blocked URLs affect `Directive (EU) 2024/2853`; `Regulation (EU) 2017/745`; `Regulation (EU) 2023/1230`; `Regulation (EU) 2023/988`; `Regulation (EU) 2024/1689`; `Regulation (EU) 2024/2847`; `EN 18286:2026`; `UN Regulation No. 155` and `UN Regulation No. 156` (shared UNECE page); `UN Regulation No. 157`; `UN Regulation on Automated Driving Systems (ADS)`; `EASA AI Concept Paper Issue 2`; `EASA NPA 2025-07 / proposed DS.AI`; and `Canada Directive on Automated Decision-Making`. Each represented publication was confirmed through another official page or authoritative official indexed record; none was classified as broken.
+- `git diff --check` passed, and the standards-matrix diff was reviewed for unintended changes.
+
+### Candidate queue and follow-up items
+
+- The connected GitHub repository had no open issues matching `is:issue is:open label:candidate label:"matrix:standards"`; no candidate disposition or committed-change reconciliation was required.
+- UNECE's available official records still identify the adopted ADS measure without exposing a final regulation number or exact entry-into-force date; retain `Adopted` status.
+- No final EASA AI Concept Paper Issue 3 was found after the Proposed Issue 3 consultation closed; retain `Proposed` status.
+- NIST states that AI RMF 1.0 is being revised but does not expose a replacement publication; retain the current AI RMF 1.0 row.
+
 ## 2026-08-18
 
 ### Confirmed factual changes
