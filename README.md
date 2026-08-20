@@ -32,6 +32,7 @@ No build step or dependency installation is required.
 - Direct links to official sources and provider pages
 - “New” indicators for recently added entries
 - Audit flags for access-restricted or temporarily unverifiable links
+- Cookie-free aggregate traffic and performance measurement through Cloudflare Web Analytics
 
 ## How to interpret the data
 
@@ -107,12 +108,17 @@ Factual matrix changes must be supported by authoritative primary sources. Confi
 
 Audits preserve the existing schema, filtering, sorting, pagination, CSV export, responsive behavior, and visual design. Supported changes are left as an uncommitted diff for human review.
 
+## Privacy
+
+Searching, filtering, sorting, pagination, and CSV export run locally in the visitor's browser. The hosted matrix pages use cookie-free Cloudflare Web Analytics for aggregate page-view, referral, device, country, and performance measurements. See [`privacy.html`](privacy.html) for the visitor-facing privacy notice.
+
 ## Repository structure
 
 ```text
 .
 ├── index.html
 ├── products.html
+├── privacy.html
 ├── docs/
 │   └── maintenance/
 │       ├── standards-audit.md
