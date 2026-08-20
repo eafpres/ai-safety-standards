@@ -11,6 +11,14 @@ This log records audits that produced a material matrix change. No-change runs a
 - Added active IEEE projects `P3927` and `P3927.1`. IEEE records PAR approval on 12 February 2026 for auditable capability assessment of industrial embodied-intelligence systems and for requirements and acceptance criteria governing training data for embodied-intelligence robots. Sources: https://standards.ieee.org/ieee/3927/12432/ and https://standards.ieee.org/ieee/3927.1/12433/
 - Added active IEEE projects `P3960` and `P3961`. IEEE records PAR approval on 12 February 2026 for industrial embodied-intelligence operating-system architecture, including modules, interfaces, and security, and for swarm-intelligence architecture and communication requirements, including security. Sources: https://standards.ieee.org/ieee/3960/12440/ and https://standards.ieee.org/ieee/3961/12441
 - Added `IEEE P7007.1`. IEEE records PAR approval on 14 May 2026 for ontologies that define, characterize, and classify AI-system risks and physical or non-physical harms in robotics and automated systems. Source: https://standards.ieee.org/ieee/7007.1/12558/
+- Replaced the generic SC 42 committee-catalogue targets for `ISO/IEC TR 24027:2021`, `ISO/IEC TR 24028:2020`, `ISO/IEC TR 24029-1:2021`, `ISO/IEC 24029-2:2023`, `ISO/IEC 12792:2025`, and `ISO/IEC TS 6254:2025` with their exact official ISO publication records. Sources: https://www.iso.org/standard/77607.html?browse=tc, https://www.iso.org/standard/77608.html?browse=tc, https://www.iso.org/standard/77609.html?browse=tc, https://www.iso.org/standard/79804.html?browse=tc, https://www.iso.org/standard/84111.html?browse=tc, and https://www.iso.org/standard/82148.html?browse=tc
+- Split the bundled ISO/IEC 5259 matrix entry into six individually linked publications. ISO records Parts 1 through 5 as published International Standards and Part 6 as a published Technical Report. Sources: https://www.iso.org/standard/81088.html?browse=tc, https://www.iso.org/standard/81860.html?browse=tc, https://www.iso.org/standard/81092.html?browse=tc, https://www.iso.org/standard/81093.html?browse=tc, https://www.iso.org/standard/84150.html?browse=tc, and https://www.iso.org/standard/86532.html?browse=tc
+- Split the bundled ISO/IEC 22440 entry into Parts 1, 2, and 3. ISO records each as a Committee Draft Technical Specification at stage 30.60, with the comment period closed on 11 April 2026. Sources: https://www.iso.org/standard/89535.html?browse=tc, https://www.iso.org/standard/89536.html?browse=tc, and https://www.iso.org/standard/89537.html?browse=tc
+- Corrected the human-oversight work item identifier to `ISO/IEC FDIS 42105` and linked its exact official project record, which ISO records at stage 50.00. Source: https://www.iso.org/standard/86902.html?browse=tc
+
+### Presentation and navigation
+
+- Added a separate standards-discovery resources section for the SC 42 and SC 27 work programmes, ISO Online Browsing Platform, and ISO lifecycle stage codes. Clarified that matrix publication links open the exact official record for the represented deliverable.
 
 ### Editorial judgments
 
@@ -21,10 +29,10 @@ This log records audits that produced a material matrix change. No-change runs a
 ### Validation
 
 - Evaluated all embedded matrix rows as JavaScript in an isolated runtime.
-- Verified 138 entries, 11 issuer groups, 103 current-status entries, and 67 High Physical-AI entries.
+- Verified 145 entries, 11 issuer groups, 108 current-status entries, and 69 High Physical-AI entries.
 - Verified all required fields, HTTPS-only URLs, and no duplicate publication identifiers.
 - Exercised representative search, single-filter, combined-filter, sort, and pagination derivations.
-- Crawled all 125 unique matrix URLs: 114 healthy, 0 redirected, 0 broken, 4 temporarily unavailable, and 7 access-blocked.
+- Crawled all 140 unique matrix URLs across the same-day audit and targeted navigation update: 129 healthy, 0 redirected, 0 broken, 4 temporarily unavailable, and 7 access-blocked. All 16 exact ISO records introduced by the navigation update were retrieved successfully; the four discovery-resource destinations were also verified separately.
 - The temporarily unavailable URLs affect `SAE J3016_202104`, `SAE J3018_202012`, `IEEE P4106`, and `IEEE 7010-2020`. Each exact publication was confirmed through another official SAE or IEEE page or authoritative official indexed record.
 - The access-blocked URLs affect `Regulation (EU) 2017/745`; `Regulation (EU) 2024/1689`; `EN 18286:2026`; `UN Regulation No. 155` and `UN Regulation No. 156` (shared UNECE page); `UN Regulation No. 157`; `UN Regulation on Automated Driving Systems (ADS)`; and `Canada Directive on Automated Decision-Making`. Each represented publication was confirmed through another official page or authoritative official indexed record; none was classified as broken.
 - `git diff --check` passed, and the standards-matrix diff was reviewed for unintended changes.
