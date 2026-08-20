@@ -109,3 +109,20 @@ Editorial judgments:
 Follow-up:
 
 - Candidate issue #4 remains open with `status:ready-for-change` until the uncommitted GuvFlow matrix addition receives human review and an approved change is committed outside the audit workflow.
+
+## 20 August 2026 — Scheduled products-and-vendors audit
+
+Confirmed provider facts:
+
+- Candidate issue #8 — Jeen / Enterprise AI Operating Layer — fields: provider, offering, summary, access, URL. Jeen markets a commercial enterprise AI platform that unifies employee AI, agents, workflows, governance, observability, policy enforcement, permissions, audit logs, and cost controls, with cloud, on-premises, hybrid, and air-gapped deployment: https://jeen.ai/Platform/
+- Noma Security / AI and data security platform — field: URL. Noma Security's apex URL redirects to its current official `www` page, which continues to identify the represented AI security and governance platform: https://www.noma.security/
+
+Editorial judgments:
+
+- Adding Jeen is an editorial inclusion decision based on its verified AI-governance, operational-control, policy-enforcement, observability, and audit functions. Its Governance & compliance category, Multiple stages lifecycle, Specialist company type, Regulated enterprise domain, Low Physical-AI relevance, and potential standards relevance are editorial classifications, not provider or standards-body determinations.
+- Noma Security's category, lifecycle, type, domain, Physical-AI relevance, and potential standards relevance are unchanged editorial classifications; only the confirmed canonical provider URL changed.
+
+Follow-up:
+
+- Candidate issue #8 remains open with `status:ready-for-change` until the uncommitted Jeen matrix addition receives human review and an approved change is committed outside the audit workflow.
+- Recheck BeyondTrust AI Agent Security after its planned US general-availability window in fall 2026, DigiCert AI Model Trust and AI Agent Trust after their preview periods, Veeam DataAI Agent Commander after early access, and NVIDIA Halos Outside-In Safety after early access.

@@ -2,6 +2,40 @@
 
 This log records audits that produced a material matrix change. No-change runs are intentionally not recorded here because scheduled audits must leave a clean repository untouched.
 
+## 2026-08-20
+
+### Confirmed factual changes
+
+- Added published `ISO/IEC TS 25058:2024`. ISO records the SQuaRE guidance for AI-system quality evaluation as published at stage 60.60 on 24 January 2024 and now marked for revision. Source: https://www.iso.org/standard/82570.html
+- Added `ISO/IEC AWI 25058`. ISO records the proposed second edition at stage 20.00; it adds quality measures and guidance tied to ISO/IEC 25059 and is intended to replace ISO/IEC TS 25058:2024. Source: https://www.iso.org/standard/91881.html
+- Added active IEEE projects `P3927` and `P3927.1`. IEEE records PAR approval on 12 February 2026 for auditable capability assessment of industrial embodied-intelligence systems and for requirements and acceptance criteria governing training data for embodied-intelligence robots. Sources: https://standards.ieee.org/ieee/3927/12432/ and https://standards.ieee.org/ieee/3927.1/12433/
+- Added active IEEE projects `P3960` and `P3961`. IEEE records PAR approval on 12 February 2026 for industrial embodied-intelligence operating-system architecture, including modules, interfaces, and security, and for swarm-intelligence architecture and communication requirements, including security. Sources: https://standards.ieee.org/ieee/3960/12440/ and https://standards.ieee.org/ieee/3961/12441
+- Added `IEEE P7007.1`. IEEE records PAR approval on 14 May 2026 for ontologies that define, characterize, and classify AI-system risks and physical or non-physical harms in robotics and automated systems. Source: https://standards.ieee.org/ieee/7007.1/12558/
+
+### Editorial judgments
+
+- Rated `ISO/IEC TS 25058:2024` and `ISO/IEC AWI 25058` Medium for Physical-AI relevance because their cross-sector quality-evaluation methods can support cyber-physical assurance without defining domain-specific product-safety requirements.
+- Rated `IEEE P3927`, `IEEE P3927.1`, `IEEE P3960`, and `IEEE P7007.1` High because they directly address assessment, training data, architecture/security, or risk classification for embodied AI, robots, or industrial physical systems.
+- Rated `IEEE P3961` Medium because swarm-intelligence architecture and security can support physical multi-agent systems, but IEEE's stated scope does not limit the project to safety-critical or physically embodied products.
+
+### Validation
+
+- Evaluated all embedded matrix rows as JavaScript in an isolated runtime.
+- Verified 138 entries, 11 issuer groups, 103 current-status entries, and 67 High Physical-AI entries.
+- Verified all required fields, HTTPS-only URLs, and no duplicate publication identifiers.
+- Exercised representative search, single-filter, combined-filter, sort, and pagination derivations.
+- Crawled all 125 unique matrix URLs: 114 healthy, 0 redirected, 0 broken, 4 temporarily unavailable, and 7 access-blocked.
+- The temporarily unavailable URLs affect `SAE J3016_202104`, `SAE J3018_202012`, `IEEE P4106`, and `IEEE 7010-2020`. Each exact publication was confirmed through another official SAE or IEEE page or authoritative official indexed record.
+- The access-blocked URLs affect `Regulation (EU) 2017/745`; `Regulation (EU) 2024/1689`; `EN 18286:2026`; `UN Regulation No. 155` and `UN Regulation No. 156` (shared UNECE page); `UN Regulation No. 157`; `UN Regulation on Automated Driving Systems (ADS)`; and `Canada Directive on Automated Decision-Making`. Each represented publication was confirmed through another official page or authoritative official indexed record; none was classified as broken.
+- `git diff --check` passed, and the standards-matrix diff was reviewed for unintended changes.
+
+### Candidate queue and follow-up items
+
+- The connected GitHub repository had no open issues matching `is:issue is:open label:candidate label:"matrix:standards"`; no candidate disposition or committed-change reconciliation was required.
+- UNECE's official records still do not expose a final regulation number or exact entry-into-force date for the adopted ADS regulation; retain `Adopted` status.
+- No final EASA AI Concept Paper Issue 3 was found after the Proposed Issue 3 consultation closed; retain `Proposed` status.
+- NIST continues to identify AI RMF 1.0 as the current framework while stating that it is being revised; retain the current row.
+
 ## 2026-08-19
 
 ### Confirmed factual changes
