@@ -2,6 +2,39 @@
 
 This log records audits that produced a material matrix change. No-change runs are intentionally not recorded here because scheduled audits must leave a clean repository untouched.
 
+## 2026-08-23
+
+### Confirmed factual changes
+
+- Updated `ISO/IEC DIS 24029-3` to `ISO/IEC FDIS 24029-3`. ISO records stage 50.00 on 21 August 2026, when the final text was received or the FDIS was registered for formal approval. Source: https://www.iso.org/standard/86901.html
+- Updated `ISO/IEC FDIS 27090` to `ISO/IEC 27090` under publication. ISO records completion of the approval stage and stage 60.00 on 19 August 2026, with final production still in progress. Source: https://www.iso.org/standard/56581.html
+- Added `IEEE P7027`. IEEE records an active PAR approved on 4 June 2026 for identifying, assessing, and mitigating relational risks from sustained interaction with physically embodied social robots in domestic, educational, child-facing, caregiving, and similar environments. Source: https://standards.ieee.org/ieee/7027/12643/
+- Corrected the wrong-target links for `IEEE 3321-2024` and `IEEE 7002-2022` to their exact IEEE records. The official pages identify the represented active standards and their respective safety-model and privacy-process scopes. Sources: https://standards.ieee.org/ieee/3321/11616/ and https://standards.ieee.org/ieee/7002/6898/
+- Removed an unnecessary `browse=tc` query from eight exact ISO records whose plain canonical URLs retrieved the represented publications successfully: `ISO/IEC 24029-2:2023`, `ISO/IEC 5259-3:2024`, `ISO/IEC 5259-4:2024`, `ISO/IEC 5259-5:2025`, `ISO/IEC TR 5259-6:2026`, and `ISO/IEC CD TS 22440-1`, `-2`, and `-3`. Sources: https://www.iso.org/standard/79804.html, https://www.iso.org/standard/81092.html, https://www.iso.org/standard/81093.html, https://www.iso.org/standard/84150.html, https://www.iso.org/standard/86532.html, https://www.iso.org/standard/89535.html, https://www.iso.org/standard/89536.html, and https://www.iso.org/standard/89537.html
+
+### Editorial judgments
+
+- Rated `IEEE P7027` High for Physical-AI relevance because IEEE expressly limits the project to physically embodied social robots and addresses risks arising from their sustained interaction with people in sensitive real-world environments.
+
+### Validation
+
+- Evaluated all embedded matrix rows as JavaScript using Windows Script Host.
+- Verified 146 entries, 11 issuer groups, 108 current-status entries, and 70 High Physical-AI entries.
+- Verified all required fields, HTTPS-only URLs, and no duplicate publication identifiers.
+- Exercised representative search, single-filter, combined-filter, sort, and pagination derivations: `medical` returned 18 entries, IEC returned 9, Automotive plus High returned 16, publication sorting retained all rows, and a page size of 10 produced 15 pages.
+- Crawled all 142 unique matrix URLs with individual retrieval and transient-failure retry: 133 healthy, 0 redirected, 0 broken, 7 temporarily unavailable, and 2 access-blocked.
+- The temporarily unavailable URLs affect `Directive (EU) 2024/2853`; `Regulation (EU) 2024/2847`; `EN 18286:2026`; `IEEE P4106`; `UN Regulation No. 155` and `UN Regulation No. 156` (shared UNECE page); `UN Regulation No. 157`; and `UN Regulation on Automated Driving Systems (ADS)`. Each represented publication was confirmed through another official page or authoritative official indexed record; none was classified as broken.
+- The access-blocked URLs affect `Canada Directive on Automated Decision-Making` and `UNESCO Recommendation on AI Ethics`. Both exact publications were confirmed through authoritative official indexed records.
+- `git diff --check` passed, and the standards-matrix diff was reviewed for unintended changes.
+
+### Candidate queue and follow-up items
+
+- The connected GitHub repository had no open issues matching `is:issue is:open label:candidate label:"matrix:standards"`; no candidate disposition or committed-change reconciliation was required.
+- UNECE's official records still do not expose a final regulation number or exact entry-into-force date for the adopted ADS regulation; retain `Adopted` status.
+- EASA still exposes only Proposed Issue 3 of its AI Concept Paper after the consultation closed; retain `Proposed` status.
+- NIST continues to identify AI RMF 1.0 as the current framework while stating that it is being revised; retain the current row.
+- IMDRF continues to identify N93 as a proposed document whose consultation closed on 10 July 2026; retain `Proposed` status.
+
 ## 2026-08-20
 
 ### Confirmed factual changes
