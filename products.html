@@ -274,7 +274,7 @@
           <select id="physical"><option value="">All levels</option><option>High</option><option>Medium</option><option>Low</option></select>
         </label>
         <label>Added to matrix
-          <select id="newItems"><option value="">All items</option><option value="new">New (last 30 days)</option></select>
+          <select id="newItems"><option value="">All items</option><option value="new">New (last 15 days)</option></select>
         </label>
       </div>
       <div class="actions">
@@ -462,7 +462,7 @@
 
   const state = {page: 1, size: 10, sort: "provider", direction: 1};
   const filterIds = ["category", "lifecycle", "type", "domain", "physical"];
-  const newWindowDays = 30;
+  const newWindowDays = 15;
   const search = document.getElementById("search");
   const rows = document.getElementById("rows");
   const empty = document.getElementById("empty");
@@ -506,6 +506,7 @@
       const matchesNew = document.getElementById("newItems").value !== "new" || isNew(item);
       return matchesSearch && matchesFilters && matchesNew;
     }).sort(function(a, b) {
+      if (document.getElementById("newItems").value === "new" && a.added !== b.added) return b.added.localeCompare(a.added);
       return String(a[state.sort]).localeCompare(String(b[state.sort]), undefined, {numeric: true}) * state.direction;
     });
   }

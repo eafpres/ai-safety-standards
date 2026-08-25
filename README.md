@@ -82,7 +82,7 @@ access
 url
 ```
 
-New records may also contain an `added` date, which controls the 30-day “New” indicator. Audit-related fields may identify links that were access-restricted or could not be verified during the latest review.
+New records may also contain an `added` date, which controls the 15-day “New” indicator. When the New filter is active, matching records are ordered by that date with the newest first. Audit-related fields may identify links that were access-restricted or could not be verified during the latest review.
 
 ## Suggest an addition
 

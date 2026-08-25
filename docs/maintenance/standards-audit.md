@@ -63,7 +63,7 @@ Physical-AI relevance is always editorial. Do not describe a High, Medium, or Lo
 
 - Edit `index.html` only when official evidence supports a material matrix change.
 - Preserve every required field: `issuer`, `publication`, `title`, `date`, `status`, `category`, `domain`, `physical`, `summary`, `conformity`, `access`, and `url`.
-- Give each newly added row an `added` field containing the local audit date in `YYYY-MM-DD` format. Preserve that original value when the row is later updated; the matrix uses it to show the New badge for 30 days.
+- Give each newly added row an `added` field containing the local audit date in `YYYY-MM-DD` format. Preserve that original value when the row is later updated; the matrix uses it to show the New badge for 15 days.
 - Preserve sorting, filtering, pagination, CSV export, counts, layout, and visual design.
 - Avoid wording-only churn.
 - Prefer an official HTTPS URL when one exists.

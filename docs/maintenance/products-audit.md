@@ -65,7 +65,7 @@ Potential standards relevance and Physical-AI relevance are always editorial cla
 - Prefer a stable official HTTPS product URL when one exists.
 - Do not introduce duplicate provider-and-offering combinations.
 - When matrix data materially changes, update the header's Last updated date to the current local date. Otherwise leave it unchanged.
-- Give each newly added row an `added` field containing the local audit date in `YYYY-MM-DD` format. Preserve that original value when the row is later updated; the matrix uses it to show the New badge for 30 days.
+- Give each newly added row an `added` field containing the local audit date in `YYYY-MM-DD` format. Preserve that original value when the row is later updated; the matrix uses it to show the New badge for 15 days.
 - Append a concise entry to products-audit-log.md only when a material matrix change is made. A no-change audit must not edit repository files.
 
 ## 6. Validation

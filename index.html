@@ -401,7 +401,7 @@
           <select id="physical"><option value="">All levels</option><option>High</option><option>Medium</option><option>Low</option></select>
         </label>
         <label>Added to matrix
-          <select id="newItems"><option value="">All items</option><option value="new">New (last 30 days)</option></select>
+          <select id="newItems"><option value="">All items</option><option value="new">New (last 15 days)</option></select>
         </label>
       </div>
       <div class="actions">
@@ -675,7 +675,7 @@
   const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
   const statusClass = s => normalize(s).replace(/\s+/g,"-").replace(/[^a-z-]/g,"");
   const currentStatuses = new Set(["Published","Active","In force","Final guidance"]);
-  const newWindowDays = 30;
+  const newWindowDays = 15;
 
   function updateTableScrollUi() {
     const maxScroll = Math.max(0, tableScroll.scrollWidth - tableScroll.clientWidth);
@@ -763,6 +763,7 @@
       if ($("newItems").value === "new" && !isNew(d)) return false;
       return true;
     }).sort((a,b) => {
+      if ($("newItems").value === "new" && a.added !== b.added) return b.added.localeCompare(a.added);
       let av = a[state.sortKey] ?? "", bv = b[state.sortKey] ?? "";
       if (state.sortKey === "physical") { const rank={High:3,Medium:2,Low:1}; av=rank[av]; bv=rank[bv]; }
       return (typeof av === "number" ? av-bv : String(av).localeCompare(String(bv), undefined, {numeric:true})) * state.sortDir;
