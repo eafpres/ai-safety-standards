@@ -467,13 +467,16 @@
     <section class="panel resources" aria-labelledby="resources-heading">
       <div class="resources-header">
         <h2 id="resources-heading">Standards discovery resources</h2>
-        <p>These links open catalogues, work programmes, and reading tools—not individual publications. Use them to discover and monitor standards, then use the matrix above for exact publication records.</p>
+        <p>These links open catalogues, work programmes, coordination hubs, and reading tools—not individual publications. Use them to discover and monitor standards, then use the matrix above for exact publication records.</p>
       </div>
       <div class="resource-grid">
         <a class="resource-card" href="https://www.iso.org/committee/6794475/x/catalogue/" target="_blank" rel="noopener noreferrer"><strong>ISO/IEC JTC 1/SC 42 work programme ↗</strong><span>Browse published and developing artificial-intelligence standards assigned to SC 42.</span></a>
         <a class="resource-card" href="https://www.iso.org/committee/45306/x/catalogue/" target="_blank" rel="noopener noreferrer"><strong>ISO/IEC JTC 1/SC 27 work programme ↗</strong><span>Browse information-security, cybersecurity, and privacy projects, including AI-related work.</span></a>
         <a class="resource-card" href="https://www.iso.org/obp/ui/" target="_blank" rel="noopener noreferrer"><strong>ISO Online Browsing Platform ↗</strong><span>Search standards and read the sections ISO makes available for preview.</span></a>
         <a class="resource-card" href="https://www.iso.org/stage-codes.html" target="_blank" rel="noopener noreferrer"><strong>ISO lifecycle stage codes ↗</strong><span>Decode project stages such as 30.60, 40.20, 50.00, and 60.60.</span></a>
+        <a class="resource-card" href="https://aiforgood.itu.int/ai-standards-exchange/" target="_blank" rel="noopener noreferrer"><strong>ITU AI Standards Exchange ↗</strong><span>Search AI standards and technical publications from ISO, IEC, ITU, IEEE, and other standards bodies.</span></a>
+        <a class="resource-card" href="https://aistandardshub.org/ai-standards-search/" target="_blank" rel="noopener noreferrer"><strong>AI Standards Hub database ↗</strong><span>Filter published and developing AI-related standards by domain, topic, stage, issuing body, and access.</span></a>
+        <a class="resource-card" href="https://www.nist.gov/artificial-intelligence/ai-standards" target="_blank" rel="noopener noreferrer"><strong>NIST AI standards hub ↗</strong><span>Monitor NIST standards activities, federal coordination, international engagement, and AI RMF alignment.</span></a>
       </div>
     </section>
 
@@ -675,7 +678,7 @@
   const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
   const statusClass = s => normalize(s).replace(/\s+/g,"-").replace(/[^a-z-]/g,"");
   const currentStatuses = new Set(["Published","Active","In force","Final guidance"]);
-  const newWindowDays = 15;
+  const newWindowDays = 7;
 
   function updateTableScrollUi() {
     const maxScroll = Math.max(0, tableScroll.scrollWidth - tableScroll.clientWidth);
