@@ -7,30 +7,40 @@ This log records audits that produced a material matrix change. No-change runs a
 ### Confirmed factual changes
 
 - Added `ISO/IEC DTS 42119-3.2`. ISO records the cross-sector verification-and-validation analysis guidance at stage 50.20, covering formal methods, simulation, and evaluation of AI systems across lifecycle stages. Source: https://www.iso.org/standard/85072.html
+- Added `ISO/IEC AWI TS 25864`. ISO records the AI-system resilience-assessment project at stage 20.00 and describes methods, mechanisms, guidelines, methodologies, and quantifiable metrics for resilience assessment. Source: https://www.iso.org/standard/91831.html
+- Added `ISO/IEC AWI TS 42119-7`. ISO records the AI red-teaming project at stage 20.00 and describes technology-agnostic guidance for planning, executing, documenting, and integrating red-teaming assessments across the AI lifecycle. Source: https://www.iso.org/standard/91240.html
+- Added `IEEE P3953`. IEEE records an active PAR approved on 12 February 2026 for safety, reliability, predictable behavior, privacy, crisis escalation, and explainable deployment of user-facing conversational AI applications that use large language models. Source: https://standards.ieee.org/ieee/3953/12484/
+- Added `NIST AI 200-2 (initial public draft)`. NIST released the TEVV-Athlon Framework on 7 August 2026 as a four-stage method for customized AI test, evaluation, verification, and validation assessments and is accepting input through 6 October 2026. Source: https://www.nist.gov/artificial-intelligence/ai-research/tevv-athlon-framework-evaluating-ai-systems
 
 ### Editorial judgments
 
 - Rated `ISO/IEC DTS 42119-3.2` High for Physical-AI relevance because its verification-and-validation approaches can directly support assurance of safety-relevant AI system components and their interactions with non-AI components, although the work item itself is cross-sector.
+- Rated `ISO/IEC AWI TS 25864` Medium because resilience assessment can support cyber-physical assurance, but the work item is cross-sector and does not define domain-specific product safety.
+- Rated `ISO/IEC AWI TS 42119-7` Medium because red-teaming can identify safety and security weaknesses in physical AI, but the work item applies to all AI systems and is not domain-specific.
+- Rated `IEEE P3953` Low because its safety scope concerns user-facing conversational AI and user well-being rather than embodied or cyber-physical operation.
+- Rated `NIST AI 200-2 (initial public draft)` Medium because flexible TEVV and real-world impact assessment can support physical-AI evidence, while the framework remains cross-sector and voluntary.
 
 ### Validation
 
-- Evaluated all embedded matrix rows as JavaScript using Windows Script Host.
-- Verified 150 entries, 11 issuer groups, 108 current-status entries, and 71 High Physical-AI entries.
+- Evaluated all embedded matrix rows as JavaScript using the bundled Node.js runtime.
+- Verified 154 entries, 11 issuer groups, 108 current-status entries, and 71 High Physical-AI entries.
 - Verified all required fields, HTTPS-only URLs, and no duplicate publication identifiers.
-- Exercised representative search, single-filter, combined-filter, sort, and pagination derivations: `medical` returned 18 entries, IEC returned 9, Automotive plus High returned 16, publication sorting retained all rows, and a page size of 10 produced 15 pages.
-- Crawled all 146 unique matrix URLs with browser retrieval and manual official-source follow-up: 135 healthy, 0 redirected, 4 broken, 4 temporarily unavailable, and 3 access-blocked.
-- Four EUR-Lex ELI targets remain broken (wrong target) based on the latest confirmed manual disposition and could not be shown to retrieve the represented acts during this run: `Regulation (EU) 2024/1689`, `Regulation (EU) 2024/2847`, `Directive (EU) 2024/2853`, and `Regulation (EU) 2023/988`. Exact CELEX alternatives timed out or returned transient 502 responses, so no replacement was made.
-- The temporarily unavailable URLs affect `Regulation (EU) 2023/1230`, `Regulation (EU) 2017/745`, `EUROCAE ED-324 / SAE AS6983` and `EUROCAE ER-027` (shared EUROCAE page), and `ITU-T X.2211`.
-- The access-blocked URLs affect `UN Regulation No. 155` and `UN Regulation No. 156` (shared UNECE page), `UN Regulation No. 157`, and `UN Regulation on Automated Driving Systems (ADS)`.
+- Exercised representative search, single-filter, combined-filter, sort, and pagination derivations: `medical` returned 18 entries, IEC returned 9, Automotive plus High returned 16, publication sorting retained all rows, and a page size of 10 produced 16 pages.
+- Crawled all 150 unique matrix URLs with browser retrieval and manual official-source follow-up: 137 healthy, 0 redirected, 2 broken, 2 temporarily unavailable, 8 access-blocked, and 1 environment-blocked.
+- Two EUR-Lex ELI targets redirected to the current Official Journal index rather than the represented acts and remain broken (wrong target): `Directive (EU) 2024/2853` and `Regulation (EU) 2017/745`. Exact CELEX alternatives encountered EUR-Lex bot protection, so no replacement was made.
+- The temporarily unavailable URLs affect `Regulation (EU) 2023/1230` and `SAE J3016_202104`.
+- The access-blocked URLs affect `Regulation (EU) 2024/1689`, `Regulation (EU) 2024/2847`, `Regulation (EU) 2023/988`, `UN Regulation No. 155` and `UN Regulation No. 156` (shared UNECE page), `UN Regulation No. 157`, `UN Regulation on Automated Driving Systems (ADS)`, `EASA NPA 2025-07 / proposed DS.AI`, and `Canada Directive on Automated Decision-Making`.
+- The `EN 18286:2026` CEN-CENELEC catalogue URL was environment-blocked by the retrieval safety layer; its exact official record was retained from the latest confirmed audit disposition.
 - `git diff --check` passed, and the standards-matrix diff was reviewed for unintended changes.
 
 ### Candidate queue and follow-up items
 
 - The connected GitHub standards candidate queue was empty; no candidate routing, normalization, or committed-change reconciliation was required.
-- Replace the four broken EUR-Lex ELI links when exact official targets can be shown to retrieve the represented acts consistently; do not substitute an unverified target.
+- Replace the two broken EUR-Lex ELI links when exact official targets can be shown to retrieve the represented acts consistently; do not substitute an unverified target.
 - UNECE's official pages were access-blocked, and no final regulation number or exact entry-into-force date was verified for the adopted ADS regulation; retain `Adopted` status.
 - EASA still exposes only Proposed Issue 3 of its AI Concept Paper and NPA 2025-07 remains proposed; retain both `Proposed` statuses.
 - NIST continues to identify AI RMF 1.0 as the current framework while stating that it is being revised; retain the current row.
+- Track the NIST AI 200-2 public draft after its 6 October 2026 comment deadline for a revised or final publication.
 - IMDRF continues to identify N93 as a proposed document whose consultation is closed; retain `Proposed` status.
 
 ## 2026-08-24
