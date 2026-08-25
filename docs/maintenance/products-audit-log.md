@@ -126,3 +126,19 @@ Follow-up:
 
 - Candidate issue #8 remains open with `status:ready-for-change` until the uncommitted Jeen matrix addition receives human review and an approved change is committed outside the audit workflow.
 - Recheck BeyondTrust AI Agent Security after its planned US general-availability window in fall 2026, DigiCert AI Model Trust and AI Agent Trust after their preview periods, Veeam DataAI Agent Commander after early access, and NVIDIA Halos Outside-In Safety after early access.
+
+## 24 August 2026 — Scheduled products-and-vendors audit
+
+Confirmed provider facts:
+
+- Anaconda / Enkrypt AI — fields: provider, offering, type, summary. Anaconda completed its acquisition of Enkrypt AI on 4 August 2026, integrated its AI security, governance, compliance, and guardrail capabilities into the Anaconda Platform, and stated that Enkrypt AI remains available without changes to existing products, plans, or support: https://www.anaconda.com/press/anaconda-acquires-enkrypt-ai
+- Fortinet / Virtue AI — fields: provider, offering, type, summary. Fortinet completed its acquisition of Virtue AI on 17 August 2026 and identified its agentic-system red teaming, agent protection and governance, continuous validation, and real-time guardrail capabilities as additions to Fortinet's AI security portfolio: https://fortinet.gcs-web.com/news-releases/news-release-details/fortinet-advances-continuous-ai-protection-acquisition-virtue-ai
+
+Editorial judgments:
+
+- Enkrypt AI's Security & resilience category, Multiple stages lifecycle, Generative AI / agents domain, Low Physical-AI relevance, and potential standards relevance remain editorial classifications. The acquisition, continued availability, and integrated scope are confirmed Anaconda facts.
+- Virtue AI's Security & resilience category, Multiple stages lifecycle, Generative AI / agents domain, Low Physical-AI relevance, and potential standards relevance remain editorial classifications. The acquisition and integrated scope are confirmed Fortinet facts.
+
+Follow-up:
+
+- Dynatrace signed a definitive agreement to acquire Arize on 13 August 2026, but the transaction remains subject to regulatory review and customary closing conditions; retain the Arize AI row pending authoritative confirmation that the acquisition has closed: https://www.dynatrace.com/news/press-release/dynatrace-to-acquire-arize/
