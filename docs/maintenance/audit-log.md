@@ -2,6 +2,41 @@
 
 This log records audits that produced a material matrix change. No-change runs are intentionally not recorded here because scheduled audits must leave a clean repository untouched.
 
+## 2026-08-24
+
+### Confirmed factual changes
+
+- Added `ISO/IEC DIS 25029`. ISO records the responsible-design guidance and requirements for AI-enhanced nudging at stage 40.20, with the 12-week DIS ballot initiated on 15 June 2026. Source: https://www.iso.org/standard/88817.html
+- Added `ISO/IEC AWI TS 25223`. ISO records the lifecycle guidance and requirements for uncertainty quantification in AI systems as an Approved Work Item at stage 20.00. Source: https://www.iso.org/standard/89475.html
+- Added `ISO/IEC CD TS 25568`. ISO records the generative-AI risk guidance at stage 30.60 after the committee-draft comment period closed on 4 July 2026. Source: https://www.iso.org/standard/90754.html
+- Normalized the `IEEE P3961` URL to the canonical trailing-slash form after the official IEEE project page redirected the existing target and continued to identify an active PAR for swarm-intelligence architecture and communication requirements. Source: https://standards.ieee.org/ieee/3961/12441/
+
+### Editorial judgments
+
+- Rated `ISO/IEC DIS 25029` and `ISO/IEC CD TS 25568` Low for Physical-AI relevance because their scopes concern cross-sector behavioural influence and generative-AI risk rather than direct assurance of physical systems.
+- Rated `ISO/IEC AWI TS 25223` Medium for Physical-AI relevance because uncertainty quantification can materially support cyber-physical assurance, but the work item is cross-sector and remains at an early stage.
+
+### Validation
+
+- Evaluated all embedded matrix rows as JavaScript using Windows Script Host.
+- Verified 149 entries, 11 issuer groups, 108 current-status entries, and 70 High Physical-AI entries.
+- Verified all required fields, HTTPS-only URLs, and no duplicate publication identifiers.
+- Exercised representative search, single-filter, combined-filter, sort, and pagination derivations: `medical` returned 18 entries, IEC returned 9, Automotive plus High returned 16, publication sorting retained all rows, and a page size of 10 produced 15 pages.
+- Crawled all 145 unique matrix URLs with web retrieval and manual official-source follow-up: 132 healthy, 0 redirected, 4 broken, 4 temporarily unavailable, and 5 access-blocked.
+- Four EUR-Lex ELI targets resolved to the unrelated Today's Official Journal page and were classified as broken (wrong target): `Regulation (EU) 2024/1689`, `Regulation (EU) 2024/2847`, `Directive (EU) 2024/2853`, and `Regulation (EU) 2023/988`. The represented acts remain confirmed through official EUR-Lex records, but no consistently retrievable replacement target was available during this run.
+- The temporarily unavailable URLs affect `IEEE P4106`, `EN 18286:2026`, `SAE J3016_202104`, and `SAE ARP4754B / ARP4761A`. Each represented publication was confirmed through another official page or authoritative official indexed record.
+- The access-blocked URLs affect `UN Regulation No. 155` and `UN Regulation No. 156` (shared UNECE page), `UN Regulation No. 157`, `UN Regulation on Automated Driving Systems (ADS)`, `EASA AI Concept Paper Proposed Issue 3`, and `EASA NPA 2025-07 / proposed DS.AI`. Each represented publication was confirmed through another official page or authoritative official indexed record.
+- `git diff --check` passed, and the standards-matrix diff was reviewed for unintended changes.
+
+### Candidate queue and follow-up items
+
+- The standards candidate queue could not be reviewed because the local GitHub CLI is unavailable and GitHub issue-page retrieval failed; no candidate labels, comments, or issue states were changed.
+- Replace the four broken EUR-Lex ELI links when exact official targets can be shown to retrieve the represented acts consistently; do not substitute an unverified target.
+- UNECE's official records still do not expose a final regulation number or exact entry-into-force date for the adopted ADS regulation; retain `Adopted` status.
+- EASA still exposes only Proposed Issue 3 of its AI Concept Paper after the consultation closed, and NPA 2025-07 remains proposed; retain both `Proposed` statuses.
+- NIST continues to identify AI RMF 1.0 as the current framework while stating that it is being revised; retain the current row.
+- IMDRF continues to identify N93 as a proposed document whose consultation closed on 10 July 2026; retain `Proposed` status.
+
 ## 2026-08-23
 
 ### Confirmed factual changes
