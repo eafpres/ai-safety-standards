@@ -2,6 +2,37 @@
 
 This log records audits that produced a material matrix change. No-change runs are intentionally not recorded here because scheduled audits must leave a clean repository untouched.
 
+## 2026-08-25
+
+### Confirmed factual changes
+
+- Added `ISO/IEC DTS 42119-3.2`. ISO records the cross-sector verification-and-validation analysis guidance at stage 50.20, covering formal methods, simulation, and evaluation of AI systems across lifecycle stages. Source: https://www.iso.org/standard/85072.html
+
+### Editorial judgments
+
+- Rated `ISO/IEC DTS 42119-3.2` High for Physical-AI relevance because its verification-and-validation approaches can directly support assurance of safety-relevant AI system components and their interactions with non-AI components, although the work item itself is cross-sector.
+
+### Validation
+
+- Evaluated all embedded matrix rows as JavaScript using Windows Script Host.
+- Verified 150 entries, 11 issuer groups, 108 current-status entries, and 71 High Physical-AI entries.
+- Verified all required fields, HTTPS-only URLs, and no duplicate publication identifiers.
+- Exercised representative search, single-filter, combined-filter, sort, and pagination derivations: `medical` returned 18 entries, IEC returned 9, Automotive plus High returned 16, publication sorting retained all rows, and a page size of 10 produced 15 pages.
+- Crawled all 146 unique matrix URLs with browser retrieval and manual official-source follow-up: 135 healthy, 0 redirected, 4 broken, 4 temporarily unavailable, and 3 access-blocked.
+- Four EUR-Lex ELI targets remain broken (wrong target) based on the latest confirmed manual disposition and could not be shown to retrieve the represented acts during this run: `Regulation (EU) 2024/1689`, `Regulation (EU) 2024/2847`, `Directive (EU) 2024/2853`, and `Regulation (EU) 2023/988`. Exact CELEX alternatives timed out or returned transient 502 responses, so no replacement was made.
+- The temporarily unavailable URLs affect `Regulation (EU) 2023/1230`, `Regulation (EU) 2017/745`, `EUROCAE ED-324 / SAE AS6983` and `EUROCAE ER-027` (shared EUROCAE page), and `ITU-T X.2211`.
+- The access-blocked URLs affect `UN Regulation No. 155` and `UN Regulation No. 156` (shared UNECE page), `UN Regulation No. 157`, and `UN Regulation on Automated Driving Systems (ADS)`.
+- `git diff --check` passed, and the standards-matrix diff was reviewed for unintended changes.
+
+### Candidate queue and follow-up items
+
+- The connected GitHub standards candidate queue was empty; no candidate routing, normalization, or committed-change reconciliation was required.
+- Replace the four broken EUR-Lex ELI links when exact official targets can be shown to retrieve the represented acts consistently; do not substitute an unverified target.
+- UNECE's official pages were access-blocked, and no final regulation number or exact entry-into-force date was verified for the adopted ADS regulation; retain `Adopted` status.
+- EASA still exposes only Proposed Issue 3 of its AI Concept Paper and NPA 2025-07 remains proposed; retain both `Proposed` statuses.
+- NIST continues to identify AI RMF 1.0 as the current framework while stating that it is being revised; retain the current row.
+- IMDRF continues to identify N93 as a proposed document whose consultation is closed; retain `Proposed` status.
+
 ## 2026-08-24
 
 ### Confirmed factual changes

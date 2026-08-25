@@ -142,3 +142,19 @@ Editorial judgments:
 Follow-up:
 
 - Dynatrace signed a definitive agreement to acquire Arize on 13 August 2026, but the transaction remains subject to regulatory review and customary closing conditions; retain the Arize AI row pending authoritative confirmation that the acquisition has closed: https://www.dynatrace.com/news/press-release/dynatrace-to-acquire-arize/
+
+## 25 August 2026 — Scheduled products-and-vendors audit
+
+Confirmed provider and discovery-source facts:
+
+- Cisco / Galileo AI evaluation and observability — fields: provider, offering, type, summary. Galileo's current official site states that it is now part of Cisco and continues to market observability, evaluation engineering, and production guardrails for AI applications and agents: https://galileo.ai/
+- OECD Catalogue of Tools & Metrics for Trustworthy AI — field: discovery-source URL. The former catalogue URL redirects to the current official catalogue at https://oecd.ai/en/, which continues to identify and provide the represented tools-and-metrics catalogue.
+
+Editorial judgments:
+
+- Galileo's Testing & evaluation category, Verify & validate lifecycle, Generative AI / agents domain, Low Physical-AI relevance, and potential standards relevance remain editorial classifications. The Cisco ownership and current represented capabilities are confirmed provider facts.
+
+Follow-up:
+
+- Cyera states that it is acquiring Oasis Security, but its 28 July 2026 announcement does not state that the transaction has closed; retain the Oasis Security row pending authoritative confirmation of completion: https://www.cyera.com/blog/one-platform-to-secure-the-agentic-enterprise
+- Dynatrace's definitive agreement to acquire Arize remains subject to regulatory review and customary closing conditions on the latest authoritative announcement; retain the Arize AI row pending authoritative confirmation that the acquisition has closed: https://www.dynatrace.com/news/press-release/dynatrace-to-acquire-arize/
