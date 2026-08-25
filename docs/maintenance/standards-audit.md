@@ -34,6 +34,23 @@ Review authoritative primary sources for material changes since the most recent 
 - Aviation sources, including EASA, EUROCAE, FAA, RTCA, and SAE International
 - Government and professional bodies represented in the data
 
+### Required discovery sweep
+
+Before the issuer-by-issuer primary-source review, consult every source below on each audit:
+
+- [ISO/IEC JTC 1/SC 42 work programme](https://www.iso.org/committee/6794475/x/catalogue/) for published and developing artificial-intelligence standards assigned to SC 42.
+- [ISO/IEC JTC 1/SC 27 work programme](https://www.iso.org/committee/45306/x/catalogue/) for AI-related information-security, cybersecurity, and privacy projects.
+- [ISO Online Browsing Platform](https://www.iso.org/obp/ui/) for standards search, terminology, references, and available previews.
+- [ISO lifecycle stage codes](https://www.iso.org/stage-codes.html) when interpreting numeric ISO project stages and lifecycle transitions.
+- [ITU AI Standards Exchange](https://aiforgood.itu.int/ai-standards-exchange/) for a cross-SDO scan of published and developing AI standards and related technical publications.
+- [AI Standards Hub database](https://aistandardshub.org/ai-standards-search/) for filtered discovery by domain, topic, development stage, issuing body, committee, and access status.
+- [NIST AI Standards](https://www.nist.gov/artificial-intelligence/ai-standards) for current NIST standards activities, federal coordination, international engagement, zero-draft work, and AI RMF alignment.
+- [NCSL Artificial Intelligence 2025 Legislation](https://www.ncsl.org/technology-and-communication/artificial-intelligence-2025-legislation) as a baseline for U.S. state legislation that may reference, adopt, or change the legal significance of AI standards. Follow a current-year successor linked by NCSL when one is available.
+
+ISO/IEC designation or JTC affiliation is not required for inclusion or verification. Evaluate each candidate against the authoritative records of its own issuer or responsible public body.
+
+Treat discovery-database records and legislative summaries as leads, not evidence or endorsements. Verify every resulting factual matrix change on the exact issuer, regulator, official legislature, enacted-law, treaty-office, or other authoritative primary-source record. The ISO, ITU, and NIST pages may serve as primary evidence only for claims about their own activities or publications. In the audit handoff, state whether each required discovery source was checked, summarize material leads, and identify any source that was unavailable or access-blocked.
+
 Prioritize:
 
 1. Draft or work-item status transitions.
@@ -113,6 +130,7 @@ Candidate reconciliation is GitHub issue bookkeeping, not a material matrix chan
 If changes were made:
 
 - List each publication added, changed, removed, or flagged.
+- Report the outcome of the required discovery sweep, including material leads and any unavailable or access-blocked source.
 - List each reviewed candidate issue and its disposition.
 - List each reconciled `status:ready-for-change` issue, the implementing commit, and whether it was closed or left open.
 - Cite the exact official sources and summarize their evidence.
@@ -126,6 +144,7 @@ If changes were made:
 If no supported changes were found:
 
 - Make no file edits.
+- Report the outcome of the required discovery sweep, including material leads and any unavailable or access-blocked source.
 - Report the issuer sources checked.
 - Report the URL crawl totals by classification and identify every redirected, broken, temporarily unavailable, or access-blocked URL with its affected publication identifier.
 - If external review was environment-blocked, report that condition separately and do not present it as a URL-crawl result.
