@@ -2,6 +2,37 @@
 
 This log records audits that produced a material matrix change. No-change runs are intentionally not recorded here because scheduled audits must leave a clean repository untouched.
 
+## 2026-08-27
+
+### Confirmed factual changes
+
+- Added `ISO/IEC AWI 25870`. ISO records the AI-system incident-reporting data-elements project at stage 20.00, registered in the SC 42 work programme on 7 July 2025. Source: https://www.iso.org/standard/91804.html
+- Added `ISO/IEC AWI 25880`. ISO records the organizational implementation of human-machine teaming project at stage 20.00, registered in the SC 42 work programme on 17 June 2026. Source: https://www.iso.org/standard/91833.html
+- Added `IEEE P3396`. IEEE records an active PAR approved on 21 September 2023 for a lifecycle framework addressing AI risk, safety, trustworthiness, and responsibility. Source: https://standards.ieee.org/ieee/3396/11379/
+- Updated `ISO/IEC DTS 22443` from stage 50.00 to 50.20 after ISO recorded the eight-week approval step on 26 August 2026. Source: https://www.iso.org/standard/87119.html
+- Updated `ISO/IEC FDIS 42105` from stage 50.00 to 50.20 after ISO recorded the eight-week FDIS approval step on 26 August 2026. Source: https://www.iso.org/standard/86902.html
+- Replaced the `Directive (EU) 2024/2853` URL with EUR-Lex's exact English ELI target and replaced the OECD Due Diligence Guidance URL with OECD's canonical publication target. Sources: https://eur-lex.europa.eu/eli/dir/2024/2853/oj/eng and https://www.oecd.org/en/publications/oecd-due-diligence-guidance-for-responsible-ai_41671712-en.html
+
+### Editorial judgments
+
+- Rated `ISO/IEC AWI 25870` Medium for Physical-AI relevance because consistent incident reporting supports operational safety and post-market learning for physical AI, while the project is cross-sector.
+- Rated `ISO/IEC AWI 25880` Medium because operational human-machine teaming can directly affect physical-system oversight, but the project applies across AI applications and is not a domain-specific product-safety standard.
+- Rated `IEEE P3396` Medium because its AI-risk and safety framework spans the full lifecycle and can support physical-AI assurance, while remaining cross-sector and principles-based.
+
+### Validation
+
+- Parsed the embedded object literal through a strict JSON-compatible data check and verified required fields, HTTPS URLs, and unique publication identifiers.
+- Verified publication, issuer-group, current-status, and High Physical-AI counts; verified representative search, filter, sort, and pagination derivations.
+- Crawled all 153 unique matrix URLs with web retrieval, retried non-healthy results, and manually corroborated blocked or unavailable records through other official pages: 144 healthy, 0 redirected, 0 broken, 2 temporarily unavailable, 5 access-blocked, and 2 environment-blocked.
+- `git diff --check` passed, and the standards-matrix diff was reviewed for unintended changes.
+
+### Candidate queue and follow-up items
+
+- The public GitHub standards candidate queue could not be reviewed because the issue search page was unavailable and the GitHub CLI is not installed; no issue state was changed.
+- Direct JavaScript-runtime and rendered-page validation was unavailable because no local JavaScript runtime is installed and the in-app browser security policy blocks local `file://` pages. No dependency was installed; the strict data parse and behavior derivations passed.
+- The CEN-CENELEC catalogue target for `EN 18286:2026` and the UNECE landing page shared by `UN Regulation No. 155` and `UN Regulation No. 156` were environment-blocked; their official records were corroborated through other authoritative pages.
+- `IEEE 7009-2024` and `SAE J3016_202104` were temporarily unavailable after retry. The exact Product Liability Directive target, `UN Regulation No. 157`, the UNECE ADS regulation target, `EASA AI Concept Paper Issue 2`, and `EASA NPA 2025-07 / proposed DS.AI` were access-blocked. Each was corroborated through another official page or official indexed record during this run.
+
 ## 2026-08-25
 
 ### Confirmed factual changes
