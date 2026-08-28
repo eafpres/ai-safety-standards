@@ -2,6 +2,34 @@
 
 This log records audits that produced a material matrix change. No-change runs are intentionally not recorded here because scheduled audits must leave a clean repository untouched.
 
+## 2026-08-28
+
+### Confirmed factual changes
+
+- Added `ISO/IEC AWI TS 42119-8`. ISO records the prompt-based text-to-text generative-AI quality-assessment project at stage 20.00, registered in the SC 42 work programme on 13 September 2025, with safety assessment, red teaming, result interpretation, and documentation in scope. Source: https://www.iso.org/standard/91609.html
+- Added `NIST AI 300-1 (initial public draft)`. NIST published the public-facing AI documentation zero draft on 30 July 2026 and is accepting input through 16 September 2026 before a possible later submission into voluntary-consensus standardization. Sources: https://www.nist.gov/publications/guidance-and-templates-public-facing-ai-documentation-ai-standards-zero-draft-initial and https://www.nist.gov/artificial-intelligence/nists-ai-standards-zero-drafts-pilot-project-accelerate-standardization
+
+### Editorial judgments
+
+- Rated `ISO/IEC AWI TS 42119-8` Low for Physical-AI relevance because its scope is prompt-based text-to-text generative AI rather than embodied or cyber-physical operation, despite its explicit safety-assessment content.
+- Rated `NIST AI 300-1 (initial public draft)` Low because its transparency and documentation guidance is cross-sector and not specific to physical systems or product-safety assurance.
+
+### Validation
+
+- Evaluated the embedded data in an isolated JavaScript runtime and verified all required fields, HTTPS URLs, and unique publication identifiers.
+- Verified 159 entries, 155 unique URLs, 11 issuer groups, 108 current-status entries, and 71 High Physical-AI entries; representative search, filter, sort, and pagination derivations passed.
+- Crawled all 155 unique matrix URLs with browser and web retrieval, retrying and manually corroborating non-healthy results: 153 healthy, 0 redirected, 0 broken, 0 temporarily unavailable, and 2 access-blocked.
+- The exact EUR-Lex AI Act target and the Treasury Board of Canada directive target were access-blocked during direct retrieval. The former was corroborated through the European Commission's official AI Act page, and the latter through official Government of Canada records and an indexed copy of the directive.
+- `git diff --check` passed, and the standards-matrix diff was reviewed for unintended changes.
+
+### Discovery sweep, candidate queue, and follow-up items
+
+- Checked the required SC 42 and SC 27 work programmes, ISO Online Browsing Platform, ISO lifecycle-stage codes, ITU AI Standards Exchange, AI Standards Hub, NIST AI Standards page, and NCSL 2025 legislation baseline. The SC 42 and NIST sources produced the two supported additions above; the other discovery sources produced no further primary-source-supported matrix change.
+- The guessed NCSL 2026 successor URL returned a not-found page and no current-year successor was linked from the 2025 baseline; revisit when NCSL publishes or links a successor.
+- Reviewed the represented ISO/IEC, IEEE, IEC, UL Standards & Engagement, NIST, EU/CEN-CENELEC, ETSI, automotive, medical/health, aviation, and government/professional issuer families through their official matrix targets. No other status, edition, legal-significance, or link change was supported.
+- The connected GitHub standards candidate queue was empty; no routing, normalization, disposition, or committed-change reconciliation was required.
+- Direct rendered-page validation remained unavailable because no host JavaScript runtime is installed and local `file://` navigation is blocked. No dependency was installed; JavaScript data evaluation and behavior derivations passed.
+
 ## 2026-08-27
 
 ### Confirmed factual changes
