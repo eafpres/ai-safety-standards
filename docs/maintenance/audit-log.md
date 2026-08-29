@@ -2,6 +2,26 @@
 
 This log records audits that produced a material matrix change. No-change runs are intentionally not recorded here because scheduled audits must leave a clean repository untouched.
 
+## 2026-08-29
+
+### Confirmed factual changes
+
+- Advanced `ISO/IEC FDIS 24970` from stage 50.00 to 50.20. ISO records the proof sent to the secretariat or initiation of the eight-week FDIS ballot on 28 August 2026. Source: https://www.iso.org/standard/88723.html
+
+### Validation
+
+- Evaluated the embedded data in the bundled JavaScript runtime and verified all required fields, HTTPS URLs, unique publication identifiers, and representative search, filter, sort, and pagination derivations.
+- Verified 159 entries, 155 unique URLs, 11 issuer groups, 108 current-status entries, and 71 High Physical-AI entries.
+- Crawled all 155 unique matrix URLs: 146 healthy, 0 redirected, 0 broken, 2 temporarily unavailable, 5 access-blocked, and 2 environment-blocked. The non-healthy targets were retained because they were corroborated through another official page or official indexed record, or because the retrieval limitation supplied no evidence of a broken target.
+- `git diff --check` passed, and the standards-matrix diff was reviewed for unintended changes.
+
+### Discovery sweep, candidate queue, and follow-up items
+
+- Checked the required SC 42 work programme, ISO lifecycle-stage codes, ITU AI Standards Exchange, AI Standards Hub, NIST AI Standards page, NCSL 2025 baseline, and NCSL's current 2025-present AI legislation database. The SC 42 programme produced the supported `ISO/IEC FDIS 24970` transition; the other available discovery sources produced no further primary-source-supported matrix change.
+- The SC 27 work programme timed out on both attempts, and the ISO Online Browsing Platform required client-side JavaScript that web retrieval could not execute. These two discovery sources remain follow-up items.
+- Reviewed every represented ISO/IEC, IEEE, IEC, UL Standards & Engagement, NIST, EU/CEN-CENELEC, ETSI, automotive, medical/health, aviation, and government/professional issuer family through official matrix targets. No other status, edition, legal-significance, or link change was supported.
+- GitHub candidate-queue access was unavailable because `gh` is not installed and the public issue search page could not be retrieved; no issue state was changed.
+
 ## 2026-08-28
 
 ### Confirmed factual changes
