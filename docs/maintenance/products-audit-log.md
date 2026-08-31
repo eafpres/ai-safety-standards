@@ -158,3 +158,19 @@ Follow-up:
 
 - Cyera states that it is acquiring Oasis Security, but its 28 July 2026 announcement does not state that the transaction has closed; retain the Oasis Security row pending authoritative confirmation of completion: https://www.cyera.com/blog/one-platform-to-secure-the-agentic-enterprise
 - Dynatrace's definitive agreement to acquire Arize remains subject to regulatory review and customary closing conditions on the latest authoritative announcement; retain the Arize AI row pending authoritative confirmation that the acquisition has closed: https://www.dynatrace.com/news/press-release/dynatrace-to-acquire-arize/
+
+## 31 August 2026 — Scheduled products-and-vendors audit
+
+Confirmed provider facts:
+
+- Candidate issue #9 — Okta / Okta for AI Agents — fields: provider, offering, category, lifecycle, type, domain, physical, summary, relevance, access, URL, added. Okta markets generally available core capabilities for discovering, registering, owning, protecting, and governing AI agents and MCP servers, including least-privilege access, short-lived credentials, audit trails, and kill-switch controls: https://www.okta.com/products/govern-ai-agent-identity/
+- Okta closed its acquisition of Permiso Security on 26 August 2026. Okta describes the acquired capabilities as identity threat detection, behavioral analytics, agent-runtime monitoring, and automated response across human, non-human, and agentic identities: https://www.okta.com/newsroom/press-releases/okta-signs-definitive-agreement-to-acquire-permiso-security/
+
+Editorial judgments:
+
+- Okta for AI Agents' inclusion, Security & resilience category, Deploy & protect lifecycle, Established platform type, Generative AI / agents domain, Medium Physical-AI relevance, and potential standards relevance are editorial classifications. The row does not claim certification, compliance, or independent validation.
+
+Follow-up:
+
+- Dynatrace continues to describe Arize as an intended acquisition that has not yet closed; retain the Arize AI row pending authoritative completion evidence: https://www.dynatrace.com/news/press-release/dynatrace-to-acquire-arize/
+- Cyera continues to state that it is acquiring Oasis Security without confirming completion; retain the Oasis Security row pending authoritative completion evidence: https://www.cyera.com/blog/one-platform-to-secure-the-agentic-enterprise

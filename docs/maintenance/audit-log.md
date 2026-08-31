@@ -2,6 +2,39 @@
 
 This log records audits that produced a material matrix change. No-change runs are intentionally not recorded here because scheduled audits must leave a clean repository untouched.
 
+## 2026-08-31
+
+### Confirmed factual changes
+
+- Added `ISO/IEC WD 25959.2`. ISO records the deep-learning attack-potential project at stage 20.20 after a working-draft study was initiated on 16 July 2026; its scope expressly covers image recognition in autonomous driving, face recognition, and video surveillance. Source: https://www.iso.org/standard/92164.html
+- Added `ISO/IEC AWI 26160`. ISO records the AI-specific Common Criteria evaluation-guidance project at stage 20.00, covering application notes for security assurance requirements and evaluation work units plus an extended class of AI security functional requirements. Source: https://www.iso.org/standard/92749.html
+- Added `ETSI DTR 104 197`. ETSI records version 0.0.4 of its secure-by-design, safety, security, and assurance work item as a final draft for approval dated 19 August 2026; the document is not yet ready for publication. Source: https://portal.etsi.org/webapp/WorkProgram/Report_WorkItem.asp?WKI_ID=74867
+- Added `ETSI DTS 104 216`. ETSI records version 0.0.7 of the conformance-assessment and metrics work item for EN 304 223 as a final draft dated 24 August 2026; it is not yet published. Source: https://portal.etsi.org/webapp/WorkProgram/Report_WorkItem.asp?WKI_ID=74988
+- Added `FDA GenAI-enabled medical devices discussion paper`. FDA issued the discussion paper on 18 August 2026 to seek feedback on risk assessment, premarket evaluation, clinical confirmation, postmarket monitoring, foundation models, and agentic AI; FDA explicitly states that it is not draft or final guidance. Source: https://www.fda.gov/media/194242/download
+- Updated `ANSI/CAN/UL 3300 Ed. 1` for the 14 August 2026 revision. UL records ANSI and SCC approval and identifies new verification and validation test cases for obstacle variation, travel around humans, and robots employing AI in safety functions. Source: https://www.shopulstandards.com/ProductDetail.aspx?productId=UL3300_1_S_20240514
+
+### Editorial judgments
+
+- Rated `ISO/IEC WD 25959.2` High for Physical-AI relevance because its attack-potential method expressly includes autonomous-driving image recognition and other sensing applications with real-world safety consequences.
+- Rated `ISO/IEC AWI 26160`, `ETSI DTR 104 197`, and `ETSI DTS 104 216` Medium because their security-assurance and conformance methods can support physical-AI evidence but are cross-sector rather than product-domain safety standards.
+- Rated the FDA discussion paper High because it addresses risk-proportionate evaluation and monitoring of medical-device functions that can direct or autonomously take clinically consequential actions.
+- Preserved the existing High rating for UL 3300; the issuer's 2026 revision supports the factual description but does not determine the editorial Physical-AI rating.
+
+### Validation
+
+- Parsed all embedded matrix rows and verified every required field, HTTPS URL, and publication identifier; no required field was missing and no duplicate publication identifier was found.
+- Verified 164 entries, 160 unique URLs, 11 issuer groups, 108 current-status entries, and 73 High Physical-AI entries.
+- Exercised representative behavior derivations: the `medical` search returned 19 entries, the ETSI filter returned 9, Automotive plus High returned 16, publication sorting retained all rows, and a page size of 10 produced 17 pages.
+- Crawled all 160 unique matrix URLs with browser or web retrieval and manually reviewed exceptions: 157 healthy, 0 redirected, 0 broken, 2 temporarily unavailable, and 1 access-blocked. `IEC 60601-1:2005 + A1/A2` and `SAE J3321_202603` timed out after retry while their initial browser titles identified the expected publications. The `Canada Directive on Automated Decision-Making` target rejected the request and remains access-blocked. All three URLs were retained because no evidence showed a broken or wrong target.
+- `git diff --check` passed, and the standards-matrix diff was reviewed for unintended changes.
+
+### Discovery sweep, candidate queue, and follow-up items
+
+- Checked the required SC 42 and SC 27 work programmes, ISO lifecycle-stage codes, ITU AI Standards Exchange, AI Standards Hub, NIST AI Standards page, and NCSL 2025 legislation baseline. The SC 27 programme produced the two supported ISO/IEC additions above; the other available discovery sources produced no further primary-source-supported matrix change.
+- ISO Online Browsing Platform exposed only its client-side application shell to retrieval and remains access-limited. NCSL's 2025 baseline did not link a 2026 successor. These are follow-up items rather than evidence of no underlying activity.
+- Reviewed every represented ISO/IEC, IEEE, IEC, UL Standards & Engagement, NIST, EU/CEN-CENELEC, ETSI, automotive, medical/health, aviation, and government/professional issuer family through official sources. ETSI `TS 104 225` and `TS 104 275` remain final-draft leads to revisit at publication because their privacy and deepfake scopes are less directly tied to the matrix's safety-and-assurance focus. EASA still exposes Proposed Issue 3, and UNECE still does not expose an unambiguous final regulation number and exact entry-into-force date for the adopted ADS regulation.
+- The live GitHub standards candidate queue returned no open issues matching `is:issue is:open label:candidate label:"matrix:standards"`; no routing, normalization, disposition, or committed-change reconciliation was required.
+
 ## 2026-08-29
 
 ### Confirmed factual changes
