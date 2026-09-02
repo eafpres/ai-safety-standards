@@ -174,3 +174,19 @@ Follow-up:
 
 - Dynatrace continues to describe Arize as an intended acquisition that has not yet closed; retain the Arize AI row pending authoritative completion evidence: https://www.dynatrace.com/news/press-release/dynatrace-to-acquire-arize/
 - Cyera continues to state that it is acquiring Oasis Security without confirming completion; retain the Oasis Security row pending authoritative completion evidence: https://www.cyera.com/blog/one-platform-to-secure-the-agentic-enterprise
+
+## 2 September 2026 — Scheduled products-and-vendors audit
+
+Confirmed provider facts:
+
+- Cyera / Oasis Agentic Access Management — fields: provider, offering, type, summary. Cyera states that it completed its acquisition of Oasis Security on 1 September 2026 and is integrating Oasis's non-human identity and agent-access intelligence with Cyera's data-security context. Oasis's current official product page markets agent and non-human identity discovery, ownership, provisioning, policy enforcement, access governance, and lifecycle controls: https://www.cyera.com/blog/identity-meets-data-defining-the-ai-trust-layer-for-the-agentic-enterprise and https://www.oasis.security/
+
+Editorial judgments:
+
+- The Security & resilience category, Deploy & protect lifecycle, Cloud / data domain, Medium Physical-AI relevance, and potential standards relevance remain editorial classifications. The completed acquisition, current offering name, and represented capabilities are confirmed Cyera and Oasis facts.
+
+Follow-up:
+
+- Candidate issue #9 remains open with `status:ready-for-change`: the exact Okta row is present only in local commit `07e84ba0d334be603ed7db8283460869e850d881`, while local `main` is ahead of `origin/main`; reconcile the issue only after an implementing commit is pushed to GitHub's default branch.
+- Dynatrace continues to describe Arize as an intended acquisition that has not yet closed; retain the Arize AI row pending authoritative completion evidence: https://www.dynatrace.com/news/press-release/dynatrace-to-acquire-arize/
+- Recheck BeyondTrust AI Agent Security after its planned fall 2026 general-availability window, DigiCert AI Model Trust and AI Agent Trust after their preview periods, Veeam DataAI Agent Commander after early access, and NVIDIA Halos Outside-In Safety after early access.

@@ -2,6 +2,27 @@
 
 This log records audits that produced a material matrix change. No-change runs are intentionally not recorded here because scheduled audits must leave a clean repository untouched.
 
+## 2026-09-02
+
+### Confirmed factual changes
+
+- Replaced the redirecting legacy URL for `ISO/IEC 27090` (`https://www.iso.org/standard/56581.html`) with ISO's canonical record, `https://www.iso.org/standard/27090`. ISO's official page identifies the project as ISO/IEC 27090 at stage 60.00 since 19 August 2026; its status remains under publication, so no status, date, summary, or Physical-AI rating changed. Source: https://www.iso.org/standard/27090
+
+### Validation
+
+- Evaluated all 164 embedded matrix rows as JavaScript and verified every required field, HTTPS URL, and publication identifier; no required field was missing and no duplicate publication identifier was found.
+- Verified 160 unique URLs, 11 issuer groups, 108 current-status entries, and 73 High Physical-AI entries.
+- Exercised representative behavior derivations: the `medical` search returned 19 entries, the ETSI filter returned 9, Automotive plus High returned 16, publication sorting retained all rows, and a page size of 10 produced 17 pages.
+- Crawled all 160 unique matrix URLs with web retrieval and manually checked exceptions through official records: 150 healthy, 0 redirected, 0 broken, 3 temporarily unavailable, and 7 access-blocked. `SAE J3016_202104`, `SAE J3321_202603`, and `IEEE P4106` timed out after retry but were identified by exact official SAE or IEEE indexed records. Access-blocked URLs affect `Directive (EU) 2024/2853`, `Regulation (EU) 2017/745`, `Regulation (EU) 2024/1689`, `EN 18286:2026`, `UN Regulation No. 155`, `UN Regulation No. 156`, `UN Regulation No. 157`, and the `UN Regulation on Automated Driving Systems (ADS)`; alternate exact official EUR-Lex, CEN-CENELEC, or UNECE records confirmed the represented publications, and no URL was shown to be broken or wrong-targeted.
+- `git diff --check` passed, and the standards-matrix diff was reviewed for unintended changes.
+
+### Discovery sweep, candidate queue, and follow-up items
+
+- Checked the required SC 42 and SC 27 work programmes, ISO Online Browsing Platform, ISO lifecycle-stage codes, ITU AI Standards Exchange, AI Standards Hub, NIST AI Standards page, and NCSL 2025 legislation baseline. No discovery lead produced a further primary-source-supported matrix change. ISO Online Browsing Platform again exposed only its client-side shell, and NCSL did not expose a current-year successor.
+- The SC 27 catalogue displayed `ISO/IEC WD 25959.2` at stage 20.60 while the exact ISO project page still identified stage 20.20 and showed no date for the later stage. The row was left unchanged pending an unambiguous exact project record.
+- Reviewed represented ISO/IEC, IEEE, IEC, UL Standards & Engagement, NIST, EU/CEN-CENELEC, ETSI, automotive, medical/health, aviation, and government/professional issuer families through official sources. ETSI's two newly tracked final drafts remain unpublished, EASA still exposes Proposed Issue 3, IMDRF N93 remains a closed consultation, and UNECE still does not expose an unambiguous final regulation number and entry-into-force date for the adopted ADS regulation.
+- The live GitHub standards candidate queue returned no open issues matching `is:issue is:open label:candidate label:"matrix:standards"`; no routing, normalization, disposition, or committed-change reconciliation was required.
+
 ## 2026-08-31
 
 ### Confirmed factual changes
