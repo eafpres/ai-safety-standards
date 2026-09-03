@@ -15,6 +15,7 @@ Both matrices are sortable, filterable, responsive, and exportable to CSV. Their
 | --- | --- | --- |
 | Standards & Publications | [`index.html`](index.html) | Standards, regulations, guidance, and publications |
 | Products & Vendors | [`products.html`](products.html) | Products, platforms, projects, vendors, and assurance providers |
+| Contact | [`contact.html`](contact.html) | Private, human-checked, attachment-free message form |
 
 Open `index.html` in a modern browser to begin. Use the navigation at the top of either page to switch between matrices.
 
@@ -110,7 +111,9 @@ Audits preserve the existing schema, filtering, sorting, pagination, CSV export,
 
 ## Privacy
 
-Searching, filtering, sorting, pagination, and CSV export run locally in the visitor's browser. The hosted matrix pages use cookie-free Cloudflare Web Analytics for aggregate page-view, referral, device, country, and performance measurements. See [`privacy.html`](privacy.html) for the visitor-facing privacy notice.
+Searching, filtering, sorting, pagination, and CSV export run locally in the visitor's browser. The hosted matrix pages use cookie-free Cloudflare Web Analytics for aggregate page-view, referral, device, country, and performance measurements. The contact form uses Cloudflare Turnstile, a validating Worker, and a signed Google Apps Script relay; it exposes no destination email address and accepts no attachments. See [`privacy.html`](privacy.html) for the visitor-facing privacy notice.
+
+Complete setup and security instructions are in [`docs/contact-form-setup.md`](docs/contact-form-setup.md). The relay is deliberately left unconfigured in the repository: private addresses, URLs, and secret keys belong only in Google Script Properties and Cloudflare's encrypted Worker secrets.
 
 ## Repository structure
 
@@ -118,8 +121,20 @@ Searching, filtering, sorting, pagination, and CSV export run locally in the vis
 .
 ├── index.html
 ├── products.html
+├── contact.html
+├── contact-config.js
+├── contact-form.js
 ├── privacy.html
+├── contact-worker/
+│   ├── src/index.mjs
+│   ├── test/index.test.mjs
+│   ├── package.json
+│   └── wrangler.jsonc
+├── apps-script/
+│   ├── Code.gs
+│   └── appsscript.json
 ├── docs/
+│   ├── contact-form-setup.md
 │   └── maintenance/
 │       ├── standards-audit.md
 │       ├── products-audit.md

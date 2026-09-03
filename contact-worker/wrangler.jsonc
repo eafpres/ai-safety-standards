@@ -1,0 +1,16 @@
+{
+  "name": "ai-safety-contact-relay",
+  "main": "src/index.mjs",
+  "compatibility_date": "2026-09-03",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "vars": {
+    "ALLOWED_ORIGIN": "https://eafpres.github.io",
+    "TURNSTILE_EXPECTED_HOSTNAME": "eafpres.github.io",
+    "TURNSTILE_EXPECTED_ACTION": "contact"
+  },
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 0.1
+  }
+}

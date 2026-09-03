@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'self' https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; connect-src https://*.workers.dev; base-uri 'none'; form-action 'none'; img-src data:; object-src 'none'">
+  <title>Contact | AI Safety Matrices</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --surface: #ffffff;
+      --surface-2: #eef2f7;
+      --text: #172033;
+      --muted: #5d687a;
+      --line: #d9e0e9;
+      --accent: #075e73;
+      --accent-2: #0b8099;
+      --danger: #b33b42;
+      --success: #147a56;
+      --shadow: 0 14px 40px rgba(21, 35, 55, .08);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #101620;
+        --surface: #18212e;
+        --surface-2: #202c3a;
+        --text: #edf3fa;
+        --muted: #aab7c6;
+        --line: #344252;
+        --accent: #73d6e8;
+        --accent-2: #8ee3ef;
+        --danger: #f09aa0;
+        --success: #78d8b1;
+        --shadow: 0 18px 48px rgba(0, 0, 0, .28);
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+    a { color: var(--accent); text-underline-offset: 2px; }
+    a:hover { color: var(--accent-2); }
+    .wrap { width: min(900px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 56px; }
+    header {
+      position: relative;
+      overflow: hidden;
+      padding: 34px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #073f4f, #0a6c7f 62%, #1895a6);
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+    header::after {
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      right: -80px;
+      top: -150px;
+      border: 58px solid rgba(255,255,255,.08);
+      border-radius: 50%;
+      content: "";
+    }
+    nav { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 10px 18px; margin-bottom: 24px; }
+    nav a { color: rgba(255,255,255,.9); font-size: .88rem; font-weight: 750; }
+    nav a:hover { color: #fff; }
+    nav a[aria-current="page"] { color: #fff; text-decoration-thickness: 2px; }
+    h1 { position: relative; z-index: 1; margin: 0; font-size: clamp(2rem, 6vw, 3.5rem); line-height: 1.05; letter-spacing: -.035em; }
+    .lede { position: relative; z-index: 1; max-width: 680px; margin: 14px 0 0; color: rgba(255,255,255,.9); }
+    main { margin-top: 18px; padding: clamp(22px, 5vw, 42px); border: 1px solid var(--line); border-radius: 16px; background: var(--surface); box-shadow: 0 8px 24px rgba(21,35,55,.04); }
+    h2 { margin: 0 0 8px; font-size: 1.25rem; }
+    p { margin: 8px 0 0; }
+    .security-note { margin: 18px 0 22px; padding: 14px 16px; border-left: 4px solid var(--accent); border-radius: 8px; background: var(--surface-2); color: var(--muted); font-size: .9rem; }
+    form { display: grid; gap: 16px; }
+    label { display: grid; gap: 6px; font-size: .86rem; font-weight: 750; }
+    .optional { color: var(--muted); font-weight: 500; }
+    input, textarea, button { min-height: 44px; font: inherit; color: inherit; }
+    input, textarea { width: 100%; padding: 10px 12px; border: 1px solid var(--line); border-radius: 9px; background: var(--bg); }
+    textarea { min-height: 180px; resize: vertical; }
+    input:focus, textarea:focus, button:focus-visible, a:focus-visible { border-color: var(--accent); outline: 3px solid color-mix(in srgb, var(--accent) 24%, transparent); outline-offset: 1px; }
+    .send-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+    .turnstile { min-height: 65px; }
+    button { padding: 10px 16px; border: 1px solid var(--accent); border-radius: 9px; background: var(--accent); color: var(--surface); cursor: pointer; font-weight: 800; }
+    button:hover { background: var(--accent-2); border-color: var(--accent-2); }
+    button:disabled { cursor: not-allowed; opacity: .6; }
+    .help { color: var(--muted); font-size: .8rem; font-weight: 400; }
+    .status { min-height: 1.5em; margin: 0; font-size: .9rem; font-weight: 700; }
+    .status.error { color: var(--danger); }
+    .status.success { color: var(--success); }
+    .bot-field { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+    footer { margin-top: 18px; color: var(--muted); font-size: .86rem; text-align: center; }
+    @media (max-width: 600px) {
+      .wrap { width: min(100% - 20px, 900px); padding-top: 10px; }
+      header { padding: 25px 21px; border-radius: 15px; }
+      main { padding: 22px 20px; }
+      .send-row { align-items: stretch; }
+      button { width: 100%; }
+    }
+    @media print { header::after, nav, form, footer { display: none; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <nav aria-label="Site navigation">
+        <a href="index.html">Standards &amp; Publications</a>
+        <a href="products.html">Products &amp; Vendors</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+      </nav>
+      <h1>Send feedback, questions, or additional information to us.</h1>
+      <p class="lede">Send a correction, suggestion, question, or other feedback.</p>
+    </header>
+
+    <main>
+      <h2>Compose your message</h2>
+      <p>Complete the secure human check, then send your message directly to the site administrator.</p>
+
+      <div class="security-note"><strong>Security:</strong> this form accepts plain text only—there is no upload field, so files cannot be attached.</div>
+
+      <form id="contact-form" novalidate>
+        <div class="bot-field" aria-hidden="true">
+          <label>Leave this field empty <input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <label for="name">Your name
+          <input id="name" name="name" type="text" required maxlength="80" autocomplete="name">
+        </label>
+
+        <label for="email">Your email
+          <input id="email" name="email" type="email" required maxlength="254" autocomplete="email" inputmode="email">
+        </label>
+
+        <label for="subject">Subject
+          <input id="subject" name="subject" type="text" required maxlength="120">
+        </label>
+
+        <label for="message">Message
+          <textarea id="message" name="message" required minlength="10" maxlength="2000"></textarea>
+          <span class="help">10–2,000 characters. Do not include passwords, confidential data, or attachment contents.</span>
+        </label>
+
+        <div class="send-row">
+          <div id="turnstile-widget" class="turnstile" aria-label="Human verification"></div>
+          <button id="submit-button" type="submit" disabled>Send message</button>
+        </div>
+
+        <p id="form-status" class="status" role="status" aria-live="polite"></p>
+      </form>
+
+      <noscript><p>JavaScript is required for the secure contact form. You may instead open a non-confidential request in the project's <a href="https://github.com/eafpres/ai-safety-standards/issues">GitHub issue tracker</a>.</p></noscript>
+    </main>
+
+    <footer><a href="privacy.html">Privacy notice</a></footer>
+  </div>
+
+  <script src="contact-config.js" defer></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>
+  <script src="contact-form.js" defer></script>
+</body>
+</html>
