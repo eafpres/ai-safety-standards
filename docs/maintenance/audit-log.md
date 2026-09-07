@@ -2,6 +2,36 @@
 
 This log records audits that produced a material matrix change. No-change runs are intentionally not recorded here because scheduled audits must leave a clean repository untouched.
 
+## 2026-09-07
+
+### Confirmed factual changes
+
+- Advanced `ISO/IEC WD 25959.2` from stage 20.20 to 20.60 and changed its date marker from July to September 2026. ISO's exact project record shows that the latest working-draft comment period closed on 2 September 2026. Source: https://www.iso.org/standard/92164.html
+- Added `IMDRF/CEIVD WG/N91 DRAFT:2026`. IMDRF identifies it as a proposed clinical-evidence and performance-evaluation framework for IVD medical devices whose consultation closed on 5 May 2026; the official draft expressly adds AI/ML-specific considerations for software-based IVDs, including scientific validity, data-lifecycle traceability, representative testing, validation, and monitoring. Sources: https://www.imdrf.org/consultations/clinical-evidence-ivd-medical-devices-definitions-and-principles-performance-evaluation and https://www.imdrf.org/sites/default/files/2026-02/260210_IMDRF_CEIVD_WGN91_DRAFT_2026.pdf
+- Replaced the wrong-target Official Journal ELI URL for `Regulation (EU) 2017/745` with EUR-Lex's exact current consolidated text and made the row's date marker precise. EUR-Lex identifies the in-force consolidation as current on 19 July 2026. Source: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02017R0745-20260719
+- Replaced the access-blocked ELI URL for `Regulation (EU) 2023/988` with its exact official EUR-Lex CELEX record. Source: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R0988
+
+### Editorial judgment
+
+- Rated `IMDRF/CEIVD WG/N91 DRAFT:2026` Medium for Physical-AI relevance because it governs clinical evidence for AI-enabled diagnostic software that can affect care, but does not itself govern an embodied controller or actuator.
+
+### Validation
+
+- Evaluated all 165 embedded matrix rows as JavaScript and verified every required field, HTTPS URL, and publication identifier; no required field was missing and no duplicate publication identifier was found.
+- Verified 161 unique URLs, 11 issuer groups, 108 current-status entries, and 73 High Physical-AI entries.
+- Exercised representative behavior derivations: the `medical` search returned 20 entries, the ETSI filter returned 9, Automotive plus High returned 16, publication sorting retained all rows, and a page size of 10 produced 17 pages.
+- Crawled all 161 unique matrix URLs with web retrieval and official-source follow-up: 154 healthy, 0 redirected, 0 broken, 2 temporarily unavailable, and 5 access-blocked.
+- The temporarily unavailable URLs affect `IEEE P4106` and `SAE J3016_202104`; both exact publications were confirmed through authoritative indexed records from their issuers.
+- The access-blocked URLs affect `EN 18286:2026`; `UN Regulation No. 155` and `UN Regulation No. 156` (one shared UNECE URL); `UN Regulation No. 157`; `UN Regulation on Automated Driving Systems (ADS)`; and `Canada Directive on Automated Decision-Making`. The affected publications remained confirmed through official records or the latest confirmed audit disposition; none was classified as broken.
+
+### Discovery sweep, candidate queue, and follow-up items
+
+- Checked the ISO/IEC JTC 1/SC 42 and SC 27 catalogues, ISO Online Browsing Platform, ISO lifecycle stage codes, ITU AI Standards Exchange, AI Standards Hub, NIST AI Standards page, and NCSL 2025 legislation baseline. SC 27 corroborated the `ISO/IEC WD 25959.2` transition; no other material lead from the required discovery sources was supported by an exact issuer record. ISO OBP exposed only its client-side shell in this retrieval environment, and NCSL did not link a current-year successor.
+- Reviewed current official records across every represented issuer family: ISO/IEC, IEEE, IEC, UL Standards & Engagement, NIST, EU/CEN-CENELEC, ETSI, automotive, medical/health, aviation, and government/professional bodies. This review produced the IMDRF addition and EUR-Lex link repairs above; other monitored drafts and lifecycle markers had no supported material transition.
+- The standards candidate queue was not reviewed: GitHub CLI was unavailable and the public GitHub issue endpoint could not be retrieved. No candidate issue status was changed or reconciled.
+- The preflight status check was clean. An unrelated untracked `standards_and_documents/` directory appeared later during the run; it was left untouched and excluded from the audit diff.
+- `git diff --check` passed, and the diff was reviewed for unintended changes. The supported edits remain uncommitted for human review.
+
 ## 2026-09-02
 
 ### Confirmed factual changes
