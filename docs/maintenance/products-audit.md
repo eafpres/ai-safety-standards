@@ -60,6 +60,7 @@ Potential standards relevance and Physical-AI relevance are always editorial cla
 
 - Edit products.html only when primary evidence supports a material matrix change.
 - Preserve every required field: provider, offering, providerType, providerProfile, ownershipStatus, category, lifecycleRole, domain, technology, deploymentContext, jurisdiction, physical, availabilityStatus, deliveryModel, summary, relevance, deliveryDetails, and url.
+- For every record whose `lifecycleRole` is `Multiple stages`, preserve or update its exact provider-and-offering entry in `lifecycleStageAssignments`. Assign at least two supported specific stages and do not use `Multiple stages` as an assignment value.
 - Keep the exact current organization in `provider`. Use `providerType` for organizational form, `providerProfile` for specialist versus diversified positioning, and `ownershipStatus` for acquisition or integration state.
 - Keep `domain` limited to the application industry, `technology` limited to technical scope, and `deploymentContext` limited to the operating or customer context.
 - Record product use across the AI lifecycle in `lifecycleRole`; record the offering's own commercial maturity separately in `availabilityStatus`.
@@ -76,7 +77,7 @@ Potential standards relevance and Physical-AI relevance are always editorial cla
 Run available local checks without installing dependencies:
 
 1. Evaluate the embedded data as JavaScript.
-2. Confirm every row contains all required fields.
+2. Confirm every row contains all required fields. Confirm every `Multiple stages` record has exactly one assignment with at least two valid specific lifecycle stages, and that the assignment map contains no orphan entries.
 3. Check for duplicate provider-and-offering combinations.
 4. Check that URLs use HTTPS where available and are syntactically valid.
 5. Before the full crawl, use web retrieval to open one known provider URL. If web retrieval is unavailable, report the external-review portion as environment-blocked and do not infer that every URL is unavailable.

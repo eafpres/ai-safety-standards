@@ -98,7 +98,10 @@
     input:focus, select:focus, button:focus-visible, a:focus-visible { border-color: var(--accent); outline: 3px solid color-mix(in srgb, var(--accent) 22%, transparent); }
     .actions { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 13px; }
     .actions-left, .actions-right { display: flex; align-items: center; flex-wrap: wrap; gap: 9px; }
-    .actions-right { margin-left: auto; }
+    .actions-right { display: grid; justify-items: end; margin-left: auto; }
+    .actions-right button, .actions-right .issue-link { font-size: .88rem; }
+    .view-toggle { display: inline-flex; gap: 6px; }
+    .action-tools { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 9px; }
     button { padding: 8px 12px; border: 1px solid var(--line); border-radius: 9px; background: var(--surface-2); cursor: pointer; font-weight: 700; }
     button:hover { border-color: var(--accent); }
     .issue-link { display: inline-flex; min-height: 42px; align-items: center; padding: 8px 12px; border: 1px solid var(--line); border-radius: 9px; background: var(--surface-2); font-weight: 700; text-decoration: none; }
@@ -184,6 +187,55 @@
     .physical { font-weight: 800; white-space: nowrap; }
     .note-cell { min-width: 245px; color: var(--muted); }
     .access { min-width: 170px; }
+    .ecosystem-shell { padding: 20px; margin-bottom: 14px; }
+    .ecosystem-detail {
+      display: grid;
+      grid-template-columns: minmax(190px, .75fr) minmax(300px, 2fr);
+      gap: 18px;
+      margin-bottom: 24px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface-2);
+    }
+    .ecosystem-detail h2, .ecosystem-detail p { margin: 0; }
+    .ecosystem-detail h2 { font-size: 1.3rem; }
+    .ecosystem-kicker { margin-bottom: 5px !important; color: var(--muted); font-size: .74rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+    .ecosystem-offering { display: block; margin-top: 5px; color: var(--muted); font-size: .86rem; }
+    .ecosystem-detail-copy { display: grid; gap: 9px; }
+    .ecosystem-meta { color: var(--muted); font-size: .82rem; }
+    .landscape-heading { display: flex; align-items: end; justify-content: space-between; gap: 18px; margin-bottom: 14px; }
+    .landscape-heading h2, .landscape-heading p { margin: 0; }
+    .landscape-heading h2 { font-size: 1.2rem; }
+    .landscape-heading p { margin-top: 4px; color: var(--muted); font-size: .84rem; }
+    .landscape-hint { flex: 0 0 auto; color: var(--muted); font-size: .76rem; }
+    .landscape-scroll { overflow-x: auto; padding: 2px 2px 13px; scrollbar-color: var(--muted) var(--surface-2); scrollbar-width: thin; }
+    .landscape-scroll:focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 22%, transparent); outline-offset: 2px; }
+    .landscape-flow {
+      --stage-count: 6;
+      display: grid;
+      grid-template-columns: repeat(var(--stage-count), minmax(205px, 1fr));
+      gap: 16px;
+      min-width: max(1320px, 100%);
+      align-items: start;
+    }
+    .landscape-stage { position: relative; min-width: 0; padding: 14px; border: 1px solid var(--line); border-radius: 13px; background: var(--surface-2); }
+    .landscape-stage-header { position: relative; display: grid; gap: 5px; margin-bottom: 12px; }
+    .landscape-stage.has-next .landscape-stage-header::after { position: absolute; z-index: 2; right: -27px; top: 4px; color: var(--accent); font-size: 1.2rem; font-weight: 900; content: "→"; }
+    .landscape-stage-title { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .landscape-stage h3, .landscape-category h4 { margin: 0; }
+    .landscape-stage h3 { font-size: .96rem; }
+    .landscape-stage-index { color: var(--accent); font-size: .69rem; font-weight: 900; letter-spacing: .1em; }
+    .landscape-stage-count, .landscape-category-count { color: var(--muted); font-size: .72rem; white-space: nowrap; }
+    .landscape-stage-groups { display: grid; gap: 9px; }
+    .landscape-category { padding: 10px; border: 1px solid color-mix(in srgb, var(--line) 82%, transparent); border-radius: 10px; background: var(--surface); }
+    .landscape-category-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+    .landscape-category h4 { font-size: .78rem; line-height: 1.25; }
+    .landscape-stage-empty { padding: 14px 4px; color: var(--muted); font-size: .78rem; text-align: center; }
+    .ecosystem-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+    .ecosystem-chip { min-height: 34px; padding: 6px 10px; border-radius: 999px; background: var(--surface); font-size: .8rem; line-height: 1.2; }
+    .ecosystem-chip[aria-pressed="true"] { color: var(--surface); border-color: var(--accent); background: var(--accent); }
+    .ecosystem-empty { padding: 34px 16px; text-align: center; color: var(--muted); }
     .pager { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 14px 16px; }
     .pager-controls { display: flex; align-items: center; gap: 8px; }
     .pager button:disabled { opacity: .45; cursor: not-allowed; }
@@ -212,14 +264,21 @@
       .filter-grid { grid-template-columns: 1fr; }
       .filter-grid label:first-child { grid-column: auto; }
       .sources ul, .method { grid-template-columns: 1fr; }
+      .ecosystem-detail { grid-template-columns: 1fr; }
+      .ecosystem-shell { padding: 14px; }
+      .landscape-heading { align-items: start; flex-direction: column; gap: 5px; }
       .actions-left, .actions-right { width: 100%; }
+      .actions-right { justify-items: stretch; }
+      .action-tools { width: 100%; }
       .actions-right button, .actions-right .issue-link { flex: 1; justify-content: center; }
+      .view-toggle { width: 100%; }
     }
     @media print {
       body { background: #fff; color: #000; }
       .wrap { max-width: none; padding: 0; }
       header { box-shadow: none; }
-      .site-switcher, .filters, .pager, footer { display: none; }
+      .site-switcher, .filters, .pager, .ecosystem-shell, footer { display: none !important; }
+      .table-shell[hidden] { display: block !important; }
       .table-shell { border: 0; box-shadow: none; }
       .table-scroll-top, .table-scroll-wrap::after { display: none; }
       .table-scroll { overflow: visible; }
@@ -303,17 +362,50 @@
           </div>
         </div>
         <div class="actions-right">
-          <a class="issue-link" href="https://github.com/eafpres/ai-safety-standards/issues/new?template=product-candidate.yml" target="_blank" rel="noopener noreferrer">Open an issue for a missing company or product ↗</a>
-          <label style="flex-direction:row;align-items:center">Rows per page
-            <select class="page-size" style="width:auto"><option selected>10</option><option>25</option><option>50</option><option>100</option></select>
-          </label>
-          <button id="reset" type="button">Reset filters</button>
-          <button id="export" class="primary" type="button">Export filtered CSV</button>
+          <div class="view-toggle" role="group" aria-label="Results view">
+            <button id="viewTable" class="primary" type="button" aria-controls="tableView" aria-pressed="true">Table view</button>
+            <button id="viewMap" type="button" aria-controls="ecosystemView" aria-pressed="false">Map view <em>— Beta</em></button>
+          </div>
+          <div class="action-tools">
+            <a class="issue-link" href="https://github.com/eafpres/ai-safety-standards/issues/new?template=product-candidate.yml" target="_blank" rel="noopener noreferrer">Open an issue for a missing company or product ↗</a>
+            <label style="flex-direction:row;align-items:center">Rows per page
+              <select class="page-size" style="width:auto"><option selected>10</option><option>25</option><option>50</option><option>100</option></select>
+            </label>
+            <button id="reset" type="button">Reset filters</button>
+            <button id="export" class="primary" type="button">Export filtered CSV</button>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="panel table-shell" aria-label="AI safety products and vendors matrix">
+    <section id="ecosystemView" class="panel ecosystem-shell" aria-label="AI safety products and vendors ecosystem map" hidden>
+      <div class="landscape-heading">
+        <div>
+          <h2>AI safety product lifecycle landscape</h2>
+          <p>Offerings appear in every applicable lifecycle stage, grouped by safety function, while remaining one unique matrix record.</p>
+        </div>
+        <span class="landscape-hint">Scroll horizontally to follow the lifecycle →</span>
+      </div>
+      <div id="ecosystemDetail" class="ecosystem-detail" aria-live="polite">
+        <div>
+          <p class="ecosystem-kicker">Selected provider</p>
+          <h2><a id="mapProviderLink" href="#" target="_blank" rel="noopener noreferrer"><span id="mapProvider"></span></a></h2>
+          <span id="mapOffering" class="ecosystem-offering"></span>
+        </div>
+        <div class="ecosystem-detail-copy">
+          <p id="mapSummary"></p>
+          <p id="mapPlacement" class="ecosystem-meta"></p>
+          <p id="mapDelivery" class="ecosystem-meta"></p>
+          <p id="mapRelevance" class="ecosystem-meta"></p>
+        </div>
+      </div>
+      <div class="landscape-scroll" role="region" aria-label="Scrollable AI safety product lifecycle landscape" tabindex="0">
+        <div id="ecosystemGrid" class="landscape-flow"></div>
+      </div>
+      <div id="ecosystemEmpty" class="ecosystem-empty" hidden>No products or providers match these filters.</div>
+    </section>
+
+    <section id="tableView" class="panel table-shell" aria-label="AI safety products and vendors matrix">
       <div id="tableScrollTop" class="table-scroll-top" role="region" aria-label="Horizontal table scroll control" tabindex="0"><div id="tableScrollTopContent" class="table-scroll-top-content"></div></div>
       <div id="tableScrollWrap" class="table-scroll-wrap">
         <div id="tableScroll" class="table-scroll" role="region" aria-label="Scrollable products table" tabindex="0">
@@ -480,14 +572,60 @@
     {provider:"Hexagon",offering:"Autonomous Solutions",providerType:"Commercial technology vendor",providerProfile:"Diversified platform",ownershipStatus:"Independent / provider-native",category:"Physical-AI validation",lifecycleRole:"Multiple stages",domain:"Robotics",technology:"Robotics / physical AI",deploymentContext:"Safety-critical physical systems",jurisdiction:"Global / not specified",physical:"High",availabilityStatus:"Generally available",deliveryModel:"Hardware + software",summary:"Positioning, perception, simulation, autonomy, and validation technologies for vehicles, robots, and industrial systems.",relevance:"Functional safety; automotive and machinery safety; positioning assurance",deliveryDetails:"Commercial hardware, software, and services",url:"https://hexagon.com/company/divisions/autonomous-solutions"},
   ];
 
-  const state = {page: 1, size: 10, sort: "provider", direction: 1};
+  const lifecycleStageAssignments = new Map([
+    ["Holistic AI\nAI governance and assurance platform", ["Govern & plan", "Verify & validate", "Assure & audit"]],
+    ["Asenion\nAI governance, risk, and compliance platform", ["Govern & plan", "Verify & validate", "Deploy & protect"]],
+    ["AISquare\nSystem of record for AI decisions", ["Govern & plan", "Deploy & protect", "Operate & monitor", "Assure & audit"]],
+    ["Monitaur\nAI Governance Platform", ["Govern & plan", "Verify & validate", "Assure & audit"]],
+    ["Saidot\nAI governance platform", ["Govern & plan", "Assure & audit"]],
+    ["OneTrust\nAI Governance", ["Govern & plan", "Assure & audit"]],
+    ["Jeen\nEnterprise AI Operating Layer", ["Govern & plan", "Design & build", "Deploy & protect", "Operate & monitor", "Assure & audit"]],
+    ["Veeam\nDataAI Command Platform and Agent Commander", ["Govern & plan", "Deploy & protect", "Operate & monitor"]],
+    ["IBM\nwatsonx.governance", ["Govern & plan", "Verify & validate", "Operate & monitor", "Assure & audit"]],
+    ["Microsoft\nMicrosoft Foundry governance and evaluation", ["Govern & plan", "Verify & validate", "Deploy & protect", "Operate & monitor"]],
+    ["Amazon Web Services\nSageMaker AI model governance", ["Govern & plan", "Design & build", "Operate & monitor", "Assure & audit"]],
+    ["Google Cloud\nGemini Enterprise Agent Platform", ["Govern & plan", "Design & build", "Verify & validate", "Deploy & protect", "Operate & monitor"]],
+    ["Fiddler AI\nAI Control Plane", ["Govern & plan", "Verify & validate", "Deploy & protect", "Operate & monitor"]],
+    ["Dynamo AI\nEnterprise AI security and evaluation", ["Govern & plan", "Verify & validate", "Deploy & protect"]],
+    ["Haize Labs\nHaize Reliability Harness", ["Design & build", "Verify & validate", "Deploy & protect", "Operate & monitor"]],
+    ["LangChain\nLangSmith", ["Verify & validate", "Operate & monitor"]],
+    ["Palo Alto Networks\nPrisma AIRS", ["Govern & plan", "Verify & validate", "Deploy & protect", "Operate & monitor"]],
+    ["Anaconda\nEnkrypt AI", ["Govern & plan", "Verify & validate", "Deploy & protect", "Operate & monitor"]],
+    ["Vijil\nAI agent security platform", ["Verify & validate", "Deploy & protect", "Operate & monitor"]],
+    ["Noma Security\nAI and data security platform", ["Govern & plan", "Verify & validate", "Deploy & protect", "Operate & monitor"]],
+    ["F5\nAI Guardrails and AI Red Team", ["Govern & plan", "Verify & validate", "Deploy & protect", "Operate & monitor"]],
+    ["Lasso Security\nAI agent security platform", ["Govern & plan", "Verify & validate", "Deploy & protect", "Operate & monitor"]],
+    ["Cato Networks\nCato AI Security", ["Govern & plan", "Deploy & protect"]],
+    ["DigiCert\nAI Trust", ["Verify & validate", "Deploy & protect", "Assure & audit"]],
+    ["Fortinet\nVirtue AI", ["Govern & plan", "Verify & validate", "Deploy & protect", "Operate & monitor"]],
+    ["CyBox Security\nAI security control plane", ["Govern & plan", "Deploy & protect"]],
+    ["Onyx Security\nAI security and governance", ["Govern & plan", "Deploy & protect", "Operate & monitor"]],
+    ["NVIDIA\nHalos Outside-In Safety Blueprint", ["Design & build", "Verify & validate", "Deploy & protect", "Assure & audit"]],
+    ["Parallel Domain\nPD Replica and PD Sim", ["Design & build", "Verify & validate"]],
+    ["MathWorks\nRoadRunner and Automated Driving Toolbox", ["Design & build", "Verify & validate"]],
+    ["Hexagon\nAutonomous Solutions", ["Design & build", "Verify & validate", "Deploy & protect"]]
+  ]);
+
+  data.forEach(function(item) {
+    item.lifecycleStages = item.lifecycleRole === "Multiple stages" ? (lifecycleStageAssignments.get(item.provider + "\n" + item.offering) || []) : [item.lifecycleRole];
+  });
+
+  const state = {page: 1, size: 10, sort: "provider", direction: 1, view: "table", selectedMapKey: ""};
   const filterIds = ["category", "lifecycleRole", "providerType", "providerProfile", "ownershipStatus", "domain", "technology", "deploymentContext", "availabilityStatus", "physical"];
+  const categoryOrder = ["Governance & compliance", "Monitoring & observability", "Testing & evaluation", "Security & resilience", "Runtime guardrails", "Bias & explainability", "Physical-AI validation", "Assurance & certification"];
+  const lifecycleOrder = ["Govern & plan", "Design & build", "Verify & validate", "Deploy & protect", "Operate & monitor", "Assure & audit"];
   const newWindowDays = 7;
   const search = document.getElementById("search");
   const rows = document.getElementById("rows");
   const empty = document.getElementById("empty");
+  const tableView = document.getElementById("tableView");
+  const ecosystemView = document.getElementById("ecosystemView");
+  const ecosystemGrid = document.getElementById("ecosystemGrid");
+  const ecosystemDetail = document.getElementById("ecosystemDetail");
+  const ecosystemEmpty = document.getElementById("ecosystemEmpty");
 
   function unique(field) {
+    if (field === "lifecycleRole") return lifecycleOrder.slice();
     return Array.from(new Set(data.map(function(item) { return item[field]; }))).sort(function(a, b) { return a.localeCompare(b); });
   }
 
@@ -521,6 +659,7 @@
       const matchesSearch = !term || Object.keys(item).some(function(key) { return String(item[key]).toLowerCase().includes(term); });
       const matchesFilters = filterIds.every(function(field) {
         const value = document.getElementById(field).value;
+        if (field === "lifecycleRole") return !value || item.lifecycleStages.includes(value);
         return !value || item[field] === value;
       });
       const matchesNew = document.getElementById("newItems").value !== "new" || isNew(item);
@@ -572,6 +711,147 @@
     return badge;
   }
 
+  function mapItemKey(item) {
+    return item.provider + "\n" + item.offering;
+  }
+
+  function updateMapDetail(item) {
+    ecosystemDetail.hidden = !item;
+    if (!item) return;
+    const providerLink = document.getElementById("mapProviderLink");
+    providerLink.href = item.url;
+    providerLink.setAttribute("aria-label", "Open official source for " + item.provider + " " + item.offering);
+    document.getElementById("mapProvider").textContent = item.provider;
+    document.getElementById("mapOffering").textContent = item.offering;
+    document.getElementById("mapSummary").textContent = item.summary;
+    document.getElementById("mapPlacement").textContent = "Lifecycle placement: " + item.lifecycleStages.join(" · ");
+    document.getElementById("mapDelivery").textContent = "Delivery: " + item.deliveryModel + " · " + item.availabilityStatus + " · " + item.deploymentContext;
+    document.getElementById("mapRelevance").textContent = "Potential standards relevance: " + item.relevance;
+  }
+
+  function selectMapItem(item) {
+    state.selectedMapKey = mapItemKey(item);
+    updateMapDetail(item);
+    ecosystemGrid.querySelectorAll(".ecosystem-chip").forEach(function(chip) {
+      chip.setAttribute("aria-pressed", String(chip.dataset.mapKey === state.selectedMapKey));
+    });
+  }
+
+  function mapCountLabel(current, total) {
+    if (current === total) return total + " offering" + (total === 1 ? "" : "s");
+    return current + " of " + total;
+  }
+
+  function appendLandscapeGroups(items, lifecycle, container) {
+    const orderedCategories = categoryOrder.concat(unique("category").filter(function(category) { return !categoryOrder.includes(category); }));
+    orderedCategories.forEach(function(category) {
+      const categoryItems = items.filter(function(item) { return item.category === category; }).sort(function(a, b) {
+        return a.provider.localeCompare(b.provider) || a.offering.localeCompare(b.offering);
+      });
+      if (!categoryItems.length) return;
+
+      const totalInGroup = data.filter(function(item) { return item.lifecycleStages.includes(lifecycle) && item.category === category; }).length;
+      const section = document.createElement("section");
+      section.className = "landscape-category";
+      section.setAttribute("aria-label", category);
+      const heading = document.createElement("div");
+      heading.className = "landscape-category-heading";
+      const title = document.createElement("h4");
+      title.textContent = category;
+      const count = document.createElement("span");
+      count.className = "landscape-category-count";
+      count.textContent = mapCountLabel(categoryItems.length, totalInGroup);
+      heading.append(title, count);
+
+      const chips = document.createElement("div");
+      chips.className = "ecosystem-chips";
+      categoryItems.forEach(function(item) {
+        const providerOfferingCount = categoryItems.filter(function(candidate) { return candidate.provider === item.provider; }).length;
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "ecosystem-chip";
+        button.textContent = providerOfferingCount > 1 ? item.provider + " — " + item.offering : item.provider;
+        button.title = item.offering;
+        button.dataset.mapKey = mapItemKey(item);
+        button.setAttribute("aria-label", item.provider + ": " + item.offering);
+        button.setAttribute("aria-pressed", String(button.dataset.mapKey === state.selectedMapKey));
+        button.addEventListener("click", function() { selectMapItem(item); });
+        chips.appendChild(button);
+      });
+
+      section.append(heading, chips);
+      container.appendChild(section);
+    });
+  }
+
+  function renderMap(filtered) {
+    ecosystemGrid.replaceChildren();
+    ecosystemEmpty.hidden = filtered.length !== 0;
+    if (!filtered.length) {
+      state.selectedMapKey = "";
+      updateMapDetail(null);
+      return;
+    }
+
+    let selected = filtered.find(function(item) { return mapItemKey(item) === state.selectedMapKey; });
+    if (!selected) selected = filtered[0];
+    state.selectedMapKey = mapItemKey(selected);
+    updateMapDetail(selected);
+
+    ecosystemGrid.style.setProperty("--stage-count", lifecycleOrder.length);
+
+    lifecycleOrder.forEach(function(lifecycle, index) {
+      const stageItems = filtered.filter(function(item) { return item.lifecycleStages.includes(lifecycle); });
+      const totalInStage = data.filter(function(item) { return item.lifecycleStages.includes(lifecycle); }).length;
+      const stage = document.createElement("section");
+      stage.className = "landscape-stage" + (index < lifecycleOrder.length - 1 ? " has-next" : "");
+      stage.setAttribute("aria-label", lifecycle + " lifecycle stage");
+
+      const header = document.createElement("div");
+      header.className = "landscape-stage-header";
+      const stageIndex = document.createElement("span");
+      stageIndex.className = "landscape-stage-index";
+      stageIndex.textContent = "STAGE " + String(index + 1).padStart(2, "0");
+      const titleRow = document.createElement("div");
+      titleRow.className = "landscape-stage-title";
+      const title = document.createElement("h3");
+      title.textContent = lifecycle;
+      const count = document.createElement("span");
+      count.className = "landscape-stage-count";
+      count.textContent = mapCountLabel(stageItems.length, totalInStage);
+      titleRow.append(title, count);
+      header.append(stageIndex, titleRow);
+      stage.appendChild(header);
+
+      if (stageItems.length) {
+        const groups = document.createElement("div");
+        groups.className = "landscape-stage-groups";
+        appendLandscapeGroups(stageItems, lifecycle, groups);
+        stage.appendChild(groups);
+      } else {
+        const noMatches = document.createElement("p");
+        noMatches.className = "landscape-stage-empty";
+        noMatches.textContent = "No matching offerings";
+        stage.appendChild(noMatches);
+      }
+      ecosystemGrid.appendChild(stage);
+    });
+  }
+
+  function setView(view) {
+    const showMap = view === "map";
+    state.view = showMap ? "map" : "table";
+    ecosystemView.hidden = !showMap;
+    tableView.hidden = showMap;
+    const mapButton = document.getElementById("viewMap");
+    const tableButton = document.getElementById("viewTable");
+    mapButton.setAttribute("aria-pressed", String(showMap));
+    tableButton.setAttribute("aria-pressed", String(!showMap));
+    mapButton.classList.toggle("primary", showMap);
+    tableButton.classList.toggle("primary", !showMap);
+    if (!showMap) requestAnimationFrame(updateTableScrollUi);
+  }
+
   function render() {
     const filtered = filteredData();
     const totalPages = Math.max(1, Math.ceil(filtered.length / state.size));
@@ -611,7 +891,7 @@
       badge.textContent = item.category;
       categoryCell.appendChild(badge);
       row.appendChild(categoryCell);
-      row.appendChild(td(item.lifecycleRole));
+      row.appendChild(item.lifecycleStages.length > 1 ? tdWithDetail(item.lifecycleRole, item.lifecycleStages.join(" · ")) : td(item.lifecycleRole));
       row.appendChild(tdWithDetail(item.providerType, item.providerProfile + " · " + item.ownershipStatus));
       row.appendChild(tdWithDetail(item.domain, item.technology + " · " + item.deploymentContext));
 
@@ -633,7 +913,8 @@
     document.getElementById("pageInfo").textContent = filtered.length ? (start + 1) + "–" + Math.min(start + state.size, filtered.length) + " of " + filtered.length : "0 results";
     document.getElementById("prev").disabled = state.page === 1;
     document.getElementById("next").disabled = state.page === totalPages;
-    requestAnimationFrame(updateTableScrollUi);
+    renderMap(filtered);
+    if (state.view === "table") requestAnimationFrame(updateTableScrollUi);
   }
 
   rows.addEventListener("click", function(event) {
@@ -667,6 +948,8 @@
   });
   document.getElementById("prev").addEventListener("click", function() { state.page -= 1; render(); });
   document.getElementById("next").addEventListener("click", function() { state.page += 1; render(); });
+  document.getElementById("viewTable").addEventListener("click", function() { setView("table"); });
+  document.getElementById("viewMap").addEventListener("click", function() { setView("map"); });
   document.getElementById("reset").addEventListener("click", function() {
     search.value = "";
     filterIds.forEach(function(field) { document.getElementById(field).value = ""; });
@@ -676,10 +959,10 @@
   });
 
   document.getElementById("export").addEventListener("click", function() {
-    const fields = ["provider", "offering", "providerType", "providerProfile", "ownershipStatus", "summary", "category", "lifecycleRole", "domain", "technology", "deploymentContext", "jurisdiction", "physical", "availabilityStatus", "deliveryModel", "deliveryDetails", "relevance", "url"];
+    const fields = ["provider", "offering", "providerType", "providerProfile", "ownershipStatus", "summary", "category", "lifecycleRole", "lifecycleStages", "domain", "technology", "deploymentContext", "jurisdiction", "physical", "availabilityStatus", "deliveryModel", "deliveryDetails", "relevance", "url"];
     const escapeCsv = function(value) { return '"' + String(value).replace(/"/g, '""') + '"'; };
     const csv = [fields.join(",")].concat(filteredData().map(function(item) {
-      return fields.map(function(field) { return escapeCsv(item[field]); }).join(",");
+      return fields.map(function(field) { return escapeCsv(Array.isArray(item[field]) ? item[field].join("; ") : item[field]); }).join(",");
     })).join("\n");
     const blob = new Blob([csv], {type: "text/csv;charset=utf-8"});
     const url = URL.createObjectURL(blob);

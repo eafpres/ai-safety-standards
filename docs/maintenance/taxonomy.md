@@ -118,6 +118,8 @@ Category identifies the offering's main customer-facing function: governance and
 
 `lifecycleRole` records where the offering principally acts in the AI-system lifecycle: `Govern & plan`, `Design & build`, `Verify & validate`, `Deploy & protect`, `Operate & monitor`, `Assure & audit`, or `Multiple stages`. It does not describe commercial maturity.
 
+When `lifecycleRole` is `Multiple stages`, the `lifecycleStageAssignments` map in `products.html` must list two or more applicable lifecycle stages for that exact provider-and-offering record. Assignment values use the six specific lifecycle roles above and never `Multiple stages`. The landscape renders the offering once in each assigned stage, while search results and matrix counts continue to treat it as one record. These placements are editorial classifications grounded in the offering's verified capabilities; do not infer every stage from the product category alone.
+
 ### Deployment, availability, and delivery
 
 `deploymentContext` records a material operating or customer context such as regulated enterprise, workplace/enterprise, cloud infrastructure, regulated industry, or safety-critical physical systems. Use `General` otherwise.

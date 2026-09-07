@@ -25,6 +25,7 @@ No build step or dependency installation is required.
 
 - Full-text search
 - Filtering by exact issuer/provider, organization type, category, domain, technology, lifecycle role, ownership, availability, and Physical-AI relevance
+- Interactive products-and-vendors lifecycle landscape generated from the same filtered matrix data
 - Sortable columns
 - Pagination and adjustable page size
 - Export of filtered results to CSV
