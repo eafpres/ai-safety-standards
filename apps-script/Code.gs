@@ -139,3 +139,25 @@ function doPost(e) {
 function doGet() {
   return jsonOutput_({ ok: false, message: "POST requests only" });
 }
+
+// Run this manually from the Apps Script editor to verify the private
+// properties and Gmail authorization. It is not called by the web app.
+function testMailSetup() {
+  const properties = PropertiesService.getScriptProperties();
+  const recipient = properties.getProperty("CONTACT_RECIPIENT");
+  const sharedSecret = properties.getProperty("CONTACT_SHARED_SECRET");
+
+  if (!recipient) throw new Error("CONTACT_RECIPIENT is missing from Script Properties.");
+  if (!sharedSecret) throw new Error("CONTACT_SHARED_SECRET is missing from Script Properties.");
+  if (sharedSecret.length < 32) {
+    throw new Error("CONTACT_SHARED_SECRET must contain at least 32 characters.");
+  }
+
+  MailApp.sendEmail({
+    to: recipient,
+    subject: "[AI Safety Matrices] Relay setup test",
+    body: "The Google Apps Script contact relay can send email successfully."
+  });
+
+  console.log("Setup test sent; both Script Properties are present.");
+}
