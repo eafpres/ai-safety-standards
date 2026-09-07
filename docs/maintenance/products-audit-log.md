@@ -190,3 +190,26 @@ Follow-up:
 - Candidate issue #9 remains open with `status:ready-for-change`: the exact Okta row is present only in local commit `07e84ba0d334be603ed7db8283460869e850d881`, while local `main` is ahead of `origin/main`; reconcile the issue only after an implementing commit is pushed to GitHub's default branch.
 - Dynatrace continues to describe Arize as an intended acquisition that has not yet closed; retain the Arize AI row pending authoritative completion evidence: https://www.dynatrace.com/news/press-release/dynatrace-to-acquire-arize/
 - Recheck BeyondTrust AI Agent Security after its planned fall 2026 general-availability window, DigiCert AI Model Trust and AI Agent Trust after their preview periods, Veeam DataAI Agent Commander after early access, and NVIDIA Halos Outside-In Safety after early access.
+
+## 7 September 2026 — Scheduled products-and-vendors audit
+
+Confirmed provider facts:
+
+- Candidate issue #10 — CrowdStrike / Falcon Guardian — fields: provider, offering, summary, access, URL. CrowdStrike introduced Falcon Guardian on 1 September 2026 as an AI Detection and Response offering for AI-agent discovery, prompt-to-action runtime visibility, agent access controls, sensitive-data protection, and runtime detection and response across endpoint, cloud, SaaS, and browser environments. Its AI gateway capability is marked as coming soon: https://www.crowdstrike.com/en-us/platform/falcon-guardian-aidr/ and https://www.crowdstrike.com/en-us/press-releases/crowdstrike-unveils-falcon-guardian-ai-agent-security/
+- Candidate issue #11 — HashiCorp / Vault Enterprise agentic IAM — fields: provider, offering, summary, access, URL. HashiCorp made native agentic identity and access-management capabilities generally available in Vault Enterprise 2.1 on 1 September 2026, including an agent registry, OAuth-based authentication, request-scoped authorization, delegated user-and-agent controls, lifecycle management, Terraform resources, and attributable audit logs: https://www.hashicorp.com/en/blog/hashicorp-vault-agentic-iam-is-now-generally-available
+- Lasso Security / AI agent security platform — fields: offering, lifecycle, domain, summary. Lasso's current platform spans agent and application discovery, posture assessment, automated red teaming, runtime enforcement, and AI detection and response: https://www.lasso.security/
+- Nightfall AI / AI data-loss prevention — field: summary. Nightfall's current platform documents data-loss prevention, prompt-injection controls, tool-call governance, and MCP visibility for AI applications and agents across SaaS, endpoints, browsers, and MCP servers: https://www.nightfall.ai/
+- Noma Security / AI and data security platform — field: URL. The former `www` URL redirects to the current official apex URL: https://noma.security/
+
+Editorial judgments:
+
+- Adding CrowdStrike and HashiCorp is an editorial inclusion decision based on their verified AI-agent runtime-security and identity-control functions. Their categories, lifecycle stages, provider types, domains, Medium Physical-AI relevance, and potential standards relevance are editorial classifications, not provider or standards-body determinations.
+- Lasso's Multiple stages lifecycle and Generative AI / agents domain are editorial classifications based on the verified breadth of its current platform. Its Low Physical-AI relevance and potential standards relevance remain editorial.
+- Nightfall's existing category, lifecycle, domain, Low Physical-AI relevance, and potential standards relevance remain editorial; only the neutral capability summary changed.
+
+Follow-up:
+
+- Candidate issue #9 — Okta for AI Agents was reconciled against the exact row on GitHub's default branch and pushed implementing commit `07e84ba0d334be603ed7db8283460869e850d881`; the issue was commented with the commit, had `status:ready-for-change` removed, and was closed as completed: https://github.com/eafpres/ai-safety-standards/commit/07e84ba0d334be603ed7db8283460869e850d881
+- Candidate issues #10 and #11 remain open with `status:ready-for-change` until these uncommitted rows receive human review and an approved change is committed outside the audit workflow. Candidate issue #12 remains deferred pending a stable product or documentation page with concrete controls, deployment, and access terms.
+- Dynatrace continues to describe Arize as an intended acquisition subject to regulatory review and customary closing conditions: https://www.dynatrace.com/news/press-release/dynatrace-to-acquire-arize/
+- Recheck BeyondTrust AI Agent Security after its planned fall 2026 general-availability window, DigiCert AI Model Trust and AI Agent Trust after their preview periods, Veeam DataAI Agent Commander after early access, and NVIDIA Halos Outside-In Safety after early access.
