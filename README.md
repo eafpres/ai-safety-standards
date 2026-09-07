@@ -24,7 +24,7 @@ No build step or dependency installation is required.
 ## Features
 
 - Full-text search
-- Filtering by issuer, status, category, domain, lifecycle, provider type, and Physical-AI relevance
+- Filtering by exact issuer/provider, organization type, category, domain, technology, lifecycle role, ownership, availability, and Physical-AI relevance
 - Sortable columns
 - Pagination and adjustable page size
 - Export of filtered results to CSV
@@ -54,12 +54,15 @@ The standards matrix embeds records with these required fields:
 
 ```text
 issuer
+issuerType
 publication
 title
 date
 status
 category
 domain
+technology
+jurisdiction
 physical
 summary
 conformity
@@ -72,18 +75,27 @@ The products matrix embeds records with these required fields:
 ```text
 provider
 offering
+providerType
+providerProfile
+ownershipStatus
 category
-lifecycle
-type
+lifecycleRole
 domain
+technology
+deploymentContext
+jurisdiction
 physical
+availabilityStatus
+deliveryModel
 summary
 relevance
-access
+deliveryDetails
 url
 ```
 
-New records may also contain an `added` date, which controls the 15-day “New” indicator. When the New filter is active, matching records are ordered by that date with the newest first. Audit-related fields may identify links that were access-restricted or could not be verified during the latest review.
+New records may also contain an `added` date, which controls the 7-day “New” indicator. When the New filter is active, matching records are ordered by that date with the newest first. Audit-related fields may identify links that were access-restricted or could not be verified during the latest review.
+
+The two matrices share a dimensional taxonomy where practical: `issuer` and `provider` identify the exact organization, organization-type fields classify that organization, `category` describes the item's primary assurance function, `domain` describes the application industry, `technology` describes technical scope, `jurisdiction` describes geographic or legal scope, and `physical` records the editorial Physical-AI relevance rating. Product-specific fields separately describe lifecycle role, provider profile, ownership, deployment context, availability, and delivery model.
 
 ## Suggest an addition
 
@@ -100,6 +112,7 @@ See [`docs/maintenance/candidate-issues.md`](docs/maintenance/candidate-issues.m
 
 The matrices use separate audit workflows:
 
+- [`docs/maintenance/taxonomy.md`](docs/maintenance/taxonomy.md) — shared categorization model and assignment rubric
 - [`docs/maintenance/standards-audit.md`](docs/maintenance/standards-audit.md) — standards and publications
 - [`docs/maintenance/products-audit.md`](docs/maintenance/products-audit.md) — products and vendors
 - [`docs/maintenance/audit-log.md`](docs/maintenance/audit-log.md) — material standards changes
@@ -138,6 +151,7 @@ Complete setup and security instructions are in [`docs/contact-form-setup.md`](d
 │   └── maintenance/
 │       ├── standards-audit.md
 │       ├── products-audit.md
+│       ├── taxonomy.md
 │       ├── audit-log.md
 │       ├── products-audit-log.md
 │       └── candidate-issues.md

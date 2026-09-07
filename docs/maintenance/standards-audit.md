@@ -12,7 +12,7 @@ Run `git status --short` before reading external sources or editing files.
 
 ## 2. Repository context
 
-- Read `AGENTS.md`, this playbook, and the latest relevant entry in `audit-log.md`.
+- Read `AGENTS.md`, `taxonomy.md`, this playbook, and the latest relevant entry in `audit-log.md`.
 - Read `candidate-issues.md` and review every open GitHub issue matching `is:issue is:open label:candidate label:"matrix:standards"`. Route candidates by their current status, inspect deferred candidates for material activity since their latest audit disposition, and normalize invalid ready-for-change states before relying on them. If GitHub issue access is unavailable, report that the candidate queue was not reviewed and continue the audit.
 - Treat `index.html` as the source of truth unless the repository later contains explicit maintenance documentation that designates structured data files.
 - Inspect the embedded data before research so the audit prioritizes current drafts, work items, revision markers, and potentially fragile links.
@@ -79,8 +79,10 @@ Physical-AI relevance is always editorial. Do not describe a High, Medium, or Lo
 ## 5. Editing rules
 
 - Edit `index.html` only when official evidence supports a material matrix change.
-- Preserve every required field: `issuer`, `publication`, `title`, `date`, `status`, `category`, `domain`, `physical`, `summary`, `conformity`, `access`, and `url`.
-- Give each newly added row an `added` field containing the local audit date in `YYYY-MM-DD` format. Preserve that original value when the row is later updated; the matrix uses it to show the New badge for 15 days.
+- Preserve every required field: `issuer`, `issuerType`, `publication`, `title`, `date`, `status`, `category`, `domain`, `technology`, `jurisdiction`, `physical`, `summary`, `conformity`, `access`, and `url`.
+- Record the exact issuing organization in `issuer`; do not substitute an industry sector or application domain. Classify the organization separately in `issuerType`.
+- Keep `domain` limited to the application industry, `technology` limited to technical scope, and `jurisdiction` limited to geographic or legal scope.
+- Give each newly added row an `added` field containing the local audit date in `YYYY-MM-DD` format. Preserve that original value when the row is later updated; the matrix uses it to show the New badge for 7 days.
 - Preserve sorting, filtering, pagination, CSV export, counts, layout, and visual design.
 - Avoid wording-only churn.
 - Prefer an official HTTPS URL when one exists.
@@ -100,7 +102,7 @@ Run available local checks without installing dependencies:
 6. Crawl every unique, nonempty `url` value in the embedded matrix with bounded parallelism using web retrieval or another execution path with confirmed outbound HTTPS. Follow redirects and record the final URL. Where the retrieval capability supports it, retry `GET` after a rejected or unsupported `HEAD`, and retry transient failures before classifying a result.
 7. Classify each crawled URL as healthy, redirected, broken, temporarily unavailable, or access-blocked. Treat a successful response as healthy only when the final official page identifies the represented publication; a response that resolves to an unrelated publication is broken (wrong target). Report permanent not-found responses, DNS failures, and TLS failures as broken. Keep authentication challenges, rate limits, bot protections, timeouts, and transient server errors separate from broken links. Treat a repeated local sandbox-policy failure as environment-blocked, not as a URL classification.
 8. Manually inspect redirected, broken, unavailable, and access-blocked results against an authoritative primary source. Do not replace or remove a matrix URL solely because an automated request was blocked or failed transiently.
-9. Recalculate publication, issuer, current-status, and Physical-AI counts.
+9. Recalculate publication, issuing-organization, issuer-type, current-status, and Physical-AI counts.
 10. Exercise representative search, single-filter, and combined-filter cases.
 11. Run `git diff --check`.
 12. Review `git diff -- index.html docs/maintenance/audit-log.md` for unintended changes.

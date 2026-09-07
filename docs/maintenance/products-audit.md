@@ -12,7 +12,7 @@ Run git status --short before reading external sources or editing files.
 
 ## 2. Repository context
 
-- Read AGENTS.md, this playbook, and the latest relevant entry in products-audit-log.md.
+- Read AGENTS.md, taxonomy.md, this playbook, and the latest relevant entry in products-audit-log.md.
 - Read candidate-issues.md and review every open GitHub issue matching `is:issue is:open label:candidate label:"matrix:products"`. Route candidates by their current status, inspect deferred candidates for material activity since their latest audit disposition, and normalize invalid ready-for-change states before relying on them. If GitHub issue access is unavailable, report that the candidate queue was not reviewed and continue the audit.
 - Treat products.html as the source of truth unless the repository later explicitly designates a structured data source.
 - Inspect the embedded data before research so the audit prioritizes recent startups, acquisitions, integrated products, fragile links, and offerings whose availability may change quickly.
@@ -59,7 +59,10 @@ Potential standards relevance and Physical-AI relevance are always editorial cla
 ## 5. Editing rules
 
 - Edit products.html only when primary evidence supports a material matrix change.
-- Preserve every required field: provider, offering, category, lifecycle, type, domain, physical, summary, relevance, access, and url.
+- Preserve every required field: provider, offering, providerType, providerProfile, ownershipStatus, category, lifecycleRole, domain, technology, deploymentContext, jurisdiction, physical, availabilityStatus, deliveryModel, summary, relevance, deliveryDetails, and url.
+- Keep the exact current organization in `provider`. Use `providerType` for organizational form, `providerProfile` for specialist versus diversified positioning, and `ownershipStatus` for acquisition or integration state.
+- Keep `domain` limited to the application industry, `technology` limited to technical scope, and `deploymentContext` limited to the operating or customer context.
+- Record product use across the AI lifecycle in `lifecycleRole`; record the offering's own commercial maturity separately in `availabilityStatus`.
 - Preserve sorting, filtering, pagination, CSV export, counts, layout, navigation, responsive behavior, and visual design.
 - Avoid wording-only churn.
 - Prefer a stable official HTTPS product URL when one exists.
@@ -80,7 +83,7 @@ Run available local checks without installing dependencies:
 6. Crawl every unique, nonempty row URL and all discovery-source URLs with bounded parallelism. Follow redirects and record the final URL. Retry transient failures before classifying a result.
 7. Classify each crawled URL as healthy, redirected, broken, temporarily unavailable, access-blocked, or wrong target. A provider homepage is healthy only when it still identifies the represented provider or clearly redirects to an official acquirer or successor. A product URL is a wrong target when the final page no longer identifies the represented offering or an official successor.
 8. Manually inspect redirected, broken, unavailable, access-blocked, and wrong-target results against authoritative primary sources. Do not replace or remove an entry solely because an automated request was blocked or failed transiently.
-9. Recalculate row, category, specialist-company, and High Physical-AI counts.
+9. Recalculate row, category, specialist-provider, and High Physical-AI counts.
 10. Exercise representative search, single-filter, combined-filter, pagination, sorting, and CSV-export derivations.
 11. Run git diff --check.
 12. Review the diff for products.html and docs/maintenance/products-audit-log.md for unintended changes.
