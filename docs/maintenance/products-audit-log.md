@@ -213,3 +213,19 @@ Follow-up:
 - Candidate issues #10 and #11 remain open with `status:ready-for-change` until these uncommitted rows receive human review and an approved change is committed outside the audit workflow. Candidate issue #12 remains deferred pending a stable product or documentation page with concrete controls, deployment, and access terms.
 - Dynatrace continues to describe Arize as an intended acquisition subject to regulatory review and customary closing conditions: https://www.dynatrace.com/news/press-release/dynatrace-to-acquire-arize/
 - Recheck BeyondTrust AI Agent Security after its planned fall 2026 general-availability window, DigiCert AI Model Trust and AI Agent Trust after their preview periods, Veeam DataAI Agent Commander after early access, and NVIDIA Halos Outside-In Safety after early access.
+
+## 9 September 2026 — Scheduled products-and-vendors audit
+
+Confirmed provider facts:
+
+- Candidate issue #12 — AIR / AI agent security platform — fields: provider, offering, summary, access, URL. AIR's current official product page identifies a unified platform spanning agent discovery, continuous vetting, governance, and runtime protection for skills, plugins, MCP servers, sub-agents, identities, permissions, and actions. AIR separately confirms that the platform is commercially procurable through Google Cloud Marketplace: https://www.air.security/#product and https://www.air.security/blog-posts/air-and-google-cloud-marketplace
+
+Editorial judgments:
+
+- Adding AIR is an editorial inclusion decision based on its verified AI-agent supply-chain, governance, vetting, and runtime-security functions. Its Security & resilience category, Multiple stages lifecycle, Cross-sector domain, Generative AI / agents technology, Medium Physical-AI relevance, and potential standards relevance are editorial classifications, not provider or standards-body determinations.
+
+Follow-up:
+
+- Candidate issue #12 remains open with `status:ready-for-change` until the uncommitted AIR matrix addition receives human review and an approved change is committed outside the audit workflow.
+- Dynatrace continues to describe Arize as an intended acquisition subject to regulatory review and customary closing conditions: https://www.dynatrace.com/news/press-release/dynatrace-to-acquire-arize/
+- BeyondTrust AI Agent Security remains in limited private beta ahead of planned fall 2026 US general availability; DigiCert AI Model Trust and AI Agent Trust remain previews; Veeam DataAI Agent Commander remains early access; and NVIDIA Halos Outside-In Safety remains early access with its non-production-safety caveat.
