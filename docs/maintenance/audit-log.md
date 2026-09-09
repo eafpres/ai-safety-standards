@@ -2,6 +2,28 @@
 
 This log records audits that produced a material matrix change. No-change runs are intentionally not recorded here because scheduled audits must leave a clean repository untouched.
 
+## 2026-09-09
+
+### Confirmed factual changes
+
+- Advanced `ISO/IEC DIS 25029` from stage 40.20 to 40.60 and changed its date marker from June to September 2026. ISO's exact project record shows that the 12-week DIS ballot closed on 8 September 2026. Source: https://www.iso.org/standard/88817.html
+- Updated `ETSI DTS 104 216` from final-draft version 0.0.7 dated 24 August 2026 to version 0.0.8 dated 8 September 2026. ETSI's exact work-item record identifies version 0.0.8 as the latest draft and records it as a final draft for approval; the publication remains under development. Source: https://portal.etsi.org/webapp/WorkProgram/Report_WorkItem.asp?WKI_ID=74988
+
+### Validation
+
+- Evaluated all 165 embedded matrix rows as JavaScript and verified every required field, HTTPS URL, and publication identifier; no required field was missing and no duplicate publication identifier was found.
+- Verified 161 unique URLs, 26 issuing organizations across 3 issuer types, 108 current-status entries, and 73 High Physical-AI entries.
+- Exercised representative behavior derivations: the `medical` search returned 20 entries, the ETSI filter returned 9, Automotive plus High returned 17, publication sorting retained all rows, and a page size of 10 produced 17 pages.
+- Reused the complete same-day crawl because these changes do not alter the URL set: 155 healthy, 0 redirected, 0 broken, 1 temporarily unavailable, and 5 access-blocked. `IEEE P4106` was temporarily unavailable. Access-blocked targets affect `EN 18286:2026`; the shared UNECE page for `UN Regulation No. 155` and `UN Regulation No. 156`; `UN Regulation No. 157`; `UN Regulation on Automated Driving Systems (ADS)`; and `Canada Directive on Automated Decision-Making`. Exact official alternate records corroborated the retrievable exceptions.
+
+### Discovery sweep, candidate queue, and follow-up items
+
+- Checked the ISO/IEC JTC 1/SC 42 and SC 27 catalogues, ISO Online Browsing Platform, ISO lifecycle stage codes, ITU AI Standards Exchange, AI Standards Hub, NIST AI Standards page, and NCSL 2025 legislation baseline. The sweep confirmed the ISO lifecycle change above and produced no other primary-source-supported matrix change. SC 27 timed out during the final recheck, ISO OBP exposed only its client-side shell, and NCSL did not expose a current-year successor.
+- Reviewed current official records across every represented issuer family during the same-day audit: ISO/IEC, IEEE, IEC, UL Standards & Engagement, NIST, EU/CEN-CENELEC, ETSI, automotive, medical/health, aviation, and government/professional bodies. The ETSI change above was the only additional supported change; ISO/IEC DIS 42102, ISO/CD TS 25280-1, and ETSI TR 104 276 remain excluded as indirect or too early-stage leads.
+- The standards candidate queue was not reviewed because GitHub CLI is unavailable and public GitHub issue retrieval did not expose the queue. No candidate status was changed or reconciled.
+- UNECE still does not expose a final regulation number and exact entry-into-force date for the adopted ADS regulation; EASA still exposes only Proposed Issue 3; and NIST states that AI RMF 1.0 is being revised without a replacement publication.
+- `git diff --check` passed, and the standards-matrix diff was reviewed for unintended changes. The supported edits remain uncommitted for human review.
+
 ## 2026-09-07
 
 ### Confirmed factual changes
