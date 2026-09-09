@@ -86,8 +86,9 @@ Run available local checks without installing dependencies:
 8. Manually inspect redirected, broken, unavailable, access-blocked, and wrong-target results against authoritative primary sources. Do not replace or remove an entry solely because an automated request was blocked or failed transiently.
 9. Recalculate row, category, specialist-provider, and High Physical-AI counts.
 10. Exercise representative search, single-filter, combined-filter, pagination, sorting, and CSV-export derivations.
-11. Run git diff --check.
-12. Review the diff for products.html and docs/maintenance/products-audit-log.md for unintended changes.
+11. Exercise the beta Map view. Confirm that all six lifecycle stages render; each matching offering appears in every and only its assigned lifecycle stages under the correct category; table filters update the map and its counts; selecting an offering updates the detail card and official-source link; no-result filters show the empty state; and horizontal scrolling and responsive layouts remain usable.
+12. Run git diff --check.
+13. Review the diff for products.html and docs/maintenance/products-audit-log.md for unintended changes.
 
 ## 7. Candidate issue disposition
 
