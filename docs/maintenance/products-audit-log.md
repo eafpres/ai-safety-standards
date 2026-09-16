@@ -229,3 +229,17 @@ Follow-up:
 - Candidate issue #12 remains open with `status:ready-for-change` until the uncommitted AIR matrix addition receives human review and an approved change is committed outside the audit workflow.
 - Dynatrace continues to describe Arize as an intended acquisition subject to regulatory review and customary closing conditions: https://www.dynatrace.com/news/press-release/dynatrace-to-acquire-arize/
 - BeyondTrust AI Agent Security remains in limited private beta ahead of planned fall 2026 US general availability; DigiCert AI Model Trust and AI Agent Trust remain previews; Veeam DataAI Agent Commander remains early access; and NVIDIA Halos Outside-In Safety remains early access with its non-production-safety caveat.
+
+## 15 September 2026 — Scheduled products-and-vendors audit
+
+Confirmed provider facts:
+
+- DigiCert / AI Trust — fields: availability, summary, access. DigiCert announced general availability of AI Trust Manager on 15 September 2026, with AI-agent discovery, cryptographic identity and ownership, policy-based authorization, cross-organization verification, revocation, and kill-switch controls. DigiCert's current AI Trust page continues to offer AI Model Trust as a preview: https://www.digicert.com/news/every-ai-agent-needs-a-kill-switch-digicert-launches-ai-trust-manager and https://www.digicert.com/solutions/ai-model-trust-beta
+
+Editorial judgments:
+
+- The mixed `Partial / forthcoming` availability reflects generally available AI Trust Manager and preview-stage AI Model Trust within the represented AI Trust offering. The existing Security & resilience category, Multiple stages lifecycle, Cross-sector domain, Medium Physical-AI relevance, and potential standards relevance remain editorial classifications, not provider or standards-body determinations.
+
+Follow-up:
+
+- Recheck AI Model Trust after its preview period. BeyondTrust AI Agent Security remains in limited private beta ahead of planned fall 2026 US general availability; Veeam DataAI Agent Commander remains early access; NVIDIA Halos Outside-In Safety remains early access with its non-production-safety caveat; and Dynatrace's proposed acquisition of Arize remains subject to regulatory review and customary closing conditions.
