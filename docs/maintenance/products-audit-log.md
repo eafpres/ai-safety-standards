@@ -258,3 +258,21 @@ Follow-up:
 
 - Dynatrace's proposed acquisition of Arize remains subject to regulatory review and customary closing conditions. BeyondTrust AI Agent Security remains in limited private beta ahead of planned fall 2026 US general availability; Veeam DataAI Agent Commander remains early access; CrowdStrike's Falcon Guardian AI gateway remains forthcoming; DigiCert AI Model Trust remains preview; and NVIDIA Halos Outside-In Safety remains early access with its non-production-safety caveat.
 - New-product leads discovered during this audit include Arcjet Agent Runtime Security, Cohesity Agent Resilience, Barndoor's governed AI automation platform, Alation AIOS AI Governance, and F5 Distributed Cloud Bot Defense's agentic-AI protections. Akeyless Agentic Runtime Authority and Trust3 AI also remain supported leads from the prior audit. These links require capture through the product-candidate issue workflow before matrix evaluation: https://blog.arcjet.com/introducing-agent-runtime-security-observe-enforce-audit/; https://www.cohesity.com/newsroom/press/cohesity-introduces-agent-resilience-to-protect-ai-agent-infrastructure/; https://barndoor.ai/barndoor-acquires-diaphora/; https://www.alation.com/news-and-press/alation-launches-aios-tm-expansion-with-six-products-that-accelerate-ai-transformation/; https://investors.f5.com/news/news-details/2026/F5-Distributed-Cloud-Bot-Defense-Adds-Device-Intelligence-and-Agentic-AI-detection-to-Guard-Against-Automated-Account-Abuse/default.aspx; https://www.akeyless.io/press-release/akeyless-announces-general-availability-of-agentic-runtime-authority-for-real-time-intent-based-access-control-of-ai-agents/; https://trust3.ai/platform/
+
+## 20 September 2026 — Scheduled products-and-vendors audit
+
+Confirmed provider facts:
+
+- Cisco / Astrix Security — fields: provider, offering, provider profile, ownership, availability, summary, access. Cisco states that it completed its acquisition of Astrix Security on 29 June 2026 and plans to integrate Astrix's AI-agent and non-human-identity security capabilities into Cisco Identity Intelligence, Secure Access, and Duo. Astrix's current official site identifies the company as part of Cisco, states that standalone sales of new licenses ended on 30 June 2026, and says existing customers continue to receive service and support during integration: https://blogs.cisco.com/news/cisco-announces-intent-to-acquire-astrix-security and https://astrix.security/
+
+Editorial judgments:
+
+- The Diversified platform profile, Security & resilience category, Deploy & protect lifecycle, Cross-sector domain, Cloud / AI infrastructure technology, Medium Physical-AI relevance, and potential standards relevance are editorial classifications. The completed acquisition, end of standalone new-license sales, continued support for existing customers, and integration plan are confirmed Cisco and Astrix facts.
+
+Interface maintenance:
+
+- Restored the intended hidden state for the lifecycle-map detail card and empty-state elements so a no-result filter does not leave stale provider details visible.
+
+Follow-up:
+
+- Recheck Astrix after Cisco publishes a stable integrated product page or makes the acquired capabilities available through Cisco offerings. Dynatrace's proposed acquisition of Arize remains subject to closing conditions; BeyondTrust AI Agent Security remains limited private beta; Veeam DataAI Agent Commander remains early access/future release; CrowdStrike's Falcon Guardian AI gateway remains forthcoming; DigiCert AI Model Trust remains preview; and NVIDIA Halos remains early access with its non-production-safety caveat.
