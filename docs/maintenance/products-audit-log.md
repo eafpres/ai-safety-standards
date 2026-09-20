@@ -243,3 +243,18 @@ Editorial judgments:
 Follow-up:
 
 - Recheck AI Model Trust after its preview period. BeyondTrust AI Agent Security remains in limited private beta ahead of planned fall 2026 US general availability; Veeam DataAI Agent Commander remains early access; NVIDIA Halos Outside-In Safety remains early access with its non-production-safety caveat; and Dynatrace's proposed acquisition of Arize remains subject to regulatory review and customary closing conditions.
+
+## 18 September 2026 — Scheduled products-and-vendors audit
+
+Confirmed provider facts:
+
+- Harvey / Guardrails AI and Snowglobe — fields: provider, offering, provider profile, ownership, lifecycle, summary, delivery details. Harvey announced that it acquired Guardrails AI and that the Guardrails team joined Harvey's product and engineering organization. Guardrails AI's current official site continues to market Snowglobe for simulation-generated evaluation and training datasets and its open-source Guardrails framework for runtime validation and policy enforcement: https://www.harvey.ai/blog/guardrails-ai-joins-harvey and https://guardrailsai.com/
+
+Editorial judgments:
+
+- The broadened offering label, Diversified platform profile, Runtime guardrails category, Multiple stages lifecycle, Cross-sector domain, Generative AI / agents technology, Low Physical-AI relevance, and potential standards relevance are editorial classifications. The completed acquisition, team integration, and current product capabilities are confirmed provider facts.
+
+Follow-up:
+
+- Dynatrace's proposed acquisition of Arize remains subject to regulatory review and customary closing conditions. BeyondTrust AI Agent Security remains in limited private beta ahead of planned fall 2026 US general availability; Veeam DataAI Agent Commander remains early access; CrowdStrike's Falcon Guardian AI gateway remains forthcoming; DigiCert AI Model Trust remains preview; and NVIDIA Halos Outside-In Safety remains early access with its non-production-safety caveat.
+- New-product leads discovered during this audit include Arcjet Agent Runtime Security, Cohesity Agent Resilience, Barndoor's governed AI automation platform, Alation AIOS AI Governance, and F5 Distributed Cloud Bot Defense's agentic-AI protections. Akeyless Agentic Runtime Authority and Trust3 AI also remain supported leads from the prior audit. These links require capture through the product-candidate issue workflow before matrix evaluation: https://blog.arcjet.com/introducing-agent-runtime-security-observe-enforce-audit/; https://www.cohesity.com/newsroom/press/cohesity-introduces-agent-resilience-to-protect-ai-agent-infrastructure/; https://barndoor.ai/barndoor-acquires-diaphora/; https://www.alation.com/news-and-press/alation-launches-aios-tm-expansion-with-six-products-that-accelerate-ai-transformation/; https://investors.f5.com/news/news-details/2026/F5-Distributed-Cloud-Bot-Defense-Adds-Device-Intelligence-and-Agentic-AI-detection-to-Guard-Against-Automated-Account-Abuse/default.aspx; https://www.akeyless.io/press-release/akeyless-announces-general-availability-of-agentic-runtime-authority-for-real-time-intent-based-access-control-of-ai-agents/; https://trust3.ai/platform/
