@@ -276,3 +276,19 @@ Interface maintenance:
 Follow-up:
 
 - Recheck Astrix after Cisco publishes a stable integrated product page or makes the acquired capabilities available through Cisco offerings. Dynatrace's proposed acquisition of Arize remains subject to closing conditions; BeyondTrust AI Agent Security remains limited private beta; Veeam DataAI Agent Commander remains early access/future release; CrowdStrike's Falcon Guardian AI gateway remains forthcoming; DigiCert AI Model Trust remains preview; and NVIDIA Halos remains early access with its non-production-safety caveat.
+
+## 21 September 2026 — Marketplace-lead products audit
+
+Confirmed provider facts:
+
+- Mine / MineOS AI Governance — fields: provider, offering, summary, access, URL. Mine's official Google Cloud Marketplace page describes AI-system and agent discovery, contextual risk assessment, impact assessments, and the availability of MineOS through the marketplace: https://mineos.ai/google-cloud-marketplace
+- trail / AI Governance Platform — fields: provider, offering, summary, delivery details, URL. trail's platform page documents an AI and agent registry, risk classification, assessment and approval workflows, evidence management, and controls for agent tool access and permissions: https://www.trail-ml.com/ai-governance
+- SailPoint / Agent Identity Security — fields: provider, offering, summary, access, URL. SailPoint's product documentation describes AI-agent discovery, ownership assignment, access and permission review, and certification workflows for organizations with Agent Identity Security: https://documentation.sailpoint.com/saas/help/agent/index.html
+- Prediction Guard / AI control plane — fields: provider, offering, summary, delivery details, URL. Prediction Guard markets a self-hosted control plane with policy enforcement, prompt-injection and sensitive-data controls, agent telemetry, audit records, and customer-cloud, on-premises, and air-gapped deployment: https://predictionguard.com/product-overview
+- Upstream Security / Runtime AI & API Security — fields: provider, offering, summary, delivery details, URL. Upstream markets agent, MCP, and API discovery; behavior monitoring, threat detection, investigation, and response; and SaaS or customer-cloud deployment: https://upstream.auto/platform/api-security/
+- Rogue Security / AI agent security platform — fields: provider, offering, summary, access, URL. Rogue markets agent inventory, security assessments, runtime monitoring, guardrails, and MCP tool controls, with commercial demo access and a separate open-source assessment component: https://www.rogue.security/
+
+Editorial judgments:
+
+- Inclusion of these six offerings, their primary categories, lifecycle placements, provider profiles, domains, technologies, deployment contexts, Physical-AI relevance, and potential standards relevance are matrix editorial classifications. The rows neutrally describe provider-marketed capabilities; they do not assert effectiveness, certification, compliance, or independent validation. Availability reflects current product documentation, marketplace access, or provider demo access, rather than an independent maturity assessment.
+- Marketplace listings were used to discover leads; the six factual rows were checked against provider-owned pages or product documentation. The 18 September follow-up's direction to route in-audit discoveries through candidate issues was too broad: the candidate-issue workflow covers links found outside scheduled audits. No product candidate issue was open during this audit.
