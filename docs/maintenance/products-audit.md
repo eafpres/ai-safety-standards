@@ -30,7 +30,7 @@ Prioritize:
 3. Material changes to product scope, delivery model, or target market.
 4. Broken, redirected, access-blocked, or wrong-target provider URLs.
 5. New commercially relevant products or providers with a clear AI safety, trust, governance, assurance, security, evaluation, monitoring, or Physical-AI validation function.
-6. Material changes to the four discovery sources listed below the matrix.
+6. Material changes to the discovery sources listed below the matrix.
 
 Use the discovery sources listed in products.html to identify candidates and category shifts:
 
@@ -38,6 +38,11 @@ Use the discovery sources listed in products.html to identify candidates and cat
 - NIST AI Resource Center
 - Ethical AI Database market map
 - AI Security Startups Map
+- AWS Marketplace
+- Google Cloud Marketplace
+- Microsoft Marketplace (Azure solutions)
+
+Search the marketplaces using terms such as AI governance, AI security, model evaluation, red teaming, agent monitoring, and Physical-AI validation. Deduplicate offerings found across marketplaces and screen out products that merely use AI without a clear safety, trust, governance, assurance, security, evaluation, monitoring, or validation function.
 
 Discovery-source inclusion is not an endorsement and is not sufficient evidence for a factual row. Verify each factual change through the provider's own site, official product documentation, an official acquirer page, an official press release, or another authoritative primary source.
 
