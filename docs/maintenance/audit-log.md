@@ -2,6 +2,29 @@
 
 This log records audits that produced a material matrix change. No-change runs are intentionally not recorded here because scheduled audits must leave a clean repository untouched.
 
+## 2026-09-20
+
+### Confirmed factual changes
+
+- Advanced `ISO/IEC AWI 25870` to `ISO/IEC CD 25870`, changed its date marker from July 2025 to September 2026, and updated its lifecycle note. ISO's exact project record shows that the Committee Draft was registered at stage 30.00 on 17 September 2026. Source: https://www.iso.org/standard/91804.html
+- Updated the lifecycle note for `NIST AI 300-1 (initial public draft)` to record that NIST's stated input period closed on 16 September 2026. The entry remains a draft and a proposal for later voluntary-consensus standardization. Source: https://www.nist.gov/artificial-intelligence/nists-ai-standards-zero-drafts-pilot-project-accelerate-standardization
+
+### Validation
+
+- Evaluated all 165 embedded matrix rows as JavaScript and verified every required field, HTTPS URL, and publication identifier; no required field was missing and no duplicate publication identifier was found.
+- Verified 161 unique URLs, 26 issuing organizations across 3 issuer types, 108 current-status entries, and 73 High Physical-AI entries.
+- Exercised representative behavior derivations: the `medical` search returned 20 entries, the ETSI filter returned 9, Automotive plus High returned 17, publication sorting retained all rows, and a page size of 10 produced 17 pages.
+- Crawled all 161 unique matrix URLs with web retrieval and official-source follow-up: 150 healthy, 0 redirected, 0 broken, 5 temporarily unavailable, and 6 access-blocked.
+- The temporarily unavailable URLs affect `SAE J3016_202104`, `SAE J3018_202012`, `SAE J3321_202603`, `SAE J3329_202604`, and `IEEE 3168-2024`; exact official issuer records corroborated all five publications. The access-blocked targets affect `EN 18286:2026`; the shared UNECE page for `UN Regulation No. 155` and `UN Regulation No. 156`; `UN Regulation No. 157`; `UN Regulation on Automated Driving Systems (ADS)`; `EASA AI Concept Paper Proposed Issue 3`; and `Canada Directive on Automated Decision-Making`. Exact official alternate records corroborated the retrievable exceptions.
+
+### Discovery sweep, candidate queue, and follow-up items
+
+- Checked the ISO/IEC JTC 1/SC 42 and SC 27 catalogues, ISO Online Browsing Platform, ISO lifecycle stage codes, ITU AI Standards Exchange, AI Standards Hub, NIST AI Standards page, and NCSL's 2025 baseline plus current Artificial Intelligence Legislation Database. The sweep confirmed the two lifecycle updates above and produced no other primary-source-supported matrix change. SC 27 timed out and ISO OBP exposed only its client-side shell.
+- Reviewed current official records across every represented issuer family: ISO/IEC, IEEE, IEC, UL Standards & Engagement, NIST, EU/CEN-CENELEC, ETSI, automotive, medical/health, aviation, and government/professional bodies. No other supported factual change or sufficiently direct new publication was found.
+- The standards candidate queue was not reviewed because GitHub CLI is unavailable and public GitHub issue retrieval failed. No candidate status was changed or reconciled.
+- UNECE still does not expose a final regulation number and exact entry-into-force date for the adopted ADS regulation; EASA still exposes only Proposed Issue 3; and NIST states that AI RMF 1.0 is being revised without a replacement publication.
+- `git diff --check` passed, and the standards-matrix diff was reviewed for unintended changes. The supported edits remain uncommitted for human review.
+
 ## 2026-09-15
 
 ### Confirmed factual changes
