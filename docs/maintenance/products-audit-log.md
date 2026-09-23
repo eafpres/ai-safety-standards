@@ -292,3 +292,21 @@ Editorial judgments:
 
 - Inclusion of these six offerings, their primary categories, lifecycle placements, provider profiles, domains, technologies, deployment contexts, Physical-AI relevance, and potential standards relevance are matrix editorial classifications. The rows neutrally describe provider-marketed capabilities; they do not assert effectiveness, certification, compliance, or independent validation. Availability reflects current product documentation, marketplace access, or provider demo access, rather than an independent maturity assessment.
 - Marketplace listings were used to discover leads; the six factual rows were checked against provider-owned pages or product documentation. The 18 September follow-up's direction to route in-audit discoveries through candidate issues was too broad: the candidate-issue workflow covers links found outside scheduled audits. No product candidate issue was open during this audit.
+
+## 23 September 2026 — Scheduled products-and-vendors audit
+
+Confirmed provider facts:
+
+- Salt Security / Agentic Security Platform — fields: provider, offering, summary, access, URL. Salt states that its Agentic Security Platform combines Agentic Security Posture Management and Agentic Detection and Response, and that native AI-DR is available with LLM runtime protection and connected visibility across agents, models, MCP servers, tools, and downstream APIs: https://salt.security/platform and https://salt.security/press-releases/salt-security-extends-its-agentic-security-platform-with-native-ai-detection-and-response
+- Darktrace / Darktrace / SECURE AI — fields: provider, offering, summary, access, URL. Darktrace announced general availability on 22 September 2026 and documents behavioral visibility and oversight across enterprise AI use, prompts, agents, identities, development activity, permissions, tool use, and shadow AI: https://www.darktrace.com/news/darktrace-extends-behavioral-security-with-general-availability-of-darktrace-secure-ai and https://www.darktrace.com/products/secure-ai
+- Lumos / MCP Governance — fields: provider, offering, summary, access, URL. Lumos documents a commercial product that discovers MCP servers and agent tool calls, records their human identity and policy decision, and applies pre-action allow-or-deny policies to MCP, shell, file, and browser actions: https://www.lumos.com/products/mcp-governance
+- Helmet Security / MCP and agent security — fields: availability and delivery details. Helmet's current official page invites customers to contact the company for early access to its discovery, registry, runtime enforcement, and audit-evidence platform: https://www.helmetsecurity.com/
+
+Editorial judgments:
+
+- Inclusion of Salt Security, Darktrace, and Lumos; their categories, lifecycle placements, provider profiles, domains, technologies, deployment contexts, Physical-AI relevance, and potential standards relevance; and Helmet's existing classifications are matrix editorial judgments. The rows neutrally summarize provider-marketed capabilities and availability and do not assert effectiveness, certification, compliance, or independent validation.
+
+Follow-up:
+
+- Proofpoint announced its Agentic Data and AI Security system on 22 September 2026, but says the represented capabilities are expected by year-end; reassess after a stable product page or generally available release: https://www.proofpoint.com/us/newsroom/press-releases/proofpoint-breaks-down-divide-between-data-security-and-ai-security
+- Dynatrace's proposed acquisition of Arize remains subject to closing conditions. BeyondTrust AI Agent Security remains limited private beta; Veeam DataAI Agent Commander remains early access/future release; CrowdStrike's Falcon Guardian AI gateway remains forthcoming; DigiCert AI Model Trust remains preview; and NVIDIA Halos remains early access with its non-production-safety caveat.
