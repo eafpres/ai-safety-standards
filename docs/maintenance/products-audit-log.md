@@ -345,5 +345,5 @@ Editorial judgments:
 
 Follow-up:
 
-- Candidate issue #13 should remain open with `status:ready-for-change` until this uncommitted matrix addition receives human review and an approved change is committed outside the audit workflow. GitHub issue mutation was unavailable during this run because the installed CLI could not launch and the browser session was not authenticated.
+- Candidate issue #13 remains open with `status:needs-verification` because GitHub issue mutation was unavailable during this run: the installed CLI could not launch and the browser session was not authenticated. Its verified disposition is supported, so the next bookkeeping action is to post the evidence and prepared change, replace `status:needs-verification` with `status:ready-for-change`, and leave it open until this uncommitted matrix addition receives human review and an approved change is committed outside the audit workflow.
 - Continue to recheck the pending availability and ownership items recorded in the 27 September audit, including Dynatrace / Arize, BeyondTrust AI Agent Security, Veeam Agent Commander, CrowdStrike's AI gateway, DigiCert AI Model Trust, Helmet Security, and NVIDIA Halos.
