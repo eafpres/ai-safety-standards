@@ -332,3 +332,18 @@ Follow-up:
 
 - Barndoor remains a supported lead but its current public material does not state sufficiently clear product access terms for a matrix availability classification. Proofpoint's Agentic Data and AI Security capabilities remain expected by year-end 2026 rather than currently represented as available.
 - Dynatrace's proposed acquisition of Arize remains subject to closing conditions; BeyondTrust AI Agent Security remains limited private beta; Veeam DataAI Agent Commander remains early access; CrowdStrike's Falcon Guardian AI gateway remains forthcoming; DigiCert AI Model Trust remains preview; Helmet Security remains early access; and NVIDIA Halos remains early access with its non-production-safety caveat.
+
+## 28 September 2026 — Scheduled products-and-vendors audit
+
+Confirmed provider facts:
+
+- Candidate issue #13 — NVIDIA / Open Agent Safety Platform and OpenShell — fields: provider, offering, summary, access, URL. NVIDIA describes an open agent-safety reference design spanning OpenShell's sandboxed execution, formally checked and kernel-enforced file, process, network, and credential policies, action tracing, continuous monitoring, and an optional Sentry reference design for out-of-band hardware enforcement. NVIDIA states that OpenShell is broadly available and that the platform software and skills are available through its developer resources and GitHub: https://www.nvidia.com/en-us/solutions/ai/agent-safety/; https://nvidianews.nvidia.com/news/open-agent-safety-platform; https://github.com/NVIDIA/OpenShell
+
+Editorial judgments:
+
+- Adding NVIDIA Open Agent Safety Platform and OpenShell is an editorial inclusion decision based on its verified agent-runtime isolation, policy enforcement, monitoring, and audit functions. Its Security & resilience category, Multiple stages lifecycle, Cross-sector domain, Generative AI / agents technology, Cloud infrastructure deployment context, Medium Physical-AI relevance, and potential standards relevance are editorial classifications, not provider or standards-body determinations. The row records generally available OpenShell software without asserting that the optional Sentry reference design is a separately available commercial product.
+
+Follow-up:
+
+- Candidate issue #13 should remain open with `status:ready-for-change` until this uncommitted matrix addition receives human review and an approved change is committed outside the audit workflow. GitHub issue mutation was unavailable during this run because the installed CLI could not launch and the browser session was not authenticated.
+- Continue to recheck the pending availability and ownership items recorded in the 27 September audit, including Dynatrace / Arize, BeyondTrust AI Agent Security, Veeam Agent Commander, CrowdStrike's AI gateway, DigiCert AI Model Trust, Helmet Security, and NVIDIA Halos.
