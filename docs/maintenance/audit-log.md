@@ -2,6 +2,32 @@
 
 This log records audits that produced a material matrix change. No-change runs are intentionally not recorded here because scheduled audits must leave a clean repository untouched.
 
+## 2026-09-28
+
+### Confirmed factual changes
+
+- Advanced `ISO/IEC CD 25870` from stage 30.00 to 30.20 and changed its date marker to record that Committee Draft consultation began in September 2026. ISO's exact project record shows that CD consultation was initiated on 21 September 2026. Source: https://www.iso.org/standard/91804.html
+- Advanced `ISO/IEC CD 25589` from stage 30.20 to 30.60 and changed its date marker to record that the Committee Draft comment period closed in September 2026. ISO's exact project record shows that the comment period closed on 24 September 2026. Source: https://www.iso.org/standard/90831.html
+- Normalized `ISO/IEC DTS 42119-3.2` to `ISO/IEC TS 42119-3`, advanced it from stage 50.20 to 60.00, and changed its date and lifecycle notes to record final production. ISO's exact project record shows that the publication entered stage 60.00 on 25 September 2026; the final publication remains pending. Source: https://www.iso.org/standard/85072.html
+- Replaced the historical `SAE J3016_202104` entry with the revised `SAE J3016_202609` edition, updated its date, summary, conformity note, and exact issuer URL, and removed the obsolete unverified marker. SAE identifies the new edition as revised on 20 September 2026 and lists the 2021 edition as historical. Source: https://saemobilus.sae.org/standards/j3016_202609-taxonomy-definitions-terms-related-driving-automation-systems-road-motor-vehicles
+- No Physical-AI relevance rating changed.
+
+### Validation
+
+- Evaluated all 165 embedded matrix rows as JavaScript and verified every required field, HTTPS URL, and publication identifier; no required field was missing and no duplicate publication identifier was found.
+- Verified 161 unique URLs, 26 issuing organizations across 3 issuer types, 108 current-status entries, and 73 High Physical-AI entries.
+- Exercised representative behavior derivations: the `medical` search returned 20 entries, the ETSI filter returned 9, Automotive plus High returned 17, publication sorting retained all rows, and a page size of 10 produced 17 pages.
+- Crawled all 161 unique matrix URLs with web retrieval and official-source follow-up: 149 healthy, 0 redirected, 0 broken, 4 temporarily unavailable, and 8 access-blocked.
+- The temporarily unavailable URLs affect `SAE J3321_202603`, `SAE J3329_202604`, `IEEE P3927.1`, and `IEEE P3960`. The access-blocked targets affect `Directive (EU) 2024/2853`; `Regulation (EU) 2023/1230`; `Regulation (EU) 2024/1689`; `Regulation (EU) 2024/2847`; `EN 18286:2026`; the shared UNECE page for `UN Regulation No. 155` and `UN Regulation No. 156`; `UN Regulation No. 157`; and `UN Regulation on Automated Driving Systems (ADS)`. Exact official issuer records or official alternate records corroborated the retrievable exceptions.
+
+### Discovery sweep, candidate queue, and follow-up items
+
+- Checked the ISO/IEC JTC 1/SC 42 and SC 27 catalogues, ISO Online Browsing Platform, ISO lifecycle stage codes, ITU AI Standards Exchange, AI Standards Hub, NIST AI Standards page, and NCSL's 2025 baseline plus current Artificial Intelligence Legislation Database. The sweep confirmed the changes above and produced no other primary-source-supported matrix change. ISO OBP exposed only its client-side shell.
+- Reviewed current official records across every represented issuer family: ISO/IEC, IEEE, IEC, UL Standards & Engagement, NIST, EU/CEN-CENELEC, ETSI, automotive, medical/health, aviation, and government/professional bodies. No other supported factual change or sufficiently direct new publication was found.
+- The standards candidate queue was not reviewed because GitHub CLI is unavailable and public GitHub issue retrieval failed. No candidate status was changed or reconciled.
+- UNECE still does not expose a final regulation number and exact entry-into-force date for the adopted ADS regulation; EASA still exposes only Proposed Issue 3; and NIST states that AI RMF 1.0 is being revised without a replacement publication.
+- `git diff --check` passed, and the complete two-file diff was reviewed for unintended changes. The supported edits remain uncommitted for human review.
+
 ## 2026-09-20
 
 ### Confirmed factual changes
