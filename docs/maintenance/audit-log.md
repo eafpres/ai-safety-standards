@@ -2,6 +2,31 @@
 
 This log records audits that produced a material matrix change. No-change runs are intentionally not recorded here because scheduled audits must leave a clean repository untouched.
 
+## 2026-10-14
+
+### Confirmed factual changes
+
+- Normalized `ISO/IEC CD TS 25568` to `ISO/IEC DTS 25568`, advanced it from stage 30.99 to 50.00, and changed its date and lifecycle note. ISO's exact project record shows that final text was received or the draft was registered for formal approval on 29 September 2026. Source: https://www.iso.org/standard/90754.html
+- Updated the lifecycle note for `NIST AI 200-2 (initial public draft)` to record that NIST's stated input period closed on 6 October 2026. The entry remains an initial public draft and voluntary evaluation guidance. Source: https://www.nist.gov/artificial-intelligence/ai-research/tevv-athlon-framework-evaluating-ai-systems
+- Replaced three redirecting legacy ISO URLs with their canonical records: `ISO/IEC 5259-5:2025` (`https://www.iso.org/standard/5259-5`), `ISO/IEC TR 5259-6:2026` (`https://www.iso.org/standard/5259-6`), and `ISO/IEC TR 42106:2026` (`https://www.iso.org/standard/42106`). No publication metadata or Physical-AI relevance rating changed for these rows.
+
+### Validation
+
+- Evaluated all 165 embedded matrix rows as JavaScript and verified every required field, HTTPS URL, and publication identifier; no required field was missing and no duplicate publication identifier was found.
+- Verified 161 unique URLs, 26 issuing organizations across 3 issuer types, 108 current-status entries, and 73 High Physical-AI entries.
+- Exercised representative behavior derivations: the `medical` search returned 20 entries, the ETSI filter returned 9, Automotive plus High returned 17, publication sorting retained all rows, and a page size of 10 produced 17 pages.
+- Crawled all 161 unique matrix URLs with web retrieval and official-source follow-up: 149 healthy, 0 redirected after the three ISO normalizations, 0 broken, 1 temporarily unavailable, and 11 access-blocked.
+- The temporarily unavailable URL affects `SAE J3329_202604`. Access-blocked targets affect `Regulation (EU) 2017/745`, `Regulation (EU) 2023/988`, `Regulation (EU) 2023/1230`, `Regulation (EU) 2024/1689`, `Regulation (EU) 2024/2847`, `EN 18286:2026`, the shared UNECE page for `UN Regulation No. 155` and `UN Regulation No. 156`, `UN Regulation No. 157`, `UN Regulation on Automated Driving Systems (ADS)`, `EASA NPA 2025-07 / proposed DS.AI`, and `Canada Directive on Automated Decision-Making`. Exact official issuer records or official alternate records corroborated the retrievable exceptions.
+
+### Discovery sweep, candidate queue, and follow-up items
+
+- Checked the ISO/IEC JTC 1/SC 42 and SC 27 catalogues, ISO Online Browsing Platform, ISO lifecycle stage codes, ITU AI Standards Exchange, AI Standards Hub, NIST AI Standards page, and NCSL's 2025 baseline plus its current Artificial Intelligence Legislation Database. The sweep confirmed the changes above and produced no other primary-source-supported matrix change. ISO OBP exposed only its client-side shell, and the AI Standards Hub returned an internal retrieval error.
+- Reviewed current official records across every represented issuer family: ISO/IEC, IEEE, IEC, UL Standards & Engagement, NIST, EU/CEN-CENELEC, ETSI, automotive, medical/health, aviation, and government/professional bodies. No other supported factual change or sufficiently direct new publication was found.
+- The connected GitHub standards candidate queue was empty; no issue routing, normalization, disposition, or committed-change reconciliation was required.
+- UNECE still does not expose a final regulation number and exact entry-into-force date for the adopted ADS regulation; EASA still exposes only Proposed Issue 3; NIST states that AI RMF 1.0 is being revised without a replacement publication; and EUROCAE still targets 31 December 2026 for ED-324.
+- `taxonomy.md`, named by the audit playbook, is absent from this checkout. The audit continued using the remaining canonical repository instructions and source-of-truth matrix.
+- `git diff --check` passed, and the complete two-file diff was reviewed for unintended changes. The supported edits remain uncommitted for human review.
+
 ## 2026-09-28
 
 ### Confirmed factual changes
