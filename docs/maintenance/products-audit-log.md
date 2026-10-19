@@ -455,3 +455,24 @@ Follow-up:
 - Reassess ServiceNow AI Passport after its expected Q4 2026 availability and BeyondTrust AI Agent Security when the provider publishes an explicit general-availability statement.
 - Microsoft Agent Governance Toolkit remains in public preview; EmpowerID by Omada remains early access; DigiCert AI Model Trust remains preview; CrowdStrike's Falcon Guardian AI gateway remains forthcoming; Helmet Security remains early access; NVIDIA Halos remains early access with production-use caveats; and Proofpoint's Agentic Data and AI Security capabilities remain expected by year-end 2026.
 - Marketplace leads such as AgentGuard, EVE CoreGuard, Veridian, AlertAI, MyPlatform AI Governance, Oktsec, and KeeperAI require clearer provider identity, access, or maturity evidence before a matrix decision.
+
+## 19 October 2026 — Scheduled products-and-vendors audit
+
+Confirmed provider facts:
+
+- BeyondTrust / AI Agent Security — fields: availability and delivery details. Current BeyondTrust product documentation describes licensed tenant access through an account team and provides deployment, discovery, auditing, policy-simulation, and preventative-control instructions for the Pathfinder agent. BeyondTrust's current AI-security solution page describes its agentic-AI security solution as generally available: https://docs.beyondtrust.com/bt-docs/docs/ai-agent-security and https://www.beyondtrust.com/solutions/ai-security
+- CoreWeave / Weights & Biases Weave — field: URL. Weights & Biases now publishes the directly retrievable canonical Weave product page at https://site.wandb.ai/weave/ with current tracing, evaluation, monitoring, and guardrail capabilities.
+
+Editorial judgments:
+
+- BeyondTrust AI Agent Security is classified as `Generally available` based on current provider-documented licensing and deployable tenant access rather than the earlier private-beta and early-access materials. Its Security & resilience category, lifecycle placement, standards relevance, and Medium Physical-AI relevance remain editorial classifications.
+
+Candidate reconciliation and crawl:
+
+- No open GitHub issues matched the product-candidate queue, so no candidate disposition or committed-change reconciliation was required.
+- All 133 pre-audit provider URLs and all seven discovery URLs were reviewed. The proposed canonical Weave URL is healthy. Portal26, GuvFlow, Jeen, and Upstream Security remained access-blocked or timed out in direct retrieval, but current provider-owned indexed pages confirmed the intended offerings; no evidence indicated a changed target. All other provider URLs resolved to the represented provider or offering. Six discovery URLs resolved directly; the EAIDB market map exceeded the retrieval size limit but remained indexed at its current target. No provider or discovery URL was classified broken, redirected, or wrong-target.
+
+Follow-up:
+
+- Reassess ServiceNow AI Passport after its expected Q4 2026 availability; CrowdStrike's Falcon Guardian AI gateway when its provider confirms Q4 general availability; and BeyondTrust AI Agent Security if the provider publishes a product-specific general-availability announcement that materially changes delivery details.
+- Microsoft Agent Governance Toolkit remains in public preview; EmpowerID by Omada remains early access; DigiCert AI Model Trust remains preview; Veeam Agent Commander remains early access; Helmet Security remains early access; NVIDIA Halos remains early access with production-use caveats; and Proofpoint's Agentic Data and AI Security capabilities remain expected by year-end 2026.
