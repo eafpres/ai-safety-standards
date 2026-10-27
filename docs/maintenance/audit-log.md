@@ -2,6 +2,46 @@
 
 This log records audits that produced a material matrix change. No-change runs are intentionally not recorded here because scheduled audits must leave a clean repository untouched.
 
+## 2026-10-27
+
+### Confirmed factual changes
+
+- Advanced `ISO/IEC DIS 4213` from stage 40.20 to 40.60 and changed its date marker to record that the 12-week DIS ballot closed on 21 October 2026. Source: https://www.iso.org/standard/89455.html
+- Normalized `ISO/IEC FDIS 24970` to `ISO/IEC 24970`, advanced it from stage 50.20 to 60.00, and changed its date and lifecycle note. ISO records that voting closed and the International Standard entered final production on 24 October 2026. Source: https://www.iso.org/standard/88723.html
+- Updated `ISO/IEC 27090` to the published `ISO/IEC 27090:2026`, with publication date October 2026 and stage 60.60 reached on 14 October 2026. Source: https://www.iso.org/standard/27090
+- Normalized `ISO/IEC DTS 22443` to `ISO/IEC TS 22443`, advanced it from stage 50.20 to 60.00, and changed its date and lifecycle note. ISO records that voting closed and the Technical Specification entered final production on 22 October 2026. Source: https://www.iso.org/standard/87119.html?browse=tc
+- Normalized `ISO/IEC FDIS 42105` to `ISO/IEC 42105`, advanced it from stage 50.20 to 60.00, and changed its date and lifecycle note. ISO records that voting closed and the International Standard entered final production on 22 October 2026. Source: https://www.iso.org/standard/86902.html?browse=tc
+- Added `ISO/IEC AWI 26582`. ISO records the functional-correctness conformity-assessment project at stage 20.00 since 29 September 2026; its scope specifies requirements and guidance for assessing AI systems using the ISO/IEC 25059 quality models. Source: https://www.iso.org/standard/93944.html?browse=tc
+- Added `ISO/IEC AWI 26741`. ISO records the AI-system-description framework at stage 20.00 since 29 September 2026; its scope covers system boundaries, intended purpose, operational context, and other characteristics needed for first-, second-, and third-party conformity assessment without defining the assessment procedures themselves. Source: https://www.iso.org/standard/94402.html?browse=tc
+- Added four active IEEE projects approved on 25 September 2026: `IEEE P3870` for intelligent-control and safety-assurance requirements for humanoid robots; `IEEE P4167` for quality assurance of AI datasets used in rail-transit equipment manufacturing; and `IEEE P4207.1` and `IEEE P4207.2` for Level 4 automated-driving safety-risk assessment. Sources: https://standards.ieee.org/ieee/3870/12735/, https://standards.ieee.org/ieee/4167/12755/, and https://standards.ieee.org/about/sasb/sba/25sep2026/
+- Updated `ETSI DTR 104 197` from draft version 0.0.4 to 0.0.5 and changed its date and lifecycle note. ETSI records that the Secretariat registered the final draft on 23 October 2026. Source: https://portal.etsi.org/webapp/WorkProgram/Report_WorkItem.asp?WKI_ID=74867
+- Updated the FDA generative-AI-enabled medical-device discussion paper to record that its stated feedback deadline passed on 19 October 2026. The document remains discussion material and is not draft or final guidance. Sources: https://www.fda.gov/media/194242/download and https://www.fda.gov/news-events/press-announcements/fda-seeks-public-feedback-inform-regulatory-approach-generative-ai-enabled-medical-devices
+
+### Editorial judgments
+
+- Rated `ISO/IEC AWI 26582` Medium for Physical-AI relevance because its functional-correctness assessment requirements can support evidence for cyber-physical AI systems but are cross-sector.
+- Rated `ISO/IEC AWI 26741` Low because it defines a cross-sector descriptive framework for assessment objects rather than physical-system safety requirements or assessment procedures.
+- Rated `IEEE P3870`, `IEEE P4207.1`, and `IEEE P4207.2` High because they directly address safety assurance for humanoid-robot control systems and safety-risk assessment of Level 4 automated-driving systems.
+- Rated `IEEE P4167` Medium because its rail-transit manufacturing dataset-quality requirements support physical-system assurance but do not directly govern vehicle operation or functional safety.
+- Preserved every existing Physical-AI rating; the issuer lifecycle and deadline changes above do not determine those editorial classifications.
+
+### Validation
+
+- Evaluated all 171 embedded matrix rows as JavaScript and verified every required field, HTTPS URL, and publication identifier; no required field was missing and no duplicate publication identifier was found.
+- Verified 166 unique URLs, 26 issuing organizations across 3 issuer types, 109 current-status entries, and 76 High Physical-AI entries.
+- Exercised representative behavior derivations: the `medical` search returned 20 entries, the ETSI filter returned 9, Automotive plus High returned 19, publication sorting retained all rows, and a page size of 10 produced 18 pages.
+- Crawled all 166 unique matrix URLs with web retrieval and official-source follow-up: 155 healthy, 0 redirected, 0 broken, 3 temporarily unavailable, and 8 access-blocked.
+- Temporarily unavailable targets affect `SAE J3016_202609`, `IEEE P3953`, and `IEEE P7007.1`. Access-blocked targets affect `Regulation (EU) 2017/745`, `Regulation (EU) 2023/988`, `EN 18286:2026`, the shared UNECE page for `UN Regulation No. 155` and `UN Regulation No. 156`, `UN Regulation No. 157`, `UN Regulation on Automated Driving Systems (ADS)`, `EASA AI Roadmap 2.0`, and `EASA NPA 2025-07 / proposed DS.AI`. Exact official issuer records or official alternate records corroborated every retrievable exception; none was classified as broken.
+- `git diff --check` passed, and the complete two-file diff was reviewed for unintended changes.
+
+### Discovery sweep, candidate queue, and follow-up items
+
+- Checked the ISO/IEC JTC 1/SC 42 and SC 27 work programmes, ISO Online Browsing Platform, ISO lifecycle stage codes, ITU AI Standards Exchange, AI Standards Hub, NIST AI Standards page, and NCSL's 2025 baseline. The sweep produced the supported ISO and IEEE additions and lifecycle changes above. ISO OBP remained a client-rendered shell; the AI Standards Hub is temporarily closed while transitioning to its next phase; and NIST's former AI Standards URL now redirects to its Super Intelligence Standards page.
+- Reviewed current official records across every represented issuer family: ISO/IEC, IEEE, IEC, UL Standards & Engagement, NIST, EU/CEN-CENELEC, ETSI, automotive, medical/health, aviation, and government/professional bodies. No other supported factual change or sufficiently direct new publication was found.
+- The GitHub standards candidate queue was not reviewed because GitHub CLI is unavailable and both the public issue search and GitHub API endpoint were inaccessible through web retrieval. No candidate status was changed or reconciled.
+- UNECE still does not expose a final regulation number for the adopted ADS regulation; EASA still exposes only Proposed Issue 3 and targets finalization by the end of 2026; NIST has not posted a replacement revision for AI RMF 1.0 or the two zero drafts; and EUROCAE still targets 31 December 2026 for ED-324.
+- The supported edits remain uncommitted for human review.
+
 ## 2026-10-14
 
 ### Confirmed factual changes
