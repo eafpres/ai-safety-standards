@@ -533,3 +533,27 @@ Follow-up:
 - Recheck GuvFlow's official target and Quint's commercial maturity when a direct provider statement becomes available. Monitor AuthPlane's enterprise and managed-cloud roadmap without changing the availability of its deployable open-source core.
 - Reassess SentinelOne Singularity Agentic Detection and Response after general availability, Check Point AI Red Teaming after wider release, Oligo Runtime AI Security when the provider publishes an explicit maturity update, and CrowdStrike's Falcon Guardian AI gateway when it launches.
 - Reassess ServiceNow AI Passport after its expected Q4 2026 availability. Microsoft Agent Governance Toolkit remains in public preview; EmpowerID by Omada, Veeam Agent Commander, Helmet Security, and NVIDIA Halos remain early access; DigiCert AI Model Trust remains preview; and Proofpoint's Agentic Data and AI Security capabilities remain expected by year-end 2026. RSA Agent ID remains scheduled for 16 November 2026, and New Relic AI Evaluation remains scheduled for public preview in November 2026.
+
+## 28 October 2026 — Scheduled products-and-vendors audit
+
+Confirmed provider facts:
+
+- Pluto Security / AI Workspace Security Platform — fields: provider, offering, category, lifecycle, availability, summary, access, URL, added. Pluto documents discovery across employee AI tools, agents, MCP servers, skills, plugins, extensions, supply-chain components, and generated artifacts; contextual risk analysis; an approved-component catalogue; and intent-based runtime policy enforcement. The current site offers commercial demo access, identifies active customer deployments, and provides a free Plutonium catalogue: https://pluto.security/
+- Obsidian Security / AI Agent Security — fields: provider, offering, category, lifecycle, availability, summary, access, URL, added. Obsidian documents continuous AI-agent and MCP inventory, owner and effective-access mapping, excessive-permission governance, OWASP-aligned risk scoring, runtime enforcement before actions, and audit evidence across cloud, SaaS, code, and agent platforms. The current product page offers demo and free-trial access: https://www.obsidiansecurity.com/ai-agent-security
+
+Editorial judgments:
+
+- Inclusion of Pluto Security and Obsidian Security; their primary category and exact lifecycle placements; and all provider-profile, domain, technology, deployment-context, Physical-AI relevance, and standards-relevance values are matrix editorial classifications. The rows neutrally summarize provider-marketed capabilities and do not assert effectiveness, certification, compliance, or independent validation.
+- Both products are classified as `Generally available` because their current provider-owned pages present shipping commercial platforms with demo or trial access and deployed-customer evidence rather than preview, beta, or roadmap offerings. Pluto is placed at `Govern & plan`, `Deploy & protect`, and `Operate & monitor`; Obsidian is additionally placed at `Assure & audit` because its current page explicitly documents evidence collection and reporting for audit and compliance workflows.
+- Marketplace catalogues and the Prompt Security startup map were used only to identify leads. Provider-owned product pages support both factual matrix additions.
+
+Candidate reconciliation and crawl:
+
+- No open GitHub issues matched the product-candidate queue, so no candidate disposition or committed-change reconciliation was required.
+- All 140 pre-audit provider URLs and all seven discovery URLs were reviewed. Direct retrieval reached 132 provider targets. GuvFlow, Patronus AI, and Upstream Security were access-blocked; Haize Labs returned an empty response; and ServiceNow, Arcjet, Siemens Simcenter Prescan, and Edge Case Research timed out or returned a temporary server error after retry. Current provider-owned indexed pages or official documentation confirmed the intended targets for all eight, with no evidence that any target changed. Both added product URLs resolve directly. The proposed 142-row matrix therefore has 134 directly healthy provider URLs, four access-blocked or empty URLs, and four temporarily unavailable URLs; none is known broken, redirected, or wrong-target. Six discovery URLs resolve directly; the EAIDB map exceeds the retrieval-size limit but remains indexed at its intended current target.
+
+Follow-up:
+
+- Recheck direct retrieval for GuvFlow, Haize Labs, ServiceNow, Arcjet, Siemens Simcenter Prescan, and Edge Case Research. Continue monitoring Patronus AI and Upstream Security for a directly retrievable canonical product target.
+- Reassess SentinelOne Singularity Agentic Detection and Response after general availability, Check Point AI Red Teaming after wider release, Oligo Runtime AI Security when the provider publishes an explicit maturity update, and CrowdStrike's Falcon Guardian AI gateway when it launches.
+- Reassess ServiceNow AI Passport after its expected Q4 2026 availability. Microsoft Agent Governance Toolkit remains in public preview; EmpowerID by Omada, Veeam Agent Commander, Helmet Security, and NVIDIA Halos remain early access; DigiCert AI Model Trust remains preview; and Proofpoint's Agentic Data and AI Security capabilities remain expected by year-end 2026. RSA Agent ID remains scheduled for 16 November 2026, and New Relic AI Evaluation remains scheduled for public preview in November 2026.
