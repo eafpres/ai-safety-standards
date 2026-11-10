@@ -613,3 +613,26 @@ Follow-up:
 
 - Recheck direct retrieval for GuvFlow, Haize Labs, and AlertAI. Continue monitoring the CrowdStrike agreements for completed Fiddler and Dreadnode ownership changes.
 - Reassess ServiceNow AI Passport after confirmed availability, SentinelOne Singularity Agentic Detection and Response after general availability, Check Point AI Red Teaming after wider release, Oligo Runtime AI Security when the provider publishes an explicit maturity update, and RSA Agent ID after its scheduled 16 November 2026 launch.
+
+## 10 November 2026 — Scheduled products-and-vendors audit
+
+Confirmed provider facts:
+
+- Speakeasy / AI Control Plane — fields: provider, offering, category, lifecycle, availability, summary, access, URL, added. Speakeasy documents an enterprise control plane with persistent agent identity, identity-provider permissions, a governed MCP gateway, shadow-AI and shadow-MCP discovery, prompt and tool-call inspection, real-time policy enforcement, session risk records, observability, audit logs, and cost controls; Microsoft Marketplace provides a current commercial contact path: https://www.speakeasy.com/docs/ai-control-plane and https://marketplace.microsoft.com/en-us/product/speakeasy1787188572346.speakeasy-intune
+- Reco / AI and Agent Security — fields: provider, offering, category, lifecycle, availability, summary, access, URL, added. Reco documents a deployable platform that maps agents, applications, identities, permissions, connections, and activity; governs ownership and lifecycle; prioritizes risk; remediates access; and monitors and responds to runtime threats. AWS Marketplace provides purchase, private-offer, and demo paths: https://www.reco.ai/ and https://aws.amazon.com/marketplace/pp/prodview-hu5uzgbfbbeoc
+- TrueFoundry / AI Gateway — fields: provider, offering, category, lifecycle, availability, summary, access, URL, added. TrueFoundry documents a production gateway for models, MCP servers, and agents with authentication, role-based access, policy and guardrail enforcement, tool-call tracing, audit records, observability, routing, and cost controls, delivered as SaaS, VPC, on-premises, or air-gapped software with free access and AWS Marketplace purchasing: https://www.truefoundry.com/ai-gateway and https://aws.amazon.com/marketplace/pp/prodview-cfheeich3ggpy
+
+Editorial judgments:
+
+- Inclusion of Speakeasy AI Control Plane, Reco AI and Agent Security, and TrueFoundry AI Gateway; their primary categories and exact lifecycle placements; and all provider-profile, domain, technology, deployment-context, Physical-AI relevance, and standards-relevance values are matrix editorial classifications. The rows neutrally summarize provider-marketed capabilities and do not assert effectiveness, certification, compliance, or independent validation.
+- All three additions are classified as `Generally available` because current provider-owned pages document usable products and current marketplace or direct signup paths support commercial access. Speakeasy and Reco are categorized as `Security & resilience` because enterprise agent discovery, identity, policy, access, and threat controls are their principal represented functions. TrueFoundry is categorized as `Runtime guardrails` because its gateway enforces centralized access, policy, and content controls in the model, tool, and agent request path.
+
+Candidate reconciliation and crawl:
+
+- No open GitHub issues matched the product-candidate queue, so no candidate disposition or committed-change reconciliation was required. The preferred GitHub CLI could not launch because Windows denied execution; the connected GitHub account returned the empty queue.
+- All 149 pre-audit provider URLs and all seven discovery URLs were reviewed. Direct retrieval produced 144 healthy provider targets, four access-blocked targets, and one empty response. GuvFlow, Haize Labs, Upstream Security, and the NVIDIA Halos GitHub target were blocked to the retrieval path; current official indexing or the connected GitHub repository record confirmed Haize Labs, Upstream Security, and NVIDIA, while GuvFlow remains unresolved without new evidence of a changed target. AlertAI returned an empty response but current provider-owned indexing confirms the represented product. All three added URLs resolved directly. The proposed 152-row matrix therefore has 147 directly healthy provider URLs, four access-blocked URLs, and one empty-response URL; none is known broken, redirected, temporarily unavailable, or wrong-target. All seven discovery URLs resolved directly.
+
+Follow-up:
+
+- Recheck direct retrieval for GuvFlow, Haize Labs, Upstream Security, AlertAI, and the NVIDIA Halos repository. Continue monitoring the CrowdStrike agreements for completed Fiddler and Dreadnode ownership changes.
+- ServiceNow AI Passport remains expected in a future release; SentinelOne Singularity Agentic Detection and Response remains early access; Check Point AI Red Teaming remains limited release; and no explicit maturity change was found for Oligo Runtime AI Security. Reassess RSA Agent ID after its scheduled 16 November 2026 launch.
