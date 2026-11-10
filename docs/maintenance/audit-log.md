@@ -2,6 +2,43 @@
 
 This log records audits that produced a material matrix change. No-change runs are intentionally not recorded here because scheduled audits must leave a clean repository untouched.
 
+## 2026-11-10
+
+### Confirmed factual changes
+
+- Advanced `ISO/IEC DIS 42007` from stage 40.20 to 40.60 and changed its date marker to record that the 12-week DIS ballot closed on 4 November 2026. Source: https://www.iso.org/standard/89967.html
+- Advanced `ISO/IEC FDIS 27091` from stage 50.00 to 50.20 and changed its date marker to record that the eight-week FDIS ballot began on 2 November 2026. Source: https://www.iso.org/standard/56582.html?browse=tc
+- Added three ISO/IEC work items registered at stage 20.00 on 6 November 2026: `ISO/IEC AWI TR 27258` on interactions in multi-agent AI systems across digital, physical, and hybrid environments; `ISO/IEC AWI TR 27259` on misuse patterns and risk sources during AI-system use; and `ISO/IEC AWI TR 27260` on the standardization landscape for physical AI. Sources: https://www.iso.org/standard/95706.html?browse=tc, https://www.iso.org/standard/95707.html?browse=tc, and https://www.iso.org/standard/95708.html?browse=tc
+- Updated `IEEE 2863-2026` to record its 16 October 2026 publication date. IEEE continues to list it as an active recommended practice. Source: https://standards.ieee.org/ieee/2863/10142/
+- Normalized `ETSI DTR 104 197` to the published `ETSI TR 104 197 V1.1.1`, dated 30 October 2026, and replaced the work-item link with the exact official publication. Sources: https://portal.etsi.org/webapp/WorkProgram/Report_WorkItem.asp?WKI_ID=74867 and https://www.etsi.org/deliver/etsi_tr/104100_104199/104197/01.01.01_60/tr_104197v010101p.pdf
+- Updated `ETSI DTS 104 216` from draft version 0.0.8 to 1.1.1 and changed its date and lifecycle note. ETSI records that the Secretariat registered the final draft on 3 November 2026. Source: https://portal.etsi.org/webapp/WorkProgram/Report_WorkItem.asp?WKI_ID=74988
+- Added `ETSI TS 104 275 V1.1.1`, published in September 2026. The normative Technical Specification applies ETSI EN 304 223 cybersecurity principles to generative AI and includes provisions and conformance-test scenarios aimed at preventing harmful deepfakes. Source: https://www.etsi.org/deliver/etsi_ts/104200_104299/104275/01.01.01_60/ts_104275v010101p.pdf
+
+### Editorial judgments
+
+- Rated `ISO/IEC AWI TR 27258` Medium for Physical-AI relevance because its multi-agent interaction scope explicitly includes physical and hybrid environments but the planned deliverable is a cross-sector informative report.
+- Rated `ISO/IEC AWI TR 27259` Low because it classifies misuse patterns and risk sources across AI applications without focusing on physical-system control or assurance.
+- Rated `ISO/IEC AWI TR 27260` High because its entire subject is the physical-AI standardization landscape, including relevant technologies and sector applications, while preserving that it is an informative report rather than requirements.
+- Rated `ETSI TS 104 275 V1.1.1` Low because its generative-AI deepfake controls and test scenarios primarily address digital content harms.
+- Preserved every existing Physical-AI rating; issuer lifecycle and publication changes do not determine those editorial classifications.
+
+### Validation
+
+- Evaluated all 175 embedded matrix rows as JavaScript and verified every required field, HTTPS URL, and publication identifier; no required field was missing and no duplicate publication identifier was found.
+- Verified 170 unique URLs, 26 issuing organizations across 3 issuer types, 111 current-status entries, and 77 High Physical-AI entries.
+- Exercised representative behavior derivations: the `medical` search returned 20 entries, the ETSI filter returned 10, Automotive plus High returned 19, publication sorting retained all rows, and a page size of 10 produced 18 pages.
+- Crawled all 170 unique matrix URLs with web retrieval and official-source follow-up: 164 healthy, 0 redirected, 0 broken, 0 temporarily unavailable, and 6 access-blocked.
+- Access-blocked targets affect `Regulation (EU) 2023/988`, `Regulation (EU) 2017/745`, the shared UNECE page for `UN Regulation No. 155` and `UN Regulation No. 156`, `UN Regulation No. 157`, `UN Regulation on Automated Driving Systems (ADS)`, and the Canada `Directive on Automated Decision-Making`. Exact official issuer records or official indexed records corroborated every blocked target; none was classified as broken.
+- `git diff --check` passed, and the complete two-file diff was reviewed for unintended changes.
+
+### Discovery sweep, candidate queue, and follow-up items
+
+- Checked the ISO/IEC JTC 1/SC 42 and SC 27 work programmes, ISO Online Browsing Platform, ISO lifecycle stage codes, ITU AI Standards Exchange, AI Standards Hub, NIST AI Standards page, and NCSL's 2025 baseline. The sweep produced the supported ISO/IEC additions and lifecycle changes above. ISO OBP remained a client-rendered shell; the AI Standards Hub remained temporarily closed while transitioning to its next phase; NIST's former AI Standards URL continued to redirect to its Super Intelligence Standards page; and NCSL exposed no current-year successor from its 2025 baseline.
+- Reviewed current official records across every represented issuer family: ISO/IEC and ISO, IEEE, IEC, UL Standards & Engagement, NIST, EU/CEN-CENELEC, ETSI, automotive, medical/health, aviation, and government/professional bodies. The ETSI and IEEE changes above were the only additional supported factual changes found.
+- The connected GitHub standards candidate queue was empty; no issue routing, normalization, status change, or committed-change reconciliation was required.
+- ISO/IEC 24970, ISO/IEC TS 22443, ISO/IEC 42105, and ISO/IEC TS 42119-3 remain at stage 60.00 under publication; ISO/IEC FDIS 24029-3 and ISO/IEC FDIS 25059 remain at stage 50.00; NIST has not posted a replacement revision for AI RMF 1.0 or its two represented zero drafts; UNECE still does not expose a final regulation number for the adopted ADS regulation; EASA still exposes only Proposed Issue 3; and EUROCAE still targets 31 December 2026 for ED-324.
+- The supported edits remain uncommitted for human review.
+
 ## 2026-10-27
 
 ### Confirmed factual changes
